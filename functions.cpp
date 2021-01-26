@@ -1,0 +1,2 @@
+//Her defineres alle funksjonene
+

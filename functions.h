@@ -1,0 +1,1 @@
+//Her deklareres alle funksjonene
