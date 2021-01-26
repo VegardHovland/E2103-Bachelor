@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "myhelperfunctions.h"
+#include "funksjoner.h"
 
 void setup() {
    
