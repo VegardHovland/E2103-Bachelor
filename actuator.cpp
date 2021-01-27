@@ -14,11 +14,11 @@ void Actuator::computePID(){
         currentTime = millis();                //get current time
         elapsedTime = (double)(currentTime - previousTime);        //compute time elapsed from previous computation
         
-        error = setPoint - angle;                                // determine error
+        error = _setPoint - angle;                                // determine error
         cumError += error * elapsedTime;                // compute integral
         rateError = (error - lastError)/elapsedTime;   // compute derivative
  
-        double out = kp*error + ki*cumError + kd*rateError;                //PID output               
+        double out = _kp*error + _ki*cumError + _kd*rateError;                //PID output               
         
         if (out > maxAngle)
         {
@@ -38,7 +38,7 @@ void Actuator::computePID(){
 }
 
 void Actuator::setSetpoint(int r){
-        setPoint = r;
+        _setPoint = r;
 }
 
 void Actuator::setOutput(){
@@ -49,4 +49,10 @@ void Actuator::setOutput(){
 void Actuator::getAngle(){
         input = analogRead(encoderPin) ; //Reads a value between 0 and 1023
         angle = (input * 360) / 1023 ;
+}
+
+void Actuator::setParameters(double kp, double ti, double td ){  //Oppdaterer regulator parameterene
+        _kp=kp;
+        _ki=ti;
+        _kd=td;
 }

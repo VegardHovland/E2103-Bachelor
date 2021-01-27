@@ -4,17 +4,11 @@
 #include "Arduino.h"
 #include "constants.h"
 
-
-
-/*
-void controllActuators{
-    for (i = 0; i < numActuators; i++)
+void controllActuators(Actuator actuators[]){
+    for (int i = 0; i < numActuators; i++)
     {
-        actuators[i].getAngle();
-        actuators[i].computePID();
-        actuators[i].setOutput();
+        actuators[i].getAngle();   //Get the actuators angle
+        actuators[i].computePID(); //comeputes output using PID 
+        actuators[i].setOutput();  //sets out the putput to the actuator
     }
 }
-
-
-*/
