@@ -2,13 +2,14 @@
 #ifndef actuator_h
 #define actuator_h
 
-#include "Arduino.h"
+#include <Arduino.h>
 
 class Actuator {
     private:
         int encoderPin; //Witch pin the encoder is connected to
         int outPin;     //what pin is the power of the motor connected to
 
+        double angle;
         int maxAngle=170;     // Max operating angle for the motor
         int minAngle=10;     // Min -----------------------------
         double kp=2;     //Controller constants
@@ -28,11 +29,10 @@ class Actuator {
 
     public:
         Actuator(int enPin, int uPin);
-        void getCurrentAngle();
-        void getDesieredAngle();
-        void setDesieredAngle();
-        void setSetpoint(int r);
-        double computePID(double inp);                   
+        void setSetpoint(int r);       //Updates the setpoint (0-360)
+        void setOutput(); // Calculate the analog value for the angle
+        void getAngle(); // Calculate the analog value for the angle
+        void computePID();  //Computes the pid value, this is an angle                 
         
 
 };
