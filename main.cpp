@@ -21,5 +21,13 @@ Actuator actuators[4] = {
 }
 
 void loop() {
+
+    //For alle aktuatorer
+        //les verdi og konverter til vinkel
+        //Hivs endring i ønsket vinkel 
+            //Opptader setpunkt
+        // pidpådrag= computepid(vinkel)
+        
+
     
 }
