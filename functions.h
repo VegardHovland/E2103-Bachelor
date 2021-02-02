@@ -9,7 +9,8 @@
 #include <Arduino.h>
 
 
-void controllActuators(Actuator acts[]);
+void controllActuators(Actuator acts[]);    //comutes the PID algorithm on every actuator
+
 
 
 

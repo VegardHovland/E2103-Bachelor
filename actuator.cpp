@@ -46,7 +46,7 @@ void Actuator::setOutput(){
         analogWrite(outPin, output);
 }
 
-void Actuator::getAngle(){
+void Actuator::getAngle(){           //Gjøres ikke så enkelt som dette, må se hvilken enkoder vi ender opp med
         input = analogRead(encoderPin) ; //Reads a value between 0 and 1023
         angle = (input * 360) / 1023 ;
 }
