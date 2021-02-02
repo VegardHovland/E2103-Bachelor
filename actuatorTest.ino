@@ -1,5 +1,7 @@
 //This will be a simple program to test that actuator controll is working before we test the larger programm 
 
+#include <Arduino.h>
+
 double kp, ki, kd;
 double currentTime, elapsedTime, previousTime;
 double input, out;

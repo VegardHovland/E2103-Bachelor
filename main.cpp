@@ -16,9 +16,6 @@ Actuator actuators[] = {Actuator(2 , 3), Actuator(4 ,5),Actuator(5 ,6), Actuator
 void setup() {
 
     Serial.begin(9600);
-
-
-
 }
 
 void loop() {
