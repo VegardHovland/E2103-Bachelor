@@ -1,26 +1,38 @@
-//This will be a simple program to test that actuator controll is working before we test the larger programm
+//This will be a simple program to test that actuator controll is working before we test the larger programm 
 
+double kp, ki, kd;
+double currentTime, elapsedTime, previousTime;
+double input, out;
+float lastError, error, cumError, rateError;
+float setPoint, angle;
+int maxAngle = 170;
+int minAngle = 0;
+int encoderPin = 5;
+int actuatorPin = 6;
 
 void setup()
 {
 	Serial.begin(9600);
+    pinMode (encoderPin,INPUT);
+    pinMode (actuatorPin, OUTPUT);
 }
 
 void loop()
 {
 
-//Get angle //Read from encoder // calc 
-
-	 currentTime = millis();                //get current time
-     elapsedTime = (double)(currentTime - previousTime);        //compute time elapsed from previous computation
-        
-    error = _setPoint - angle;                                // determine error
-    cumError += error * elapsedTime;                // compute integral
-    rateError = (error - lastError)/elapsedTime;   // compute derivative
+    input = analogRead(encoderPin) ;                                     //Reads a value between 0 and 1023
+    angle = (input * 360) / 1023 ;                                      //calculates current angle
  
-    double out = _kp*error + _ki*cumError + _kd*rateError;                //PID output               
+	currentTime = millis();                                             //get current time
+    elapsedTime = (double)(currentTime - previousTime);                 //compute time elapsed from previous computation
         
-    if (out > maxAngle)
+    error = setPoint - angle;                                            // determine error
+    cumError += error * elapsedTime;                                     // compute integral
+    rateError = (error - lastError)/elapsedTime;                         // compute derivative
+ 
+    out = kp*error + ki*cumError + kd*rateError;                         //PID output               
+        
+    if (out > maxAngle)                                                  // TROR IKKE DETTE KAN GJØRES SLIK, KOMMER AN PÅ MOTOR VERDIER
      {
          out = maxAngle;
      }
@@ -31,10 +43,12 @@ void loop()
      }
         
         
-    lastError = error;                                //remember current error
-    previousTime = currentTime;                        //remember current time
- 
-                                          //have function return the PID output
+    lastError = error;                           //remember current error
+    previousTime = currentTime;                  //remember current time
 
-    //ANalog write desired angle // controll speed
+    analogwrite(actuatorPin, out);               //ANalog write desired angle // controll speed
+ 
+                                        
+
+   
 }
