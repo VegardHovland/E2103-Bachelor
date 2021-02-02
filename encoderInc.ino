@@ -29,6 +29,6 @@
      Serial.println(counter);
    } 
    aLastState = aState;                 // Updates the previous state of the outputA with the current state
-   angle = counter   ;                   //kommer an på hvilken enkoder vi går for, dette må gjøres etter vi har fått enkoder
+   angle = counter;                     //kommer an på hvilken enkoder vi går for, dette må gjøres etter vi har fått enkoder
    analogWrite(outPin, angle);
  }

@@ -24,11 +24,11 @@ void setup() {
 void loop() {
 if (Serial.available() > 0) {
 
-    char inByte = Serial.read();
+    char ch = Serial.read();
 
-    switch (inByte) {
+    switch (ch) {
 
-      case 'a':{
+      case 'a':{                //Updates the setpoint for a given actuator
         Serial.print("Skriv in nr på motor");
         int i = Serial.read();
         Serial.print("nytt setpunkt i grader");
@@ -36,7 +36,7 @@ if (Serial.available() > 0) {
         actuators[i].setSetpoint(ang);
         break;
       }
-      case 'b': {
+      case 'b': {                   //Updates the PID controller parameters for a given actuator
         Serial.print("Skriv in nr på motor");
         int i = Serial.read();
         Serial.print("kp");
@@ -48,8 +48,8 @@ if (Serial.available() > 0) {
         actuators[i].setParameters(kp, ti, td);
         break;
       }
-      case 'c': break;
-        //???
+      case 'q': break;
+        //returner til start konfigurasjon
 
       default :
       {
