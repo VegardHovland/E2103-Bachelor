@@ -48,7 +48,7 @@ void loop()
     lastError = error;                           //remember current error
     previousTime = currentTime;                  //remember current time
 
-    analogwrite(actuatorPin, out);               //ANalog write desired angle // controll speed
+    analogWrite(actuatorPin, out);               //ANalog write desired angle // controll speed
  
                                         
 
