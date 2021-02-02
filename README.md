@@ -1,2 +1,5 @@
 # Robotic-leg
-Bachelor E2128
+Bachelor E2103 
+
+Files for arduino and ROS
+
