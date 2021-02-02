@@ -1,6 +1,6 @@
 //Hovedprogrammet, her skal minst mulig kode skrives og brukes est mulig funksjoner!
-//Regler vi bruker upperLowerCase
-//HUSK Å KOMMENTERE!!
+//Regler vi bruker upperLowerCase (camelCase)
+//HUSK Å KOMMENTERE!!!
 
 
 #include <Arduino.h>
