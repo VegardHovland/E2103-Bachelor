@@ -1,0 +1,3 @@
+source;share/leg_description/hook/ros_package_path.ps1
+source;share/leg_description/hook/ros_package_path.dsv
+source;share/leg_description/hook/ros_package_path.sh

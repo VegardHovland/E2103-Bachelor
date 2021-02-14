@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+
+<robot name="leg">
+    <link name="baseLink"></link>
+        <<visual>
+            <origin rpy="1 1 1" xyz="1 1 1"
+            <geometry>
+                <<box size="1 1 0.1"/>
+            </geometry>
+        </visual>
+    </link>
+
+
+
+
+
+</robot>

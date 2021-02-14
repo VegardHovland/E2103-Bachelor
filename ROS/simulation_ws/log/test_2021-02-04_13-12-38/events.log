@@ -1,0 +1,5 @@
+[0.000000] (-) TimerEvent: {}
+[0.000101] (leg_description) JobQueued: {'identifier': 'leg_description', 'dependencies': OrderedDict([('leg_description', '/home/vegard_ubuntu/Documents/E2103-Bachelor/ROS/simulation_ws/build/leg_description/devel')])}
+[0.000180] (leg_description) JobStarted: {'identifier': 'leg_description'}
+[0.037796] (leg_description) JobEnded: {'identifier': 'leg_description', 'rc': 0}
+[0.038592] (-) EventReactorShutdown: {}
