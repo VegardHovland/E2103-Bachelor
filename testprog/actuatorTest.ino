@@ -14,7 +14,7 @@ int actuatorPin = 6;
 
 void setup()
 {
-	Serial.begin(9600);
+	Serial.begin(9600);                                                 //Starts the serial monitor
     pinMode (encoderPin,INPUT);
     pinMode (actuatorPin, OUTPUT);
 }
@@ -22,15 +22,15 @@ void setup()
 void loop()
 {
 
-    input = analogRead(encoderPin) ;                                     //Reads a value between 0 and 1023
+    input = analogRead(encoderPin) ;                                    //Reads a value between 0 and 1023
     angle = (input * 360) / 1023 ;                                      //calculates current angle
  
 	currentTime = millis();                                             //get current time
-    elapsedTime = (double)(currentTime - previousTime);                 //compute time elapsed from previous computation
+    elapsedTime = (double)(currentTime - previousTime);                //compute time elapsed from previous computation
         
-    error = setPoint - angle;                                            // determine error
-    cumError += error * elapsedTime;                                     // compute integral
-    rateError = (error - lastError)/elapsedTime;                         // compute derivative
+    error = setPoint - angle;                                          // determine error
+    cumError += error * elapsedTime;                                   // compute integral
+    rateError = (error - lastError)/elapsedTime;                       // compute derivative
  
     out = kp*error + ki*cumError + kd*rateError;                         //PID output               
         
@@ -45,10 +45,10 @@ void loop()
      }
         
         
-    lastError = error;                           //remember current error
-    previousTime = currentTime;                  //remember current time
+    lastError = error;                                                 //remember current error
+    previousTime = currentTime;                                        //remember current time
 
-    analogWrite(actuatorPin, out);               //ANalog write desired angle // controll speed
+    analogWrite(actuatorPin, out);                                     //ANalog write desired angle // controll speed
  
                                         
 

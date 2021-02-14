@@ -1,4 +1,4 @@
-//Her deklareres alle funksjonene
+//Header file for global functions
 #include <Arduino.h>
 #include "actuator.h"
 #include "constants.h"

@@ -10,22 +10,22 @@
 
 
 
-Actuator actuators[] = {Actuator(2 , 3), Actuator(4 ,5),Actuator(5 ,6), Actuator(7 ,8) };
+Actuator actuators[] = {Actuator(2 , 3), Actuator(4 ,5),Actuator(5 ,6), Actuator(7 ,8) };     //Generates a actuator list contaning 4 actuators
 
   
 void setup() {
 
-    Serial.begin(9600);
+    Serial.begin(9600);                                                                       //Starts the serial monitor
 }
 
 void loop() {
 if (Serial.available() > 0) {
 
-    char ch = Serial.read();
+    char ch = Serial.read();                                                                  //Gets user input
 
-    switch (ch) {
+    switch (ch) {               
 
-      case 'a':{                //Updates the setpoint for a given actuator
+      case 'a':{                                                                             //Updates the setpoint for a given actuator
         Serial.print("Skriv in nr på motor");
         int i = Serial.read();
         Serial.print("nytt setpunkt i grader");
@@ -33,7 +33,7 @@ if (Serial.available() > 0) {
         actuators[i].setSetpoint(ang);
         break;
       }
-      case 'b': {                   //Updates the PID controller parameters for a given actuator
+      case 'b': {                                                                             //Updates the PID controller parameters for a given actuator
         Serial.print("Skriv in nr på motor");
         int i = Serial.read();
         Serial.print("kp");
@@ -50,7 +50,7 @@ if (Serial.available() > 0) {
 
       default :
       {
-        controllActuators(actuators); //Pid controll on all the acuators
+        controllActuators(actuators);                                                           //Pid controll on all the acuators by default
         break;
       }
     }
