@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+<robot name="robotleg" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<xacro:property name="body_color" value="Gazebo/Silver" />
+<xacro:property name="joint_color" value="Gazebo/Black" />
+
+
+<gazebo reference="base_link">
+  <material>${body_color}</material>
+</gazebo>
+
+<gazebo reference="joint_3">
+  <material>${joint_color}</material>
+</gazebo>
+
+<gazebo reference="link1_1">
+  <material>${body_color}</material>
+</gazebo>
+
+<gazebo reference="joint_6">
+  <material>${joint_color}</material>
+</gazebo>
+
+<gazebo reference="link2_1">
+  <material>${body_color}</material>
+</gazebo>
+
+<gazebo reference="joint_7">
+  <material>${joint_color}</material>
+</gazebo>
+
+<gazebo reference="link3_1">
+  <material>${body_color}</material>
+</gazebo>
+
+<gazebo reference="joint_8">
+  <material>${joint_color}</material>
+</gazebo>
+
+<gazebo reference="link4_1">
+  <material>${body_color}</material>
+</gazebo>
+
+</robot>
