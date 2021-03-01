@@ -3,33 +3,34 @@
 
 #define slaveAddr 9
 
-//Constants:
-const int potPin1 = A1; //pin A0 to read analog input
-const int potPin2 = A2; //pin A0 to read analog input
-const int potPin3 = A3; //pin A0 to read analog input
-const int potPin4 = A4; //pin A0 to read analog input
-
 //Variables:
-
-int angle[4]; //save analog value
+int angle;
+//int angle[4]; //save analog value
 
 void setup(){
-  //Input or output? 
-  Serial.begin(9600);
   Wire.begin();
- 
+  Serial.begin(9600);
 }
 
-void loop(){
-
-  for(int i=0 ; i < 4; i++){
-    Serial.println(angle[i]);  
+void loop() {
+  Wire.beginTransmission(slaveAddr);
+  int available = Wire.requestFrom(slaveAddr, (uint8_t)2);
+  
+  if(available == 2)
+  {
+    angle = Wire.read() << 8 | Wire.read(); 
+    Serial.println(angle);
+  }
+  else
+  {
+    Serial.print("Unexpected number of bytes received: ");
+    Serial.println(available);
   }
 
-  Wire.beginTransmission(slaveAddr);
-  Wire.write(angle);
-  Wire.endTransmission;
- 
-
-  delay(100);                          //Small delay
+  int result = Wire.endTransmission();
+  if(result)
+  {
+    Serial.print("Unexpected endTransmission result: ");
+    Serial.println(result);
+  }
 }
