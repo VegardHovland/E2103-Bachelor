@@ -4,13 +4,16 @@
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+#include <U8g2lib.h> 
 
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
-#define oled1 0x3C;
-#define oled1 0x3D;
+#define oled1 0x3C
+#define oled2 0x3D
 
-Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
+Adafruit_SSD1306 display_1(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
+Adafruit_SSD1306 display_2(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
+
 
 //Variables:
 const byte slaveAddr[4]= {8, 9, 10 ,11};  // Defines the slavesadresses
@@ -30,21 +33,33 @@ void setup(){
   
   Serial.begin(9600);   //starts serial monitor
   
-  //OLED SETUP
-   if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { // Address 0x3D for 128x64
+  //OLED SETUP for display 1
+   if(!display_1.begin(SSD1306_SWITCHCAPVCC, oled1)) { // Address 0x3C for 128x64
    Serial.println(F("SSD1306 allocation failed"));
    for(;;);
  }
-   display.setTextSize(2);
-   display.setTextColor(WHITE);
-   display.setCursor(0, 0);
-   display.clearDisplay();
+   display_1.setTextSize(2);
+   display_1.setTextColor(WHITE);
+   display_1.setCursor(0, 0);
+   display_1.clearDisplay();
+   
+  //OLED SETUP for display 2
+   if(!display_2.begin(SSD1306_SWITCHCAPVCC, oled2)) { // Address 0x3D for 128x64
+   Serial.println(F("SSD1306 allocation failed"));
+   for(;;);
+ }
+   display_2.setTextSize(2);
+   display_2.setTextColor(WHITE);
+   display_2.setCursor(0, 0);
+   display_2.clearDisplay();
+
+   
 }
 
 void loop() {
   
   getEncdata();
-  //printText(angle);
+  printText(angle);
   drawGraph(angle);
 
 }
@@ -78,15 +93,15 @@ void getEncdata(){
 void printText(float ang[]){
   int currtime = millis();
   if( (currtime - prevtime) > 500){
-    display.setTextSize(2);
-    display.setTextColor(WHITE);
-    display.setCursor(0, 0);
-    display.clearDisplay();
+    display_1.setTextSize(2);
+    display_1.setTextColor(WHITE);
+    display_1.setCursor(0, 0);
+    display_1.clearDisplay();
     for(int i = 0; i < numOfSlaves; i++){
-      display.print(i);                     // prints information in serial monitor
-      display.print(": "); 
-      display.println(ang[i]);
-      display.display();
+      display_1.print(i);                     // prints information in serial monitor
+      display_1.print(": "); 
+      display_1.println(ang[i]);
+      display_1.display();
     }
     prevtime = millis();
   }
@@ -96,13 +111,13 @@ void drawGraph(float ang[]){
     
     if(x > 128){
       x = 0;
-      display.clearDisplay();
+      display_2.clearDisplay();
     }
     
     for(int i = 0; i < numOfSlaves; i++){
      int y = map(ang[i], 0, 360, 0 , 64);
-      display.drawPixel(x , y, WHITE);
-      display.display();
+      display_2.drawPixel(x , y, WHITE);
+      display_2.display();
     }
     x++;
  }
