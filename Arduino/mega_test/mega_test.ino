@@ -7,16 +7,21 @@
 
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
-const byte slaveAddr[4]= {8, 9, 10 ,11};  // Defines the slavesadresses
 #define oled1 0x3C;
+#define oled1 0x3D;
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
 //Variables:
-const int numOfSlaves = 4;  //Defines number of slaves
-int prevtime;
+const byte slaveAddr[4]= {8, 9, 10 ,11};  // Defines the slavesadresses
 
+const int numOfSlaves = 4;  //Defines number of slaves
+
+int prevtime;
+int x=0;
 int encData[4]; //array to store encoder value from slaves
+
+
 float angle[4];  //Array to sore the angles 0-360
 
 void setup(){
@@ -39,7 +44,8 @@ void setup(){
 void loop() {
   
   getEncdata();
-  printText(angle);
+  //printText(angle);
+  drawGraph(angle);
 
 }
 
@@ -77,7 +83,6 @@ void printText(float ang[]){
     display.setCursor(0, 0);
     display.clearDisplay();
     for(int i = 0; i < numOfSlaves; i++){
-      angle[i] = (float(encData[i])*360.0)/1023.0;     //Converts to degrees (0-360)
       display.print(i);                     // prints information in serial monitor
       display.print(": "); 
       display.println(ang[i]);
@@ -85,5 +90,19 @@ void printText(float ang[]){
     }
     prevtime = millis();
   }
-
 }
+
+void drawGraph(float ang[]){
+    
+    if(x > 128){
+      x = 0;
+      display.clearDisplay();
+    }
+    
+    for(int i = 0; i < numOfSlaves; i++){
+     int y = map(ang[i], 0, 360, 0 , 64);
+      display.drawPixel(x , y, WHITE);
+      display.display();
+    }
+    x++;
+ }
