@@ -1,6 +1,6 @@
 #include <Wire.h>
 
-#define slaveAddr 9
+#define slaveAddr 8
 
 //Constants:
 const int potPin = A0; //pin A0 to read analog input
