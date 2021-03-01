@@ -1,0 +1,12 @@
+close all
+clear
+clc
+
+% Acurate pi
+pi=sym(pi);
+syms theta1 theta2 theta3 theta4;
+
+d = [60.8 0 0 0 0];                       % z-offset
+theta = [theta1 theta2 theta3 theta4];  % Actuator angles
+a = [73 256.178 284.418 105.361 mm];             % x-offset
+alpha = [-pi/2 0 0 0];                  % Dreining om x-akse
