@@ -1,3 +1,5 @@
+#include <splash.h>
+
 //Hovedprogrammet, her skal minst mulig kode skrives og brukes est mulig funksjoner!
 //Regler vi bruker upperLowerCase (camelCase)
 //HUSK Å KOMMENTERE!!!
@@ -10,12 +12,13 @@
 
 
 
-Actuator actuators[] = {Actuator(2 , 3), Actuator(4 ,5),Actuator(5 ,6), Actuator(7 ,8) };     //Generates a actuator list contaning 4 actuators
 
   
 void setup() {
 
     Serial.begin(9600);                                                                       //Starts the serial monitor
+    Wire.begin();                                                                            //Initialize wire
+    setupOled();                                                                              //Initialize oled displays
 }
 
 void loop() {
