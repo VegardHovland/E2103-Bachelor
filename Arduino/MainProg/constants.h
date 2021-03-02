@@ -5,6 +5,8 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 
+#include "actuator.h"
+
 
 
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
@@ -15,6 +17,7 @@
 Adafruit_SSD1306 display_1(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 Adafruit_SSD1306 display_2(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
+Actuator actuators[] = {Actuator(2 , 3), Actuator(4 ,5),Actuator(5 ,6), Actuator(7 ,8) };     //Generates a actuator list contaning 4 actuators
 
 
 //Header file for global variables

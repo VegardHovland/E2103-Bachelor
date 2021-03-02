@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include "actuator.h"
-
+#include <Wire.h>
 //This is the Cpp file for the actuator class
 
 

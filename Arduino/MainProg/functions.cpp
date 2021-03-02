@@ -1,7 +1,7 @@
 //Cpp file for gloable functions
 #include "functions.h"
-
-
+#include "constants.h"
+#include "actuator.h"
 
 //Controlls all the acuators
 void controllActuators(Actuator actuators[]){
