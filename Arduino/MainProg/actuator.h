@@ -1,10 +1,9 @@
 //Header file for acuator class
-#include "constants.h"
-#include "functions.h"
-
 #ifndef actuator_h
 #define actuator_h
 
+#include "constants.h"
+#include "functions.h"
 
 
 class Actuator {

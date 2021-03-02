@@ -1,10 +1,10 @@
+#ifndef constants_h
+#define constants_h
+
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
-#include <U8g2lib.h> 
 
-#ifndef constants_h
-#define constants_h
 
 
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
