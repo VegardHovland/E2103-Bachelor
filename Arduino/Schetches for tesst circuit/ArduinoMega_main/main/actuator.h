@@ -36,9 +36,8 @@ class Actuator {
         void setParameters(double kp, double ti, double td);       //Set new PID values    
         float getAngle();                                           // gets the joint angle of the actuator           
         void readAngle();             // Calculate the analog value for the angle
-        void computePID();                                         //Computes the pid value, this is an angle  
-        float getSetpoint(); 
-        int getSpeed();                                 //Renturns the speed desired
+        void computePID();                                         //Computes the pid value, this is an angle   
+                
         
 };
 

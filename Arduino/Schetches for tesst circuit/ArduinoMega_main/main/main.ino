@@ -91,13 +91,10 @@ if (Serial.available() > 0) {
 //Controlls all the acuators
 void controllActuators(Actuator actuators[]){
     for (int i = 0; i < numActuators; i++)              // Loops over the 4 actuator objects    
-    {     
+    {
         actuators[i].readAngle();          //Get the actuators angle
         actuators[i].computePID();                      //comeputes output using PID 
-        if ( i == 0) {md1.setM2Speed(actuators[i].getSpeed());}
-        if ( i == 1) {md1.setM2Speed(actuators[i].getSpeed());}
-        if ( i == 2) {md2.setM2Speed(actuators[i].getSpeed());}
-        if ( i == 3) {md2.setM2Speed(actuators[i].getSpeed());}
+        actuators[i].setOutput();                       //sets out the putput to the actuator
     }
 }
 
@@ -186,7 +183,6 @@ void drawGraph(Actuator actuators[]){
     md2.calibrateCurrentOffsets();
     md1.enableDrivers();
     md2.enableDrivers();
-    delay(50);
 
  }
 
@@ -201,27 +197,15 @@ void drawGraph(Actuator actuators[]){
  }
 
  void serialPrintData(){
-    for(int i = 0; i < numActuators; i++){
-      Serial.print("angle "); 
-      Serial.print(i);                     // prints joint angle in serial monitor
-      Serial.print(": "); 
-      Serial.println(actuators[i].getAngle());
-      
-      Serial.print("setpoint "); 
-      Serial.print(i);                     // prints setpoint in serial monitor
-      Serial.print(": "); 
-      Serial.println(actuators[i].getSetpoint());
-  }
-    int amps [4];
-    amps[0] = md1.getM1CurrentMilliamps();
-    amps[1] = md1.getM2CurrentMilliamps();
-    amps[2] = md2.getM1CurrentMilliamps();
-    amps[3] = md2.getM2CurrentMilliamps();
-    
-    for(int i = 0; i < numActuators; i++){
-      Serial.print("current "); 
-      Serial.print(i);                     // prints joint angle in serial monitor
-      Serial.print(": "); 
-      Serial.println(amps[i]);
+      for(int i = 0; i < numActuators; i++){
+        Serial.print("angle "); 
+        Serial.print(i);                     // prints information in serial monitor
+        Serial.print(": "); 
+        Serial.println(actuators[i].getAngle());
+        
+        Serial.print("setpoint "); 
+        Serial.print(i);                     // prints information in serial monitor
+        Serial.print(": "); 
+        Serial.println(actuators[i].getSetpoint());
     }
  }
