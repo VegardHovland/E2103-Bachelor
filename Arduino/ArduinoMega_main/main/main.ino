@@ -59,7 +59,7 @@ if (Serial.available() > 0) {
       case 'q': break;
         //returner til start konfigurasjon
 
-      default :
+      default : break;
     }
  }
       controllActuators(actuators);                                                           //Pid controll on all the acuators by defaut
