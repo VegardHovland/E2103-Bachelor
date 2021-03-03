@@ -1,6 +1,0 @@
-{
-    "sketch": "main.cpp",
-    "board": "arduino:avr:mega",
-    "configuration": "cpu=atmega2560",
-    "programmer": "AVR ISP"
-}
