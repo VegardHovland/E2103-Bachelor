@@ -5,11 +5,10 @@
 
 
 //Constructer function for the class
-Actuator::Actuator(int enPin, int oPin){
-        pinMode(enPin, INPUT);                                  //Defines input pin number
+Actuator::Actuator(byte encAddr, int oPin){
         pinMode(oPin, OUTPUT);                                  //Defines output pin number
 
-        encoderPin = enPin;                                      //Updates the pin value
+        slaveadress = encAddr;                                      //Updates the pin value
         outPin     = oPin;
 }
 
@@ -69,13 +68,13 @@ float Actuator::getAngle(){
 
 
 //Gets the current actuator position
-void Actuator::readAngle(int index, byte slaveAddress){           //Gjøres ikke så enkelt som dette, må se hvilken enkoder vi ender opp med
-    Wire.beginTransmission(slaveAddr[index]);   //starts transmition with slaver nr. i
-    int available = Wire.requestFrom(slaveAddress, (uint8_t)2);  //requests bytes from slave
+void Actuator::readAngle(){           //Gjøres ikke så enkelt som dette, må se hvilken enkoder vi ender opp med
+    Wire.beginTransmission(slaveadress);   //starts transmition with slaver nr. i
+    int available = Wire.requestFrom(slaveadress, (uint8_t)2);  //requests bytes from slave
   
     if(available == 2)                //Checks if 2 bytes are avavible
     {
-      int encData = Wire.read() << 8 | Wire.read();       //Reads upper and lower byte and converts to int (0-1023)
+       encData = Wire.read() << 8 | Wire.read();       //Reads upper and lower byte and converts to int (0-1023)
     }
     else                                                  //Error in transmition
     {
@@ -90,6 +89,5 @@ void Actuator::readAngle(int index, byte slaveAddress){           //Gjøres ikke
       Serial.println(result);
     }
      
-     angle = (360.0*(float)*encData)/1023.0;     //Converts to degrees (0-360)
+     angle = (360.0*(float)encData)/1023.0;     //Converts to degrees (0-360)
 }
-

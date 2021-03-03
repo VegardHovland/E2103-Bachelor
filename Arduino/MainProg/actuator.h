@@ -1,15 +1,15 @@
 //Header file for acuator class
 #ifndef actuator_h
 #define actuator_h
-
-#include "constants.h"
-#include "functions.h"
-
+#include <Arduino.h>
+#include <Wire.h>
 
 class Actuator {
     private:
         int encoderPin;           //pin for encoder
         int outPin;               //pin for output
+        int encData;
+        byte slaveadress;
 
         float angle;
         int maxAngle=170;        // Max operating angle for the motor
@@ -30,12 +30,12 @@ class Actuator {
 
 
     public:
-        Actuator(int enPin, int uPin);                             // Constructor function for actuator class
+        Actuator(byte encAddr, int uPin);                             // Constructor function for actuator class
         void setSetpoint(int r);                                   //Updates the setpoint (0-360)
         void setOutput();                                          // Calculate the analog value for the angle
         void setParameters(double kp, double ti, double td);       //Set new PID values    
         float getAngle();                                           // gets the joint angle of the actuator           
-        void readAngle(int index, byte slaveAddress);             // Calculate the analog value for the angle
+        void readAngle();             // Calculate the analog value for the angle
         void computePID();                                         //Computes the pid value, this is an angle   
                 
         
