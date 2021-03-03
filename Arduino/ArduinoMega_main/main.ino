@@ -1,20 +1,15 @@
-//Hovedprogrammet, her skal minst mulig kode skrives og brukes est mulig funksjoner!
-//Regler vi bruker upperLowerCase (camelCase)
-//HUSK Å KOMMENTERE!!!
-
 #include <Arduino.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #include "actuator.h"
 
-//Variables
 //Defines
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
 #define oled1 0x3C
 #define oled2 0x3D
 
-//Variables---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Variables-------------------------------------------------------------------------
 const int numActuators = 4 ; // Defines the number of actuators
 int printPrevtime;
 int pixelX=0;    //Stores the x value for pixel drwing for oled
@@ -24,7 +19,7 @@ Adafruit_SSD1306 display_1(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 Adafruit_SSD1306 display_2(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 Actuator actuators[4] = {Actuator(8 , 3), Actuator(9 ,5),Actuator(10 ,6), Actuator(11 ,8) };     //Generates a actuator list contaning 4 actuators and their i2c adress and outputpin
 
-//Declare functions
+//Declare functions-------------------------------------------------------------------------
 void controllActuators(Actuator acts[]);    //comutes the PID algorithm on every actuator
 void printText(Actuator acts[]);                //Displays data on oled 1
 void drawGraph(Actuator acts[]);                //Draw graph on oled 2
@@ -32,14 +27,14 @@ void setupOled();                          //initialize oled displays
 
 void setup() {
 
-    Serial.begin(9600);                                                                       //Starts the serial monitor
+    Serial.begin(9600);                                                                      //Starts the serial monitor
     Wire.begin();                                                                            //Initialize wire
-    setupOled();                                                                              //Initialize oled displays
+    setupOled();                                                                             //Initialize oled displays
 }
 
 void loop() {
 if (Serial.available() > 0) {
-    char ch = Serial.read();                                                                  //Gets user input
+    char ch = Serial.read();                                                                 //Gets user input
     switch (ch) {               
       case 'a':{                                                                             //Updates the setpoint for a given actuator
         Serial.print("Skriv in nr på motor");
@@ -65,24 +60,16 @@ if (Serial.available() > 0) {
         //returner til start konfigurasjon
 
       default :
-      {
-        controllActuators(actuators);                                                           //Pid controll on all the acuators by defaut
-        drawGraph(actuators);
-        printText(actuators);
-        break;
-      }
     }
-    }
-        controllActuators(actuators);                                                           //Pid controll on all the acuators by defaut
-        drawGraph(actuators);
-        printText(actuators);
+ }
+      controllActuators(actuators);                                                           //Pid controll on all the acuators by defaut
+      drawGraph(actuators);
+      printText(actuators);
 }
 
 
-//Function defenitions
+//Function defenitions-----------------------------------------------------------------------------------------------------
 //Cpp file for gloable functions
-
-#include "actuator.h"
 
 //Controlls all the acuators
 void controllActuators(Actuator actuators[]){
