@@ -26,9 +26,6 @@ class Actuator {
         double input, output, _setPoint;
         double cumError, rateError;
 
-
-
-
     public:
         Actuator(byte encAddr, int uPin);                             // Constructor function for actuator class
         void setSetpoint(int r);                                   //Updates the setpoint (0-360)

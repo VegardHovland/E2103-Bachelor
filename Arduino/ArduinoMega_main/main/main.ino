@@ -3,19 +3,8 @@
 #include <Adafruit_SSD1306.h>
 #include "actuator.h"
 #include "DualG2HighPowerMotorShield.h"
+#include "variables.h"
 
-//Defines
-#define SCREEN_WIDTH 128 // OLED display width, in pixels
-#define SCREEN_HEIGHT 64 // OLED display height, in pixels
-#define oled1 0x3C
-#define oled2 0x3D
-
-//Variables------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-const int numActuators = 4 ; // Defines the number of actuators
-int printPrevtime;
-int pixelX=0;    //Stores the x value for pixel drwing for oled
-unsigned char M11nSLEEP; unsigned char M11DIR; unsigned char M11PWM; unsigned char M11nFAULT; unsigned char M11CS; unsigned char M12nSLEEP; unsigned char M12DIR; unsigned char M12PWM; unsigned char M12nFAULT; unsigned char M12CS;
-unsigned char M21nSLEEP; unsigned char M21DIR; unsigned char M21PWM; unsigned char M21nFAULT; unsigned char M21CS; unsigned char M22nSLEEP; unsigned char M22DIR; unsigned char M22PWM; unsigned char M22nFAULT; unsigned char M22CS;
 
 //Defines different classes
 Adafruit_SSD1306 display_1(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);                             //defines oled display 1
