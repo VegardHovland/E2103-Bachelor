@@ -21,24 +21,34 @@ void Actuator::computePID(){
         error = _setPoint - angle;                                 // determine error
         cumError += error * elapsedTime;                           // compute integral
         rateError = (error - lastError)/elapsedTime;               // compute derivative
- 
-        double out = _kp*error + _ki*cumError + _kd*rateError;     //PID output               
-        
-        if (out > maxAngle)
-        {
-                out = maxAngle;
+
+        float ui= _ki*cumError;//
+
+        if ( ui > 400){                                           // Anti windup for integrator ui
+          ui = 400;
         }
 
-        if (out < minAngle)
+        if (ui < -400){
+          ui= -400;
+        }
+ 
+        double out = _kp*error + ui + _kd*rateError;            //PID output               
+        
+        if (out > 400)                                           // Actuation Saturation for our speed driver. 
         {
-                out = minAngle;
+                out = 400;
+        }
+
+        if (out < -400)
+        {
+                out = 400;
         }
         
         
         lastError = error;                                        //remember current error
         previousTime = currentTime;                               //remember current time
 
-        output = out;
+        output = out;                                             //Sets output speed
  
 }
 
