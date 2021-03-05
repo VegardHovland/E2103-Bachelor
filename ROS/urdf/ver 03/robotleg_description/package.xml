@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>robotleg1.0_description</name>
+  <name>robotleg_description</name>
   <version>0.0.0</version>
-<description>The robotleg1.0_description package</description>
+<description>The robotleg_description package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->
