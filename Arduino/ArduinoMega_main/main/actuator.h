@@ -6,36 +6,33 @@
 
 class Actuator {
     private:
-        int encoderPin;           //pin for encoder
-        int outPin;               //pin for output
-        int encData;
-        byte slaveadress;
+        int counter;              // Store counter from incremental encoder
+        byte slaveadress;         // Slave adress for a given actuator
 
         float angle;
         int maxAngle=170;        // Max operating angle for the motor
         int minAngle=10;         // Min -----------------------------
-        float _kp=2;            // Controller constants
+        float _kp=2;             // Controller constants
         float _ki=10;
         float _kd=5;
  
         unsigned long currentTime;                     
-        unsigned long previousTime;                //Keep track of the previousTime for this object
-        float elapsedTime;                        //Scan time 
-        float error;
-        float lastError;
+        unsigned long previousTime;                                 // Keep track of the previousTime for given actuator
+        float elapsedTime;                                          // Scan time 
+        float error;  
+        float lastError;                                            // Store last error
         float input, output, _setPoint;
-        float cumError, rateError;
+        float cumError, rateError;                                  // Integral and derivative variables
 
     public:
-        Actuator(byte encAddr, int uPin);                             // Constructor function for actuator class
-        void setSetpoint(float r);                                   //Updates the setpoint (0-360)
-        void setOutput();                                          // Calculate the analog value for the angle
-        void setParameters(double kp, double ti, double td);       //Set new PID values    
-        float getAngle();                                           // gets the joint angle of the actuator           
-        void readAngle();             // Calculate the analog value for the angle
-        void computePID();                                         //Computes the pid value, this is an angle  
-        float getSetpoint(); 
-        int getSpeed();                                 //Renturns the speed desired
+        Actuator(byte encAddr);                                     // Constructor function for actuator class
+        void setSetpoint(float r);                                  // Set function for setpoint
+        void setParameters(double kp, double ti, double td);        // Set fucntion for PID parameters   
+        float getAngle();                                           // Get function for angle          
+        void readAngle();                                           // Calculate the angle(-360,360) from the counter given by the encoder in the slave
+        void computePID();                                          // Computes the pid value, this is an angle  
+        float getSetpoint();                                        // Get function for actuator setpoint
+        int getSpeed();                                             // Get function for actuator speed
         
 };
 
