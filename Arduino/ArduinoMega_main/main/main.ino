@@ -61,17 +61,20 @@ if (Serial.available() > 0) {
     }
  }
       controllActuators(actuators);                                                           //Pid controll on all the acuators by defaut
-      drawGraph(actuators);
-      printText(actuators);
+      drawGraph(actuators);                                                                   //Draw graph at oled 1
+      printText(actuators);                                                                    //Print angles on oled 1
+      serialPlot();                                                                            //Print data to be plotted in serial plot
 }
 
 
 //Function defenitions--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //Cpp file for gloable functions
 
-void serialPlot(){
-    //Se sanntid øving/lab fra vår 20
-  
+//This prints data we want to plot in serial plot, in serial monitor choose serial plotter
+void serialPlot(){                                      //We will tune the parameters using the first motor
+   Serial.println(actuators[0].getSetpoint());          //print motor 1 setpoint
+   Serial.println(actuators[0].getAngle());             //Print motor 1 angle
+   Serial.println(actuators[0].getSpeed());             //Print motor 1 speed
 }
 
 //Print menue for user inputs
