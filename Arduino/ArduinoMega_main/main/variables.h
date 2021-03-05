@@ -9,6 +9,7 @@ const int numActuators = 4 ; // Defines the number of actuators
 int printPrevtime;
 int pixelX=0;    //Stores the x value for pixel drwing for oled
 float startPos[4] = {0 , 0, 90, 0};
+int shutdowntimer;
 
 //Driver 1, for actuator 1 and 2 
 unsigned char M11nSLEEP = 8;        //Common sleep pin for all 4 actuators

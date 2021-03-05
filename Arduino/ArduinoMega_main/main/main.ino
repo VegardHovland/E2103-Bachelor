@@ -22,6 +22,10 @@ void stopIfFault();                        //disable the motordrivers if there i
 void setupDrivers();
 void shutDown();
 void serialPrintData();
+void updateSetpointSerial();
+void updateParametersSerial();
+void printMenue();
+void serialPlot();
 
 void setup() {
 
@@ -29,7 +33,7 @@ void setup() {
     Wire.begin();                                                                            //Initialize wire
     setupOled();                                                                             //Initialize oled displays
     setupDrivers();
-    
+    printMenue();
 }
 
 void loop() {
@@ -37,26 +41,14 @@ if (Serial.available() > 0) {
     char ch = Serial.read();                                                                 //Gets user input
     switch (ch) {               
       case 'a':{                                                                             //Updates the setpoint for a given actuator
-        Serial.print("Skriv in nr på motor");
-        int i = Serial.read();
-        Serial.print("nytt setpunkt i grader");
-        double ang = Serial.read();
-        actuators[i].setSetpoint(ang);
+        updateSetpointSerial();
         break;
       }
-      case 'b': {                                                                             //Updates the PID controller parameters for a given actuator
-        Serial.print("Skriv in nr på motor");
-        int i = Serial.read();
-        Serial.print("kp");
-        double kp = Serial.read();
-        Serial.print("ti");
-        double ti = Serial.read();
-        Serial.print("td");
-        double td = Serial.read();
-        actuators[i].setParameters(kp, ti, td);
+      case 'b': {                                                                             //Updates the PID controller parameters for a given actuator using serial inputs
+        updateParametersSerial();
         break;
       }
-      case 'd': {
+      case 'd': {                                                                             //Print all data
          serialPrintData();
          break;
       }
@@ -77,14 +69,67 @@ if (Serial.available() > 0) {
 //Function defenitions--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //Cpp file for gloable functions
 
+void serialPlot(){
+    //Se sanntid øving/lab fra vår 20
+  
+}
+
+//Print menue for user inputs
+void printMenue(){
+    Serial.println("Press 'a' to update setpoint");
+    Serial.println("Press 'b' to update PID parameters");
+    Serial.println("Press 'D' to display information");
+    Serial.println("Press 'q' to exit");
+
+  
+}
+
+//Function to update setpoint for a giver actuator using serial read
+void updateSetpointSerial(){
+  
+        Serial.print("Skriv in nr på motor");   //Ask for input
+        while(!Serial.available()){};           //Wait for input
+        int i = Serial.read();                  //Get act nr
+ 
+        
+        Serial.print("nytt setpunkt i grader");   //Ask for input
+        while(!Serial.available()){};            //Wait for input
+        double ang = Serial.read();              //Get new setpoint
+        
+        actuators[i].setSetpoint(ang);        //Update setpoint for giver actuator
+
+}
+
+//Function to update parameters for a giver actuator using serial read
+void updateParametersSerial(){
+        Serial.print("Skriv in nr på motor");   //Ask for input
+        while(!Serial.available()){};          //Wait for input
+        int i = Serial.read();                 //Get act nr
+ 
+        Serial.print("kp");
+        while(!Serial.available()){};
+        double kp = Serial.read();
+        
+        Serial.print("ti");
+        while(!Serial.available()){};
+        double ti = Serial.read();
+       
+        Serial.print("td");
+        while(!Serial.available()){};
+        double td = Serial.read();
+        
+        actuators[i].setParameters(kp, ti, td);  //Set new parameters for given actuator
+
+  
+}
 //Controlls all the acuators
 void controllActuators(Actuator actuators[]){
-    for (int i = 0; i < numActuators; i++)              // Loops over the 4 actuator objects    
+    for (int i = 0; i < numActuators; i++)                         // Loops over the 4 actuator objects    
     {     
-        actuators[i].readAngle();          //Get the actuators angle
-        actuators[i].computePID();                      //comeputes output using PID 
-        if ( i == 0) {md1.setM2Speed(actuators[i].getSpeed());}
-        if ( i == 1) {md1.setM2Speed(actuators[i].getSpeed());}
+        actuators[i].readAngle();                                 //Get the actuators angle
+        actuators[i].computePID();                                //comeputes output using PID 
+        if ( i == 0) {md1.setM2Speed(actuators[i].getSpeed());}   //Set motor speed using driver
+        if ( i == 1) {md1.setM2Speed(actuators[i].getSpeed());} 
         if ( i == 2) {md2.setM2Speed(actuators[i].getSpeed());}
         if ( i == 3) {md2.setM2Speed(actuators[i].getSpeed());}
     }
@@ -157,17 +202,18 @@ void drawGraph(Actuator actuators[]){
     md1.disableDrivers();                     //Disable driver 1
     delay(1);
     Serial.println("M1 fault");
-    while (1);
+    while (1);                                //Stop cprogram
   }
   if (md2.getM2Fault() || md2.getM1Fault() )  //Checks if fault on driver 2
   {
     md2.disableDrivers();                     //Disable driver 2
     delay(1);
     Serial.println("M2 fault");
-    while (1);
+    while (1);                        
   }
  }
 
+//Setup function for motor drivers
  void setupDrivers(){
     md1.init();
     md1.calibrateCurrentOffsets();
@@ -179,14 +225,30 @@ void drawGraph(Actuator actuators[]){
 
  }
 
+ //return to start position and shutdown
  void shutDown(){
-  //return to start position
-  md1.setSpeeds(0, 0);
-  md2.setSpeeds(0, 0);
-  delay(50);
-  md1.disableDrivers();
-  md2.disableDrivers();
+  int shutdowntimer = millis() + 100;
+
+  while(shutdowntimer > millis()){                         //Comutes pid for actuators for 10 sec then turn of
+      for (int i = 0; i < numActuators; i++){
+        actuators[i].setSetpoint(startPos[i]);             //Updates setpoints to startposition
+      }
+      
+      for (int i = 0; i < numActuators; i++){                     // Loops over the 4 actuator objects     
+        actuators[i].readAngle();                                //Get the actuators angle
+        actuators[i].computePID();                                //comeputes output using PID 
+        if ( i == 0) {md1.setM2Speed(actuators[i].getSpeed());}   //Setoutputs to actuator
+        if ( i == 1) {md1.setM2Speed(actuators[i].getSpeed());}
+        if ( i == 2) {md2.setM2Speed(actuators[i].getSpeed());}
+        if ( i == 3) {md2.setM2Speed(actuators[i].getSpeed());}
+      }  
+    }
   
+    md1.setSpeeds(0, 0);
+    md2.setSpeeds(0, 0);
+    delay(50);
+    md1.disableDrivers();
+    md2.disableDrivers();
  }
 
  void serialPrintData(){
@@ -200,7 +262,7 @@ void drawGraph(Actuator actuators[]){
       Serial.print(i);                     // prints setpoint in serial monitor
       Serial.print(": "); 
       Serial.println(actuators[i].getSetpoint());
-  }
+    }
     int amps [4];
     amps[0] = md1.getM1CurrentMilliamps();
     amps[1] = md1.getM2CurrentMilliamps();

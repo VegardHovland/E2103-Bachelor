@@ -14,21 +14,21 @@ class Actuator {
         float angle;
         int maxAngle=170;        // Max operating angle for the motor
         int minAngle=10;         // Min -----------------------------
-        double _kp=2;            // Controller constants
-        double _ki=10;
-        double _kd=5;
+        float _kp=2;            // Controller constants
+        float _ki=10;
+        float _kd=5;
  
         unsigned long currentTime;                     
         unsigned long previousTime;                //Keep track of the previousTime for this object
-        double elapsedTime;                        //Scan time 
-        double error;
-        double lastError;
-        double input, output, _setPoint;
-        double cumError, rateError;
+        float elapsedTime;                        //Scan time 
+        float error;
+        float lastError;
+        float input, output, _setPoint;
+        float cumError, rateError;
 
     public:
         Actuator(byte encAddr, int uPin);                             // Constructor function for actuator class
-        void setSetpoint(int r);                                   //Updates the setpoint (0-360)
+        void setSetpoint(float r);                                   //Updates the setpoint (0-360)
         void setOutput();                                          // Calculate the analog value for the angle
         void setParameters(double kp, double ti, double td);       //Set new PID values    
         float getAngle();                                           // gets the joint angle of the actuator           

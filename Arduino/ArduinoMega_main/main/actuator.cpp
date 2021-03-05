@@ -54,7 +54,7 @@ void Actuator::computePID(){
 
 
 //Sets a new setpoint
-void Actuator::setSetpoint(int r){
+void Actuator::setSetpoint(float r){
         _setPoint = r;
 }
 
