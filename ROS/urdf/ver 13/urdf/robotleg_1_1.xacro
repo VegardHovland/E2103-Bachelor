@@ -15,7 +15,7 @@
     <geometry>
       <mesh filename="package://robotleg_1_1_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="silver_default"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -27,7 +27,7 @@
 
 <link name="joint_lower_1">
   <inertial>
-    <origin rpy="0 0 0" xyz="-0.007000000000005211 0.005782222659981283 -0.019178043963505642"/>
+    <origin rpy="0 0 0" xyz="-0.007000000000005211 0.005782222659981278 -0.019178043963505642"/>
     <mass value="0.051804524029768935"/>
     <inertia ixx="3.8e-05" ixy="-0.0" ixz="-0.0" iyy="2.3e-05" iyz="-3e-06" izz="3.3e-05"/>
   </inertial>
@@ -36,7 +36,7 @@
     <geometry>
       <mesh filename="package://robotleg_1_1_description/meshes/joint_lower_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="silver_default"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.007 0.01 -0.52"/>
@@ -48,19 +48,19 @@
 
 <link name="motor_1">
   <inertial>
-    <origin rpy="0 0 0" xyz="-0.007777568889405516 0.028507142059971374 -0.013223335744453169"/>
-    <mass value="0.45909174206904396"/>
+    <origin rpy="0 0 0" xyz="-0.007777568889405511 0.05850714205997138 -0.5032233357444531"/>
+    <mass value="0.459091742069044"/>
     <inertia ixx="0.00019" ixy="0.0" ixz="0.0" iyy="7.2e-05" iyz="2e-06" izz="0.00019"/>
   </inertial>
   <visual>
-    <origin rpy="0 0 0" xyz="-0.00775 0.02 -0.503423"/>
+    <origin rpy="0 0 0" xyz="-0.00775 0.05 -0.993423"/>
     <geometry>
       <mesh filename="package://robotleg_1_1_description/meshes/motor_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="silver_default"/>
   </visual>
   <collision>
-    <origin rpy="0 0 0" xyz="-0.00775 0.02 -0.503423"/>
+    <origin rpy="0 0 0" xyz="-0.00775 0.05 -0.993423"/>
     <geometry>
       <mesh filename="package://robotleg_1_1_description/meshes/motor_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
@@ -78,7 +78,7 @@
     <geometry>
       <mesh filename="package://robotleg_1_1_description/meshes/joint_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="silver_default"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.019925 0.497075 -0.532"/>
@@ -90,19 +90,19 @@
 
 <link name="joint_upper_1">
   <inertial>
-    <origin rpy="0 0 0" xyz="-0.004749499986316871 0.04476354878878746 -0.032938632285812564"/>
+    <origin rpy="0 0 0" xyz="0.02203650001368313 0.5475125487887875 -0.05331163228581265"/>
     <mass value="0.6663346958643348"/>
     <inertia ixx="0.001306" ixy="-0.0" ixz="-0.0" iyy="0.000437" iyz="-2.2e-05" izz="0.001073"/>
   </inertial>
   <visual>
-    <origin rpy="0 0 0" xyz="-0.004762 0.0358 -0.505249"/>
+    <origin rpy="0 0 0" xyz="0.022024 0.538549 -0.525622"/>
     <geometry>
       <mesh filename="package://robotleg_1_1_description/meshes/joint_upper_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="silver_default"/>
   </visual>
   <collision>
-    <origin rpy="0 0 0" xyz="-0.004762 0.0358 -0.505249"/>
+    <origin rpy="0 0 0" xyz="0.022024 0.538549 -0.525622"/>
     <geometry>
       <mesh filename="package://robotleg_1_1_description/meshes/joint_upper_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
@@ -116,21 +116,20 @@
 </joint>
 
 <joint name="Rigid13" type="fixed">
-  <origin rpy="0 0 0" xyz="0.00075 -0.01 -0.016577"/>
+  <origin rpy="0 0 0" xyz="0.00075 -0.04 0.473423"/>
   <parent link="joint_lower_1"/>
   <child link="motor_1"/>
 </joint>
 
 <joint name="Rev14" type="continuous">
-  <origin rpy="0 0 0" xyz="0 0 0"/>
-  <!--xyz="0.012175 -0.477075 0.028577"/> -->
+  <origin rpy="0 0 0" xyz="0.012175 -0.447075 -0.461423"/>
   <parent link="motor_1"/>
   <child link="joint_1"/>
   <axis xyz="0.0 -1.0 0.0"/>
 </joint>
 
 <joint name="Rigid15" type="fixed">
-  <origin rpy="0 0 0" xyz="-0.015163 0.461275 -0.026751"/>
+  <origin rpy="0 0 0" xyz="-0.041949 -0.041474 -0.006378"/>
   <parent link="joint_1"/>
   <child link="joint_upper_1"/>
 </joint>
