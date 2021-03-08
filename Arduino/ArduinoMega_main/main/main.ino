@@ -8,13 +8,11 @@
 #include <sensor_msgs/JointState.h>
 //#include <robot_state_publisher/robot_state_publisher.h>
 
-sensor_msgs::JointState robot_state;
-ros::Publisher pub("joint_states", &robot_state);
-
-
+//sensor_msgs::JointState robot_state;
+//ros::Publisher pub("joint_states", &robot_state);
 
 //Class declerations
-ros::NodeHandle  nh;
+//ros::NodeHandle  nh;
 
 Adafruit_SSD1306 display_1(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);                                                                                // Declaration for display 1
 Adafruit_SSD1306 display_2(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);                                                                                // Declaration for display 1
@@ -41,7 +39,7 @@ void setupRos();                                 // Initialize ros node
 void jointStatePub();                            // Publishes joint states to joint_states topic
 
 void setup() {
-  setupRos();
+  //setupRos();
   Serial.begin(9600);                          // Starts the serial monitor
   Wire.begin();                                // Initialize wire
   setupOled();
@@ -81,19 +79,19 @@ void loop() {
   //drawGraph(actuators);                     // Draw graph at oled 1
   //printText(actuators);                     // Print angles on oled 1
   //serialPlot();                             // Print data to be plotted in serial plot
-  jointStatePub();
+ // jointStatePub();
 }
 
 
 //Function defenitions--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //Setup function for roscomunication
-void setupRos() {
-  nh.getHardware()->setBaud(115200);
-  nh.initNode();
-  nh.advertise(pub);
-  nh.spinOnce();
-}
+//void setupRos() {
+//  nh.getHardware()->setBaud(115200);
+//  nh.initNode();
+//  nh.advertise(pub);
+//  nh.spinOnce();
+//}
 
 //This prints data we want to plot in serial plot, in serial monitor choose serial plotter
 void serialPlot() {                                     //We will tune the parameters using the first motor
@@ -172,7 +170,6 @@ void controllActuators(Actuator actuators[]) {
     if ( i == 3) {
       md2.setM2Speed(actuators[i].getSpeed()); // Motor 4 is driver 2 M2
     }
-    nh.spinOnce();
   }
 }
 
@@ -332,33 +329,33 @@ void serialPrintData() {
 }
 
 // Fuction for publishing joint states on the joint_state topic
-void jointStatePub() {
-  char robot_id = "robotleg";
-  char *joint_name[4] = {"Rev22", "Rev24", "Rev26", "Rev28"};
-  float pos[4];
-  float vel[4];
-  float eff[4];
-
-  for (int i = 0; i < 3; i++) { // Fulfill the arrays whith motor readings
-    pos[i] = actuators[i].getAngle();
-    vel[i] = actuators[i].getSpeed();
-    eff[i] = 0.1; // Value only for testing
-    nh.spinOnce();
-  }
-
-  // Fulfill the sensor_msg/JointState msg
-  robot_state.name_length = 6;
-  robot_state.velocity_length = 6;
-  robot_state.position_length = 6;
-  robot_state.effort_length = 6;
-
-  robot_state.header.stamp = nh.now();
-  robot_state.header.frame_id = robot_id;
-  robot_state.name = joint_name;
-  robot_state.position = pos;
-  robot_state.velocity = vel;
-  robot_state.effort = eff;
-
-  pub.publish( &robot_state);
-  nh.spinOnce();
-}
+//void jointStatePub() {
+//  char robot_id = "robotleg";
+//  char *joint_name[4] = {"Rev22", "Rev24", "Rev26", "Rev28"};
+//  float pos[4];
+//  float vel[4];
+//  float eff[4];
+//
+//  for (int i = 0; i < 3; i++) { // Fulfill the arrays whith motor readings
+//    pos[i] = actuators[i].getAngle();
+//    vel[i] = actuators[i].getSpeed();
+//    eff[i] = 0.1; // Value only for testing
+//    nh.spinOnce();
+//  }
+//
+//  // Fulfill the sensor_msg/JointState msg
+//  robot_state.name_length = 6;
+//  robot_state.velocity_length = 6;
+//  robot_state.position_length = 6;
+//  robot_state.effort_length = 6;
+//
+//  robot_state.header.stamp = nh.now();
+//  robot_state.header.frame_id = robot_id;
+//  robot_state.name = joint_name;
+//  robot_state.position = pos;
+//  robot_state.velocity = vel;
+//  robot_state.effort = eff;
+//
+//  pub.publish( &robot_state);
+//  nh.spinOnce();
+//}
