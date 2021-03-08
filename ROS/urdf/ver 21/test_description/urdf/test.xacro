@@ -1,0 +1,56 @@
+<?xml version="1.0" ?>
+<robot name="test" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find test_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find test_description)/urdf/test.trans" />
+<xacro:include filename="$(find test_description)/urdf/test.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.1757426741061407e-14 -0.003404646861288589 -0.016284112731276817"/>
+    <mass value="0.4516673947345944"/>
+    <inertia ixx="0.000321" ixy="-0.0" ixz="-0.0" iyy="0.000205" iyz="-2.3e-05" izz="0.000266"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://test_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://test_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-2.802851172704971e-14 0.03515174384866125 -0.027541561612835164"/>
+    <mass value="0.6261133262573659"/>
+    <inertia ixx="0.001184" ixy="-0.0" ixz="0.0" iyy="0.000399" iyz="5.9e-05" izz="0.000985"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.0 0.03 0.023"/>
+    <geometry>
+      <mesh filename="package://test_description/meshes/link1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.0 0.03 0.023"/>
+    <geometry>
+      <mesh filename="package://test_description/meshes/link1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Rev1" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 -0.03 -0.023"/>
+  <parent link="base_link"/>
+  <child link="link1_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+</robot>
