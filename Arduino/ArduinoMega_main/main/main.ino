@@ -4,7 +4,15 @@
 #include "actuator.h"
 #include "DualG2HighPowerMotorShield.h"
 #include "variables.h"
+//#include <ros.h>
+//#include <sensor_msgs/JointState.h>
+//#include <robot_state_publisher/robot_state_publisher.h>
 
+//sensor_msgs::JointState robot_state;
+//ros::Publisher pub("joint_states", &robot_state);
+
+//Class declerations
+//ros::NodeHandle  nh;
 
 //Class declerations
 Adafruit_SSD1306 display_1(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);                                                                                // Declaration for display 1
@@ -30,7 +38,9 @@ void printMenue();                               // Print menue for switch case
 void serialPlot();                               // Print data to be represented in seial plot, PID tuning
 
 void setup() {
-
+    //nh.getHardware()->setBaud(115200);
+    // nh.initNode();
+    //nh.advertise(pub);
     Serial.begin(9600);                          // Starts the serial monitor
     Wire.begin();                                // Initialize wire
     setupOled();                                
@@ -297,3 +307,35 @@ void drawGraph(Actuator actuators[]){
       Serial.println(amps[i]);
     }
  }
+
+ //
+// void jointStatePub(){
+//  char robot_id = "robotleg";
+//  char *joint_name[4] = {"joint1", "joint2", "joint3", "joint4"};
+//  float pos[4];
+//  float vel[4];
+//  float eff[4];
+//
+//  for(int i = 0; i < 3; i++){ // Fulfill the arrays whith motor readings
+//    pos[i] = actuators[i].getAngle();
+//    vel[i] = 0.5; // Value only for testing
+//    eff[i] = 0.1; // Value only for testing
+//    nh.spinOnce()
+//  }
+//  
+//  // Fulfill the sensor_msg/JointState msg
+//  robot_state.name_length = 6;
+//  robot_state.velocity_length = 6;
+//  robot_state.position_length = 6;
+//  robot_state.effort_length = 6;
+//
+//  robot_state.header.stamp = nh.now();
+//  robot_state.header.frame_id = robot_id;
+//  robot_state.name = joint_name;
+//  robot_state.position = pos;
+//  robot_state.velocity = vel;
+//  robot_state.effort = eff;
+//
+//  pub.publish( &robot_state);
+//  nh.spinOnce()
+// }
