@@ -46,10 +46,11 @@
   </collision>
 </link>
 
-<joint name="Rigid16" type="fixed">
+<joint name="Rev16" type="continuous">
   <origin rpy="0 0 0" xyz="0.0 -0.042 0.497"/>
   <parent link="base_link"/>
   <child link="link1_1"/>
+  <axis xyz="0.0 -1.0 0.0"/>
 </joint>
 
 </robot>

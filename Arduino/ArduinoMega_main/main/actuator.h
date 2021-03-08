@@ -28,6 +28,9 @@ class Actuator {
         Actuator(byte encAddr);                                     // Constructor function for actuator class
         void setSetpoint(float r);                                  // Set function for setpoint
         void setParameters(double kp, double ti, double td);        // Set fucntion for PID parameters   
+        float getKp();                                              // Get function for PID parameters
+        float getTi();                                              // Get function for PID parameters
+        float getTd();                                              // Get function for PID parameters
         float getAngle();                                           // Get function for angle          
         void readAngle();                                           // Calculate the angle(-360,360) from the counter given by the encoder in the slave
         void computePID();                                          // Computes the pid value, this is an angle  

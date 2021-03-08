@@ -5,3 +5,7 @@ robotleg_1_1_controller:
     publish_rate: 50
 
   # Position Controllers --------------------------------------
+  Rev16_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: Rev16
+    pid: {p: 100.0, i: 0.01, d: 10.0}

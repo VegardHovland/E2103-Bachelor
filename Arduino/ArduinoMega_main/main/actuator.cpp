@@ -70,7 +70,20 @@ float Actuator::getSetpoint(){
         return _setPoint;
 }
 
-//Get function for speed
+// Get function for PID parameters
+ float Actuator::getKp(){
+  return _kp;
+ }
+ float Actuator::getTi(){
+  return _ki;
+ }
+float Actuator::getTd(){
+  return _kd;
+ }
+
+
+    
+//Get function for speed                             
 int Actuator::getSpeed(){
   return output;
 }

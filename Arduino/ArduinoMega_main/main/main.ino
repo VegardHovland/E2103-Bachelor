@@ -54,6 +54,10 @@ if (Serial.available() > 0) {
          serialPrintData();
          break;
       }
+      case 'p': {                                // Return to starposition and turn off
+        printMenue();
+        break;
+      }
       case 'q': {                                // Return to starposition and turn off
         shutDown();
         break;
@@ -76,49 +80,56 @@ if (Serial.available() > 0) {
 void serialPlot(){                                      //We will tune the parameters using the first motor
    Serial.println(actuators[0].getSetpoint());          //print motor 1 setpoint
    Serial.println(actuators[0].getAngle());             //Print motor 1 angle
-   Serial.println(actuators[0].getSpeed());             //Print motor 1 speed
+  // Serial.println(actuators[0].getSpeed());             //Print motor 1 speed
 }
 
 //Print menue for user inputs
 void printMenue(){
     Serial.println("Press 'a' to update setpoint");
     Serial.println("Press 'b' to update PID parameters");
-    Serial.println("Press 'D' to display information");
+    Serial.println("Press 'd' to display information");
+    Serial.println("Press 'p' to print menue");
     Serial.println("Press 'q' to exit");
 }
 
 //Function to update setpoint for a giver actuator using serial read
 void updateSetpointSerial(){
-        Serial.print("Skriv in nr på motor");       // Ask for input
-        while(!Serial.available()){};               // Wait for input
-        int i = Serial.read();                      // Get act nr
- 
-        Serial.print("nytt setpunkt i grader");     // Ask for input
-        while(!Serial.available()){};               // Wait for input
-        double ang = Serial.read();                 // Get new setpoint
+        while(Serial.available()){int trash = Serial.read();}       //Clear trash from input buffer
         
-        actuators[i].setSetpoint(ang);              // Update setpoint for giver actuator
+        Serial.println("Skriv in nr på motor (1 - 4)");               // Ask for input
+        while(!Serial.available()){};                               // Wait for input
+        int i = Serial.parseInt() - 1;                              // Get act index (0-3)
+
+        Serial.println("nytt setpunkt i grader");                   // Ask for input
+        while(!Serial.available()){};                               // Wait for input
+        double ang = Serial.parseFloat();                           // Get new setpoint
+        
+        actuators[i].setSetpoint(ang);                               // Update setpoint for giver actuator
+        Serial.println("setpoint updated, press d to display data"); // confirm success
 } 
 
 //Function to update parameters for a giver actuator using serial read
 void updateParametersSerial(){
-        Serial.print("Skriv in nr på motor");        // Ask for input
-        while(!Serial.available()){};               // Wait for input
-        int i = Serial.read();                      // Get act nr
- 
-        Serial.print("kp");
+        while(Serial.available()){int trash = Serial.read();}       //Clear trash from input buffer
+          
+        Serial.println("Skriv in nr på motor (1 - 4)");                // Ask for input
+        while(!Serial.available()){};                                // Wait for input
+        int i = Serial.parseInt() - 1;                               // Get act indx (1 - 3)
+    
+        Serial.println("kp");
         while(!Serial.available()){};
-        double kp = Serial.read();                 // Get new kp
+        float kp = Serial.parseFloat();                 // Get new kp
         
-        Serial.print("ti");
+        Serial.println("ti");
         while(!Serial.available()){};
-        double ti = Serial.read();                 // Get new Ti
+        float ti = Serial.parseFloat();                 // Get new Ti
         
-        Serial.print("td");
+        Serial.println("td");
         while(!Serial.available()){};
-        double td = Serial.read();                 // Get new Td
+        float td = Serial.parseFloat();                 // Get new Td
         
         actuators[i].setParameters(kp, ti, td);    // Set new parameters for given actuator
+        Serial.println("parameters updated, press d to display data"); // confirm success
 }
 
 //Controlls all the acuators
@@ -144,7 +155,7 @@ void printText(Actuator actuators[]){
     display_1.setCursor(0, 0);                                      // Return to upper left corner
     display_1.clearDisplay();                                       // Clear old data
     for(int i = 0; i < numActuators; i++){                          // Loop over act 1-4
-      display_1.print(i);                                           // Prints information to display
+      display_1.print(i+1);                                           // Prints information to display
       display_1.print(": "); 
       display_1.println(actuators[i].getAngle());
       display_1.display();                                          // Display on display 
@@ -227,7 +238,8 @@ void drawGraph(Actuator actuators[]){
 
  //return to start position and shutdown
  void shutDown(){
-  int shutdowntime = millis() + 100;                              //Generate a shutdown time
+  Serial.println("Shutting down");
+  int shutdowntime = millis() + 5000;                              //Generate a shutdown time
   while(shutdowntime > millis()){                                 // Comutes pid for actuators during shutdown time
       for (int i = 0; i < numActuators; i++){
         actuators[i].setSetpoint(startPos[i]);                    // Updates setpoints to startposition
@@ -247,19 +259,30 @@ void drawGraph(Actuator actuators[]){
     delay(50);                  
     md1.disableDrivers();                                          // Turn of mosfet 1
     md2.disableDrivers();                                          // Turn of mosfet 2
+    Serial.print("shutdown complete");
  }
 
  void serialPrintData(){
     for(int i = 0; i < numActuators; i++){
-      Serial.print("angle "); 
-      Serial.print(i);                                             // Prints joint angle in serial monitor
+      Serial.print(i+1);                                           //Print motor nr (1-4)
+      Serial.println(" : "); 
+       
+      Serial.print("angle ");                                      // Prints joint angle in serial monitor
       Serial.print(": "); 
       Serial.println(actuators[i].getAngle());
       
       Serial.print("setpoint "); 
-      Serial.print(i);                                             // Prints setpoint in serial monitor
+      Serial.print(i+1);                                           // Prints setpoint in serial monitor
       Serial.print(": "); 
       Serial.println(actuators[i].getSetpoint());
+  
+      Serial.print("Kp: ");                                        //Print parameters
+      Serial.println(actuators[i].getKp()); 
+      Serial.print("Ti: "); 
+      Serial.println(actuators[i].getTi());
+      Serial.print("Td: "); 
+      Serial.println(actuators[i].getTd());
+      
     }
     int amps [4];
     amps[0] = md1.getM1CurrentMilliamps();                         // Get current for motor 1
@@ -269,7 +292,7 @@ void drawGraph(Actuator actuators[]){
     
     for(int i = 0; i < numActuators; i++){
       Serial.print("current "); 
-      Serial.print(i);                                             // Prints the motors current i serial 
+      Serial.print(i+1);                                           // Prints the motors current i serial 
       Serial.print(": "); 
       Serial.println(amps[i]);
     }
