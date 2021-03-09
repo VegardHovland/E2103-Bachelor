@@ -19,7 +19,7 @@ void Actuator::computePID() {
 
   float ui = Ti * cumError;                                 //Calc integator part
 
-  if ( ui > 400) {                                           // Anti windup for integrator ui
+  if ( ui > 400) {                                          // Anti windup for integrator ui
     ui = 400;
   }
 
@@ -27,9 +27,9 @@ void Actuator::computePID() {
     ui = -400;
   }
 
-  double out = Kp * error + Ti + Td * rateError;           // PID output
+  float out = Kp * error + Ti + Td * rateError;            // PID output
 
-  if (out > 400) {                                           // Actuation Saturation for our speed driver.
+  if (out > 400) {                                          // Actuation Saturation for our speed driver.
     out = 400;
   }
 
@@ -46,15 +46,15 @@ void Actuator::computePID() {
 
 //Set function for setpoint
 void Actuator::setSetpoint(float r) {
-  setPoint = r;                                             //Updates setpoint
+  setPoint = r;                                              //Updates setpoint
 }
 
 
 //Set function for parameters
 void Actuator::setParameters(double p, double ki, double kd ) {
-  Kp = p;                                                   // Updates Kp
-  Ti = ki;                                                  // Updates Ti
-  Td = kd;                                                  // Updates Td
+  Kp = p;                                                    // Updates Kp
+  Ti = ki;                                                   // Updates Ti
+  Td = kd;                                                   // Updates Td
 }
 
 // Get function for angle

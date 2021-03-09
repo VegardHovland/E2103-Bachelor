@@ -18,7 +18,7 @@ Adafruit_SSD1306 display_1(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);             
 Adafruit_SSD1306 display_2(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);                                                                                // Declaration for display 1
 
 DualG2HighPowerMotorShield24v14 md1(M11nSLEEP, M11DIR, M11PWM,  M11nFAULT,  M11CS, M12nSLEEP,  M12DIR,  M12PWM,  M12nFAULT, M12CS);                // Declaration for Motor driver 1
-DualG2HighPowerMotorShield24v14 md2(M21nSLEEP, M21DIR, M21PWM,  M21nFAULT,  M21CS, M22nSLEEP,  M22DIR,  M22PWM,  M22nFAULT, M22CS);                // Declaration for Motor driver 2                                                     //defines the two motor drivers
+//DualG2HighPowerMotorShield24v14 md2(M21nSLEEP, M21DIR, M21PWM,  M21nFAULT,  M21CS, M22nSLEEP,  M22DIR,  M22PWM,  M22nFAULT, M22CS);                // Declaration for Motor driver 2                                                     //defines the two motor drivers
 
 Actuator actuators[4] = {Actuator(8), Actuator(9), Actuator(10), Actuator(11)};                                                                    // Generates a actuator list contaning 4 actuators and their i2c adress
 
@@ -76,9 +76,9 @@ void loop() {
     }
   }
   controllActuators(actuators);             // Pid controll on all the acuators by defaut
-  //drawGraph(actuators);                     // Draw graph at oled 1
-  //printText(actuators);                     // Print angles on oled 1
-  //serialPlot();                             // Print data to be plotted in serial plot
+  drawGraph(actuators);                     // Draw graph at oled 1
+  printText(actuators);                     // Print angles on oled 1
+  serialPlot();                             // Print data to be plotted in serial plot
  // jointStatePub();
 }
 
@@ -97,7 +97,7 @@ void loop() {
 void serialPlot() {                                     //We will tune the parameters using the first motor
   Serial.println(actuators[0].getSetpoint());           //print motor 1 setpoint
   Serial.println(actuators[0].getAngle());              //Print motor 1 angle
-  //Serial.println(actuators[0].getSpeed());              //Print motor 1 speed
+  Serial.println(actuators[0].getSpeed());              //Print motor 1 speed
 }
 
 //Print menue for user inputs
@@ -159,17 +159,17 @@ void controllActuators(Actuator actuators[]) {
     actuators[i].readAngle();                                    // Get the actuators angle
     actuators[i].computePID();                                   // Comeputes output using PID
     if ( i == 0) {
-      md1.setM2Speed(actuators[i].getSpeed()); // Motor 1 is driver 1 M1
+      md1.setM1Speed(actuators[i].getSpeed()); // Motor 1 is driver 1 M1
     }
     if ( i == 1) {
       md1.setM2Speed(actuators[i].getSpeed()); // Motor 2 is driver 1 M2
     }
-    if ( i == 2) {
-      md2.setM2Speed(actuators[i].getSpeed()); // Motor 3 is driver 2 M1
-    }
-    if ( i == 3) {
-      md2.setM2Speed(actuators[i].getSpeed()); // Motor 4 is driver 2 M2
-    }
+//    if ( i == 2) {
+//      md2.setM2Speed(actuators[i].getSpeed()); // Motor 3 is driver 2 M1
+//    }
+//    if ( i == 3) {
+//      md2.setM2Speed(actuators[i].getSpeed()); // Motor 4 is driver 2 M2
+//    }
   }
 }
 
@@ -241,22 +241,22 @@ void stopIfFault() {
     Serial.println("M1 fault");
     while (1);                                                    // Stop program
   }
-  if (md2.getM2Fault() || md2.getM1Fault()) {                     // Checks if fault on driver 2
-    md2.disableDrivers();                                         // Disable driver 2
-    delay(1);
-    Serial.println("M2 fault");
-    while (1);                                                    // Stop program
-  }
+//  if (md2.getM2Fault() || md2.getM1Fault()) {                     // Checks if fault on driver 2
+//    md2.disableDrivers();                                         // Disable driver 2
+//    delay(1);
+//    Serial.println("M2 fault");
+//    while (1);                                                    // Stop program
+//  }
 }
 
 //Setup function for motor drivers
 void setupDrivers() {
   md1.init();                                                   // Init pinmodes driver 1
   md1.calibrateCurrentOffsets();
-  md2.init();                                                   // Init pinmodes driver 2
-  md2.calibrateCurrentOffsets();
+  //md2.init();                                                   // Init pinmodes driver 2
+ // md2.calibrateCurrentOffsets();
   md1.enableDrivers();                                          // Enable mosfet 1
-  md2.enableDrivers();                                          // Enable mosfet 2
+ // md2.enableDrivers();                                          // Enable mosfet 2
   delay(50);                                                    // Enableing needs some time so delay
 }
 
@@ -268,28 +268,13 @@ void shutDown() {
     for (int i = 0; i < numActuators; i++) {
       actuators[i].setSetpoint(startPos[i]);                    // Updates setpoints to startposition
     }
-    for (int i = 0; i < numActuators; i++) {                     // Loops over the 4 actuator objects
-      actuators[i].readAngle();                                  // Get the actuators angle
-      actuators[i].computePID();                                 // Comeputes output using PID
-      if ( i == 0) {
-        md1.setM2Speed(actuators[i].getSpeed()); // Motor 1 is driver 1 M1
-      }
-      if ( i == 1) {
-        md1.setM2Speed(actuators[i].getSpeed()); // Motor 2 is driver 1 M2
-      }
-      if ( i == 2) {
-        md2.setM2Speed(actuators[i].getSpeed()); // Motor 3 is driver 2 M1
-      }
-      if ( i == 3) {
-        md2.setM2Speed(actuators[i].getSpeed()); // Motor 2 is driver 2 M2
-      }
-    }
+    controllActuators(actuators);                               // Pid controll on all the acuators
   }
   md1.setSpeeds(0, 0);                                           // Set speed to 0 for motor 1 and 2. NB! should already be 0
-  md2.setSpeeds(0, 0);                                           // Set speed to 0 for motor 3 and 4. NB! should already be 0
+ // md2.setSpeeds(0, 0);                                           // Set speed to 0 for motor 3 and 4. NB! should already be 0
   delay(50);
   md1.disableDrivers();                                          // Turn of mosfet 1
-  md2.disableDrivers();                                          // Turn of mosfet 2
+//  md2.disableDrivers();                                          // Turn of mosfet 2
   Serial.print("shutdown complete");
 }
 
@@ -317,8 +302,8 @@ void serialPrintData() {
   int amps [4];
   amps[0] = md1.getM1CurrentMilliamps();                         // Get current for motor 1
   amps[1] = md1.getM2CurrentMilliamps();                         // Get current for motor 2
-  amps[2] = md2.getM1CurrentMilliamps();                         // Get current for motor 3
-  amps[3] = md2.getM2CurrentMilliamps();                         // Get current for motor 4
+//  amps[2] = md2.getM1CurrentMilliamps();                         // Get current for motor 3
+//  amps[3] = md2.getM2CurrentMilliamps();                         // Get current for motor 4
 
   for (int i = 0; i < numActuators; i++) {
     Serial.print("current ");

@@ -1,8 +1,8 @@
 #include <Wire.h>
 #define slaveAddr 9
 //Constants:
-int pinA = 2;                 // Encoder pin for A puls
-int pinB = 3;                 // Encoder pin for B puls
+int pinA = 10;                 // Encoder pin for A puls
+int pinB = 12;                 // Encoder pin for B puls
 
 //Variables:
 int counter = 0;              // store the incremental encoders counter
@@ -11,7 +11,7 @@ int aLastState;               // Save last state of the puls
 void setup() {
   pinMode (pinA, INPUT);      //Defines the input pins
   pinMode (pinB, INPUT);
-
+  Serial.begin(9600);
   Wire.begin(slaveAddr);
   Wire.onRequest(requestEvent);              // On request from master function
   aLastState = digitalRead(pinA);            // Reads the initial state of the outputA
@@ -28,6 +28,7 @@ void loop() {
     }
   }
   aLastState = aState;                       // Saves previous state
+  Serial.println(counter);
 }
 
 void requestEvent() {
