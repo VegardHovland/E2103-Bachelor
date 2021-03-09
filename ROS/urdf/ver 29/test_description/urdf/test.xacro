@@ -1,0 +1,138 @@
+<?xml version="1.0" ?>
+<robot name="test" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find test_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find test_description)/urdf/test.trans" />
+<xacro:include filename="$(find test_description)/urdf/test.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-2.7174602321866267e-05 0.006053798965408933 -0.028185037843435335"/>
+    <mass value="0.512530898807761"/>
+    <inertia ixx="0.000232" ixy="0.0" ixz="0.0" iyy="0.000107" iyz="6e-06" izz="0.000214"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://test_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://test_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="joint_v3_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="1.4411208065837877e-06 0.00807980536145679 0.00018129790863231562"/>
+    <mass value="0.006810016850259386"/>
+    <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="1e-06" iyz="0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.0 0.042 0.023"/>
+    <geometry>
+      <mesh filename="package://test_description/meshes/joint_v3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.0 0.042 0.023"/>
+    <geometry>
+      <mesh filename="package://test_description/meshes/joint_v3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.007153184140692447 -0.015030750399978032 -0.07177411362841968"/>
+    <mass value="0.6370785777172516"/>
+    <inertia ixx="0.000916" ixy="-4.6e-05" ixz="-5e-05" iyy="0.000564" iyz="-0.000305" izz="0.000784"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.0 0.0358 0.023"/>
+    <geometry>
+      <mesh filename="package://test_description/meshes/link1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.0 0.0358 0.023"/>
+    <geometry>
+      <mesh filename="package://test_description/meshes/link1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="joint_v3_2">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.008079805361456922 1.441120806640328e-06 0.0001812979086323191"/>
+    <mass value="0.006810016850259386"/>
+    <inertia ixx="1e-06" ixy="-0.0" ixz="-0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.042 0.0608 0.096"/>
+    <geometry>
+      <mesh filename="package://test_description/meshes/joint_v3_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.042 0.0608 0.096"/>
+    <geometry>
+      <mesh filename="package://test_description/meshes/joint_v3_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link2_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.04510886187828334 -2.848415947553917e-14 -0.024411604803811632"/>
+    <mass value="0.09077100718883686"/>
+    <inertia ixx="6e-05" ixy="0.0" ixz="4e-06" iyy="0.000179" iyz="0.0" izz="0.000147"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0358 0.0608 0.096"/>
+    <geometry>
+      <mesh filename="package://test_description/meshes/link2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0358 0.0608 0.096"/>
+    <geometry>
+      <mesh filename="package://test_description/meshes/link2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Rev7" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 -0.042 -0.023"/>
+  <parent link="base_link"/>
+  <child link="joint_v3_1"/>
+  <axis xyz="0.0 -1.0 -0.0"/>
+</joint>
+
+<joint name="Rigid8" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.0062 0.0"/>
+  <parent link="joint_v3_1"/>
+  <child link="link1_1"/>
+</joint>
+
+<joint name="Rev9" type="continuous">
+  <origin rpy="0 0 0" xyz="0.042 -0.025 -0.073"/>
+  <parent link="link1_1"/>
+  <child link="joint_v3_2"/>
+  <axis xyz="1.0 -0.0 -0.0"/>
+</joint>
+
+<joint name="Rigid10" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.0062 0.0 0.0"/>
+  <parent link="joint_v3_2"/>
+  <child link="link2_1"/>
+</joint>
+
+</robot>
