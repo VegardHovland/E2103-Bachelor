@@ -34,7 +34,7 @@ void Actuator::computePID() {
   }
 
   if (out < -400) {
-    out = 400;
+    out = -400;
   }
 
   lastError = error;                                         // Remember current error
