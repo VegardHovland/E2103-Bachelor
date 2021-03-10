@@ -4,8 +4,8 @@
 #include "actuator.h"
 #include "DualG2HighPowerMotorShield.h"
 #include "variables.h"
-#include <ros.h>
-#include <sensor_msgs/JointState.h>
+//#include <ros.h>
+//#include <sensor_msgs/JointState.h>
 //#include <robot_state_publisher/robot_state_publisher.h>
 
 //sensor_msgs::JointState robot_state;
@@ -173,7 +173,7 @@ void controllActuators(Actuator actuators[]) {
 //    //    if ( i == 3) {
 //    //      md2.setM2Speed(actuators[i].getSpeed()); // Motor 4 is driver 2 M2
 //    //    }
-//     }
+     }
   }
 
   //Print text on oled 1

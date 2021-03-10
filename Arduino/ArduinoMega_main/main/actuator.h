@@ -12,8 +12,8 @@ class Actuator {
     float angle;
     int maxAngle = 170;      // Max operating angle for the motor
     int minAngle = 10;       // Min -----------------------------
-    float Kp = 200;           // Controller constants
-    float Ti = 0.005;
+    float Kp = 2;           // Controller constants
+    float Ti = 0.5;
     float Td = 0;
 
     unsigned long currentTime;
