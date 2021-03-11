@@ -107,14 +107,14 @@ void loop() {
 
 //This prints data we want to plot in serial plot, in serial monitor choose serial plotter
 void serialPlot() {                                     //We will tune the parameters using the first motor
-   // int currTime = millis();                              // Calculate scan time
-  //  int scantime = -printPrevtime + currTime;
+    int currTime = millis();                              // Calculate scan time
+    int scantime = -printPrevtime + currTime;
   //
-   // Serial.println(scantime);
+    Serial.println(scantime);
   //Serial.println(actuators[2].getSetpoint());           // print motor 1 setpoint
-  Serial.println(actuators[2].getAngle());              // Print motor 1 angle
+  //Serial.println(actuators[2].getAngle());              // Print motor 1 angle
   //Serial.println(actuators[2].getSpeed());              // Print motor 1 speed
-  //Prevtime = currTime;                               // Update prev time
+  Prevtime = currTime;                               // Update prev time
 }
 
 //Print menue for user inputs
@@ -149,10 +149,10 @@ void updateSetpointSerial() {
 //Function to update parameters for a giver actuator using serial read
 void updateParametersSerial() {
   while (Serial.available()) {
-    int trash = Serial.read(); //Clear trash from input buffer
+    int trash = Serial.read();                                   //Clear trash from input buffer
   }
-  md1.setSpeeds(0, 0);                                          // Set speed to 0 for motor 1 and 2.
-  md2.setSpeeds(0, 0);                                          // Set speed to 0 for motor 3 and 4.
+  md1.setSpeeds(0, 0);                                           // Set speed to 0 for motor 1 and 2.
+  md2.setSpeeds(0, 0);                                           // Set speed to 0 for motor 3 and 4.
 
   Serial.println("Skriv in nr på motor (1 - 4)");                // Ask for input
   while (!Serial.available()) {};                                // Wait for input
@@ -166,7 +166,7 @@ void updateParametersSerial() {
   while (!Serial.available()) {};
   float ti = Serial.parseFloat();                                // Get new Ti
 
-  actuators[i].setParameters(kp, ti);                        // Set new parameters for given actuator
+  actuators[i].setParameters(kp, ti);                            // Set new parameters for given actuator
   Serial.println("parameters updated, press d to display data"); // confirm success
 }
 
@@ -175,18 +175,18 @@ void controllActuators(Actuator actuators[]) {
   for (int i = 0; i < numActuators; i++) {                       // Loops over the 4 actuator objects
     actuators[i].readAngle();                                    // Get the actuators angle
     actuators[i].computePID();                                   // Comeputes output using PID
-    //    if ( i == 0) {
-    //      md1.setM1Speed(actuators[i].getSpeed()); // Motor 1 is driver 1 M1
-    //    }
-    //    if ( i == 1) {
-    //      md1.setM2Speed(actuators[i].getSpeed()); // Motor 2 is driver 1 M2
-    //    }
+        if ( i == 0) {
+          md1.setM1Speed(actuators[i].getSpeed());               // Motor 1 is driver 1 M1
+        }
+        if ( i == 1) {
+          md1.setM2Speed(actuators[i].getSpeed());               // Motor 2 is driver 1 M2
+        }
     if ( i == 2) {
-      md2.setM1Speed(actuators[i].getSpeed()); // Motor 3 is driver 2 M1
+      md2.setM1Speed(actuators[i].getSpeed());                   // Motor 3 is driver 2 M1
     }
-    //    if ( i == 3) {
-    //      md2.setM2Speed(actuators[i].getSpeed()); // Motor 4 is driver 2 M2
-    //    }
+        if ( i == 3) {
+          md2.setM2Speed(actuators[i].getSpeed());               // Motor 4 is driver 2 M2
+        }
   }
 }
 

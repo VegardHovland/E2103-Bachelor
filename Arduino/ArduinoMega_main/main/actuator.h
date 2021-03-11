@@ -6,14 +6,18 @@
 
 class Actuator {
   private:
-    int counter;              // Store counter from incremental encoder. 
+    int counter;              // Store counter from incremental encoder.
     byte slaveadress;         // Slave adress for a given actuator.
     bool windup;              // indicates windup on integrator.
 
     float angle;
-    float Kp = 2;                                              // Controller constants, tuned for fastest respons without overshoot
-    float Ti = 1500 ;
-    float ui;                                                   // Integrator part
+    float Kp = 10.0;                                           // Controller constants, 
+    float Ti = 0.0;                                            // tuned for fastest respons without,
+    float Td = 5.0*1000.0;                                     // overshoot and no static error
+    float Tf = 500;                                            // Filter constant
+    float ui = 0;                                              // Integrator part
+    float ud = 0;                                              // Derivative part
+    float beta = 0;                                            // used in derivative calculation
     unsigned long currentTime;
     unsigned long previousTime;                                 // Keep track of the previousTime for given actuator
     float elapsedTime;                                          // Scan time
@@ -21,11 +25,12 @@ class Actuator {
     float lastError;                                            // Store last error
     float input, output, setPoint;
     float cumError;                                             // Integral
+    float prevOut;                                              // Derivate
 
   public:
     Actuator(byte encAddr);                                     // Constructor function for actuator class
     void setSetpoint(float r);                                  // Set function for setpoint
-    void setParameters(double kp, double ti);                   // Set fucntion for PID parameters
+    void setParameters(float kp, float ti);                     // Set fucntion for PID parameters
     float getKp();                                              // Get function for PID parameters
     float getTi();                                              // Get function for PID parameters
     float getAngle();                                           // Get function for angle

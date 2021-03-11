@@ -7,6 +7,7 @@
 //Variables------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 const int numActuators = 4 ;        // Defines the number of actuators
 int printPrevtime;
+int Prevtime;
 int pixelX = 0;                     // Stores the x value for pixel drwing for oled
 float startPos[4] = {0 , 0, 90, 0};
 int shutdowntime;

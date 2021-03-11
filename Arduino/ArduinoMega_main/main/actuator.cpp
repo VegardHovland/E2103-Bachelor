@@ -5,28 +5,31 @@
 
 //Constructer function for the class,
 Actuator::Actuator(byte encAddr) {
-  slaveadress = encAddr;                                      // Store actuator slave adress, (arduino nano slave adress)
+  slaveadress = encAddr;                                     // Store actuator slave adress, (arduino nano slave adress)
 }
 
 //PID algorithm function
 void Actuator::computePID() {
   currentTime = millis();                                    // Get current time
-  elapsedTime = (double)(currentTime - previousTime);        // Compute time elapsed from previous computation
+  elapsedTime = (float)(currentTime - previousTime);         // Compute time elapsed from previous computation
 
   error = setPoint - angle;                                  // Determine error
 
- // if (!windup) {
+  if (!windup && Ti > 0.0) {
     cumError += error * elapsedTime;                         // Compute integral
-    float ui =  cumError / Ti;                               //Calc integator part if not windup
-//  }
+    ui =  cumError / Ti;                                     //Calc integator part if not windup
+  }
+  if (Td > 0.0) {
+    beta = Tf / (elapsedTime + Tf);
+    ud = (beta * ud) - (((1.0 - beta) * (output - prevOut) * (Kp * Td)) / elapsedTime);
+  }
+  float  out = Kp * error + ui + ud;                          // PID output
 
-  float out = Kp * error + ui;                                // PID output
-
-  if ( out < 400 && out > -400) {                            // not windup if not within bounds
+  if ( out < 400 && out > -400) {                             // not windup if not within bounds
     windup = false;
   }
 
-  if (out > 400) {                                           // if  out of bounds, set activate windup
+  if (out > 400) {                                            // if  out of bounds, set activate windup
     out = 400;
     windup = true;
   }
@@ -37,7 +40,8 @@ void Actuator::computePID() {
   }
 
   previousTime = currentTime;                                // Remember current time
-
+  prevOut = out;
+  lastError = error;                                         // Remember last error
   output = out;                                              // Store output. MAX 400, MIN -400
 }
 
@@ -49,7 +53,7 @@ void Actuator::setSetpoint(float r) {
 
 
 //Set function for parameters
-void Actuator::setParameters(double p, double ki) {
+void Actuator::setParameters(float p, float ki) {
   Kp = p;                                                    // Updates Kp
   Ti = ki;                                                   // Updates Ti
 }
