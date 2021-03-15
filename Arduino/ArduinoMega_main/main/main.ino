@@ -107,14 +107,14 @@ void loop() {
 
 //This prints data we want to plot in serial plot, in serial monitor choose serial plotter
 void serialPlot() {                                     //We will tune the parameters using the first motor
-  int currTime = millis();                              // Calculate scan time
-  int scantime = currTime - prevtime;
+  //int currTime = millis();                              // Calculate scan time
+ // int scantime = currTime - prevtime;
 
-  Serial.println(scantime);
+  //Serial.println(scantime);
   //  Serial.println(actuators[2].getSetpoint());           // print motor 1 setpoint
   //  Serial.println(actuators[2].getAngle());              // Print motor 1 angle
-  //  Serial.println(actuators[2].getSpeed());              // Print motor 1 speed
-  prevtime = currTime;                                  // Update prev time
+    Serial.println(actuators[0].getSpeed());              // Print motor 1 speed
+  //prevtime = currTime;                                  // Update prev time
 }
 
 //Print menue for user inputs
