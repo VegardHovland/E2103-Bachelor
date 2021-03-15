@@ -1,0 +1,16 @@
+controller_list:
+  - name: fake_robotleg_controller
+    joints:
+      - motor1_to_joint1
+      - motor2_to_joint2
+      - motor3_to_joint3
+      - motor4_to_joint4
+  - name: fake_joints_controller
+    joints:
+      - motor1_to_joint1
+      - motor2_to_joint2
+      - motor3_to_joint3
+      - motor4_to_joint4
+initial:  # Define initial robot poses.
+  - group: robotleg
+    pose: home

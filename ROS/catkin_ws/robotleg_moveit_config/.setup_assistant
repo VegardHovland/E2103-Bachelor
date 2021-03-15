@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: robotleg_description
+    relative_path: urdf/robotleg.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/robotleg.srdf
+  CONFIG:
+    author_name: Vegard Hovland
+    author_email: vegardbhovland@gmail.com
+    generated_timestamp: 1615797245

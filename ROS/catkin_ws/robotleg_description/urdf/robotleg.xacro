@@ -1,0 +1,2248 @@
+<?xml version="1.0" ?>
+
+<robot name="robotleg" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find robotleg_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find robotleg_description)/urdf/robotleg.trans" />
+<xacro:include filename="$(find robotleg_description)/urdf/robotleg.gazebo" /> 
+
+<link name="base_link">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-6.974381304277474e-14 1.6937277041842968e-13 0.002500000000051195"/>
+    <mass value="0.06030302288901855"/>
+    <inertia ixx="8e-06" ixy="-0.0" ixz="0.0" iyy="8e-06" iyz="0.0" izz="1.6e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="joint_lower_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.005777953409967772 -0.006999999999879883 -0.019131990355514213"/>
+    <mass value="0.05160678357487784"/>
+    <inertia ixx="2.3e-05" ixy="0.0" ixz="3e-06" iyy="3.7e-05" iyz="-0.0" izz="3.2e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.01 -0.007 -0.0"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/joint_lower_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.01 -0.007 -0.0"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/joint_lower_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="motor_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.026773585832110064 -0.007785250543817162 -0.013204528938989223"/>
+    <mass value="0.446057556459211"/>
+    <inertia ixx="6.9e-05" ixy="-0.0" ixz="-2e-06" iyy="0.000163" iyz="0.0" izz="0.000162"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.02 -0.00775 0.016577"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/motor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.02 -0.00775 0.016577"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/motor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="encoder_cap_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.01164702672304714 0.0002751993457235698 0.0011500641525288638"/>
+    <mass value="0.0065259898621584725"/>
+    <inertia ixx="1e-06" ixy="-0.0" ixz="0.0" iyy="1e-06" iyz="-0.0" izz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.0343 -0.0 0.03"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/encoder_cap_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.0343 -0.0 0.03"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/encoder_cap_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.0175112272812318 0.009999500000708024 -0.011562532820335918"/>
+    <mass value="0.04469346153875378"/>
+    <inertia ixx="1e-05" ixy="0.0" ixz="1e-06" iyy="9e-06" iyz="0.0" izz="1.1e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0408 0.010012 0.045978"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/link1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="white"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0408 0.010012 0.045978"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/link1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="joint_lower_2">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.00700000000056028 -0.005778453409164726 -0.019132339720422872"/>
+    <mass value="0.05160678357487784"/>
+    <inertia ixx="3.7e-05" ixy="0.0" ixz="-0.0" iyy="2.3e-05" iyz="3e-06" izz="3.2e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0678 -0.009988 0.072978"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/joint_lower_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0678 -0.009988 0.072978"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/joint_lower_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="motor_2">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.007785250543732053 -0.02677408583133119 -0.013204878303880382"/>
+    <mass value="0.446057556459211"/>
+    <inertia ixx="0.000163" ixy="0.0" ixz="-0.0" iyy="6.9e-05" iyz="-2e-06" izz="0.000162"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.05305 -0.019988 0.089555"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/motor_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.05305 -0.019988 0.089555"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/motor_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="encoder_cap_2">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.00027519934457061884 -0.011647526722273996 0.001149714787701095"/>
+    <mass value="0.0065259898621584725"/>
+    <inertia ixx="1e-06" ixy="0.0" ixz="0.0" iyy="1e-06" iyz="0.0" izz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0608 0.034312 0.102978"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/encoder_cap_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0608 0.034312 0.102978"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/encoder_cap_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="joint_upper_2">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.004750499999838481 -0.044751787604337116 -0.03302108352877939"/>
+    <mass value="0.08968220262391981"/>
+    <inertia ixx="0.000176" ixy="0.0" ixz="-0.0" iyy="5.9e-05" iyz="3e-06" izz="0.000144"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.056037 -0.035788 0.087729"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/joint_upper_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.056037 -0.035788 0.087729"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/joint_upper_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link2_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.0069993994676339835 -0.010000804863218396 -0.09160050762835834"/>
+    <mass value="0.2141647492390146"/>
+    <inertia ixx="0.000681" ixy="0.0" ixz="1.1e-05" iyy="0.000681" iyz="-0.0" izz="5.7e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.067787 -0.009988 0.145957"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/link2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="white"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.067787 -0.009988 0.145957"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/link2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="joint_lower_3">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.006999500000579258 -0.005778453409580282 -0.01913168908533447"/>
+    <mass value="0.05160678357487784"/>
+    <inertia ixx="3.7e-05" ixy="0.0" ixz="-0.0" iyy="2.3e-05" iyz="3e-06" izz="3.2e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.067787 -0.009988 0.329157"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/joint_lower_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.067787 -0.009988 0.329157"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/joint_lower_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="motor_3">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.007785750543728404 -0.02677408583173768 -0.013205227668792452"/>
+    <mass value="0.446057556459211"/>
+    <inertia ixx="0.000163" ixy="0.0" ixz="-0.0" iyy="6.9e-05" iyz="-2e-06" izz="0.000162"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.053037 -0.019988 0.345733"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/motor_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.053037 -0.019988 0.345733"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/motor_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="encoder_cap_3">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.000275699344433257 -0.011647526722683973 0.0011503654227882354"/>
+    <mass value="0.0065259898621584725"/>
+    <inertia ixx="1e-06" ixy="0.0" ixz="0.0" iyy="1e-06" iyz="0.0" izz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.060788 0.034312 0.359157"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/encoder_cap_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.060788 0.034312 0.359157"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/encoder_cap_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="joint_upper_3">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.004749999999819947 -0.04475178760474581 -0.03302043289369089"/>
+    <mass value="0.08968220262391981"/>
+    <inertia ixx="0.000176" ixy="0.0" ixz="-0.0" iyy="5.9e-05" iyz="3e-06" izz="0.000144"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.056025 -0.035788 0.343908"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/joint_upper_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.056025 -0.035788 0.343908"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/joint_upper_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link3_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.006999914925842246 0.010000766082575961 -0.1057207484369771"/>
+    <mass value="0.24639222714106715"/>
+    <inertia ixx="0.001022" ixy="0.0" ixz="-1.4e-05" iyy="0.001023" iyz="0.0" izz="6.6e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.053775 0.010013 0.402135"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/link3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="white"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.053775 0.010013 0.402135"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/link3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="joint_lower_4">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.0069999999994168755 -0.005777453410032685 -0.019132038450245803"/>
+    <mass value="0.05160678357487784"/>
+    <inertia ixx="3.7e-05" ixy="0.0" ixz="-0.0" iyy="2.3e-05" iyz="3e-06" izz="3.2e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.053775 -0.009987 0.613575"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/joint_lower_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.053775 -0.009987 0.613575"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/joint_lower_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="motor_4">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.007785250543722692 -0.026773085832190097 -0.01320457703369926"/>
+    <mass value="0.446057556459211"/>
+    <inertia ixx="0.000163" ixy="0.0" ixz="-0.0" iyy="6.9e-05" iyz="-2e-06" izz="0.000162"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.053025 -0.019987 0.630152"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/motor_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.053025 -0.019987 0.630152"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/motor_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="encoder_cap_4">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.00027519934445146416 -0.011646526723136645 0.0011500160578816754"/>
+    <mass value="0.0065259898621584725"/>
+    <inertia ixx="1e-06" ixy="0.0" ixz="0.0" iyy="1e-06" iyz="0.0" izz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.060775 0.034313 0.643575"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/encoder_cap_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.060775 0.034313 0.643575"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/encoder_cap_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="joint_upper_4">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.004750499999848848 -0.04475078760521709 -0.033020782258559644"/>
+    <mass value="0.08968220262391981"/>
+    <inertia ixx="0.000176" ixy="0.0" ixz="-0.0" iyy="5.9e-05" iyz="3e-06" izz="0.000144"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.056012 -0.035787 0.628326"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/joint_upper_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.056012 -0.035787 0.628326"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/joint_upper_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link4_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.007153538455864514 -0.0099994976562707 -0.05167614688831268"/>
+    <mass value="0.1501448070430774"/>
+    <inertia ixx="0.000152" ixy="0.0" ixz="1e-06" iyy="0.000154" iyz="-0.0" izz="3.4e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.067762 -0.009987 0.686553"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/link4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="white"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.067762 -0.009987 0.686553"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/link4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="end_effector_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.02461013178118921 -0.01000049387667414 -0.029561595076249114"/>
+    <mass value="0.10143200262210186"/>
+    <inertia ixx="4.6e-05" ixy="0.0" ixz="-1.6e-05" iyy="5.6e-05" iyz="0.0" izz="3.2e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.067762 -0.009988 0.79379"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/end_effector_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="white"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.067762 -0.009988 0.79379"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/end_effector_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="rubber_sole_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.022117290015119244 -0.018000494749094386 -0.018308535309613072"/>
+    <mass value="0.016159079856973745"/>
+    <inertia ixx="6e-06" ixy="-0.0" ixz="-0.0" iyy="6e-06" iyz="-0.0" izz="6e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.053742 -0.017988 0.824074"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/rubber_sole_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.053742 -0.017988 0.824074"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/rubber_sole_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="weight_dist_plate_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.010000000000066395 -0.006999999999825013 0.0010000000000514693"/>
+    <mass value="0.037849400529989814"/>
+    <inertia ixx="0.000102" ixy="0.0" ixz="0.0" iyy="5e-06" iyz="0.0" izz="0.000107"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.01 -0.007 -0.005"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/weight_dist_plate_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.01 -0.007 -0.005"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/weight_dist_plate_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="top_plate_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.0205365269630299 -0.09000278151409505 0.008357956610560095"/>
+    <mass value="0.8128010423724238"/>
+    <inertia ixx="0.002791" ixy="-0.0" ixz="-1.1e-05" iyy="0.00279" iyz="0.0" izz="0.005524"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.02 -0.09 -0.007"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/top_plate_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.02 -0.09 -0.007"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/top_plate_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="stand_foot_connector_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.023451668459264524 -0.0234441787208602 -0.023348332348230975"/>
+    <mass value="0.13031579566129248"/>
+    <inertia ixx="6.8e-05" ixy="-0.0" ixz="-1.1e-05" iyy="6.8e-05" iyz="1.1e-05" izz="7e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.1 -0.1 -0.005"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_foot_connector_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.1 -0.1 -0.005"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_foot_connector_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="stand_foot_connector_2">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.023444178720936307 0.023451668459460562 -0.02334833234798631"/>
+    <mass value="0.13031579566129248"/>
+    <inertia ixx="6.8e-05" ixy="0.0" ixz="-1.1e-05" iyy="6.8e-05" iyz="-1.1e-05" izz="7e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.1 0.1 -0.005"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_foot_connector_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.1 0.1 -0.005"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_foot_connector_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="stand_foot_connector_3">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.0234516684593844 0.023444178721132414 -0.02334833234798618"/>
+    <mass value="0.13031579566129248"/>
+    <inertia ixx="6.8e-05" ixy="-0.0" ixz="1.1e-05" iyy="6.8e-05" iyz="-1.1e-05" izz="7e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.1 0.1 -0.005"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_foot_connector_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.1 0.1 -0.005"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_foot_connector_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="stand_foot_connector_4">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.023444178721056308 -0.023451668459188293 -0.023348332348230843"/>
+    <mass value="0.13031579566129248"/>
+    <inertia ixx="6.8e-05" ixy="0.0" ixz="1.1e-05" iyy="6.8e-05" iyz="1.1e-05" izz="7e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.1 -0.1 -0.005"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_foot_connector_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.1 -0.1 -0.005"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_foot_connector_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="stand_support_pipe_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-6.002143226879753e-14 -0.06799999999985064 5.1568124770362544e-14"/>
+    <mass value="0.024829636599594532"/>
+    <inertia ixx="3.8e-05" ixy="0.0" ixz="0.0" iyy="1e-06" iyz="0.0" izz="3.8e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.08 -0.068 0.01"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_support_pipe_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="dark_grey"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.08 -0.068 0.01"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_support_pipe_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="stand_support_pipe_2">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.0680000000000599 1.521421877370699e-13 1.7974337296333687e-13"/>
+    <mass value="0.024829636599594532"/>
+    <inertia ixx="1e-06" ixy="0.0" ixz="-0.0" iyy="3.8e-05" iyz="0.0" izz="3.8e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.068 0.08 0.01"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_support_pipe_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="dark_grey"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.068 0.08 0.01"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_support_pipe_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="stand_support_pipe_3">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-5.98965321785272e-14 0.0680000000001495 5.1512613619131287e-14"/>
+    <mass value="0.024829636599594532"/>
+    <inertia ixx="3.8e-05" ixy="0.0" ixz="-0.0" iyy="1e-06" iyz="0.0" izz="3.8e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.08 0.068 0.01"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_support_pipe_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="dark_grey"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.08 0.068 0.01"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_support_pipe_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="stand_support_pipe_4">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.06799999999994008 1.4971357487070236e-13 -7.621507591704102e-14"/>
+    <mass value="0.024829636599594532"/>
+    <inertia ixx="1e-06" ixy="-0.0" ixz="0.0" iyy="3.8e-05" iyz="0.0" izz="3.8e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.068 -0.08 0.01"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_support_pipe_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="dark_grey"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.068 -0.08 0.01"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_support_pipe_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="stand_foot_pipe_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.06536398861271482 0.06536398861249477 -0.2539730738515438"/>
+    <mass value="0.09946415521232403"/>
+    <inertia ixx="0.002274" ixy="-0.000141" ixz="0.000548" iyy="0.002274" iyz="0.000548" izz="0.000287"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0825 -0.0825 0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_foot_pipe_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="dark_grey"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0825 -0.0825 0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_foot_pipe_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="stand_foot_pipe_2">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.06536398861283506 0.06536398861249464 -0.2539730738515442"/>
+    <mass value="0.09946415521232403"/>
+    <inertia ixx="0.002274" ixy="0.000141" ixz="-0.000548" iyy="0.002274" iyz="0.000548" izz="0.000287"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.0825 -0.0825 0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_foot_pipe_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="dark_grey"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.0825 -0.0825 0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_foot_pipe_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="stand_foot_pipe_3">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.06536398861283489 -0.06536398861305508 -0.2539730738510711"/>
+    <mass value="0.09946415521232403"/>
+    <inertia ixx="0.002274" ixy="-0.000141" ixz="-0.000548" iyy="0.002274" iyz="-0.000548" izz="0.000287"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.0825 0.0825 0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_foot_pipe_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="dark_grey"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.0825 0.0825 0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_foot_pipe_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="stand_foot_pipe_4">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.0653639886127149 -0.065363988613055 -0.25397307385107065"/>
+    <mass value="0.09946415521232403"/>
+    <inertia ixx="0.002274" ixy="0.000141" ixz="0.000548" iyy="0.002274" iyz="-0.000548" izz="0.000287"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0825 0.0825 0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_foot_pipe_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="dark_grey"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0825 0.0825 0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_foot_pipe_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="stand_ball_wheel_connector_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.0018281811599321074 -0.0018110717322551706 0.0053968829844341926"/>
+    <mass value="0.03490880810440803"/>
+    <inertia ixx="7e-06" ixy="-0.0" ixz="0.0" iyy="7e-06" iyz="0.0" izz="5e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.213228 -0.213228 0.532946"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_ball_wheel_connector_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.213228 -0.213228 0.532946"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_ball_wheel_connector_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="stand_ball_wheel_connector_2">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.0018110717315178992 -0.001828181160549447 0.005396882984434526"/>
+    <mass value="0.03490880810440803"/>
+    <inertia ixx="7e-06" ixy="0.0" ixz="-0.0" iyy="7e-06" iyz="0.0" izz="5e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.213228 -0.213228 0.532946"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_ball_wheel_connector_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.213228 -0.213228 0.532946"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_ball_wheel_connector_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="stand_ball_wheel_connector_3">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.0018281811598123698 0.0018110717309010316 0.005396882985110096"/>
+    <mass value="0.03490880810440803"/>
+    <inertia ixx="7e-06" ixy="-0.0" ixz="-0.0" iyy="7e-06" iyz="-0.0" izz="5e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.213228 0.213228 0.532946"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_ball_wheel_connector_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.213228 0.213228 0.532946"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_ball_wheel_connector_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="stand_ball_wheel_connector_4">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.001811071731638414 0.0018281811591955022 0.005396882985111429"/>
+    <mass value="0.03490880810440803"/>
+    <inertia ixx="7e-06" ixy="0.0" ixz="0.0" iyy="7e-06" iyz="-0.0" izz="5e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.213228 0.213228 0.532946"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_ball_wheel_connector_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.213228 0.213228 0.532946"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/stand_ball_wheel_connector_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="ball_wheel_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.006610656705175522 -0.0019102377648504698 -0.012845312784993568"/>
+    <mass value="0.015977115956194495"/>
+    <inertia ixx="2e-06" ixy="-0.0" ixz="0.0" iyy="2e-06" iyz="-0.0" izz="2e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.206065 -0.215011 0.547057"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/ball_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.206065 -0.215011 0.547057"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/ball_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="ball_wheel_2">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.0019102377640611568 0.006610656704506168 -0.012845312784993013"/>
+    <mass value="0.015977115956194495"/>
+    <inertia ixx="2e-06" ixy="0.0" ixz="0.0" iyy="2e-06" iyz="0.0" izz="2e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.215011 -0.206065 0.547057"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/ball_wheel_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.215011 -0.206065 0.547057"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/ball_wheel_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="ball_wheel_3">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.006610656705295287 0.0019102377633930245 -0.012845312784312557"/>
+    <mass value="0.015977115956194495"/>
+    <inertia ixx="2e-06" ixy="-0.0" ixz="-0.0" iyy="2e-06" iyz="0.0" izz="2e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.206065 0.215011 0.547057"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/ball_wheel_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.206065 0.215011 0.547057"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/ball_wheel_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="ball_wheel_4">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.001910237764181727 -0.006610656705964502 -0.012845312784312335"/>
+    <mass value="0.015977115956194495"/>
+    <inertia ixx="2e-06" ixy="0.0" ixz="-0.0" iyy="2e-06" iyz="-0.0" izz="2e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.215011 0.206065 0.547057"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/ball_wheel_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.215011 0.206065 0.547057"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/ball_wheel_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="hex_spacer_M2.5x6_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-6.000408503403776e-14 4.0782655030824344e-13 0.0016196771831027586"/>
+    <mass value="0.0011453688182761637"/>
+    <inertia ixx="0.0" ixy="-0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.018 -0.085 -0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x6_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.018 -0.085 -0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x6_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="hex_spacer_M2.5x6_2">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-5.996245167061431e-14 4.0782655030824344e-13 0.0016196771831027586"/>
+    <mass value="0.0011453688182761637"/>
+    <inertia ixx="0.0" ixy="-0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.018 -0.085 -0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x6_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.018 -0.085 -0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x6_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="hex_spacer_M2.5x6_3">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-5.997979890537408e-14 4.078057336265317e-13 0.0016196771831922356"/>
+    <mass value="0.0011453688182761637"/>
+    <inertia ixx="0.0" ixy="-0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.018 -0.029 -0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x6_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.018 -0.029 -0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x6_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="hex_spacer_M2.5x6_4">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-5.995898222366236e-14 4.077779780509161e-13 0.0016196771831922356"/>
+    <mass value="0.0011453688182761637"/>
+    <inertia ixx="0.0" ixy="-0.0" ixz="-0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.018 -0.029 -0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x6_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.018 -0.029 -0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x6_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="hex_spacer_M2.5x6_5">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-5.997632945842213e-14 4.077918558387239e-13 0.0016196771832848837"/>
+    <mass value="0.0011453688182761637"/>
+    <inertia ixx="0.0" ixy="-0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.018 0.029 -0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x6_5.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.018 0.029 -0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x6_5.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="hex_spacer_M2.5x6_6">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-5.99485738828065e-14 4.0778144749786804e-13 0.0016196771832848837"/>
+    <mass value="0.0011453688182761637"/>
+    <inertia ixx="0.0" ixy="-0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.018 0.029 -0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x6_6.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.018 0.029 -0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x6_6.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="hex_spacer_M2.5x6_7">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-5.998673779927799e-14 4.0772940579358874e-13 0.0016196771833743538"/>
+    <mass value="0.0011453688182761637"/>
+    <inertia ixx="0.0" ixy="-0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.018 0.085 -0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x6_7.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.018 0.085 -0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x6_7.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="hex_spacer_M2.5x6_8">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-5.994510443585455e-14 4.077710391570122e-13 0.0016196771833743538"/>
+    <mass value="0.0011453688182761637"/>
+    <inertia ixx="0.0" ixy="0.0" ixz="-0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.018 0.085 -0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x6_8.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.018 0.085 -0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x6_8.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="hex_spacer_M3x10_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-5.963285421017872e-14 2.6172120026757284e-13 0.002849594679394659"/>
+    <mass value="0.0021919244639008826"/>
+    <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0839 -0.0912 -0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M3x10_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0839 -0.0912 -0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M3x10_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="hex_spacer_M3x10_2">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-5.934142066621462e-14 2.621791672652307e-13 0.0028495946794068056"/>
+    <mass value="0.0021919244639008826"/>
+    <inertia ixx="0.0" ixy="-0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0408 -0.0836 -0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M3x10_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0408 -0.0836 -0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M3x10_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="hex_spacer_M3x10_3">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-5.996592111756627e-14 2.6020852139652106e-13 0.002849594679686058"/>
+    <mass value="0.0021919244639008826"/>
+    <inertia ixx="0.0" ixy="-0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0408 0.0912 -0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M3x10_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0408 0.0912 -0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M3x10_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="hex_spacer_M3x10_4">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-6.002143226879753e-14 2.601252546696742e-13 0.0028495946796739183"/>
+    <mass value="0.0021919244639008826"/>
+    <inertia ixx="0.0" ixy="0.0" ixz="-0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0839 0.0836 -0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M3x10_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0839 0.0836 -0.025"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M3x10_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="protoboard_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.017995434410326548 0.028000000000216137 0.0007500000001425464"/>
+    <mass value="0.006014873948585311"/>
+    <inertia ixx="2e-06" ixy="-0.0" ixz="-0.0" iyy="1e-06" iyz="0.0" izz="3e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.018 0.085 -0.031"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/protoboard_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.018 0.085 -0.031"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/protoboard_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="protoboard_2">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.0179954344103265 0.028000000000216112 0.0007499999999604212"/>
+    <mass value="0.006014873948585311"/>
+    <inertia ixx="2e-06" ixy="-0.0" ixz="-0.0" iyy="1e-06" iyz="0.0" izz="3e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.018 -0.029 -0.031"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/protoboard_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.018 -0.029 -0.031"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/protoboard_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="hex_spacer_M2.5x20_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-5.996592111756627e-14 2.913225216616411e-13 0.008629257322491417"/>
+    <mass value="0.0034578910341493537"/>
+    <inertia ixx="0.0" ixy="-0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.018 -0.085 -0.0325"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x20_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.018 -0.085 -0.0325"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x20_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="hex_spacer_M2.5x20_2">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-5.99485738828065e-14 2.913225216616411e-13 0.008629257322491417"/>
+    <mass value="0.0034578910341493537"/>
+    <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.018 -0.085 -0.0325"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x20_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.018 -0.085 -0.0325"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x20_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="hex_spacer_M2.5x20_3">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-5.995898222366236e-14 2.912843577451696e-13 0.008629257322673528"/>
+    <mass value="0.0034578910341493537"/>
+    <inertia ixx="0.0" ixy="-0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.018 0.029 -0.0325"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x20_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.018 0.029 -0.0325"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x20_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="hex_spacer_M2.5x20_4">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-5.995898222366236e-14 2.9132599110859303e-13 0.008629257322580887"/>
+    <mass value="0.0034578910341493537"/>
+    <inertia ixx="0.0" ixy="-0.0" ixz="-0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.018 -0.029 -0.0325"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x20_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.018 -0.029 -0.0325"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x20_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="hex_spacer_M2.5x20_5">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-5.995551277671041e-14 2.912982355329774e-13 0.008629257322580887"/>
+    <mass value="0.0034578910341493537"/>
+    <inertia ixx="0.0" ixy="-0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.018 -0.029 -0.0325"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x20_5.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.018 -0.029 -0.0325"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x20_5.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="hex_spacer_M2.5x20_6">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-5.99485738828065e-14 2.912843577451696e-13 0.008629257322673528"/>
+    <mass value="0.0034578910341493537"/>
+    <inertia ixx="0.0" ixy="-0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.018 0.029 -0.0325"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x20_6.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.018 0.029 -0.0325"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x20_6.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="hex_spacer_M2.5x20_7">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-5.995204332975845e-14 2.912392549347942e-13 0.008629257322763005"/>
+    <mass value="0.0034578910341493537"/>
+    <inertia ixx="0.0" ixy="-0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.018 0.085 -0.0325"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x20_7.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.018 0.085 -0.0325"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x20_7.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="hex_spacer_M2.5x20_8">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-5.994510443585455e-14 2.9128088829821763e-13 0.008629257322763005"/>
+    <mass value="0.0034578910341493537"/>
+    <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.018 0.085 -0.0325"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x20_8.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.018 0.085 -0.0325"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/hex_spacer_M2.5x20_8.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="protoboard_3">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.01800456558967345 0.028000000000250477 0.0007500000001425047"/>
+    <mass value="0.006014873948585311"/>
+    <inertia ixx="2e-06" ixy="-0.0" ixz="-0.0" iyy="1e-06" iyz="0.0" izz="3e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.018 0.085 -0.0525"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/protoboard_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.018 0.085 -0.0525"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/protoboard_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="protoboard_4">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.018004565589673498 0.028000000000250467 0.0007499999999604143"/>
+    <mass value="0.006014873948585311"/>
+    <inertia ixx="2e-06" ixy="-0.0" ixz="-0.0" iyy="1e-06" iyz="0.0" izz="3e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.018 -0.029 -0.0525"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/protoboard_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.018 -0.029 -0.0525"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/protoboard_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="female_pin_headers_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="1.6186704754339587e-13 0.017779998150998788 0.004616331590847567"/>
+    <mass value="0.0025580110019720733"/>
+    <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.00862 0.07605 -0.0325"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/female_pin_headers_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.00862 0.07605 -0.0325"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/female_pin_headers_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="female_pin_headers_2">
+  <inertial>
+    <origin rpy="0 0 0" xyz="1.6188092533120368e-13 0.01777999815099881 0.004616331590847567"/>
+    <mass value="0.0025580110019720733"/>
+    <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.00608 0.07605 -0.0325"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/female_pin_headers_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.00608 0.07605 -0.0325"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/female_pin_headers_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="female_pin_headers_3">
+  <inertial>
+    <origin rpy="0 0 0" xyz="1.6186704754339587e-13 0.017779998151033143 0.004616331590847553"/>
+    <mass value="0.0025580110019720733"/>
+    <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.00862 0.07605 -0.054"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/female_pin_headers_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.00862 0.07605 -0.054"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/female_pin_headers_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="female_pin_headers_4">
+  <inertial>
+    <origin rpy="0 0 0" xyz="1.6188092533120368e-13 0.017779998151033122 0.004616331590847553"/>
+    <mass value="0.0025580110019720733"/>
+    <inertia ixx="0.0" ixy="-0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.00608 0.07605 -0.054"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/female_pin_headers_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.00608 0.07605 -0.054"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/female_pin_headers_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="female_pin_headers_5">
+  <inertial>
+    <origin rpy="0 0 0" xyz="1.6187398643729978e-13 0.017779998150998844 0.004616331590665448"/>
+    <mass value="0.0025580110019720733"/>
+    <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.00862 -0.03795 -0.0325"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/female_pin_headers_5.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.00862 -0.03795 -0.0325"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/female_pin_headers_5.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="female_pin_headers_6">
+  <inertial>
+    <origin rpy="0 0 0" xyz="1.6187485379903777e-13 0.017779998150998802 0.004616331590665448"/>
+    <mass value="0.0025580110019720733"/>
+    <inertia ixx="0.0" ixy="-0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.00608 -0.03795 -0.0325"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/female_pin_headers_6.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.00608 -0.03795 -0.0325"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/female_pin_headers_6.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="female_pin_headers_7">
+  <inertial>
+    <origin rpy="0 0 0" xyz="1.6187398643729978e-13 0.017779998151033177 0.0046163315906654345"/>
+    <mass value="0.0025580110019720733"/>
+    <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.00862 -0.03795 -0.054"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/female_pin_headers_7.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.00862 -0.03795 -0.054"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/female_pin_headers_7.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="female_pin_headers_8">
+  <inertial>
+    <origin rpy="0 0 0" xyz="1.6187485379903777e-13 0.017779998151033143 0.0046163315906654345"/>
+    <mass value="0.0025580110019720733"/>
+    <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.00608 -0.03795 -0.054"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/female_pin_headers_8.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.00608 -0.03795 -0.054"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/female_pin_headers_8.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="motor_driver_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.022003518194750597 -0.030348097678797425 0.0032297088872397586"/>
+    <mass value="0.02214316380047698"/>
+    <inertia ixx="4e-06" ixy="0.0" ixz="-0.0" iyy="3e-06" iyz="0.0" izz="7e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0839 -0.0912 -0.035"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/motor_driver_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0839 -0.0912 -0.035"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/motor_driver_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="motor_driver_2">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.021176481805369282 0.02272809767925165 0.0032297088874341726"/>
+    <mass value="0.02214316380047698"/>
+    <inertia ixx="4e-06" ixy="0.0" ixz="0.0" iyy="3e-06" iyz="-0.0" izz="7e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0839 0.0836 -0.035"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/motor_driver_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0839 0.0836 -0.035"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/motor_driver_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="joint_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.008079805361516729 1.4411209355637249e-06 0.00018129790868385773"/>
+    <mass value="0.006810016850259386"/>
+    <inertia ixx="1e-06" ixy="-0.0" ixz="-0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.042 -0.0 0.023"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/joint_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.042 -0.0 0.023"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/joint_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="joint_2">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.441122444052756e-06 -0.008080305360728193 0.00018094854372742442"/>
+    <mass value="0.006810016850259386"/>
+    <inertia ixx="0.0" ixy="0.0" ixz="-0.0" iyy="1e-06" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0608 -0.041988 0.095978"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/joint_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0608 -0.041988 0.095978"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/joint_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="joint_3">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-9.411224442326671e-07 -0.008080305361134708 0.00018159917881632737"/>
+    <mass value="0.006810016850259386"/>
+    <inertia ixx="0.0" ixy="0.0" ixz="-0.0" iyy="1e-06" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.060787 -0.041988 0.352157"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/joint_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.060787 -0.041988 0.352157"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/joint_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="joint_4">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.4411224345325935e-06 -0.008079305361586825 0.00018124981391587358"/>
+    <mass value="0.006810016850259386"/>
+    <inertia ixx="0.0" ixy="0.0" ixz="-0.0" iyy="1e-06" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.060775 -0.041987 0.636575"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/joint_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.060775 -0.041987 0.636575"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/joint_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="joint_upper_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.04475128760508541 0.00474950000011858 -0.03302073416388937"/>
+    <mass value="0.08968220262391981"/>
+    <inertia ixx="5.9e-05" ixy="-0.0" ixz="3e-06" iyy="0.000176" iyz="-0.0" izz="0.000144"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0358 0.004762 0.014751"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/joint_upper_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0358 0.004762 0.014751"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/joint_upper_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="base_link_to_joint_lower" type="fixed">
+  <origin rpy="0 0 0" xyz="0.01 0.007 0.0"/>
+  <parent link="base_link"/>
+  <child link="joint_lower_1"/>
+</joint>
+
+<joint name="lower_joint_to_motor1" type="fixed">
+  <origin rpy="0 0 0" xyz="0.01 0.00075 -0.016577"/>
+  <parent link="joint_lower_1"/>
+  <child link="motor_1"/>
+</joint>
+
+<joint name="motor1_to_encoder_cap" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.0543 -0.00775 -0.013423"/>
+  <parent link="motor_1"/>
+  <child link="encoder_cap_1"/>
+</joint>
+
+<joint name="joint_upper_to_link1" type="fixed">
+  <origin rpy="0 0 0" xyz="0.005 -0.00525 -0.031227"/>
+  <parent link="joint_upper_1"/>
+  <child link="link1_1"/>
+</joint>
+
+<joint name="link1_to_joint_lower" type="fixed">
+  <origin rpy="0 0 0" xyz="0.027 0.02 -0.027"/>
+  <parent link="link1_1"/>
+  <child link="joint_lower_2"/>
+</joint>
+
+<joint name="joint_lower_to_motor2" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.01475 0.01 -0.016577"/>
+  <parent link="joint_lower_2"/>
+  <child link="motor_2"/>
+</joint>
+
+<joint name="motor2_to_encoder_cap" type="fixed">
+  <origin rpy="0 0 0" xyz="0.00775 -0.0543 -0.013423"/>
+  <parent link="motor_2"/>
+  <child link="encoder_cap_2"/>
+</joint>
+
+<joint name="joint2_to_joint_upper" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.004763 -0.0062 0.008249"/>
+  <parent link="joint_2"/>
+  <child link="joint_upper_2"/>
+</joint>
+
+<joint name="joint_upper_to_link2" type="fixed">
+  <origin rpy="0 0 0" xyz="0.01175 -0.0258 -0.058228"/>
+  <parent link="joint_upper_2"/>
+  <child link="link2_1"/>
+</joint>
+
+<joint name="link2_to_joint_lower" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.0 -0.1832"/>
+  <parent link="link2_1"/>
+  <child link="joint_lower_3"/>
+</joint>
+
+<joint name="joint_to_lower-motor3" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.01475 0.01 -0.016576"/>
+  <parent link="joint_lower_3"/>
+  <child link="motor_3"/>
+</joint>
+
+<joint name="motor3_to_encoder_cap" type="fixed">
+  <origin rpy="0 0 0" xyz="0.007751 -0.0543 -0.013424"/>
+  <parent link="motor_3"/>
+  <child link="encoder_cap_3"/>
+</joint>
+
+<joint name="joint3_to_joint_upper" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.004762 -0.0062 0.008249"/>
+  <parent link="joint_3"/>
+  <child link="joint_upper_3"/>
+</joint>
+
+<joint name="joint_upper_to_link3" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.00225 -0.045801 -0.058227"/>
+  <parent link="joint_upper_3"/>
+  <child link="link3_1"/>
+</joint>
+
+<joint name="link3_to_joint_lower" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.02 -0.21144"/>
+  <parent link="link3_1"/>
+  <child link="joint_lower_4"/>
+</joint>
+
+<joint name="joint_lower_to_motor4" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.00075 0.01 -0.016577"/>
+  <parent link="joint_lower_4"/>
+  <child link="motor_4"/>
+</joint>
+
+<joint name="motor4_to_encoder_cap" type="fixed">
+  <origin rpy="0 0 0" xyz="0.00775 -0.0543 -0.013423"/>
+  <parent link="motor_4"/>
+  <child link="encoder_cap_4"/>
+</joint>
+
+<joint name="joint4_to_joint_upper" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.004763 -0.0062 0.008249"/>
+  <parent link="joint_4"/>
+  <child link="joint_upper_4"/>
+</joint>
+
+<joint name="joint_upper_to_link4" type="fixed">
+  <origin rpy="0 0 0" xyz="0.01175 -0.0258 -0.058227"/>
+  <parent link="joint_upper_4"/>
+  <child link="link4_1"/>
+</joint>
+
+<joint name="link4_to_end_effector" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 1e-06 -0.107237"/>
+  <parent link="link4_1"/>
+  <child link="end_effector_1"/>
+</joint>
+
+<joint name="end_effector_to_rubber_sole" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.01402 0.008 -0.030284"/>
+  <parent link="end_effector_1"/>
+  <child link="rubber_sole_1"/>
+</joint>
+
+<joint name="base_link_to_weight_dist_plate" type="fixed">
+  <origin rpy="0 0 0" xyz="0.01 0.007 0.005"/>
+  <parent link="base_link"/>
+  <child link="weight_dist_plate_1"/>
+</joint>
+
+<joint name="weight_dist_plate_to_top_plate" type="fixed">
+  <origin rpy="0 0 0" xyz="0.01 0.083 0.002"/>
+  <parent link="weight_dist_plate_1"/>
+  <child link="top_plate_1"/>
+</joint>
+
+<joint name="top_plate_to_stand_foot_connector1" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.12 0.01 -0.002"/>
+  <parent link="top_plate_1"/>
+  <child link="stand_foot_connector_1"/>
+</joint>
+
+<joint name="top_plate_to_stand_foot_connector2" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.12 -0.19 -0.002"/>
+  <parent link="top_plate_1"/>
+  <child link="stand_foot_connector_2"/>
+</joint>
+
+<joint name="top_plate_to_stand_foot_connector3" type="fixed">
+  <origin rpy="0 0 0" xyz="0.08 -0.19 -0.002"/>
+  <parent link="top_plate_1"/>
+  <child link="stand_foot_connector_3"/>
+</joint>
+
+<joint name="top_plate_to_stand_foot_connector4" type="fixed">
+  <origin rpy="0 0 0" xyz="0.08 0.01 -0.002"/>
+  <parent link="top_plate_1"/>
+  <child link="stand_foot_connector_4"/>
+</joint>
+
+<joint name="stand_foot_connector_to_stand_support_pipe1" type="fixed">
+  <origin rpy="0 0 0" xyz="0.02 -0.032 -0.015"/>
+  <parent link="stand_foot_connector_1"/>
+  <child link="stand_support_pipe_1"/>
+</joint>
+
+<joint name="stand_foot_connector_to_stand_support_pipe2" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.032 0.02 -0.015"/>
+  <parent link="stand_foot_connector_3"/>
+  <child link="stand_support_pipe_2"/>
+</joint>
+
+<joint name="stand_foot_connector_to_stand_support_pipe3" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.02 0.032 -0.015"/>
+  <parent link="stand_foot_connector_3"/>
+  <child link="stand_support_pipe_3"/>
+</joint>
+
+<joint name="stand_foot_connector_to_stand_support_pipe4" type="fixed">
+  <origin rpy="0 0 0" xyz="0.032 -0.02 -0.015"/>
+  <parent link="stand_foot_connector_1"/>
+  <child link="stand_support_pipe_4"/>
+</joint>
+
+<joint name="stand_foot_connector_to_stand_foot_pipe1" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.0175 -0.0175 -0.03"/>
+  <parent link="stand_foot_connector_4"/>
+  <child link="stand_foot_pipe_1"/>
+</joint>
+
+<joint name="stand_foot_connector_to_stand_foot_pipe2" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0175 -0.0175 -0.03"/>
+  <parent link="stand_foot_connector_1"/>
+  <child link="stand_foot_pipe_2"/>
+</joint>
+
+<joint name="stand_foot_connector_to_stand_foot_pipe3" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0175 0.0175 -0.03"/>
+  <parent link="stand_foot_connector_2"/>
+  <child link="stand_foot_pipe_3"/>
+</joint>
+
+<joint name="stand_foot_connector_to_stand_foot_pipe4" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.0175 0.0175 -0.03"/>
+  <parent link="stand_foot_connector_3"/>
+  <child link="stand_foot_pipe_4"/>
+</joint>
+
+<joint name="stand_foot_pipe1_to_stand_ball_wheel_connector1" type="fixed">
+  <origin rpy="0 0 0" xyz="0.130728 0.130728 -0.507946"/>
+  <parent link="stand_foot_pipe_1"/>
+  <child link="stand_ball_wheel_connector_1"/>
+</joint>
+
+<joint name="stand_foot_pipe2_to_stand_ball_wheel_connector2" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.130728 0.130728 -0.507946"/>
+  <parent link="stand_foot_pipe_2"/>
+  <child link="stand_ball_wheel_connector_2"/>
+</joint>
+
+<joint name="stand_foot_pipe3_to_stand_ball_wheel_connector3" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.130728 -0.130728 -0.507946"/>
+  <parent link="stand_foot_pipe_3"/>
+  <child link="stand_ball_wheel_connector_3"/>
+</joint>
+
+<joint name="stand_foot_pipe4_to_stand_ball_wheel_connector4" type="fixed">
+  <origin rpy="0 0 0" xyz="0.130728 -0.130728 -0.507946"/>
+  <parent link="stand_foot_pipe_4"/>
+  <child link="stand_ball_wheel_connector_4"/>
+</joint>
+
+<joint name="stand_ball_wheel_connector_to_ball_wheel1" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.007163 0.001783 -0.014111"/>
+  <parent link="stand_ball_wheel_connector_1"/>
+  <child link="ball_wheel_1"/>
+</joint>
+
+<joint name="stand_ball_wheel_connector_to_ball_wheel2" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.001783 -0.007163 -0.014111"/>
+  <parent link="stand_ball_wheel_connector_2"/>
+  <child link="ball_wheel_2"/>
+</joint>
+
+<joint name="stand_ball_wheel_connector_to_ball_wheel3" type="fixed">
+  <origin rpy="0 0 0" xyz="0.007163 -0.001783 -0.014111"/>
+  <parent link="stand_ball_wheel_connector_3"/>
+  <child link="ball_wheel_3"/>
+</joint>
+
+<joint name="stand_ball_wheel_connector_to_ball_wheel4" type="fixed">
+  <origin rpy="0 0 0" xyz="0.001783 0.007163 -0.014111"/>
+  <parent link="stand_ball_wheel_connector_4"/>
+  <child link="ball_wheel_4"/>
+</joint>
+
+<joint name="top_plate_to_nano_spacer1" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.038 -0.005 0.018"/>
+  <parent link="top_plate_1"/>
+  <child link="hex_spacer_M2.5x6_1"/>
+</joint>
+
+<joint name="top_plate_to_nano_spacer2" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.002 -0.005 0.018"/>
+  <parent link="top_plate_1"/>
+  <child link="hex_spacer_M2.5x6_2"/>
+</joint>
+
+<joint name="top_plate_to_nano_spacer3" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.038 -0.061 0.018"/>
+  <parent link="top_plate_1"/>
+  <child link="hex_spacer_M2.5x6_3"/>
+</joint>
+
+<joint name="top_plate_to_nano_spacer4" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.002 -0.061 0.018"/>
+  <parent link="top_plate_1"/>
+  <child link="hex_spacer_M2.5x6_4"/>
+</joint>
+
+<joint name="top_plate_to_nano_spacer5" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.038 -0.119 0.018"/>
+  <parent link="top_plate_1"/>
+  <child link="hex_spacer_M2.5x6_5"/>
+</joint>
+
+<joint name="top_plate_to_nano_spacer6" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.002 -0.119 0.018"/>
+  <parent link="top_plate_1"/>
+  <child link="hex_spacer_M2.5x6_6"/>
+</joint>
+
+<joint name="top_plate_to_nano_spacer7" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.038 -0.175 0.018"/>
+  <parent link="top_plate_1"/>
+  <child link="hex_spacer_M2.5x6_7"/>
+</joint>
+
+<joint name="top_plate_to_nano_spacer8" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.002 -0.175 0.018"/>
+  <parent link="top_plate_1"/>
+  <child link="hex_spacer_M2.5x6_8"/>
+</joint>
+
+<joint name="top_plate_to_motor_spacer1" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0639 0.0012 0.018"/>
+  <parent link="top_plate_1"/>
+  <child link="hex_spacer_M3x10_1"/>
+</joint>
+
+<joint name="top_plate_to_motor_spacer2" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0208 -0.0064 0.018"/>
+  <parent link="top_plate_1"/>
+  <child link="hex_spacer_M3x10_2"/>
+</joint>
+
+<joint name="top_plate_to_motor_spacer3" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0208 -0.1812 0.018"/>
+  <parent link="top_plate_1"/>
+  <child link="hex_spacer_M3x10_3"/>
+</joint>
+
+<joint name="top_plate_to_motor_spacer4" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0639 -0.1736 0.018"/>
+  <parent link="top_plate_1"/>
+  <child link="hex_spacer_M3x10_4"/>
+</joint>
+
+<joint name="nano_spacer_to_protoboard1" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.0 0.006"/>
+  <parent link="hex_spacer_M2.5x6_8"/>
+  <child link="protoboard_1"/>
+</joint>
+
+<joint name="nano_spacer_to_protoboard2" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.0 0.006"/>
+  <parent link="hex_spacer_M2.5x6_4"/>
+  <child link="protoboard_2"/>
+</joint>
+
+<joint name="protoboard_to_nano_tiered_spacer1" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.036 0.056 0.0015"/>
+  <parent link="protoboard_2"/>
+  <child link="hex_spacer_M2.5x20_1"/>
+</joint>
+
+<joint name="protoboard_to_nano_tiered_spacer2" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.056 0.0015"/>
+  <parent link="protoboard_2"/>
+  <child link="hex_spacer_M2.5x20_2"/>
+</joint>
+
+<joint name="protoboard_to_nano_tiered_spacer3" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.036 0.056 0.0015"/>
+  <parent link="protoboard_1"/>
+  <child link="hex_spacer_M2.5x20_3"/>
+</joint>
+
+<joint name="protoboard_to_nano_tiered_spacer4" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.036 0.0 0.0015"/>
+  <parent link="protoboard_2"/>
+  <child link="hex_spacer_M2.5x20_4"/>
+</joint>
+
+<joint name="protoboard_to_nano_tiered_spacer5" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.0 0.0015"/>
+  <parent link="protoboard_2"/>
+  <child link="hex_spacer_M2.5x20_5"/>
+</joint>
+
+<joint name="protoboard_to_nano_tiered_spacer6" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.056 0.0015"/>
+  <parent link="protoboard_1"/>
+  <child link="hex_spacer_M2.5x20_6"/>
+</joint>
+
+<joint name="protoboard_to_nano_tiered_spacer7" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.036 0.0 0.0015"/>
+  <parent link="protoboard_1"/>
+  <child link="hex_spacer_M2.5x20_7"/>
+</joint>
+
+<joint name="protoboard_to_nano_tiered_spacer7 (1)" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.0 0.0015"/>
+  <parent link="protoboard_1"/>
+  <child link="hex_spacer_M2.5x20_8"/>
+</joint>
+
+<joint name="nano_tiered_spacer_to_protoboard3" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.0 0.02"/>
+  <parent link="hex_spacer_M2.5x20_7"/>
+  <child link="protoboard_3"/>
+</joint>
+
+<joint name="nano_tiered_spacer_to_protoboard4" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.0 0.02"/>
+  <parent link="hex_spacer_M2.5x20_4"/>
+  <child link="protoboard_4"/>
+</joint>
+
+<joint name="protoboard_to_header_strip1" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.02662 0.00895 0.0015"/>
+  <parent link="protoboard_1"/>
+  <child link="female_pin_headers_1"/>
+</joint>
+
+<joint name="protoboard_to_header_strip2" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.01192 0.00895 0.0015"/>
+  <parent link="protoboard_1"/>
+  <child link="female_pin_headers_2"/>
+</joint>
+
+<joint name="protoboard_to_header_strip3" type="fixed">
+  <origin rpy="0 0 0" xyz="0.00938 0.00895 0.0015"/>
+  <parent link="protoboard_3"/>
+  <child link="female_pin_headers_3"/>
+</joint>
+
+<joint name="protoboard_to_header_strip4" type="fixed">
+  <origin rpy="0 0 0" xyz="0.02408 0.00895 0.0015"/>
+  <parent link="protoboard_3"/>
+  <child link="female_pin_headers_4"/>
+</joint>
+
+<joint name="protoboard_to_header_strip5" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.02662 0.00895 0.0015"/>
+  <parent link="protoboard_2"/>
+  <child link="female_pin_headers_5"/>
+</joint>
+
+<joint name="protoboard_to_header_strip6" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.01192 0.00895 0.0015"/>
+  <parent link="protoboard_2"/>
+  <child link="female_pin_headers_6"/>
+</joint>
+
+<joint name="protoboard_to_header_strip7" type="fixed">
+  <origin rpy="0 0 0" xyz="0.00938 0.00895 0.0015"/>
+  <parent link="protoboard_4"/>
+  <child link="female_pin_headers_7"/>
+</joint>
+
+<joint name="protoboard_to_header_strip8" type="fixed">
+  <origin rpy="0 0 0" xyz="0.02408 0.00895 0.0015"/>
+  <parent link="protoboard_4"/>
+  <child link="female_pin_headers_8"/>
+</joint>
+
+<joint name="motor_spacer_to_motor_shield1" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.0 0.01"/>
+  <parent link="hex_spacer_M3x10_1"/>
+  <child link="motor_driver_1"/>
+</joint>
+
+<joint name="motor_spacer_to_motor_shield2" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.0 0.01"/>
+  <parent link="hex_spacer_M3x10_4"/>
+  <child link="motor_driver_2"/>
+</joint>
+
+<joint name="motor1_to_joint1" type="continuous">
+  <origin rpy="0 0 0" xyz="0.022 -0.00775 -0.006423"/>
+  <parent link="motor_1"/>
+  <child link="joint_1"/>
+  <axis xyz="1.0 -0.0 0.0"/>
+</joint>
+
+<joint name="motor2_to_joint2" type="continuous">
+  <origin rpy="0 0 0" xyz="0.00775 0.022 -0.006423"/>
+  <parent link="motor_2"/>
+  <child link="joint_2"/>
+  <axis xyz="-0.0 1.0 -0.0"/>
+</joint>
+
+<joint name="motor3_to_joint3" type="continuous">
+  <origin rpy="0 0 0" xyz="0.00775 0.022 -0.006424"/>
+  <parent link="motor_3"/>
+  <child link="joint_3"/>
+  <axis xyz="-0.0 1.0 -0.0"/>
+</joint>
+
+<joint name="motor4_to_joint4" type="continuous">
+  <origin rpy="0 0 0" xyz="0.00775 0.022 -0.006423"/>
+  <parent link="motor_4"/>
+  <child link="joint_4"/>
+  <axis xyz="-0.0 1.0 -0.0"/>
+</joint>
+
+<joint name="joint1_to_joint_upper" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.0062 -0.004762 0.008249"/>
+  <parent link="joint_1"/>
+  <child link="joint_upper_1"/>
+</joint>
+
+</robot>
