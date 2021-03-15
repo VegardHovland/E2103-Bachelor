@@ -13,31 +13,29 @@ void Actuator::computePID() {
   currentTime = millis();                                    // Get current time
   elapsedTime = (double)(currentTime - previousTime);        // Compute time elapsed from previous computation
 
-  error = setPoint - angle;                                 // Determine error
-  cumError += error * elapsedTime;                           // Compute integral
-  rateError = (error - lastError) / elapsedTime;             // Compute derivative
+  error = setPoint - angle;                                  // Determine error
 
-  float ui = Ti * cumError;                                 //Calc integator part
+ // if (!windup) {
+    cumError += error * elapsedTime;                         // Compute integral
+    float ui =  cumError / Ti;                               //Calc integator part if not windup
+//  }
 
-  if ( ui > 400) {                                          // Anti windup for integrator ui
-    ui = 400;
+  float out = Kp * error + ui;                                // PID output
+
+  if ( out < 400 && out > -400) {                            // not windup if not within bounds
+    windup = false;
   }
 
-  if (ui < -400) {
-    ui = -400;
-  }
-
-  float out = Kp * error + Ti + Td * rateError;            // PID output
-
-  if (out > 400) {                                          // Actuation Saturation for our speed driver.
+  if (out > 400) {                                           // if  out of bounds, set activate windup
     out = 400;
+    windup = true;
   }
 
   if (out < -400) {
-    out = 400;
+    out = -400;
+    windup = true;
   }
 
-  lastError = error;                                         // Remember current error
   previousTime = currentTime;                                // Remember current time
 
   output = out;                                              // Store output. MAX 400, MIN -400
@@ -51,10 +49,9 @@ void Actuator::setSetpoint(float r) {
 
 
 //Set function for parameters
-void Actuator::setParameters(double p, double ki, double kd ) {
+void Actuator::setParameters(double p, double ki) {
   Kp = p;                                                    // Updates Kp
   Ti = ki;                                                   // Updates Ti
-  Td = kd;                                                   // Updates Td
 }
 
 // Get function for angle
@@ -74,10 +71,6 @@ float Actuator::getKp() {
 float Actuator::getTi() {
   return Ti;
 }
-float Actuator::getTd() {
-  return Td;
-}
-
 //Get function for speed
 int Actuator::getSpeed() {
   return output;
