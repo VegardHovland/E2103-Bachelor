@@ -9,7 +9,7 @@
 //#include <robot_state_publisher/robot_state_publisher.h>
 
 //sensor_msgs::JointState robot_state;
-//ros::Publisher pub("joint_states", &robot_state);
+//ros::Publisher pub("robotleg", &robot_state);
 
 //Class declerations
 //ros::NodeHandle  nh;
@@ -88,8 +88,8 @@ void loop() {
   }
 
   controllActuators(actuators);             // Pid controll on all the acuators by defaut
- // drawGraph(actuators);                   // Draw graph at oled 1
-  printText(actuators);                     // Print angles on oled 1
+  // drawGraph(actuators);                   // Draw graph at oled 1
+  // printText(actuators);                     // Print angles on oled 1
   serialPlot();                             // Print data to be plotted in serial plot
   //jointStatePub();
 }
@@ -107,14 +107,14 @@ void loop() {
 
 //This prints data we want to plot in serial plot, in serial monitor choose serial plotter
 void serialPlot() {                                     //We will tune the parameters using the first motor
-    int currTime = millis();                              // Calculate scan time
-    int scantime = -printPrevtime + currTime;
-  //
-    Serial.println(scantime);
-  //Serial.println(actuators[2].getSetpoint());           // print motor 1 setpoint
-  //Serial.println(actuators[2].getAngle());              // Print motor 1 angle
-  //Serial.println(actuators[2].getSpeed());              // Print motor 1 speed
-  Prevtime = currTime;                               // Update prev time
+  int currTime = millis();                              // Calculate scan time
+  int scantime = currTime - prevtime;
+
+  Serial.println(scantime);
+  //  Serial.println(actuators[2].getSetpoint());           // print motor 1 setpoint
+  //  Serial.println(actuators[2].getAngle());              // Print motor 1 angle
+  //  Serial.println(actuators[2].getSpeed());              // Print motor 1 speed
+  prevtime = currTime;                                  // Update prev time
 }
 
 //Print menue for user inputs
@@ -175,18 +175,18 @@ void controllActuators(Actuator actuators[]) {
   for (int i = 0; i < numActuators; i++) {                       // Loops over the 4 actuator objects
     actuators[i].readAngle();                                    // Get the actuators angle
     actuators[i].computePID();                                   // Comeputes output using PID
-        if ( i == 0) {
-          md1.setM1Speed(actuators[i].getSpeed());               // Motor 1 is driver 1 M1
-        }
-        if ( i == 1) {
-          md1.setM2Speed(actuators[i].getSpeed());               // Motor 2 is driver 1 M2
-        }
-    if ( i == 2) {
+    if ( i == 0) {
+      md1.setM1Speed(actuators[i].getSpeed());               // Motor 1 is driver 1 M1
+    }
+    else if ( i == 1) {
+      md1.setM2Speed(actuators[i].getSpeed());               // Motor 2 is driver 1 M2
+    }
+    else if ( i == 2) {
       md2.setM1Speed(actuators[i].getSpeed());                   // Motor 3 is driver 2 M1
     }
-        if ( i == 3) {
-          md2.setM2Speed(actuators[i].getSpeed());               // Motor 4 is driver 2 M2
-        }
+    else if ( i == 3) {
+      md2.setM2Speed(actuators[i].getSpeed());               // Motor 4 is driver 2 M2
+    }
   }
 }
 
@@ -291,10 +291,7 @@ void shutDown() {
   int currTime = millis();
   while (shutdowntime > currTime) {                             // Comutes pid for actuators during shutdown time
     controllActuators(actuators);                               // Pid controll on all the acuators
-    drawGraph(actuators);                                       // Draw graph at oled 1
-    printText(actuators);                                       // Print angles on oled 1
-    currTime = millis();
-    serialPlot();                                               // Print data to be plotted in serial plot
+    currTime = millis();                                        // Print data to be plotted in serial plot
   }
   md1.setSpeeds(0, 0);                                          // Set speed to 0 for motor 1 and 2. NB! should already be 0
   md2.setSpeeds(0, 0);                                          // Set speed to 0 for motor 3 and 4. NB! should already be 0
@@ -342,23 +339,22 @@ void serialPrintData() {
 // Fuction for publishing joint states on the joint_state topic
 //void jointStatePub() {
 //  char robot_id = "robotleg";
-//  char *joint_name[4] = {"Rev22", "Rev24", "Rev26", "Rev28"};
+//  char *joint_name[4] = {"motor1_to_joint1", "motor2_to_joint2", "motor3_to_joint3", "motor4_to_joint4"};
 //  float pos[4];
 //  float vel[4];
 //  float eff[4];
 //
 //  for (int i = 0; i < 3; i++) { // Fulfill the arrays whith motor readings
-//    pos[i] = actuators[i].getAngle();
-//    vel[i] = actuators[i].getSpeed();
+//    pos[i] = (actuators[i].getAngle())/180) * 3.14;
+//    vel[i] = 0.1 //actuators[i].getSpeed();
 //    eff[i] = 0.1; // Value only for testing
-//    nh.spinOnce();
 //  }
 //
 //  // Fulfill the sensor_msg/JointState msg
-//  robot_state.name_length = 6;
-//  robot_state.velocity_length = 6;
-//  robot_state.position_length = 6;
-//  robot_state.effort_length = 6;
+//  robot_state.name_length = 4;
+//  robot_state.velocity_length = 4;
+//  robot_state.position_length = 4;
+//  robot_state.effort_length = 4;
 //
 //  robot_state.header.stamp = nh.now();
 //  robot_state.header.frame_id = robot_id;

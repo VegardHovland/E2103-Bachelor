@@ -77,7 +77,7 @@ float Actuator::getTi() {
 }
 //Get function for speed
 int Actuator::getSpeed() {
-  return output;
+  return (int)output;
 }
 
 //Reads encoder counter from slave and converts to angle
