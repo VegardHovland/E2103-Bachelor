@@ -7,7 +7,7 @@ pi=sym(pi);
 syms theta1 theta2 theta3 theta4;
 
 n=5; % 4dof + extra end-efector
-m=5; % Antall posisjoner tegnet
+m=6; % Antall posisjoner tegnet
 height = 575;
 
 d = [60.8 0 0 0 0];                         % z-offset
