@@ -7,32 +7,16 @@
 #include <std_msgs/Float64.h>
 #include <sensor_msgs/JointState.h>
 #include <stdlib.h>
-//Constants:
-const int potPin1 = A1; //pin A0 to read analog input
-const int potPin2 = A2; //pin A0 to read analog input
-const int potPin3 = A3; //pin A0 to read analog input
-const int potPin4 = A4; //pin A0 to read analog input
-//Variables:
-float value1; //save analog value
-float value2; //save analog value1
-float value3; //save analog value
-float value4; //save analog value
 
 ros::NodeHandle nh;
 sensor_msgs::JointState robot_state;
-ros::Publisher pub("joint_states", &robot_state);
+ros::Publisher pub("robotleg/joint_states", &robot_state);
 
 float angle[4] = {20.4,10.2,5.5,20.0};
-float ut;
 
 void setup()
 { 
-  pinMode(potPin1, INPUT); //Optional 
-  pinMode(potPin2, INPUT); //Optional 
-  pinMode(potPin3, INPUT); //Optional 
-  pinMode(potPin4, INPUT); //Optional 
-  
-  
+
   nh.getHardware()->setBaud(115200);
   nh.initNode();
   nh.advertise(pub);
@@ -40,26 +24,32 @@ void setup()
 
 void loop()
 {
-  nh.spinOnce();
-  value1 =  analogRead(potPin1);          //Read and save analog value from potentiometer
-  value1 =  map(value1, 0, 1023, 0, 3.14); //Map value 0-1023 to 0-255 (PWM)
+  char robot_id = "robotleg";                                                                                   // Robot namespace for topic
+  char *joint_name[4] = {"motor1_to_joint1", "motor2_to_joint2", "motor3_to_joint3", "motor4_to_joint4"};       // Name of joints for topic
+  float pos[4];                                                                                                 // Expected size for topic 
+  float vel[4];
+  float eff[4];
 
-  value2 =  analogRead(potPin2);           //Read and save analog value from potentiometer
-  value2 =  map(value2, 0, 1023, 0, 3.14); //Map value 0-1023 to 0-255 (PWM)
+  for (int i = 0; i < 4; i++) {                                                                                 // Fulfill the arrays whith motor readings converted to radians
+    pos[i] = 0.9;//(float)((actuators[i].getAngle())/180.0) * 3.14;
+    vel[i] = 0.9; //actuators[i].getSpeed();
+    eff[i] = 0.9; // Value only for testing
+     nh.spinOnce();
+  }
 
-  value3 =  analogRead(potPin3);           //Read and save analog value from potentiometer
-  value3 =  map(value3, 0, 1023, 0, 3.14); //Map value 0-1023 to 0-255 (PWM)
+  // Fulfill the sensor_msg/JointState msg
+  robot_state.name_length = 4;
+  robot_state.velocity_length = 4;
+  robot_state.position_length = 4;
+  robot_state.effort_length = 4;
 
-  value4 =  analogRead(potPin4);           //Read and save analog value from potentiometer
-  value4 =  map(value4, 0, 1023, 0, 3.14); //Map value 0-1023 to 0-255 (PWM)
-  
-  angle[0] = value1; 
-  angle[1] = value2; 
-  angle[2] = value3; 
-  angle[3] = value4; 
- 
-  robot_state.position = angle;
+  robot_state.header.stamp = nh.now();
+  robot_state.header.frame_id = robot_id;
+  robot_state.name = joint_name;
+  robot_state.position = pos;
+  robot_state.velocity = vel;
+  robot_state.effort = eff;
+
   pub.publish( &robot_state);
   nh.spinOnce();
-  delay(100);
 }

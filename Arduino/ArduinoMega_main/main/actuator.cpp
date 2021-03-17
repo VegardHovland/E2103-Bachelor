@@ -13,7 +13,7 @@ void Actuator::computePID() {
   currentTime = millis();                                    // Get current time
   elapsedTime = (float)(currentTime - previousTime);         // Compute time elapsed from previous computation
 
-  error = setPoint - angle;                                  // Determine error
+  error = setPoint - ang;                                  // Determine error
 
   if (!windup && Ti > 0.0) {
     cumError += error * elapsedTime;                         // Compute integral
@@ -39,10 +39,13 @@ void Actuator::computePID() {
     windup = true;
   }
 
+  velocity = ((ang - prevAngle) / 180 * 3.14 ) / (elapsedTime * 1000);
+
   previousTime = currentTime;                                // Remember current time
   prevOut = out;
   lastError = error;                                         // Remember last error
   output = out;                                              // Store output. MAX 400, MIN -400
+  prevAngle = ang;
 }
 
 
@@ -60,12 +63,16 @@ void Actuator::setParameters(float p, float ki) {
 
 // Get function for angle
 float Actuator::getAngle() {
-  return angle;
+  return ang;
 }
 
 //Get function for setoint
 float Actuator::getSetpoint() {
   return setPoint;
+}
+// Get function for current velocity
+float Actuator::getVelocity() {
+  return velocity;
 }
 
 // Get functions for PID parameters
@@ -76,7 +83,7 @@ float Actuator::getTi() {
   return Ti;
 }
 //Get function for speed
-int Actuator::getSpeed() {
+int Actuator::getEffort() {
   return (int)output;
 }
 
@@ -97,5 +104,5 @@ void Actuator::readAngle() {
     Serial.print("Unexpected endTransmission result: ");
     Serial.println(result);
   }
-  angle = (360.0 * (float)counter) / 9600;                       // Converts to degrees (0-360)
+  ang = (360.0 * (float)counter) / 9600;                       // Converts to degrees (0-360)
 }

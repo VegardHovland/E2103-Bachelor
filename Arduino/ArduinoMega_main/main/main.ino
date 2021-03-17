@@ -4,15 +4,16 @@
 #include "actuator.h"
 #include "DualG2HighPowerMotorShield.h"
 #include "variables.h"
-//#include <ros.h>
-//#include <sensor_msgs/JointState.h>
-//#include <robot_state_publisher/robot_state_publisher.h>
+#include <ros.h>
+#include <std_msgs/Float64.h>                                                                                                                     // Import msgs for subscribing
+#include <sensor_msgs/JointState.h>                                                                                                               // Import sesnor msgs for joint states
+#include <stdlib.h>
 
-//sensor_msgs::JointState robot_state;
-//ros::Publisher pub("robotleg", &robot_state);
+sensor_msgs::JointState robot_state;
+ros::Publisher pub("robotleg/joint_states", &robot_state);                                                                                        // Define callback function and topic for publishing
 
 //Class declerations
-//ros::NodeHandle  nh;
+ros::NodeHandle  nh;
 
 Adafruit_SSD1306 display_1(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);                                                                                // Declaration for display 1
 Adafruit_SSD1306 display_2(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);                                                                                // Declaration for display 1
@@ -42,8 +43,8 @@ void stepResponse();                             // Perform step respons
 void followTrajTest();                           // Test how actuator "3" respons to rapid setpoint changes
 
 void setup() {
-  //setupRos();
-  Serial.begin(9600);                          // Starts the serial monitor
+  setupRos();
+  //Serial.begin(9600);                          // Starts the serial monitor
   Wire.begin();                                // Initialize wire
   setupOled();
   setupDrivers();
@@ -86,35 +87,35 @@ void loop() {
       default : break;
     }
   }
-
-  controllActuators(actuators);             // Pid controll on all the acuators by defaut
-  // drawGraph(actuators);                   // Draw graph at oled 1
-  // printText(actuators);                     // Print angles on oled 1
-  serialPlot();                             // Print data to be plotted in serial plot
-  //jointStatePub();
+    
+  controllActuators(actuators);                 // Pid controll on all the acuators by defaut
+  // drawGraph(actuators);                      // Draw graph at oled 1
+  // printText(actuators);                      // Print angles on oled 1
+  // serialPlot();                              // Print data to be plotted in serial plot
+  jointStatePub();                              // Publish joint states to ros
 }
 
 
 //Function defenitions--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //Setup function for roscomunication
-//void setupRos() {
-//  nh.getHardware()->setBaud(115200);
-//  nh.initNode();
-//  nh.advertise(pub);
-//  nh.spinOnce();
-//}
+void setupRos() {
+  nh.getHardware()->setBaud(115200);                           // Set baud rate
+  nh.initNode();                                               // Initialize serial node    
+  nh.advertise(pub);                                           // Set publisher function as advertiser
+  nh.spinOnce();                                               // Sync with ros
+}
 
 //This prints data we want to plot in serial plot, in serial monitor choose serial plotter
-void serialPlot() {                                     //We will tune the parameters using the first motor
-  //int currTime = millis();                              // Calculate scan time
- // int scantime = currTime - prevtime;
+void serialPlot() {                                          //We will tune the parameters using the first motor
+  //int currTime = millis();                                 // Calculate scan time
+  // int scantime = currTime - prevtime;
 
   //Serial.println(scantime);
   //  Serial.println(actuators[2].getSetpoint());           // print motor 1 setpoint
   //  Serial.println(actuators[2].getAngle());              // Print motor 1 angle
-    Serial.println(actuators[0].getSpeed());              // Print motor 1 speed
-  //prevtime = currTime;                                  // Update prev time
+  Serial.println(actuators[0].getEffort());                 // Print motor 1 speed
+  //prevtime = currTime;                                    // Update prev time
 }
 
 //Print menue for user inputs
@@ -176,16 +177,16 @@ void controllActuators(Actuator actuators[]) {
     actuators[i].readAngle();                                    // Get the actuators angle
     actuators[i].computePID();                                   // Comeputes output using PID
     if ( i == 0) {
-      md1.setM1Speed(actuators[i].getSpeed());               // Motor 1 is driver 1 M1
+      md1.setM1Speed(actuators[i].getEffort());                  // Motor 1 is driver 1 M1
     }
     else if ( i == 1) {
-      md1.setM2Speed(actuators[i].getSpeed());               // Motor 2 is driver 1 M2
+      md1.setM2Speed(actuators[i].getEffort());                  // Motor 2 is driver 1 M2
     }
     else if ( i == 2) {
-      md2.setM1Speed(actuators[i].getSpeed());                   // Motor 3 is driver 2 M1
+      md2.setM1Speed(actuators[i].getEffort());                  // Motor 3 is driver 2 M1
     }
     else if ( i == 3) {
-      md2.setM2Speed(actuators[i].getSpeed());               // Motor 4 is driver 2 M2
+      md2.setM2Speed(actuators[i].getEffort());                  // Motor 4 is driver 2 M2
     }
   }
 }
@@ -243,7 +244,7 @@ void setupOled() {
     for (;;);
   }
 
-  display_2.setTextSize(2);;                                       // Set display properties and clear display
+  display_2.setTextSize(2);;                                      // Set display properties and clear display
   display_2.setTextColor(WHITE);
   display_2.setCursor(0, 0);
   display_2.clearDisplay();
@@ -337,39 +338,40 @@ void serialPrintData() {
 }
 
 // Fuction for publishing joint states on the joint_state topic
-//void jointStatePub() {
-//  char robot_id = "robotleg";
-//  char *joint_name[4] = {"motor1_to_joint1", "motor2_to_joint2", "motor3_to_joint3", "motor4_to_joint4"};
-//  float pos[4];
-//  float vel[4];
-//  float eff[4];
-//
-//  for (int i = 0; i < 3; i++) { // Fulfill the arrays whith motor readings
-//    pos[i] = (actuators[i].getAngle())/180) * 3.14;
-//    vel[i] = 0.1 //actuators[i].getSpeed();
-//    eff[i] = 0.1; // Value only for testing
-//  }
-//
-//  // Fulfill the sensor_msg/JointState msg
-//  robot_state.name_length = 4;
-//  robot_state.velocity_length = 4;
-//  robot_state.position_length = 4;
-//  robot_state.effort_length = 4;
-//
-//  robot_state.header.stamp = nh.now();
-//  robot_state.header.frame_id = robot_id;
-//  robot_state.name = joint_name;
-//  robot_state.position = pos;
-//  robot_state.velocity = vel;
-//  robot_state.effort = eff;
-//
-//  pub.publish( &robot_state);
-//  nh.spinOnce();
-//}
+void jointStatePub() {
+  char robot_id = "robotleg";                                                                                   // Robot namespace for topic
+  char *joint_name[4] = {"motor1_to_joint1", "motor2_to_joint2", "motor3_to_joint3", "motor4_to_joint4"};       // Name of joints for topic
+  float pos[4];                                                                                                 // Expected size for topic
+  float vel[4];
+  float eff[4];
 
+  for (int i = 0; i < 4; i++) {                                                                                 // Fulfill the arrays whith motor readings converted to radians
+    pos[i] = (float)((actuators[i].getAngle()) / 180.0) * 3.14;                                                 // Calc angle in radians
+    vel[i] = actuators[i].getVelocity();                                                                        // Get the actuators velocity in rad/s
+    eff[i] = actuators[i].getEffort();                                                                          // Get effort from PID -400 to 400
+    nh.spinOnce();
+  }
+
+  // Fulfill the sensor_msg/JointState msg
+  robot_state.name_length = 4;
+  robot_state.velocity_length = 4;
+  robot_state.position_length = 4;
+  robot_state.effort_length = 4;
+  robot_state.header.stamp = nh.now();
+  robot_state.header.frame_id = "";
+  robot_state.name = joint_name;
+  robot_state.position = pos;
+  robot_state.velocity = vel;
+  robot_state.effort = eff;
+
+  pub.publish( &robot_state);                                                                                 // Publish msg
+  nh.spinOnce();                                                                                              // Sync with ros
+}
+
+//Find offset from pid that is lost trhough gear ratio 150:1
 void calibrationData() {
   for (int i = 0; i < numActuators; i++) {
-    actuators[i].setSetpoint(startPos[i]);                    // Updates setpoints to startposition
+    actuators[i].setSetpoint(startPos[i]);                      // Updates setpoints to startposition
   }
   int shutdowntime = millis() + 5000;                           //Generate a shutdown time
   int currTime = millis();
@@ -389,11 +391,13 @@ void calibrationData() {
         controllActuators(actuators);                           // Pid controll on all the acuators
         currTime = millis();
       }
-      Serial.println(actuators[i].getSpeed());
+      Serial.println(actuators[i].getEffort());
     }
   }
 }
 
+
+// Perform a step respons
 void stepResponse() {
   delay(100);
   actuators[3].readAngle();
@@ -405,9 +409,10 @@ void stepResponse() {
   md2.setM2Speed(0);                                            // stop Motor 4, is driver 2 M2
 }
 
+// test a given trajectory, loop through an array of angles
 void followTrajTest() {
   float traj[20] = {0, 20, 90, -180, 90, 50, 100, 20, -40, 50, 200, 110, 30, -120, -180, 0, -20, 10, -50, 80};
-  for (int i = 0 ; i < 20; i++) {                     //Get offset speed for calibration calculations, write to monitor
+  for (int i = 0 ; i < 20; i++) {                              //Get offset speed for calibration calculations, write to monitor
     int shutdowntime = millis() + 1000;                        //Gives actuator time to reach setpoint
     int currTime = millis();
     actuators[2].setSetpoint(traj[i]);
