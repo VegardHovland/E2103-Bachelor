@@ -6,7 +6,7 @@ Jv = zeros([3 n]);
 Jw = zeros([3 n]);
 
 for i = 1:n
-    if lower(type) == "rot"
+    if lower(type(i)) == "rot"
         if i == 1
             Jv(1:3, i) = cross([0;0;1],(T(1:3, 4, n) - [0;0;0]));
             Jw(1:3, i) = [0;0;1];
