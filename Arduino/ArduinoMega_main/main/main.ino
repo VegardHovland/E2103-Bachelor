@@ -16,12 +16,12 @@ ros::Publisher pub("robotleg/joint_states", &robot_state);                      
 ros::NodeHandle  nh;
 
 Adafruit_SSD1306 display_1(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);                                                                                // Declaration for display 1
-Adafruit_SSD1306 display_2(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);                                                                                // Declaration for display 1
+Adafruit_SSD1306 display_2(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);                                                                                // Declaration for display 2
 
 DualG2HighPowerMotorShield24v14 md1(M11nSLEEP, M11DIR, M11PWM,  M11nFAULT,  M11CS, M12nSLEEP,  M12DIR,  M12PWM,  M12nFAULT, M12CS);                // Declaration for Motor driver 1
 DualG2HighPowerMotorShield24v14 md2(M21nSLEEP, M21DIR, M21PWM,  M21nFAULT,  M21CS, M22nSLEEP,  M22DIR,  M22PWM,  M22nFAULT, M22CS);                // Declaration for Motor driver 2                                                     //defines the two motor drivers
 
-Actuator actuators[4] = {Actuator(8), Actuator(9), Actuator(10), Actuator(11)};                                                                    // Generates a actuator list contaning 4 actuators and their i2c adress
+Actuator actuators[4] = {Actuator(8), Actuator(9), Actuator(10), Actuator(11)};                                                                    // Generates an actuator list contaning 4 actuators and their i2c address
 
 //Declare functions-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 void controllActuators(Actuator acts[]);         // Comutes the PID algorithm on every actuator
@@ -32,23 +32,23 @@ void stopIfFault();                              // Disable the motordrivers if 
 void setupDrivers();                             // Start the motor drivers
 void shutDown();                                 // Return to start and turn MOSFET off
 void serialPrintData();                          // Print data for actuator 1-4
-void updateSetpointSerial();                     // Update setpoint for a actuator using serial input
-void updateParametersSerial();                   // Update parameters for a actuator using serial input
-void printMenue();                               // Print menue for switch case
-void serialPlot();                               // Print data to be represented in seial plot, PID tuning
+void updateSetpointSerial();                     // Update setpoint for an actuator using serial input
+void updateParametersSerial();                   // Update parameters for an actuator using serial input
+void printMenu();                                // Print menu for switch case
+void serialPlot();                               // Print data to be represented in serial plot, PID tuning
 void setupRos();                                 // Initialize ros node
 void jointStatePub();                            // Publishes joint states to joint_states topic
-void calibrationData();                          // Run calibration cyclus to read what speed ofset the controller has. output is speed from pid when motor is still
+void calibrationData();                          // Run calibration cyclus to read what speed offset the controller has. Output is speed from pid when motor is still
 void stepResponse();                             // Perform step respons
-void followTrajTest();                           // Test how actuator "3" respons to rapid setpoint changes
+void followTrajTest();                           // Test how actuator "3" responds to rapid setpoint changes
 
 void setup() {
   setupRos();
   //Serial.begin(9600);                          // Starts the serial monitor
-  Wire.begin();                                // Initialize wire
+  Wire.begin();                                  // Initialize wire
   setupOled();
   setupDrivers();
-  printMenue();
+  printMenu();
 }
 
 void loop() {
@@ -67,19 +67,19 @@ void loop() {
           serialPrintData();
           break;
         }
-      case 'p': {                                // Return to starposition and turn off
-          printMenue();
+      case 'p': {                                // Print menu
+          printMenu();
           break;
         }
       case 'c': {                                // Run calibration cyclus
           calibrationData();
           break;
         }
-      case 't': {                                // Run calibration cyclus
+      case 't': {                                // Run follow trajectory test
           followTrajTest();
           break;
         }
-      case 'q': {                                // Return to starposition and turn off
+      case 'q': {                                // Return to startposition and turn off
           shutDown();
           break;
         }
@@ -88,7 +88,7 @@ void loop() {
     }
   }
     
-  controllActuators(actuators);                 // Pid controll on all the acuators by defaut
+  controllActuators(actuators);                 // Pid controll on all the acuators by default
   // drawGraph(actuators);                      // Draw graph at oled 1
   // printText(actuators);                      // Print angles on oled 1
   // serialPlot();                              // Print data to be plotted in serial plot
@@ -96,7 +96,7 @@ void loop() {
 }
 
 
-//Function defenitions--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Function definitions--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //Setup function for roscomunication
 void setupRos() {
@@ -109,27 +109,27 @@ void setupRos() {
 //This prints data we want to plot in serial plot, in serial monitor choose serial plotter
 void serialPlot() {                                          //We will tune the parameters using the first motor
   //int currTime = millis();                                 // Calculate scan time
-  // int scantime = currTime - prevtime;
+  //int scantime = currTime - prevtime;
 
   //Serial.println(scantime);
-  //  Serial.println(actuators[2].getSetpoint());           // print motor 1 setpoint
-  //  Serial.println(actuators[2].getAngle());              // Print motor 1 angle
+  //Serial.println(actuators[2].getSetpoint());           // print motor 1 setpoint
+  //Serial.println(actuators[2].getAngle());              // Print motor 1 angle
   Serial.println(actuators[0].getEffort());                 // Print motor 1 speed
   //prevtime = currTime;                                    // Update prev time
 }
 
-//Print menue for user inputs
-void printMenue() {
+//Print menu for user inputs
+void printMenu() {
   Serial.println("Press 'a' to update setpoint");
   Serial.println("Press 'b' to update PID parameters");
   Serial.println("Press 'd' to display information");
-  Serial.println("Press 'p' to print menue");
+  Serial.println("Press 'p' to print menu");
   Serial.println("Press 'c' to run calibration cyclus");
   Serial.println("Press 't' to run follow trajectory test");
   Serial.println("Press 'q' to exit");
 }
 
-//Function to update setpoint for a giver actuator using serial read
+//Function to update setpoint for a given actuator using serial read
 void updateSetpointSerial() {
   while (Serial.available()) {
     int trash = Serial.read(); //Clear trash from input buffer
@@ -147,7 +147,7 @@ void updateSetpointSerial() {
   Serial.println("setpoint updated, press d to display data");   // confirm success
 }
 
-//Function to update parameters for a giver actuator using serial read
+//Function to update parameters for a given actuator using serial read
 void updateParametersSerial() {
   while (Serial.available()) {
     int trash = Serial.read();                                   //Clear trash from input buffer
@@ -171,11 +171,11 @@ void updateParametersSerial() {
   Serial.println("parameters updated, press d to display data"); // confirm success
 }
 
-//Controlls all the acuators
+//Controlls all the actuators
 void controllActuators(Actuator actuators[]) {
   for (int i = 0; i < numActuators; i++) {                       // Loops over the 4 actuator objects
     actuators[i].readAngle();                                    // Get the actuators angle
-    actuators[i].computePID();                                   // Comeputes output using PID
+    actuators[i].computePID();                                   // Computes output using PID
     if ( i == 0) {
       md1.setM1Speed(actuators[i].getEffort());                  // Motor 1 is driver 1 M1
     }
@@ -290,7 +290,7 @@ void shutDown() {
   }
   int shutdowntime = millis() + 5000;                           //Generate a shutdown time
   int currTime = millis();
-  while (shutdowntime > currTime) {                             // Comutes pid for actuators during shutdown time
+  while (shutdowntime > currTime) {                             // Computes pid for actuators during shutdown time
     controllActuators(actuators);                               // Pid controll on all the acuators
     currTime = millis();                                        // Print data to be plotted in serial plot
   }
@@ -337,10 +337,10 @@ void serialPrintData() {
   }
 }
 
-// Fuction for publishing joint states on the joint_state topic
+// Function for publishing joint states on the joint_state topic
 void jointStatePub() {
   char robot_id = "robotleg";                                                                                   // Robot namespace for topic
-  char *joint_name[4] = {"motor1_to_joint1", "motor2_to_joint2", "motor3_to_joint3", "motor4_to_joint4"};       // Name of joints for topic
+  char* joint_name[4] = {"motor1_to_joint1", "motor2_to_joint2", "motor3_to_joint3", "motor4_to_joint4"};       // Name of joints for topic
   float pos[4];                                                                                                 // Expected size for topic
   float vel[4];
   float eff[4];
@@ -368,7 +368,7 @@ void jointStatePub() {
   nh.spinOnce();                                                                                              // Sync with ros
 }
 
-//Find offset from pid that is lost trhough gear ratio 150:1
+//Find offset from pid that is lost through gear ratio 150:1
 void calibrationData() {
   for (int i = 0; i < numActuators; i++) {
     actuators[i].setSetpoint(startPos[i]);                      // Updates setpoints to startposition

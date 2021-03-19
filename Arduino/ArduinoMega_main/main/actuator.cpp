@@ -3,7 +3,7 @@
 #include "actuator.h"
 #include <Wire.h>
 
-//Constructer function for the class,
+//Constructor function for the class,
 Actuator::Actuator(byte encAddr) {
   slaveadress = encAddr;                                     // Store actuator slave adress, (arduino nano slave adress)
 }
@@ -13,11 +13,11 @@ void Actuator::computePID() {
   currentTime = millis();                                    // Get current time
   elapsedTime = (float)(currentTime - previousTime);         // Compute time elapsed from previous computation
 
-  error = setPoint - ang;                                  // Determine error
+  error = setPoint - ang;                                    // Determine error
 
   if (!windup && Ti > 0.0) {
     cumError += error * elapsedTime;                         // Compute integral
-    ui =  cumError / Ti;                                     //Calc integator part if not windup
+    ui =  cumError / Ti;                                     // Calc integrator part if not windup
   }
   if (Td > 0.0) {
     beta = Tf / (elapsedTime + Tf);
