@@ -12,6 +12,10 @@ int pixelX = 0;                     // Stores the x value for pixel drwing for o
 float startPos[4] = {0 , 0, 90, 0};
 int shutdowntime;
 
+const char robot_id = "robotleg";                                                                                   // Robot namespace for topic
+const char* joint_name[4] = {"motor1_to_joint1", "motor2_to_joint2", "motor3_to_joint3", "motor4_to_joint4"};       // Name of joints for topic
+
+
 //Driver 1, for actuator 1 and 2
 unsigned char M11nSLEEP = 8;        // Common sleep pin for all 4 actuators
 unsigned char M11DIR = 3;           // Directio pin for actuator 1, High=current from A to B, low B to A

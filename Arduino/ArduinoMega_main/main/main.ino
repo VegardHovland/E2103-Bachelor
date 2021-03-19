@@ -339,8 +339,6 @@ void serialPrintData() {
 
 // Function for publishing joint states on the joint_state topic
 void jointStatePub() {
-  char robot_id = "robotleg";                                                                                   // Robot namespace for topic
-  char* joint_name[4] = {"motor1_to_joint1", "motor2_to_joint2", "motor3_to_joint3", "motor4_to_joint4"};       // Name of joints for topic
   float pos[4];                                                                                                 // Expected size for topic
   float vel[4];
   float eff[4];
