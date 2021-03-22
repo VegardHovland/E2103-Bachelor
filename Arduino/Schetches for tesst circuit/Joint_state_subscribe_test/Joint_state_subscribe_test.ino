@@ -12,7 +12,7 @@ void legCb(const control_msgs::FollowJointTrajectoryActionGoal& leg)
   angle[1] = leg.goal.trajectory.points[0].positions[1];
   angle[2] = leg.goal.trajectory.points[0].positions[2];
   angle[3] = leg.goal.trajectory.points[0].positions[3];
- }
+}
 
 ros::Subscriber<control_msgs::FollowJointTrajectoryActionGoal> sub("robotleg/robotleg_controller/follow_joint_trajectory/goal", legCb);
 

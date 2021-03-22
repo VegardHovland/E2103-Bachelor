@@ -13,7 +13,7 @@ float startPos[4] = {0 , 0, 90, 0};
 int shutdowntime;
 
 const char robot_id = "robotleg";                                                                                   // Robot namespace for topic
-const char* joint_name[4] = {"motor1_to_joint1", "motor2_to_joint2", "motor3_to_joint3", "motor4_to_joint4"};       // Name of joints for topic
+const char* joint_name[4] = {"joint1", "joint2", "joint3", "joint4"};       // Name of joints for topic
 
 
 //Driver 1, for actuator 1 and 2

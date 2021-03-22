@@ -10,7 +10,7 @@
 
 ros::NodeHandle nh;
 sensor_msgs::JointState robot_state;
-ros::Publisher pub("robotleg/joint_states", &robot_state);
+ros::Publisher pub("/joint_states", &robot_state);
 
 float angle[4] = {20.4,10.2,5.5,20.0};
 
@@ -25,7 +25,7 @@ void setup()
 void loop()
 {
   char robot_id = "robotleg";                                                                                   // Robot namespace for topic
-  char *joint_name[4] = {"motor1_to_joint1", "motor2_to_joint2", "motor3_to_joint3", "motor4_to_joint4"};       // Name of joints for topic
+  char *joint_name[4] = {"joint1", "joint2", "joint3", "joint4"};       // Name of joints for topic
   float pos[4];                                                                                                 // Expected size for topic 
   float vel[4];
   float eff[4];
@@ -44,7 +44,7 @@ void loop()
   robot_state.effort_length = 4;
 
   robot_state.header.stamp = nh.now();
-  robot_state.header.frame_id = robot_id;
+  robot_state.header.frame_id = "";
   robot_state.name = joint_name;
   robot_state.position = pos;
   robot_state.velocity = vel;
