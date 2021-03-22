@@ -89,17 +89,17 @@ int Actuator::getEffort() {
 
 //Reads encoder counter from slave and converts to angle
 void Actuator::readAngle() {
-  Wire.beginTransmission(slaveadress);                           // Starts transmition with slaver acturtor slave
+  Wire.beginTransmission(slaveadress);                           // Starts transmission with slaver actuator slave
   int available = Wire.requestFrom(slaveadress, (uint8_t)2);     // Requests bytes from slave
 
   if (available == 2) {                                          // Checks if 2 bytes are avavible
     counter = Wire.read() << 8 | Wire.read();                    // Reads upper and lower byte for encoder counter and converts to int (0-1023)
   }
-  else {                                                         // Error in transmition
+  else {                                                         // Error in transmission
     Serial.print("Unexpected number of bytes received: ");
     Serial.println(available);
   }
-  int result = Wire.endTransmission();                           // End transmition, store result
+  int result = Wire.endTransmission();                           // End transmission, store result
   if (result) {                                                  // check if sucessfulll
     Serial.print("Unexpected endTransmission result: ");
     Serial.println(result);
