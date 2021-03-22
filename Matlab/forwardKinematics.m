@@ -12,7 +12,7 @@ theta3 = 0;
 theta4 = 0;
 theta5 = 0;
 d       = [0 hipLength 0 0 0 0 phalangesLength-24];                 % z-offset
-theta   = [0 theta2+hipRotation theta3 theta4 theta5 -pi/6 0];      % z-rotation, actuator angles
+theta   = [0 theta2+hipRotation theta3 theta4 theta5 -pi/3 0];      % z-rotation, actuator angles
 a       = [0 hipHeigth femurLength tibiaLength tarsalLength 0 0];   % x-offset
 alpha   = [baseRotation hipRotation 0 0 0 -pi/2 0];                 % x-rotation
 linkType = ["rot" "rot" "rot" "rot" "rot" "rot" "rot"];             % Type of rotation for the Jacobi-matrix
@@ -26,7 +26,7 @@ T = symCalcT(A,n);
 J = symCalcJ(T, n, linkType);
 %J = simplify(J);
 
-%% Plot robot in starting positions
+% Plot robot in starting positions
 figure();
 plotRobot(T, n, baseHeight);
 
@@ -41,6 +41,8 @@ for i = 1:m
     plotRobot(T,n, baseHeight);
     
 end
+
+%% Mathmatical test
 
 
 
