@@ -43,9 +43,8 @@ for i = 1:m
 end
 
 %% Mathmatical test
-zLength = a(2)+a(3)+a(4)+a(5)+d(7)*cos(pi/6);
-x = zLength*sin(theta2);
-z = -zLength*cos(theta2)+baseHeight;
-y = -d(2)+a(3)*sin(theta(3))+a(4)*sin(theta(3)+theta(4))+a(5)*sin(theta(3)+theta(4)+theta(5))+d(7)*sin(theta(3)+theta(4)+theta(5)+pi/2-theta(6));
+zLength = a(2)+a(3)+a(4)+a(5)+d(7);
+x = zLength*sin(theta(2)-hipRotation);
+z = zLength*cos(theta(2)-hipRotation);
+y = -d(2)+a(3)*sin(theta(3)+a(4)*sin(theta(3)+theta(4))+a(5)*sin(theta(3)+theta(4)+theta(5))+d(7)*sin(theta(3)+theta(4)+theta(5)+theta(6));
 
-plot3(x,y,z,'kx');
