@@ -14,6 +14,7 @@
 #include <control_msgs/FollowJointTrajectoryActionGoal.h>
 #include <control_msgs/FollowJointTrajectoryGoal.h>
 #include <trajectory_msgs/JointTrajectory.h>
+#include <std_msgs/Float32MultiArray.h>
 
 sensor_msgs::JointState robot_state;
 
@@ -47,11 +48,11 @@ void jointStatePub();                            // Publishes joint states to jo
 void calibrationData();                          // Run calibration cyclus to read what speed offset the controller has. Output is speed from pid when motor is still
 void stepResponse();                             // Perform step respons
 void followTrajTest();                           // Test how actuator "3" responds to rapid setpoint changes
+void legCb(const std_msgs::Float32MultiArray& leg); // Calback function for subscriber 
 
 ros::Publisher pub("/joint_states", &robot_state);                                                                                        // Define callback function and topic for publishing
-//ros::Subscriber<trajectory_msgs::JointTrajectoryPoint> sub("robotleg/robotleg_controller/follow_joint_trajectory/goal", legCb);           // Define subscriber to trajectory topic
-ros::Subscriber<control_msgs::FollowJointTrajectoryActionGoal> sub("robotleg/robotleg_controller/follow_joint_trajectory/goal",1000, legCb);
-
+//ros::Subscriber<trajectory_msgs::JointTrajectoryPoint> sub("robotleg/robotleg_controller/follow_joint_trajectory/goal", legCb);         // Define subscriber to trajectory topic
+ros::Subscriber <std_msgs::Float32MultiArray> sub("setpoint2arduino", &legCb);
 
 void setup() {
   setupRos();
@@ -378,12 +379,15 @@ void jointStatePub() {
   nh.spinOnce();                                                                                              // Sync with ros
 }
 
-void legCb(const control_msgs::FollowJointTrajectoryActionGoal& leg){
-  for(int i = 0; i < numActuators; i++){
-    float deg = ((leg.goal.trajectory.points[0].positions[i]/3.14)*180.0);
-    actuators[i].setSetpoint(deg);                                 // Update setpoint for giver actuator
+void legCb(const std_msgs::Float32MultiArray& leg)
+{
+  for (int i = 0; i < 4; i++) {
+    float rad = leg.data[i];
+    float deg = (rad/3.14)*180.0;
+    actuators[i].setSetpoint(deg);   //Get angles from publisher nod
+    
   }
- }
+}
 
 
 //Find offset from pid that is lost through gear ratio 150:1

@@ -7,23 +7,29 @@ from control_msgs.msg import FollowJointTrajectoryActionGoal
 
 from std_msgs.msg import Float32MultiArray
 
+setpoint = [0, 0, 1.57, 0]
+pub = rospy.Publisher('/setpoint2arduino', Float32MultiArray, queue_size=1000)
+
 def subscriber():
     sub = rospy.Subscriber('/robotleg/robotleg_controller/follow_joint_trajectory/goal', FollowJointTrajectoryActionGoal, callback_function)
     rospy.spin()
 
-def talker():
-    pub = rospy.Publisher('chatter', String, queue_size=10)
-    rospy.init_node('talker', anonymous=True)
-    rate = rospy.Rate(10) # 10hz
-    while not rospy.is_shutdown():
-        hello_str = "hello world %s" % rospy.get_time()
-        rospy.loginfo(hello_str)
-        pub.publish(hello_str)
-        rate.sleep()
+def setpointToArduino():
+    pub = rospy.Publisher('/setpoint2arduino', Float32MultiArray, queue_size=1000)
+    rospy.loginfo(setpoint)
+    pub.publish(setpoint)
 
 def callback_function(message):
-    rospy.loginfo("I received : %f", message.goal.trajectory.points[-1].positions[2])
+    global setpoint
+    global pub
+    for i in range(4):
+        setpoint[i] = message.goal.trajectory.points[-1].positions[i]
+        rospy.loginfo("I received : %f", message.goal.trajectory.points[-1].positions[i])
+    pub.publish(setpoint)
+    setpointToArduino()
+
 
 if __name__ == "__main__":
     rospy.init_node("simple_subscriber")
     subscriber()
+    rospy.spin()
