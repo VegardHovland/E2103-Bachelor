@@ -4,7 +4,7 @@ clc
 
 pi=sym(pi);                         % Acurate pi
 %syms theta1 theta2 theta3 theta4 theta5 theta6 theta7;   % for symbolic calulations
-%syms a1 a2 a3 a4 a5 a6 a7;
+
 
 physicalProportions;                % Including robot physical dimensions
 
@@ -43,7 +43,7 @@ plot3(x,y,z,'kx');
 %% Draw movement
 m=6; % Antall posisjoner tegnet
 figure()
-theta = [linspace(-pi/12,pi/12,m)' linspace(pi/2,pi/4,m)' linspace(-2*pi/3,-2*pi/3,m)' linspace(pi/3,0,m)' linspace(pi/6,pi/6,m)']; % Actuator angles
+theta = [linspace(0,0,m)' hipRotation+linspace(-pi/12,pi/12,m)' linspace(pi/2,pi/4,m)' linspace(-2*pi/3,-2*pi/3,m)' linspace(pi/3,0,m)' -linspace(pi/3,pi/3,m)' linspace(0,0,m)']; % Actuator angles
 
 for i = 1:m
     A = symCalcA(a, alpha, d, theta(i,:), n);
@@ -51,5 +51,6 @@ for i = 1:m
     plotRobot(T,n, baseHeight);
     
 end
+
 
 
