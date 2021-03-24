@@ -19,15 +19,15 @@ linkType = ["rot" "rot" "rot" "rot" "rot" "rot" "rot"];             % Type of ro
 
 % Desired configuration
 x = 0;
-y = 0;
-z = 100;
+y = -30.44;
+z = 0;
 phi= pi/3;
 
-theta(2) = theta(2) + atan2(z,x);
+theta(2) = theta(2) + atan2(x,z);
 r = sqrt(x^2+z^2);
 
-ym = y+d(2)-a(5)*sin(pi/2-phi-theta(6))-d(7)*sin(pi/2-phi);
-rm = r-a(2)-a(5)*cos(pi/2-phi-theta(6))+d(7)*cos(pi/2-phi);
+ym = y+d(2)+a(5)*sin(phi+theta(6))-d(7)*sin(pi/2-phi);
+rm = r-a(2)-a(5)*cos(phi+theta(6))-d(7)*cos(pi/2-phi);
 
 gamma = atan2(-ym/sqrt(rm^2+ym^2),-rm/sqrt(rm^2+ym^2));
 theta(3) = gamma - acos(-(rm^2+ym^2+a(3)^2-a(4)^2)/(2*a(3)*sqrt(rm^2+ym^2)));
