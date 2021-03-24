@@ -16,7 +16,7 @@ linkType = ["rot" "rot" "rot" "rot" "rot" "rot" "rot"];             % Type of ro
 x = 0;
 y = 100;
 z = -520;
-phi= pi/3;
+phi= pi/6;
 
 theta(2) = atan2(x,-z)+hipRotation;
 r = sqrt(x^2+z^2);

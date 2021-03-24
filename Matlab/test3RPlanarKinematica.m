@@ -1,3 +1,4 @@
+%  Testing V. Kumar's invers kinematics
 close all
 clear
 clc
