@@ -3,7 +3,8 @@ clear
 clc
 
 pi=sym(pi);                         % Acurate pi
-syms theta1 theta2 theta3 theta4;   % for symbolic calulations
+%syms theta1 theta2 theta3 theta4 theta5 theta6 theta7;   % for symbolic calulations
+%syms a1 a2 a3 a4 a5 a6 a7;
 
 physicalProportions;                % Including robot physical dimensions
 
@@ -11,6 +12,7 @@ theta2 = 0;
 theta3 = 0;
 theta4 = 0;
 theta5 = 0;
+
 d       = [0 hipLength 0 0 0 0 phalangesLength-24];                 % z-offset
 theta   = [0 theta2+hipRotation theta3 theta4 theta5 -pi/3 0];      % z-rotation, actuator angles
 a       = [0 hipHeigth femurLength tibiaLength tarsalLength 0 0];   % x-offset
@@ -20,15 +22,23 @@ linkType = ["rot" "rot" "rot" "rot" "rot" "rot" "rot"];             % Type of ro
 n = length(d);                                                      % degrees of freedom + base rotation and end efector angle
 
 A = symCalcA(a, alpha, d, theta, n);
-%A = simplify(A);
+A = simplify(A);
 T = symCalcT(A,n);
-%T = simplify(T);
+T = simplify(T);
 J = symCalcJ(T, n, linkType);
 %J = simplify(J);
 
-% Plot robot in starting positions
+%% Plot robot in starting positions
 figure();
 plotRobot(T, n, baseHeight);
+
+%% Mathmatical test
+zLength = a(2)+a(3)+a(4)+a(5)+d(7)*cos(pi/6);
+x = zLength*sin(theta2);
+z = -zLength*cos(theta2)+baseHeight;
+y = -d(2)+a(3)*sin(theta(3))+a(4)*sin(theta(3)+theta(4))+a(5)*sin(theta(3)+theta(4)+theta(5))+d(7)*sin(theta(3)+theta(4)+theta(5)+pi/2-theta(6));
+
+plot3(x,y,z,'kx');
 
 %% Draw movement
 m=6; % Antall posisjoner tegnet
@@ -42,10 +52,4 @@ for i = 1:m
     
 end
 
-%% Mathmatical test
-zLength = a(2)+a(3)+a(4)+a(5)+d(7)*cos(pi/6);
-x = zLength*sin(theta2);
-z = -zLength*cos(theta2)+baseHeight;
-y = -d(2)+a(3)*sin(theta(3))+a(4)*sin(theta(3)+theta(4))+a(5)*sin(theta(3)+theta(4)+theta(5))+d(7)*sin(theta(3)+theta(4)+theta(5)+pi/2-theta(6));
 
-plot3(x,y,z,'kx');
