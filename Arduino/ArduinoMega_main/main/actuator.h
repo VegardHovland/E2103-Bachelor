@@ -28,6 +28,7 @@ class Actuator {
     float cumError;                                             // Integral
     float prevOut;                                              // Derivate
     float velocity;
+    unsigned int amps;                                          // Store how maney amps it is drawing;
 
   public:
     Actuator(byte encAddr);                                     // Constructor function for actuator class
@@ -39,8 +40,10 @@ class Actuator {
     void readAngle();                                           // Calculate the angle(-360,360) from the counter given by the encoder in the slave
     void computePID();                                          // Computes the pid value, this is an angle
     float getSetpoint();                                        // Get function for actuator setpoint
-    int getEffort();                                             // Get function for actuator speed
-    float getVelocity();                                             // Get function for current velocity
+    int getEffort();                                            // Get function for actuator speed
+    float getVelocity();                                        // Get function for current velocity
+    unsigned int getAmps();                                              // Get function for current readings in [mA]
+    void setAmps(unsigned int amp);                                      // Set function for current readings in [mA]
 };
 
 #endif

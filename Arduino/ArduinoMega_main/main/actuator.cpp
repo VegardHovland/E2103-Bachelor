@@ -39,7 +39,7 @@ void Actuator::computePID() {
     windup = true;
   }
 
-  velocity = ((ang - prevAngle) / 180 * 3.14 ) / (elapsedTime * 1000);
+  velocity = ((ang - prevAngle) / 180 * 3.14 ) / (elapsedTime * 1000);    // Calculate angular velocity
 
   previousTime = currentTime;                                // Remember current time
   prevOut = out;
@@ -47,20 +47,20 @@ void Actuator::computePID() {
   output = out;                                              // Store output. MAX 400, MIN -400
   prevAngle = ang;
 }
-
-
 //Set function for setpoint
 void Actuator::setSetpoint(float r) {
   setPoint = r;                                              //Updates setpoint
 }
-
 
 //Set function for parameters
 void Actuator::setParameters(float p, float ki) {
   Kp = p;                                                    // Updates Kp
   Ti = ki;                                                   // Updates Ti
 }
-
+//Set function for current [mA]
+void Actuator::setAmps(unsigned int amp) {
+  amps = amp;
+}
 // Get function for angle
 float Actuator::getAngle() {
   return ang;
@@ -85,6 +85,10 @@ float Actuator::getTi() {
 //Get function for speed
 int Actuator::getEffort() {
   return (int)output;
+}
+//Get function for current [mA]
+unsigned int Actuator::getAmps() {
+  return amps;
 }
 
 //Reads encoder counter from slave and converts to angle
