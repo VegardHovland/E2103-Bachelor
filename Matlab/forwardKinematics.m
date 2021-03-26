@@ -31,6 +31,8 @@ a       = [0 a2 a3 a4 a5 0 0];   % x-offset
 alpha   = [alpha1 alpha2 0 0 0 alpha6 0];                 % x-rotation
 linkType = ["rot" "rot" "rot" "rot" "rot" "rot" "rot"];             % Type of rotation for the Jacobi-matrix
 
+dh = [d' theta' a' alpha' linkType'];
+
 n = length(d);                                                      % degrees of freedom + base rotation and end efector angle
 
 A = symCalcA(a, alpha, d, theta, n);

@@ -1,6 +1,8 @@
 function [A] = symCalcA(a, alpha, d, theta, n)
-%Creates the transfer matrix between two joints using Denavit?Hartenberg
-%parameters
+%symCalcA calculates all transfer matrices between two joints for the 
+%entire robot configuration using Denavit-Hartenberg parameters. By 
+%declaring "A" symbolic, the function enables symbolic calculation but it 
+%can also be used numerically.
 
     A = sym('A', [4 4 n]);
 

@@ -1,6 +1,6 @@
 function [A] = calcA(a, alpha, d, theta)
-%Creates the transfer matrix between two joints using Denavit Hartenberg
-%parameters
+%calcA Creates the transfer matrix between two joints using Denavit-
+%Hartenberg parameters
 
 A = [cos(theta) -sin(theta)*cos(alpha)  sin(theta)*sin(alpha) a*cos(theta);
      sin(theta)  cos(theta)*cos(alpha) -cos(theta)*sin(alpha) a*sin(theta);
