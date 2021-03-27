@@ -1,4 +1,4 @@
-function [] = plotRobot(T, n, baseHeight)
+function [] = plotRobot(dh, baseHeight)
 %PLOTROBOT Plotting robot in current configuration
     hold on
     grid on
@@ -10,12 +10,15 @@ function [] = plotRobot(T, n, baseHeight)
     zlabel('Z');
     
     
+    T = symCalcT(dh);
+    n = length(dh(:,1)); %number of links
+    
     for i=1:n
         x(i) = T(1,4,i);
         y(i) = T(2,4,i);
         z(i) = T(3,4,i);
         
-        c = {'k' 'r' 'g' 'b' 'b' 'm' 'r'}; %Color for each joint and end effector
+        c = {'k' 'r' 'm' 'b' 'b' 'c' 'g' 'k'}; %Color for each joint and end effector
         plot3(x(i), y(i), z(i)+baseHeight, 'color', c{i}, 'marker', 'o') %Justerer for aksene til DH og høyden til stativet
         if i==2
             plot3([0 0],[0 y(i)],[baseHeight baseHeight], 'k');

@@ -1,4 +1,4 @@
-function [A] = calcA(a, alpha, d, theta)
+function [A] = calcA(d, theta, a, alpha)
 %calcA Creates the transfer matrix between two joints using Denavit-
 %Hartenberg parameters
 

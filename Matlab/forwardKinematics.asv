@@ -24,8 +24,7 @@ alpha1 = baseRotation;
 alpha2 = hipRotation;
 alpha6 = -pi/2;
 
-%Kanskje legge til baseheight i tabellen her
-d       = [0 d2 0 0 0 0 d7];                                    % z-offset 
+d       = [0 d2 0 0 0 0 d7];                                    % z-offset
 theta   = [0 theta2+hipRotation theta3 theta4 theta5 theta6 0]; % z-rotation, actuator angles
 a       = [0 a2 a3 a4 a5 0 0];                                  % x-offset
 alpha   = [alpha1 alpha2 0 0 0 alpha6 0];                       % x-rotation
@@ -44,7 +43,7 @@ J = simplify(J);
 
 %% Plot robot in starting positions
 figure();
-plotRobot(dh, baseHeight);
+plotRobot(T, n, baseHeight);
 
 %% Mathmatical test
 % Testing to make sure both forward kinematics calculations are correct
@@ -63,11 +62,12 @@ figure()
 theta = [linspace(0,0,m)' hipRotation+linspace(-pi/12,pi/12,m)' linspace(pi/2,pi/4,m)' linspace(-2*pi/3,-2*pi/3,m)' linspace(pi/3,0,m)' -linspace(pi/3,pi/3,m)' linspace(0,0,m)']; % Actuator angles
 
 for i = 1:m
-    dh(2,2) = theta(i,2);
-    dh(3,2) = theta(i,3);
-    dh(4,2) = theta(i,4);
-    dh(5,2) = theta(i,5);
-    plotRobot(dh, baseHeight);
+    dh(2,4) = theta(i,2);
+    dh(3,4) = theta(i,3);
+    dh(3,4) = theta(i,3);
+    %A = symCalcA(a, alpha, d, theta(i,:), n);
+    %T = symCalcT(A,n);
+    plotRobot(T,n, baseHeight);
     
 end
 

@@ -5,7 +5,7 @@ function [T] = symCalcT(dh)
 
     A = symCalcA(dh);
 
-    n = length(dh(:,1)); %number of links
+    n = length(h()); %number of links
     T = sym('T', [4 4 n]);  
     
     T(:,:,1) = A(:,:,1);
