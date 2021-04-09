@@ -31,15 +31,13 @@ theta(4) = atan2((ym-a(3)*sin(theta(3)))/a(4),(rm-a(3)*cos(theta(3)))/a(4))-thet
 theta(5) = -(phi+theta(3)+theta(4)+theta(6));
 
 figure();
-n = length(d);                                                      % degrees of freedom + base rotation and end efector angle
-A = symCalcA(a, alpha, d, theta, n);
-T = symCalcT(A,n);
+dh = [d' theta' a' alpha' linkType'];
 
-plotRobot(T, n, baseHeight);
+plotRobot(dh, baseHeight);
 
 %% Generating angles for via points
 
-num = 2;
+num = 5;
 x = [linspace(0,0,num) linspace(0,0,num)];
 y = [linspace(150,-100,num) linspace(-100,-200,num)];
 z = [linspace(-520,-520,num) linspace(-520,-420,num)];
@@ -68,7 +66,6 @@ theta = [theta1' theta2' theta3' theta4' theta5' theta6' theta7'];
 figure();
 n = length(d);   
 for i =1:m
-    A = symCalcA(a, alpha, d, theta(i,:), n);
-    T = symCalcT(A,n);
-    plotRobot(T, n, baseHeight);
+    dh = [d' theta(i,:)' a' alpha' linkType'];
+    plotRobot(dh, baseHeight);
 end
