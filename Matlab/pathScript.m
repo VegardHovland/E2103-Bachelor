@@ -48,7 +48,8 @@ xlabel('time(sec)')
 ylabel('acceleration(m/s^2)')
 title('acceleration')
 
-%%
+%% Utvidede funksjoner
+
 theta2 = [30*pi/180 20*pi/180 45*pi/180 50*pi/180];
 theta3 = [59*pi/180 30*pi/180 43*pi/180 -9*pi/180];
 theta4 = [30*pi/180 2*pi/180 4*pi/180 -20*pi/180];
@@ -58,6 +59,4 @@ thetaVias = [theta2; theta3; theta4; theta5];
 timeLim = [2 3 1];
 
 thetaFuncs = pathCalcTot(thetaVias,timeLim);
-
-
 
