@@ -57,7 +57,10 @@ theta5 = [40*pi/180 32*pi/180 21*pi/180 0*pi/180];
 thetaVias = [theta2; theta3; theta4; theta5];
 timeLim = [2 3 1];
 
-thetaFuncs = pathCalcTot(thetaVias,timeLim);
+thetaFunc = pathCalc([theta2(1) theta2(2)],[0 timeLim(1)])
+thetaFunc = pathCalc([theta2(2) theta2(3)],[0 timeLim(1)])
+
+thetaFuncs = pathCalcTot(thetaVias,timeLim)
 
 
 

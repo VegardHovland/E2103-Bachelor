@@ -3,7 +3,6 @@ clear
 clc
 
 pi=sym(pi);  
-
 physicalProportions;
 
 d       = [0 hipLength 0 0 0 0 phalangesLength-24];                 % z-offset
