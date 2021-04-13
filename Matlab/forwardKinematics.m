@@ -14,9 +14,9 @@ syms d2 d7;
 d2 = hipLength;
 d7 = phalangesLength-24;
 theta2 = 0;
-theta3 = 80*pi/180;
-theta4 = -120*pi/180;
-theta5 = 60*pi/180;
+theta3 = 0;
+theta4 = 0;
+theta5 = 0;
 theta6 = -pi/3;
 a2 = hipHeigth;
 a3 = femurLength;
@@ -101,7 +101,7 @@ for i = 1:length(time3)
     t = time3(i);
     thetaPath3(:,i) = subs(thetaFuncs(:,3));
 end
-
+figure()
 for i = 1:length(time1)
     dh(2,2) = hipRotation+thetaPath1(1,i);
     dh(3,2) = thetaPath1(2,i);
