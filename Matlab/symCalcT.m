@@ -1,8 +1,7 @@
 function [T] = symCalcT(dh)
-%symCalcT calculates all T matrices from base link to end effector for any
-%robot configuration. By declaring A symbolic, the function enables
-%symbolic calculation but it can be used numerically
-
+%symCalcT calculates all T matrices from base link to end effector for any robot configuration.
+%By declaring A symbolic, the function enables symbolic calculation but it can be used numerically
+    
     A = symCalcA(dh);
 
     n = length(dh(:,1)); %number of links

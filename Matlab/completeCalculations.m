@@ -12,7 +12,7 @@ zVias = [-520 -520 -420 -360 -400 -520];
 phiVias = [pi/6 pi/4 pi/2 pi/5 0 pi/6];
 
 thetaVias = invKinViasCalc(xVias,yVias,zVias,phiVias,dh,pi);
-timeLim = [3 1 2 2];
+timeLim = [3 1 2 2 2];
 
 
 %% Inverse kinematics test plot
@@ -26,6 +26,7 @@ end
 
 %%
 thetaFuncs = pathCalcTot(thetaVias,timeLim);
+
 
 n = 1; %time divisions to plot
 [thetaDiscrete, timeLine] = pathDiscrete(thetaFuncs,timeLim,n);

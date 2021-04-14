@@ -1,6 +1,8 @@
 function [thetaFuncs,velFuncs,accFuncs] = pathCalcTot(thetaVias,timeLimits)
-%UNTITLED3 Summary of this function goes here
-%   Detailed explanation goes here
+%pathCalcTot calculatesthe total path functions for alle via points 
+%   Using the tradjCalcQuint function, this function returns the symbolic
+%   functions with respect to t for angle, velocity and acceleration for
+%   all trajectories between via points.
     
     n = length(timeLimits);
     m = length(thetaVias(:,1));
@@ -18,7 +20,7 @@ function [thetaFuncs,velFuncs,accFuncs] = pathCalcTot(thetaVias,timeLimits)
     
     for i=1:n           %Number of via points
         for j = 1:m     %Number of actuators
-            [thetaFuncs(j,i), velFuncs(j,i), accFuncs(j,i)] = pathCalc([thetaVias(j,i) thetaVias(j,i+1)], [timeLine(i) timeLine(i+1)]);
+            [thetaFuncs(j,i), velFuncs(j,i), accFuncs(j,i)] = tradjCalcQuint([thetaVias(j,i) thetaVias(j,i+1)], [timeLine(i) timeLine(i+1)]);
         end
     end
 end
