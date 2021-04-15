@@ -5,8 +5,6 @@ clc
 pi=sym(pi);                         % Acurate pi
 physicalProportions;                % Including robot physical dimensions
 
-
-
 syms theta1 theta2 theta3 theta4 theta5 theta6 theta7;   % for symbolic calulations
 syms a2 a3 a4 a5;
 syms d2 d7;

@@ -7,12 +7,12 @@ function [thetaFunc,velFunc,accFunc] = tradjCalcQuint(theta, time, vel, acc)
     t = sym('t');
     
     if ~exist('vel','var')
-     % third parameter does not exist, so default it to something
+     % Velocity parameters is not set, defaults to 0
       vel(1) = 0;
       vel(2) = 0;
     end
     if ~exist('acc','var')
-     % third parameter does not exist, so default it to something
+     % Acceleration parameters is not set, defaults to 0
       acc(1) = 0;
       acc(2) = 0;
     end

@@ -1,0 +1,6 @@
+function [thetaFunc,velFunc] = tradjCalcLin(theta, time, vel)
+%tradjCalcLin Summary of this function goes here
+%   Detailed explanation goes here
+    tb = (theta(1)-theta(2)+vel*time(2))/vel;
+end
+
