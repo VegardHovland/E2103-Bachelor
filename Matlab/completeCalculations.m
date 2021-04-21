@@ -6,15 +6,15 @@ pi = sym(pi); %Better pi
 
 [dh, baseHeight] = initDH(pi); %Kan ikke definere sym pi inne i funksjoner?
 
-%xVias = [0 0 0 0 0 0];
-%yVias = [150 -200 -500 0 200 150];
-%zVias = [-520 -520 -420 -360 -400 -520];
-%phiVias = [pi/6 pi/4 pi/2 pi/5 0 pi/6];
+xVias = [0 0 0 0 0 0];
+yVias = [150 -200 -500 0 200 150];
+zVias = [-520 -520 -420 -360 -400 -520];
+phiVias = [pi/6 pi/4 pi/2 pi/5 0 pi/6];
 
-xVias = [];
-yVias = [];
-zVias = [];
-phiVias = [];
+%xVias = [0 0 0 0 0 0 0 0];
+%yVias = [];
+%zVias = [];
+%phiVias = [48.5*pi/180 67.7*pi/180];
 
 thetaVias = invKinViasCalc(xVias,yVias,zVias,phiVias,dh,pi);
 timeLim = [3 1 2 2 2];
@@ -36,7 +36,7 @@ end
 
 [x, y] = meshgrid(-1000:1:1000);
 z = zeros(size(x,1));
-surf(x,y,z, grey)
+%surf(x,y,z, grey)
 
 %% Path Calculation
 [thetaFuncs, velFuncs, accFuncs] = pathCalcTot(thetaVias,timeLim,velVias,accVias);
