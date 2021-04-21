@@ -1,6 +1,7 @@
 function [dh, baseHeight] = initDH(pi)
-%INITIALISEDH Summary of this function goes here
-%   Detailed explanation goes here
+%initDH creates a complete DH-table for this robot configuration
+%   In this function, all parameters of the robot are defined and combined
+%   into the Denevit-Hartenberg table. 
     
     legLength = 800;
 
@@ -18,16 +19,21 @@ function [dh, baseHeight] = initDH(pi)
     femurLength = legLength*femurProportions;           % a3
     tibiaLength = legLength*tibiaProportions;           % a4
     tarsalLength = legLength*tarsalProportions;         % a5
-    phalangesLength = legLength*phalangesProportions;   % a6
-    phalangesAngle = -pi/3;                             % 
+    phalangesLength = legLength*phalangesProportions;
+    phalangesAngle = -pi/3;                             % theta6 
     phalangesRadius = 24;
     baseHeight = legLength*baseHeightProportions;       % height of base link from ground
     
-    d       = [0 hipLength 0 0 0 0 phalangesLength-phalangesRadius];                                    % z-offset 
-    theta   = [0 hipRotation 0 0 0 phalangesAngle 0]; % z-rotation, actuator angles
-    a       = [0 hipHeigth femurLength tibiaLength tarsalLength 0 0];                                  % x-offset
-    alpha   = [baseRotation hipRotation 0 0 0 tarsalRotation 0];                       % x-rotation
-    linkType = ["rot" "rot" "rot" "rot" "rot" "rot" "rot"];         % Type of rotation for the Jacobi-matrix
+    % z-offset 
+    d       = [0 hipLength 0 0 0 0 phalangesLength-phalangesRadius];    
+    % z-rotation, actuator angles
+    theta   = [0 hipRotation 0 0 0 phalangesAngle 0]; 
+    % x-rotation
+    a       = [0 hipHeigth femurLength tibiaLength tarsalLength 0 0];
+    % x-offset
+    alpha   = [baseRotation hipRotation 0 0 0 tarsalRotation 0];
+    % Type of rotation for the Jacobi-matrix
+    linkType = ["rot" "rot" "rot" "rot" "rot" "rot" "rot"];
 
     dh = [d' theta' a' alpha' linkType'];
 end

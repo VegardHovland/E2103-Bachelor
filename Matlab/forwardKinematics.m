@@ -9,17 +9,17 @@ syms theta1 theta2 theta3 theta4 theta5 theta6 theta7;   % for symbolic calulati
 syms a2 a3 a4 a5;
 syms d2 d7;
 
-d2 = hipLength;
-d7 = phalangesLength-24;
-theta2 = 0;
-theta3 = 0;
-theta4 = 0;
-theta5 = 0;
-theta6 = -pi/3;
-a2 = hipHeigth;
-a3 = femurLength;
-a4 = tibiaLength;
-a5 = tarsalLength;
+%d2 = hipLength;
+%d7 = phalangesLength-24;
+%theta2 = 0;
+%theta3 = 0;
+%theta4 = 0;
+%theta5 = 0;
+%theta6 = -pi/3;
+%a2 = hipHeigth;
+%a3 = femurLength;
+%a4 = tibiaLength;
+%a5 = tarsalLength;
 alpha1 = baseRotation;
 alpha2 = hipRotation;
 alpha6 = -pi/2;
@@ -34,9 +34,9 @@ linkType = ["rot" "rot" "rot" "rot" "rot" "rot" "rot"];         % Type of rotati
 dh = [d' theta' a' alpha' linkType'];
 
 A = symCalcA(dh);
-A = simplify(A);
+%A = simplify(A);
 T = symCalcT(dh);
-T = simplify(T);
+%T = simplify(T);
 J = symCalcJ(dh);
 J = simplify(J);
 
