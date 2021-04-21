@@ -4,18 +4,18 @@ clc
 % Parameters
 syms J M R g To real
 % Variables
-syms x theta  real
-syms dx dtheta real
+syms  theta1 theta2 theta3 theta4 theta5 theta6 theta7 real
+syms dtheta1 dtheta2 dtheta3 dtheta4 dtheta5 dtheta6 dtheta7 real
 
 % Define symbolic variable q for the generalized coordinates
 % x and theta
-q  = [x; theta];
+q  = [theta1; theta2; theta3; theta4; theta5; theta6; theta7];
 % Define symbolic variable dq for the derivatives 
 % of the generalized coordinates
-dq = [dx; dtheta];
+dq = [dtheta1; dtheta2; dtheta3; dtheta4; dtheta5; dtheta6; dtheta7];
 % Write the expressions for the position of
-% the center of the ball:
-p = [x*cos(theta); 0; x*sin(theta)+R*cos(theta)];   
+% the endeffector:
+p = [];   
 
 % Kinetic energy
 T = 1/2*J*dtheta^2; % kinetic energy of beam
