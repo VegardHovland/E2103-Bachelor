@@ -39,7 +39,7 @@ timeStep = 1/10; %time steps for plot
 [thetaDiscrete, timeLine] = pathDiscrete(thetaFuncs,timeLim,timeStep);
 
 %% Body velocity
-[XiMat] = BodyVel(dh, velFuncs)
+[XiMat] = BodyVel(dh, velFuncs);
 
 %% Animated plotting
 figure()
