@@ -14,13 +14,9 @@ phiVias = [48.9*pi/180 65.8*pi/180 86.9*pi/180 94.1*pi/180 55.1*pi/180 28.1*pi/1
 thetaVias = invKinViasCalc(xVias,yVias,zVias,phiVias,dh,pi);
 timeLim = [2 2 2 2 2 2 2 2];
 
-%velLim = 0.2;
-%Lage funksjon som setter 
-%velVias = velViasCalc(thetaVias, velLim);
-velVias = zeros(length(timeLim)+1);
+velLim = 0.5;
+velVias = velViasCalc(thetaVias, velLim);
 accVias = zeros(length(timeLim)+1);
-%velVias = [0 -0.5 -0.5 0.5 0.5 0];
-
 %% Inverse kinematics test plot
 figure()
 dhMom = dh; % Making a momentary copy of dh
@@ -56,7 +52,7 @@ for i = 1:numFrames
     frames(i) = getframe(gcf); 
 end
 
-video = VideoWriter('gaitAnimation3', 'MPEG-4');
+video = VideoWriter('gaitAnimation1', 'MPEG-4');
 video.FrameRate = 10;
 
 open(video)

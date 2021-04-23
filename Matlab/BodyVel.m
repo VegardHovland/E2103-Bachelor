@@ -12,10 +12,9 @@ for i = 1:5%length(k)
     
     Xi = J*VelVec;
 
-for j = 1:6
-   XiMat(j,i) = Xi(j);
+    for j = 1:6
+       XiMat(j,i) = Xi(j);
+    end
 end
-end
-XiMat
-
+%XiMat
 %Xi = [zeros(length(VelFuncs), 1)]

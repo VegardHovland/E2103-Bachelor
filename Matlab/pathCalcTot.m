@@ -30,7 +30,7 @@ function [thetaFuncs,velFuncs,accFuncs] = pathCalcTot(thetaVias,timeLimits,velVi
     
     for i=1:n           %Number of via points
         for j = 1:m     %Number of actuators
-            [thetaFuncs(j,i), velFuncs(j,i), accFuncs(j,i)] = tradjCalcQuint([thetaVias(j,i) thetaVias(j,i+1)], [timeLine(i) timeLine(i+1)], [velVias(i) velVias(i+1)], [accVias(i) accVias(i+1)]);
+            [thetaFuncs(j,i), velFuncs(j,i), accFuncs(j,i)] = tradjCalcQuint([thetaVias(j,i) thetaVias(j,i+1)], [timeLine(i) timeLine(i+1)], [velVias(j,i) velVias(j,i+1)], [accVias(i) accVias(i+1)]);
         end
     end
 end
