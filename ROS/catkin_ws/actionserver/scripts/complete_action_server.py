@@ -36,8 +36,9 @@ class JointTrajectoryActionServer(object):
         self.i=0                                                                                   # This should have a better name
         self.value.data = [0, 0, 1.57, 0]
         self.jointStates = [0, 0, 1.57, 0]
-        self.pub = rospy.Publisher('/setpoint2arduino', Float32MultiArray, queue_size=1000)
         rospy.Subscriber('/joint_states', JointState, self.get_joints)                              # define joint_states subscriber
+        self.value.data = self.jointStates
+        self.pub = rospy.Publisher('/setpoint2arduino', Float32MultiArray, queue_size=1000)
         rospy.loginfo('Successful init')
         rospy.spin()
 

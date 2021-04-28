@@ -9,7 +9,7 @@ const int numActuators = 4 ;        // Defines the number of actuators
 int printPrevtime;
 int prevtime = 0;
 int pixelX = 0;                     // Stores the x value for pixel drwing for oled
-float startPos[4] = {0 , 0, 90, 0};
+float startPos[4] = {0 , 0, -90, 0};
 int shutdowntime;
 
 const char robot_id = "robotleg";                                                                                   // Robot namespace for topic

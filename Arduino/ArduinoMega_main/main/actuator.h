@@ -12,13 +12,12 @@ class Actuator {
 
     float ang;
     float prevAngle;
-    float Kp = 10.0;                                           // Controller constants, 
-    float Ti = 0.0;                                            // tuned for fastest respons without,
-    float Td = 5.0*1000.0;                                     // overshoot and no static error
-    float Tf = 500;                                            // Filter constant
+    float Kp;                                           // Controller constants, 
+    float Ti;                                            // tuned for fastest respons without,
+    float Td;                                     // overshoot and no static error
     float ui = 0;                                              // Integrator part
     float ud = 0;                                              // Derivative part
-    float beta = 0;                                            // used in derivative calculation
+    int gearRatio;
     unsigned long currentTime;
     unsigned long previousTime;                                 // Keep track of the previousTime for given actuator
     float elapsedTime;                                          // Scan time
@@ -31,7 +30,7 @@ class Actuator {
     unsigned int amps;                                          // Store how maney amps it is drawing;
 
   public:
-    Actuator(byte encAddr);                                     // Constructor function for actuator class
+    Actuator(byte encAddr, float p, float i, float d,int gr);                                     // Constructor function for actuator class
     void setSetpoint(float r);                                  // Set function for setpoint
     void setParameters(float kp, float ti);                     // Set fucntion for PID parameters
     float getKp();                                              // Get function for PID parameters

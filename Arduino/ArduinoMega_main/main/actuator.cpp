@@ -4,8 +4,12 @@
 #include <Wire.h>
 
 //Constructor function for the class,
-Actuator::Actuator(byte encAddr) {
+Actuator::Actuator(byte encAddr, float p, float i, float d, int gr) {
   slaveadress = encAddr;                                     // Store actuator slave adress, (arduino nano slave adress)
+  Kp = p;
+  Ti = i;
+  Td = d;
+  gearRatio = gr;
 }
 
 //PID algorithm function
@@ -20,8 +24,7 @@ void Actuator::computePID() {
     ui =  cumError / Ti;                                     // Calc integrator part if not windup
   }
   if (Td > 0.0) {
-    beta = Tf / (elapsedTime + Tf);
-    ud = (beta * ud) - (((1.0 - beta) * (output - prevOut) * (Kp * Td)) / elapsedTime);
+    ud = ((error - lastError) * (Kp * Td)) / elapsedTime;
   }
   float  out = Kp * error + ui + ud;                          // PID output
 
@@ -108,5 +111,5 @@ void Actuator::readAngle() {
     Serial.print("Unexpected endTransmission result: ");
     Serial.println(result);
   }
-  ang = (360.0 * (float)counter) / 9600;                       // Converts to degrees (0-360)
+  ang = (360.0 * (float)counter) / gearRatio;                       // Converts to degrees (0-360)
 }

@@ -7,7 +7,7 @@ int pinA = 3;                 // Encoder pin for A puls
 int pinB = 4;                 // Encoder pin for B puls
 
 //Variables:
-int counter = 9600 / 4;       // store the incremental encoders counter, slave 3 starts at 90 deg
+int counter = -4480 / 4;       // store the incremental encoders counter, slave 3 starts at 90 deg
 int aState;                   // Store the state of the puls
 int aLastState;               // Save last state of the puls
 void setup() {
@@ -18,7 +18,7 @@ void setup() {
   Wire.onRequest(requestEvent);              // On request from master function
   aLastState = digitalRead(pinA);            // Reads the initial state of the outputA
   attachInterrupt(digitalPinToInterrupt(2), saveToERPROM, FALLING);  //Atatches interupt pin
-  EEPROM.get(0, counter);     //Get last stored counter value
+  //EEPROM.get(0, counter);     //Get last stored counter value
 }
 
 void loop() {
