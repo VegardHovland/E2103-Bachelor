@@ -2,8 +2,6 @@
 
 <launch>
 
-
-
   <!-- Launch arguments -->
   <arg name="paused" default="true"/>
   <arg name="use_sim_time" default="true"/>
@@ -35,10 +33,10 @@
     <node name="robotleg_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
           args="-urdf -param robot_description -model robotleg -x $(arg x) -y $(arg y) -z $(arg z)"/>
 
-    <!-- Controller launch file ->
-    <include file="$(find robotleg_description)/launch/controller.launch"/>
-    -->
-
   </group>
+
+  <!-- Controller launch file -->
+  <include file="$(find robotleg_description)/launch/controller.launch"/>
+  
 
 </launch>

@@ -6,6 +6,6 @@ moveit_setup_assistant_config:
   SRDF:
     relative_path: config/robotleg.srdf
   CONFIG:
-    author_name: Vegard Hovland
-    author_email: vegardbhovland@gmail.com
-    generated_timestamp: 1615888655
+    author_name: Kristian Grinde
+    author_email: kgrinde@live.no
+    generated_timestamp: 1619442675

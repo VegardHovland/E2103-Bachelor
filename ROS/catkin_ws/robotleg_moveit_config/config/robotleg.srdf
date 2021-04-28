@@ -10,46 +10,39 @@
     <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
     <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
     <group name="robotleg">
-        <joint name="virtual_joint"/>
-        <joint name="motor1_to_joint1"/>
-        <joint name="motor2_to_joint2"/>
-        <joint name="motor3_to_joint3"/>
-        <joint name="motor4_to_joint4"/>
         <chain base_link="base_link" tip_link="rubber_sole_1"/>
     </group>
     <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
-    <group_state name="home" group="robotleg">
-        <joint name="motor1_to_joint1" value="0"/>
-        <joint name="motor2_to_joint2" value="0"/>
-        <joint name="motor3_to_joint3" value="0"/>
-        <joint name="motor4_to_joint4" value="0"/>
+    <group_state name="zeros" group="robotleg">
+        <joint name="joint1" value="0"/>
+        <joint name="joint2" value="0"/>
+        <joint name="joint3" value="0"/>
+        <joint name="joint4" value="0"/>
     </group_state>
-    <group_state name="start" group="robotleg">
-        <joint name="motor1_to_joint1" value="0"/>
-        <joint name="motor2_to_joint2" value="0"/>
-        <joint name="motor3_to_joint3" value="1.57"/>
-        <joint name="motor4_to_joint4" value="0"/>
+    <group_state name="front_step" group="robotleg">
+        <joint name="joint1" value="0"/>
+        <joint name="joint2" value="1.223"/>
+        <joint name="joint3" value="-1.6077"/>
+        <joint name="joint4" value="1.2762"/>
     </group_state>
-    <group_state name="stance" group="robotleg">
-        <joint name="motor1_to_joint1" value="0"/>
-        <joint name="motor2_to_joint2" value="1.1629"/>
-        <joint name="motor3_to_joint3" value="-2.0654"/>
-        <joint name="motor4_to_joint4" value="1.5447"/>
+    <group_state name="back_step" group="robotleg">
+        <joint name="joint1" value="0"/>
+        <joint name="joint2" value="-0.4944"/>
+        <joint name="joint3" value="-0.7293"/>
+        <joint name="joint4" value="1.9227"/>
     </group_state>
-    <group_state name="front step" group="robotleg">
-        <joint name="motor1_to_joint1" value="0"/>
-        <joint name="motor2_to_joint2" value="1.1282"/>
-        <joint name="motor3_to_joint3" value="-1.6141"/>
-        <joint name="motor4_to_joint4" value="1.4406"/>
+    <group_state name="raised_leg" group="robotleg">
+        <joint name="joint1" value="0"/>
+        <joint name="joint2" value="1.0322"/>
+        <joint name="joint3" value="-2.105"/>
+        <joint name="joint4" value="2.1215"/>
     </group_state>
-    <group_state name="back step" group="robotleg">
-        <joint name="motor1_to_joint1" value="0"/>
-        <joint name="motor2_to_joint2" value="-0.2256"/>
-        <joint name="motor3_to_joint3" value="-1.267"/>
-        <joint name="motor4_to_joint4" value="1.6836"/>
+    <group_state name="middle_step" group="robotleg">
+        <joint name="joint1" value="0"/>
+        <joint name="joint2" value="0.5638"/>
+        <joint name="joint3" value="-1.5249"/>
+        <joint name="joint4" value="1.9392"/>
     </group_state>
-    <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
-    <virtual_joint name="virtual_joint" type="fixed" parent_frame="world" child_link="base_link"/>
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
     <disable_collisions link1="ball_wheel_1" link2="ball_wheel_2" reason="Never"/>
     <disable_collisions link1="ball_wheel_1" link2="ball_wheel_3" reason="Never"/>
@@ -95,21 +88,26 @@
     <disable_collisions link1="ball_wheel_1" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_1" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="ball_wheel_1" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="ball_wheel_1" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="ball_wheel_1" link2="joint_upper_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_1" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="ball_wheel_1" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="ball_wheel_1" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="ball_wheel_1" link2="link1_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_1" link2="link2_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_1" link2="link3_1" reason="Never"/>
+    <disable_collisions link1="ball_wheel_1" link2="link4_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_1" link2="motor_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_1" link2="motor_2" reason="Never"/>
     <disable_collisions link1="ball_wheel_1" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="ball_wheel_1" link2="motor_4" reason="Never"/>
     <disable_collisions link1="ball_wheel_1" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_1" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="ball_wheel_1" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_1" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="ball_wheel_1" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="ball_wheel_1" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="ball_wheel_1" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_1" link2="stand_ball_wheel_connector_1" reason="Adjacent"/>
     <disable_collisions link1="ball_wheel_1" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="ball_wheel_1" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -134,6 +132,7 @@
     <disable_collisions link1="ball_wheel_2" link2="encoder_cap_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_2" link2="encoder_cap_2" reason="Never"/>
     <disable_collisions link1="ball_wheel_2" link2="encoder_cap_3" reason="Never"/>
+    <disable_collisions link1="ball_wheel_2" link2="encoder_cap_4" reason="Never"/>
     <disable_collisions link1="ball_wheel_2" link2="end_effector_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_2" link2="female_pin_headers_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_2" link2="female_pin_headers_2" reason="Never"/>
@@ -170,9 +169,11 @@
     <disable_collisions link1="ball_wheel_2" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_2" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="ball_wheel_2" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="ball_wheel_2" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="ball_wheel_2" link2="joint_upper_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_2" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="ball_wheel_2" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="ball_wheel_2" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="ball_wheel_2" link2="link1_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_2" link2="link2_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_2" link2="link3_1" reason="Never"/>
@@ -180,6 +181,7 @@
     <disable_collisions link1="ball_wheel_2" link2="motor_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_2" link2="motor_2" reason="Never"/>
     <disable_collisions link1="ball_wheel_2" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="ball_wheel_2" link2="motor_4" reason="Never"/>
     <disable_collisions link1="ball_wheel_2" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_2" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="ball_wheel_2" link2="protoboard_1" reason="Never"/>
@@ -211,6 +213,7 @@
     <disable_collisions link1="ball_wheel_3" link2="encoder_cap_2" reason="Never"/>
     <disable_collisions link1="ball_wheel_3" link2="encoder_cap_3" reason="Never"/>
     <disable_collisions link1="ball_wheel_3" link2="encoder_cap_4" reason="Never"/>
+    <disable_collisions link1="ball_wheel_3" link2="end_effector_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_3" link2="female_pin_headers_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_3" link2="female_pin_headers_2" reason="Never"/>
     <disable_collisions link1="ball_wheel_3" link2="female_pin_headers_3" reason="Never"/>
@@ -254,6 +257,7 @@
     <disable_collisions link1="ball_wheel_3" link2="link1_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_3" link2="link2_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_3" link2="link3_1" reason="Never"/>
+    <disable_collisions link1="ball_wheel_3" link2="link4_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_3" link2="motor_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_3" link2="motor_2" reason="Never"/>
     <disable_collisions link1="ball_wheel_3" link2="motor_3" reason="Never"/>
@@ -287,7 +291,7 @@
     <disable_collisions link1="ball_wheel_4" link2="encoder_cap_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_4" link2="encoder_cap_2" reason="Never"/>
     <disable_collisions link1="ball_wheel_4" link2="encoder_cap_3" reason="Never"/>
-    <disable_collisions link1="ball_wheel_4" link2="encoder_cap_4" reason="Never"/>
+    <disable_collisions link1="ball_wheel_4" link2="end_effector_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_4" link2="female_pin_headers_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_4" link2="female_pin_headers_2" reason="Never"/>
     <disable_collisions link1="ball_wheel_4" link2="female_pin_headers_3" reason="Never"/>
@@ -323,15 +327,18 @@
     <disable_collisions link1="ball_wheel_4" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_4" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="ball_wheel_4" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="ball_wheel_4" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="ball_wheel_4" link2="joint_upper_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_4" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="ball_wheel_4" link2="joint_upper_3" reason="Never"/>
-    <disable_collisions link1="ball_wheel_4" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="ball_wheel_4" link2="link1_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_4" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="ball_wheel_4" link2="link3_1" reason="Never"/>
+    <disable_collisions link1="ball_wheel_4" link2="link4_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_4" link2="motor_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_4" link2="motor_2" reason="Never"/>
     <disable_collisions link1="ball_wheel_4" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="ball_wheel_4" link2="motor_4" reason="Never"/>
     <disable_collisions link1="ball_wheel_4" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_4" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="ball_wheel_4" link2="protoboard_1" reason="Never"/>
@@ -361,6 +368,7 @@
     <disable_collisions link1="base_link" link2="encoder_cap_2" reason="Never"/>
     <disable_collisions link1="base_link" link2="encoder_cap_3" reason="Never"/>
     <disable_collisions link1="base_link" link2="encoder_cap_4" reason="Never"/>
+    <disable_collisions link1="base_link" link2="end_effector_1" reason="Never"/>
     <disable_collisions link1="base_link" link2="female_pin_headers_1" reason="Never"/>
     <disable_collisions link1="base_link" link2="female_pin_headers_2" reason="Never"/>
     <disable_collisions link1="base_link" link2="female_pin_headers_3" reason="Never"/>
@@ -392,6 +400,7 @@
     <disable_collisions link1="base_link" link2="joint_1" reason="Never"/>
     <disable_collisions link1="base_link" link2="joint_2" reason="Never"/>
     <disable_collisions link1="base_link" link2="joint_3" reason="Never"/>
+    <disable_collisions link1="base_link" link2="joint_4" reason="Never"/>
     <disable_collisions link1="base_link" link2="joint_lower_1" reason="Adjacent"/>
     <disable_collisions link1="base_link" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="base_link" link2="joint_lower_3" reason="Never"/>
@@ -399,15 +408,19 @@
     <disable_collisions link1="base_link" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="base_link" link2="joint_upper_3" reason="Never"/>
     <disable_collisions link1="base_link" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="base_link" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="base_link" link2="link3_1" reason="Never"/>
     <disable_collisions link1="base_link" link2="motor_1" reason="Never"/>
     <disable_collisions link1="base_link" link2="motor_2" reason="Never"/>
     <disable_collisions link1="base_link" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="base_link" link2="motor_4" reason="Never"/>
     <disable_collisions link1="base_link" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="base_link" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="base_link" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="base_link" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="base_link" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="base_link" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="base_link" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="base_link" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="base_link" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="base_link" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -429,6 +442,7 @@
     <disable_collisions link1="encoder_cap_1" link2="encoder_cap_2" reason="Never"/>
     <disable_collisions link1="encoder_cap_1" link2="encoder_cap_3" reason="Never"/>
     <disable_collisions link1="encoder_cap_1" link2="encoder_cap_4" reason="Never"/>
+    <disable_collisions link1="encoder_cap_1" link2="end_effector_1" reason="Never"/>
     <disable_collisions link1="encoder_cap_1" link2="female_pin_headers_1" reason="Never"/>
     <disable_collisions link1="encoder_cap_1" link2="female_pin_headers_2" reason="Never"/>
     <disable_collisions link1="encoder_cap_1" link2="female_pin_headers_3" reason="Never"/>
@@ -464,19 +478,25 @@
     <disable_collisions link1="encoder_cap_1" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="encoder_cap_1" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="encoder_cap_1" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="encoder_cap_1" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="encoder_cap_1" link2="joint_upper_1" reason="Default"/>
     <disable_collisions link1="encoder_cap_1" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="encoder_cap_1" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="encoder_cap_1" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="encoder_cap_1" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="encoder_cap_1" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="encoder_cap_1" link2="link3_1" reason="Never"/>
     <disable_collisions link1="encoder_cap_1" link2="motor_1" reason="Adjacent"/>
     <disable_collisions link1="encoder_cap_1" link2="motor_2" reason="Never"/>
     <disable_collisions link1="encoder_cap_1" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="encoder_cap_1" link2="motor_4" reason="Never"/>
     <disable_collisions link1="encoder_cap_1" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="encoder_cap_1" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="encoder_cap_1" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="encoder_cap_1" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="encoder_cap_1" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="encoder_cap_1" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="encoder_cap_1" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="encoder_cap_1" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="encoder_cap_1" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="encoder_cap_1" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -496,6 +516,7 @@
     <disable_collisions link1="encoder_cap_1" link2="top_plate_1" reason="Never"/>
     <disable_collisions link1="encoder_cap_1" link2="weight_dist_plate_1" reason="Never"/>
     <disable_collisions link1="encoder_cap_2" link2="encoder_cap_3" reason="Never"/>
+    <disable_collisions link1="encoder_cap_2" link2="encoder_cap_4" reason="Never"/>
     <disable_collisions link1="encoder_cap_2" link2="end_effector_1" reason="Never"/>
     <disable_collisions link1="encoder_cap_2" link2="female_pin_headers_1" reason="Never"/>
     <disable_collisions link1="encoder_cap_2" link2="female_pin_headers_2" reason="Never"/>
@@ -536,6 +557,7 @@
     <disable_collisions link1="encoder_cap_2" link2="joint_upper_1" reason="Never"/>
     <disable_collisions link1="encoder_cap_2" link2="joint_upper_2" reason="Default"/>
     <disable_collisions link1="encoder_cap_2" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="encoder_cap_2" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="encoder_cap_2" link2="link1_1" reason="Never"/>
     <disable_collisions link1="encoder_cap_2" link2="link2_1" reason="Never"/>
     <disable_collisions link1="encoder_cap_2" link2="link3_1" reason="Never"/>
@@ -543,6 +565,9 @@
     <disable_collisions link1="encoder_cap_2" link2="motor_1" reason="Never"/>
     <disable_collisions link1="encoder_cap_2" link2="motor_2" reason="Adjacent"/>
     <disable_collisions link1="encoder_cap_2" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="encoder_cap_2" link2="motor_4" reason="Never"/>
+    <disable_collisions link1="encoder_cap_2" link2="motor_driver_1" reason="Never"/>
+    <disable_collisions link1="encoder_cap_2" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="encoder_cap_2" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="encoder_cap_2" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="encoder_cap_2" link2="protoboard_3" reason="Never"/>
@@ -554,10 +579,17 @@
     <disable_collisions link1="encoder_cap_2" link2="stand_ball_wheel_connector_4" reason="Never"/>
     <disable_collisions link1="encoder_cap_2" link2="stand_foot_connector_1" reason="Never"/>
     <disable_collisions link1="encoder_cap_2" link2="stand_foot_connector_2" reason="Never"/>
+    <disable_collisions link1="encoder_cap_2" link2="stand_foot_connector_3" reason="Never"/>
+    <disable_collisions link1="encoder_cap_2" link2="stand_foot_connector_4" reason="Never"/>
+    <disable_collisions link1="encoder_cap_2" link2="stand_foot_pipe_1" reason="Never"/>
     <disable_collisions link1="encoder_cap_2" link2="stand_foot_pipe_2" reason="Never"/>
     <disable_collisions link1="encoder_cap_2" link2="stand_foot_pipe_3" reason="Never"/>
+    <disable_collisions link1="encoder_cap_2" link2="stand_foot_pipe_4" reason="Never"/>
     <disable_collisions link1="encoder_cap_2" link2="stand_support_pipe_1" reason="Never"/>
+    <disable_collisions link1="encoder_cap_2" link2="stand_support_pipe_2" reason="Never"/>
     <disable_collisions link1="encoder_cap_2" link2="stand_support_pipe_3" reason="Never"/>
+    <disable_collisions link1="encoder_cap_2" link2="stand_support_pipe_4" reason="Never"/>
+    <disable_collisions link1="encoder_cap_2" link2="top_plate_1" reason="Never"/>
     <disable_collisions link1="encoder_cap_2" link2="weight_dist_plate_1" reason="Never"/>
     <disable_collisions link1="encoder_cap_3" link2="encoder_cap_4" reason="Never"/>
     <disable_collisions link1="encoder_cap_3" link2="end_effector_1" reason="Never"/>
@@ -624,6 +656,10 @@
     <disable_collisions link1="encoder_cap_3" link2="stand_foot_connector_2" reason="Never"/>
     <disable_collisions link1="encoder_cap_3" link2="stand_foot_connector_3" reason="Never"/>
     <disable_collisions link1="encoder_cap_3" link2="stand_foot_connector_4" reason="Never"/>
+    <disable_collisions link1="encoder_cap_3" link2="stand_foot_pipe_1" reason="Never"/>
+    <disable_collisions link1="encoder_cap_3" link2="stand_foot_pipe_2" reason="Never"/>
+    <disable_collisions link1="encoder_cap_3" link2="stand_foot_pipe_3" reason="Never"/>
+    <disable_collisions link1="encoder_cap_3" link2="stand_foot_pipe_4" reason="Never"/>
     <disable_collisions link1="encoder_cap_3" link2="stand_support_pipe_1" reason="Never"/>
     <disable_collisions link1="encoder_cap_3" link2="stand_support_pipe_2" reason="Never"/>
     <disable_collisions link1="encoder_cap_3" link2="stand_support_pipe_3" reason="Never"/>
@@ -631,6 +667,34 @@
     <disable_collisions link1="encoder_cap_3" link2="top_plate_1" reason="Never"/>
     <disable_collisions link1="encoder_cap_3" link2="weight_dist_plate_1" reason="Never"/>
     <disable_collisions link1="encoder_cap_4" link2="end_effector_1" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="female_pin_headers_1" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="female_pin_headers_2" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="female_pin_headers_3" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="female_pin_headers_4" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="female_pin_headers_5" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="female_pin_headers_6" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="female_pin_headers_7" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="female_pin_headers_8" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="hex_spacer_M2.5x20_1" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="hex_spacer_M2.5x20_2" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="hex_spacer_M2.5x20_3" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="hex_spacer_M2.5x20_4" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="hex_spacer_M2.5x20_5" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="hex_spacer_M2.5x20_6" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="hex_spacer_M2.5x20_7" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="hex_spacer_M2.5x20_8" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="hex_spacer_M2.5x6_1" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="hex_spacer_M2.5x6_2" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="hex_spacer_M2.5x6_3" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="hex_spacer_M2.5x6_4" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="hex_spacer_M2.5x6_5" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="hex_spacer_M2.5x6_6" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="hex_spacer_M2.5x6_7" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="hex_spacer_M2.5x6_8" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="hex_spacer_M3x10_1" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="hex_spacer_M3x10_2" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="hex_spacer_M3x10_3" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="hex_spacer_M3x10_4" reason="Never"/>
     <disable_collisions link1="encoder_cap_4" link2="joint_1" reason="Never"/>
     <disable_collisions link1="encoder_cap_4" link2="joint_2" reason="Never"/>
     <disable_collisions link1="encoder_cap_4" link2="joint_3" reason="Never"/>
@@ -640,6 +704,7 @@
     <disable_collisions link1="encoder_cap_4" link2="joint_lower_3" reason="Never"/>
     <disable_collisions link1="encoder_cap_4" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="encoder_cap_4" link2="joint_upper_1" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="encoder_cap_4" link2="joint_upper_3" reason="Never"/>
     <disable_collisions link1="encoder_cap_4" link2="joint_upper_4" reason="Default"/>
     <disable_collisions link1="encoder_cap_4" link2="link1_1" reason="Never"/>
@@ -647,24 +712,100 @@
     <disable_collisions link1="encoder_cap_4" link2="link3_1" reason="Never"/>
     <disable_collisions link1="encoder_cap_4" link2="link4_1" reason="Never"/>
     <disable_collisions link1="encoder_cap_4" link2="motor_1" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="motor_2" reason="Never"/>
     <disable_collisions link1="encoder_cap_4" link2="motor_3" reason="Never"/>
     <disable_collisions link1="encoder_cap_4" link2="motor_4" reason="Adjacent"/>
+    <disable_collisions link1="encoder_cap_4" link2="motor_driver_1" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="protoboard_1" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="protoboard_2" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="protoboard_3" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="protoboard_4" reason="Never"/>
     <disable_collisions link1="encoder_cap_4" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="encoder_cap_4" link2="stand_ball_wheel_connector_1" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="encoder_cap_4" link2="stand_ball_wheel_connector_3" reason="Never"/>
     <disable_collisions link1="encoder_cap_4" link2="stand_ball_wheel_connector_4" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="stand_foot_connector_1" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="stand_foot_connector_2" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="stand_foot_connector_4" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="stand_foot_pipe_1" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="stand_foot_pipe_2" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="stand_foot_pipe_3" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="stand_foot_pipe_4" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="stand_support_pipe_1" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="stand_support_pipe_2" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="stand_support_pipe_4" reason="Never"/>
+    <disable_collisions link1="encoder_cap_4" link2="weight_dist_plate_1" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="female_pin_headers_1" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="female_pin_headers_2" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="female_pin_headers_3" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="female_pin_headers_4" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="female_pin_headers_5" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="female_pin_headers_6" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="female_pin_headers_7" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="female_pin_headers_8" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="hex_spacer_M2.5x20_1" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="hex_spacer_M2.5x20_2" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="hex_spacer_M2.5x20_3" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="hex_spacer_M2.5x20_4" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="hex_spacer_M2.5x20_5" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="hex_spacer_M2.5x20_6" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="hex_spacer_M2.5x20_7" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="hex_spacer_M2.5x20_8" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="hex_spacer_M2.5x6_1" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="hex_spacer_M2.5x6_2" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="hex_spacer_M2.5x6_3" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="hex_spacer_M2.5x6_4" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="hex_spacer_M2.5x6_5" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="hex_spacer_M2.5x6_6" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="hex_spacer_M2.5x6_7" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="hex_spacer_M2.5x6_8" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="hex_spacer_M3x10_1" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="hex_spacer_M3x10_2" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="hex_spacer_M3x10_3" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="hex_spacer_M3x10_4" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="joint_1" reason="Never"/>
     <disable_collisions link1="end_effector_1" link2="joint_2" reason="Never"/>
     <disable_collisions link1="end_effector_1" link2="joint_3" reason="Never"/>
     <disable_collisions link1="end_effector_1" link2="joint_4" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="joint_lower_1" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="end_effector_1" link2="joint_lower_3" reason="Never"/>
     <disable_collisions link1="end_effector_1" link2="joint_lower_4" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="joint_upper_1" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="end_effector_1" link2="joint_upper_3" reason="Never"/>
     <disable_collisions link1="end_effector_1" link2="joint_upper_4" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="link1_1" reason="Never"/>
     <disable_collisions link1="end_effector_1" link2="link4_1" reason="Adjacent"/>
+    <disable_collisions link1="end_effector_1" link2="motor_1" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="motor_2" reason="Never"/>
     <disable_collisions link1="end_effector_1" link2="motor_3" reason="Never"/>
     <disable_collisions link1="end_effector_1" link2="motor_4" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="motor_driver_1" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="motor_driver_2" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="protoboard_1" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="protoboard_2" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="protoboard_3" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="protoboard_4" reason="Never"/>
     <disable_collisions link1="end_effector_1" link2="rubber_sole_1" reason="Adjacent"/>
+    <disable_collisions link1="end_effector_1" link2="stand_ball_wheel_connector_1" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="stand_ball_wheel_connector_2" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="stand_ball_wheel_connector_3" reason="Never"/>
     <disable_collisions link1="end_effector_1" link2="stand_ball_wheel_connector_4" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="stand_foot_connector_1" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="stand_foot_connector_2" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="stand_foot_connector_3" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="stand_foot_connector_4" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="stand_foot_pipe_1" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="stand_foot_pipe_2" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="stand_foot_pipe_3" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="stand_foot_pipe_4" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="stand_support_pipe_1" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="stand_support_pipe_2" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="stand_support_pipe_3" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="stand_support_pipe_4" reason="Never"/>
+    <disable_collisions link1="end_effector_1" link2="weight_dist_plate_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_1" link2="female_pin_headers_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_1" link2="female_pin_headers_3" reason="Never"/>
     <disable_collisions link1="female_pin_headers_1" link2="female_pin_headers_4" reason="Never"/>
@@ -699,19 +840,26 @@
     <disable_collisions link1="female_pin_headers_1" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_1" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_1" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_1" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_1" link2="joint_upper_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_1" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_1" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_1" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_1" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_1" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_1" link2="link3_1" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_1" link2="link4_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_1" link2="motor_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_1" link2="motor_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_1" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_1" link2="motor_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_1" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_1" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_1" link2="protoboard_1" reason="Adjacent"/>
     <disable_collisions link1="female_pin_headers_1" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_1" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="female_pin_headers_1" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_1" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_1" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_1" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_1" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -759,21 +907,29 @@
     <disable_collisions link1="female_pin_headers_2" link2="joint_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_2" link2="joint_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_2" link2="joint_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_2" link2="joint_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_2" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_2" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_2" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_2" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_2" link2="joint_upper_1" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_2" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_2" link2="joint_upper_3" reason="Never"/>
     <disable_collisions link1="female_pin_headers_2" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_2" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_2" link2="link3_1" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_2" link2="link4_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_2" link2="motor_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_2" link2="motor_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_2" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_2" link2="motor_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_2" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_2" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_2" link2="protoboard_1" reason="Adjacent"/>
     <disable_collisions link1="female_pin_headers_2" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_2" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="female_pin_headers_2" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_2" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_2" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_2" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_2" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -820,22 +976,29 @@
     <disable_collisions link1="female_pin_headers_3" link2="joint_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_3" link2="joint_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_3" link2="joint_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_3" link2="joint_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_3" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_3" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_3" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_3" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_3" link2="joint_upper_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_3" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_3" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_3" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_3" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_3" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_3" link2="link3_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_3" link2="motor_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_3" link2="motor_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_3" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_3" link2="motor_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_3" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_3" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_3" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_3" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_3" link2="protoboard_3" reason="Adjacent"/>
     <disable_collisions link1="female_pin_headers_3" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_3" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_3" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_3" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_3" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -881,21 +1044,29 @@
     <disable_collisions link1="female_pin_headers_4" link2="joint_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_4" link2="joint_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_4" link2="joint_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_4" link2="joint_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_4" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_4" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_4" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_4" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_4" link2="joint_upper_1" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_4" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_4" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_4" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_4" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_4" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_4" link2="link3_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_4" link2="motor_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_4" link2="motor_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_4" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_4" link2="motor_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_4" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_4" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_4" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_4" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_4" link2="protoboard_3" reason="Adjacent"/>
     <disable_collisions link1="female_pin_headers_4" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_4" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_4" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_4" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_4" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -940,22 +1111,29 @@
     <disable_collisions link1="female_pin_headers_5" link2="joint_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_5" link2="joint_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_5" link2="joint_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_5" link2="joint_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_5" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_5" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_5" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_5" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_5" link2="joint_upper_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_5" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_5" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_5" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_5" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_5" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_5" link2="link3_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_5" link2="motor_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_5" link2="motor_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_5" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_5" link2="motor_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_5" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_5" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_5" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_5" link2="protoboard_2" reason="Adjacent"/>
     <disable_collisions link1="female_pin_headers_5" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="female_pin_headers_5" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_5" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_5" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_5" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_5" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -999,21 +1177,30 @@
     <disable_collisions link1="female_pin_headers_6" link2="joint_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_6" link2="joint_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_6" link2="joint_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_6" link2="joint_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_6" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_6" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_6" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_6" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_6" link2="joint_upper_1" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_6" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_6" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_6" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_6" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_6" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_6" link2="link3_1" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_6" link2="link4_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_6" link2="motor_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_6" link2="motor_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_6" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_6" link2="motor_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_6" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_6" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_6" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_6" link2="protoboard_2" reason="Adjacent"/>
     <disable_collisions link1="female_pin_headers_6" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="female_pin_headers_6" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_6" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_6" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_6" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_6" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -1056,22 +1243,29 @@
     <disable_collisions link1="female_pin_headers_7" link2="joint_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_7" link2="joint_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_7" link2="joint_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_7" link2="joint_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_7" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_7" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_7" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_7" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_7" link2="joint_upper_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_7" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_7" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_7" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_7" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_7" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_7" link2="link3_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_7" link2="motor_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_7" link2="motor_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_7" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_7" link2="motor_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_7" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_7" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_7" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_7" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_7" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="female_pin_headers_7" link2="protoboard_4" reason="Adjacent"/>
+    <disable_collisions link1="female_pin_headers_7" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_7" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_7" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_7" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -1113,21 +1307,29 @@
     <disable_collisions link1="female_pin_headers_8" link2="joint_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_8" link2="joint_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_8" link2="joint_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_8" link2="joint_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_8" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_8" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_8" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_8" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_8" link2="joint_upper_1" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_8" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_8" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_8" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_8" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_8" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_8" link2="link3_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_8" link2="motor_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_8" link2="motor_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_8" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_8" link2="motor_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_8" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_8" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_8" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_8" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_8" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="female_pin_headers_8" link2="protoboard_4" reason="Adjacent"/>
+    <disable_collisions link1="female_pin_headers_8" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_8" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_8" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_8" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -1168,21 +1370,30 @@
     <disable_collisions link1="hex_spacer_M2.5x20_1" link2="joint_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_1" link2="joint_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_1" link2="joint_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_1" link2="joint_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_1" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_1" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_1" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_1" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_1" link2="joint_upper_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_1" link2="joint_upper_2" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_1" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_1" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_1" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_1" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_1" link2="link3_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_1" link2="link4_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_1" link2="motor_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_1" link2="motor_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_1" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_1" link2="motor_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_1" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_1" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_1" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_1" link2="protoboard_2" reason="Adjacent"/>
     <disable_collisions link1="hex_spacer_M2.5x20_1" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_1" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_1" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_1" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_1" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_1" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -1222,21 +1433,30 @@
     <disable_collisions link1="hex_spacer_M2.5x20_2" link2="joint_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_2" link2="joint_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_2" link2="joint_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_2" link2="joint_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_2" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_2" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_2" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_2" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_2" link2="joint_upper_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_2" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_2" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_2" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_2" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_2" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_2" link2="link3_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_2" link2="link4_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_2" link2="motor_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_2" link2="motor_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_2" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_2" link2="motor_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_2" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_2" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_2" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_2" link2="protoboard_2" reason="Adjacent"/>
     <disable_collisions link1="hex_spacer_M2.5x20_2" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_2" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_2" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_2" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_2" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_2" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -1275,22 +1495,29 @@
     <disable_collisions link1="hex_spacer_M2.5x20_3" link2="joint_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_3" link2="joint_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_3" link2="joint_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_3" link2="joint_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_3" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_3" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_3" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_3" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_3" link2="joint_upper_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_3" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_3" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_3" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_3" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_3" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_3" link2="link3_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_3" link2="motor_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_3" link2="motor_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_3" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_3" link2="motor_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_3" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_3" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_3" link2="protoboard_1" reason="Adjacent"/>
     <disable_collisions link1="hex_spacer_M2.5x20_3" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_3" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_3" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_3" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_3" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_3" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_3" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -1328,22 +1555,29 @@
     <disable_collisions link1="hex_spacer_M2.5x20_4" link2="joint_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_4" link2="joint_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_4" link2="joint_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_4" link2="joint_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_4" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_4" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_4" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_4" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_4" link2="joint_upper_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_4" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_4" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_4" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_4" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_4" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_4" link2="link3_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_4" link2="motor_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_4" link2="motor_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_4" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_4" link2="motor_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_4" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_4" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_4" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_4" link2="protoboard_2" reason="Adjacent"/>
     <disable_collisions link1="hex_spacer_M2.5x20_4" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_4" link2="protoboard_4" reason="Adjacent"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_4" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_4" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_4" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_4" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -1380,21 +1614,28 @@
     <disable_collisions link1="hex_spacer_M2.5x20_5" link2="joint_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_5" link2="joint_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_5" link2="joint_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_5" link2="joint_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_5" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_5" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_5" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_5" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_5" link2="joint_upper_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_5" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_5" link2="joint_upper_3" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_5" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_5" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_5" link2="link3_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_5" link2="motor_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_5" link2="motor_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_5" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_5" link2="motor_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_5" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_5" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_5" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_5" link2="protoboard_2" reason="Adjacent"/>
     <disable_collisions link1="hex_spacer_M2.5x20_5" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_5" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_5" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_5" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_5" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_5" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -1430,21 +1671,28 @@
     <disable_collisions link1="hex_spacer_M2.5x20_6" link2="joint_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_6" link2="joint_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_6" link2="joint_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_6" link2="joint_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_6" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_6" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_6" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_6" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_6" link2="joint_upper_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_6" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_6" link2="joint_upper_3" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_6" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_6" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_6" link2="link3_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_6" link2="motor_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_6" link2="motor_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_6" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_6" link2="motor_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_6" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_6" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_6" link2="protoboard_1" reason="Adjacent"/>
     <disable_collisions link1="hex_spacer_M2.5x20_6" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_6" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_6" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_6" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_6" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_6" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_6" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -1479,21 +1727,30 @@
     <disable_collisions link1="hex_spacer_M2.5x20_7" link2="joint_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_7" link2="joint_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_7" link2="joint_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_7" link2="joint_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_7" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_7" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_7" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_7" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_7" link2="joint_upper_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_7" link2="joint_upper_2" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_7" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_7" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_7" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_7" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_7" link2="link3_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_7" link2="link4_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_7" link2="motor_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_7" link2="motor_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_7" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_7" link2="motor_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_7" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_7" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_7" link2="protoboard_1" reason="Adjacent"/>
     <disable_collisions link1="hex_spacer_M2.5x20_7" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_7" link2="protoboard_3" reason="Adjacent"/>
     <disable_collisions link1="hex_spacer_M2.5x20_7" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_7" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_7" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_7" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_7" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -1527,21 +1784,30 @@
     <disable_collisions link1="hex_spacer_M2.5x20_8" link2="joint_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_8" link2="joint_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_8" link2="joint_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_8" link2="joint_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_8" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_8" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_8" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_8" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_8" link2="joint_upper_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_8" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_8" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_8" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_8" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_8" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_8" link2="link3_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_8" link2="link4_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_8" link2="motor_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_8" link2="motor_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_8" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_8" link2="motor_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_8" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_8" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_8" link2="protoboard_1" reason="Adjacent"/>
     <disable_collisions link1="hex_spacer_M2.5x20_8" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_8" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_8" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x20_8" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_8" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_8" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x20_8" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -1574,22 +1840,30 @@
     <disable_collisions link1="hex_spacer_M2.5x6_1" link2="joint_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_1" link2="joint_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_1" link2="joint_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_1" link2="joint_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_1" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_1" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_1" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_1" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_1" link2="joint_upper_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_1" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_1" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_1" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_1" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_1" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_1" link2="link3_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_1" link2="link4_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_1" link2="motor_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_1" link2="motor_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_1" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_1" link2="motor_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_1" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_1" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_1" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_1" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_1" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_1" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_1" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_1" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_1" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_1" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -1621,21 +1895,30 @@
     <disable_collisions link1="hex_spacer_M2.5x6_2" link2="joint_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_2" link2="joint_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_2" link2="joint_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_2" link2="joint_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_2" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_2" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_2" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_2" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_2" link2="joint_upper_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_2" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_2" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_2" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_2" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_2" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_2" link2="link3_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_2" link2="link4_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_2" link2="motor_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_2" link2="motor_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_2" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_2" link2="motor_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_2" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_2" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_2" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_2" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_2" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_2" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_2" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_2" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_2" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_2" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -1666,21 +1949,29 @@
     <disable_collisions link1="hex_spacer_M2.5x6_3" link2="joint_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_3" link2="joint_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_3" link2="joint_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_3" link2="joint_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_3" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_3" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_3" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_3" link2="joint_lower_4" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_3" link2="joint_upper_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_3" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_3" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_3" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_3" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_3" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_3" link2="link3_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_3" link2="motor_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_3" link2="motor_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_3" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_3" link2="motor_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_3" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_3" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_3" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_3" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_3" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_3" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_3" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_3" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_3" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_3" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -1710,20 +2001,28 @@
     <disable_collisions link1="hex_spacer_M2.5x6_4" link2="joint_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_4" link2="joint_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_4" link2="joint_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_4" link2="joint_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_4" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_4" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_4" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_4" link2="joint_lower_4" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_4" link2="joint_upper_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_4" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_4" link2="joint_upper_3" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_4" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_4" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_4" link2="link3_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_4" link2="motor_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_4" link2="motor_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_4" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_4" link2="motor_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_4" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_4" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_4" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_4" link2="protoboard_2" reason="Adjacent"/>
     <disable_collisions link1="hex_spacer_M2.5x6_4" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_4" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_4" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_4" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_4" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_4" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -1752,21 +2051,29 @@
     <disable_collisions link1="hex_spacer_M2.5x6_5" link2="joint_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_5" link2="joint_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_5" link2="joint_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_5" link2="joint_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_5" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_5" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_5" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_5" link2="joint_lower_4" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_5" link2="joint_upper_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_5" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_5" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_5" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_5" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_5" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_5" link2="link3_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_5" link2="motor_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_5" link2="motor_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_5" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_5" link2="motor_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_5" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_5" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_5" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_5" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_5" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_5" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_5" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_5" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_5" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_5" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -1794,20 +2101,28 @@
     <disable_collisions link1="hex_spacer_M2.5x6_6" link2="joint_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_6" link2="joint_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_6" link2="joint_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_6" link2="joint_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_6" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_6" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_6" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_6" link2="joint_lower_4" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_6" link2="joint_upper_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_6" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_6" link2="joint_upper_3" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_6" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_6" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_6" link2="link3_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_6" link2="motor_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_6" link2="motor_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_6" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_6" link2="motor_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_6" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_6" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_6" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_6" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_6" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_6" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_6" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_6" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_6" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_6" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -1834,22 +2149,30 @@
     <disable_collisions link1="hex_spacer_M2.5x6_7" link2="joint_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_7" link2="joint_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_7" link2="joint_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_7" link2="joint_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_7" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_7" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_7" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_7" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_7" link2="joint_upper_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_7" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_7" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_7" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_7" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_7" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_7" link2="link3_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_7" link2="link4_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_7" link2="motor_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_7" link2="motor_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_7" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_7" link2="motor_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_7" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_7" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_7" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_7" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_7" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_7" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_7" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_7" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_7" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_7" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -1875,21 +2198,30 @@
     <disable_collisions link1="hex_spacer_M2.5x6_8" link2="joint_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_8" link2="joint_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_8" link2="joint_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_8" link2="joint_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_8" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_8" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_8" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_8" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_8" link2="joint_upper_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_8" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_8" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_8" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_8" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_8" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_8" link2="link3_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_8" link2="link4_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_8" link2="motor_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_8" link2="motor_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_8" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_8" link2="motor_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_8" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_8" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_8" link2="protoboard_1" reason="Adjacent"/>
     <disable_collisions link1="hex_spacer_M2.5x6_8" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_8" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_8" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M2.5x6_8" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_8" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_8" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M2.5x6_8" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -1918,18 +2250,26 @@
     <disable_collisions link1="hex_spacer_M3x10_1" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_1" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_1" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_1" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_1" link2="joint_upper_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_1" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_1" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_1" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_1" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_1" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_1" link2="link3_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_1" link2="link4_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_1" link2="motor_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_1" link2="motor_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_1" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_1" link2="motor_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_1" link2="motor_driver_1" reason="Adjacent"/>
     <disable_collisions link1="hex_spacer_M3x10_1" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_1" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_1" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_1" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_1" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_1" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_1" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_1" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_1" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -1953,20 +2293,30 @@
     <disable_collisions link1="hex_spacer_M3x10_2" link2="joint_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_2" link2="joint_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_2" link2="joint_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_2" link2="joint_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_2" link2="joint_lower_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_2" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_2" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_2" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_2" link2="joint_upper_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_2" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_2" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_2" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_2" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_2" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_2" link2="link3_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_2" link2="link4_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_2" link2="motor_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_2" link2="motor_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_2" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_2" link2="motor_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_2" link2="motor_driver_1" reason="Default"/>
     <disable_collisions link1="hex_spacer_M3x10_2" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_2" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_2" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_2" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_2" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_2" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_2" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_2" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_2" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -1989,20 +2339,30 @@
     <disable_collisions link1="hex_spacer_M3x10_3" link2="joint_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_3" link2="joint_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_3" link2="joint_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_3" link2="joint_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_3" link2="joint_lower_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_3" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_3" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_3" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_3" link2="joint_upper_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_3" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_3" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_3" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_3" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_3" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_3" link2="link3_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_3" link2="link4_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_3" link2="motor_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_3" link2="motor_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_3" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_3" link2="motor_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_3" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_3" link2="motor_driver_2" reason="Default"/>
     <disable_collisions link1="hex_spacer_M3x10_3" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_3" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_3" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_3" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_3" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_3" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_3" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_3" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -2024,20 +2384,30 @@
     <disable_collisions link1="hex_spacer_M3x10_4" link2="joint_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_4" link2="joint_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_4" link2="joint_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_4" link2="joint_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_4" link2="joint_lower_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_4" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_4" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_4" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_4" link2="joint_upper_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_4" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_4" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_4" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_4" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_4" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_4" link2="link3_1" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_4" link2="link4_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_4" link2="motor_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_4" link2="motor_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_4" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_4" link2="motor_4" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_4" link2="motor_driver_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_4" link2="motor_driver_2" reason="Adjacent"/>
     <disable_collisions link1="hex_spacer_M3x10_4" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_4" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_4" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_4" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="hex_spacer_M3x10_4" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_4" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_4" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="hex_spacer_M3x10_4" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -2062,10 +2432,13 @@
     <disable_collisions link1="joint_1" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="joint_1" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="joint_1" link2="joint_lower_3" reason="Never"/>
+    <disable_collisions link1="joint_1" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="joint_1" link2="joint_upper_1" reason="Adjacent"/>
     <disable_collisions link1="joint_1" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="joint_1" link2="joint_upper_3" reason="Never"/>
     <disable_collisions link1="joint_1" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="joint_1" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="joint_1" link2="link3_1" reason="Never"/>
     <disable_collisions link1="joint_1" link2="motor_1" reason="Adjacent"/>
     <disable_collisions link1="joint_1" link2="motor_2" reason="Never"/>
     <disable_collisions link1="joint_1" link2="motor_3" reason="Never"/>
@@ -2075,6 +2448,7 @@
     <disable_collisions link1="joint_1" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="joint_1" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="joint_1" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="joint_1" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="joint_1" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="joint_1" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="joint_1" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -2102,6 +2476,7 @@
     <disable_collisions link1="joint_2" link2="joint_upper_1" reason="Never"/>
     <disable_collisions link1="joint_2" link2="joint_upper_2" reason="Adjacent"/>
     <disable_collisions link1="joint_2" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="joint_2" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="joint_2" link2="link1_1" reason="Never"/>
     <disable_collisions link1="joint_2" link2="link2_1" reason="Never"/>
     <disable_collisions link1="joint_2" link2="link3_1" reason="Never"/>
@@ -2110,6 +2485,8 @@
     <disable_collisions link1="joint_2" link2="motor_2" reason="Adjacent"/>
     <disable_collisions link1="joint_2" link2="motor_3" reason="Never"/>
     <disable_collisions link1="joint_2" link2="motor_4" reason="Never"/>
+    <disable_collisions link1="joint_2" link2="motor_driver_1" reason="Never"/>
+    <disable_collisions link1="joint_2" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="joint_2" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="joint_2" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="joint_2" link2="protoboard_3" reason="Never"/>
@@ -2121,12 +2498,17 @@
     <disable_collisions link1="joint_2" link2="stand_ball_wheel_connector_4" reason="Never"/>
     <disable_collisions link1="joint_2" link2="stand_foot_connector_1" reason="Never"/>
     <disable_collisions link1="joint_2" link2="stand_foot_connector_2" reason="Never"/>
+    <disable_collisions link1="joint_2" link2="stand_foot_connector_3" reason="Never"/>
+    <disable_collisions link1="joint_2" link2="stand_foot_connector_4" reason="Never"/>
     <disable_collisions link1="joint_2" link2="stand_foot_pipe_1" reason="Never"/>
     <disable_collisions link1="joint_2" link2="stand_foot_pipe_2" reason="Never"/>
     <disable_collisions link1="joint_2" link2="stand_foot_pipe_3" reason="Never"/>
     <disable_collisions link1="joint_2" link2="stand_foot_pipe_4" reason="Never"/>
     <disable_collisions link1="joint_2" link2="stand_support_pipe_1" reason="Never"/>
+    <disable_collisions link1="joint_2" link2="stand_support_pipe_2" reason="Never"/>
     <disable_collisions link1="joint_2" link2="stand_support_pipe_3" reason="Never"/>
+    <disable_collisions link1="joint_2" link2="stand_support_pipe_4" reason="Never"/>
+    <disable_collisions link1="joint_2" link2="top_plate_1" reason="Never"/>
     <disable_collisions link1="joint_2" link2="weight_dist_plate_1" reason="Never"/>
     <disable_collisions link1="joint_3" link2="joint_4" reason="Never"/>
     <disable_collisions link1="joint_3" link2="joint_lower_1" reason="Never"/>
@@ -2156,18 +2538,26 @@
     <disable_collisions link1="joint_3" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="joint_3" link2="stand_ball_wheel_connector_3" reason="Never"/>
     <disable_collisions link1="joint_3" link2="stand_ball_wheel_connector_4" reason="Never"/>
+    <disable_collisions link1="joint_3" link2="stand_foot_connector_1" reason="Never"/>
+    <disable_collisions link1="joint_3" link2="stand_foot_connector_2" reason="Never"/>
     <disable_collisions link1="joint_3" link2="stand_foot_connector_3" reason="Never"/>
     <disable_collisions link1="joint_3" link2="stand_foot_connector_4" reason="Never"/>
+    <disable_collisions link1="joint_3" link2="stand_foot_pipe_1" reason="Never"/>
+    <disable_collisions link1="joint_3" link2="stand_foot_pipe_2" reason="Never"/>
+    <disable_collisions link1="joint_3" link2="stand_foot_pipe_3" reason="Never"/>
+    <disable_collisions link1="joint_3" link2="stand_foot_pipe_4" reason="Never"/>
     <disable_collisions link1="joint_3" link2="stand_support_pipe_1" reason="Never"/>
     <disable_collisions link1="joint_3" link2="stand_support_pipe_2" reason="Never"/>
     <disable_collisions link1="joint_3" link2="stand_support_pipe_3" reason="Never"/>
     <disable_collisions link1="joint_3" link2="stand_support_pipe_4" reason="Never"/>
     <disable_collisions link1="joint_3" link2="top_plate_1" reason="Never"/>
     <disable_collisions link1="joint_3" link2="weight_dist_plate_1" reason="Never"/>
+    <disable_collisions link1="joint_4" link2="joint_lower_1" reason="Never"/>
     <disable_collisions link1="joint_4" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="joint_4" link2="joint_lower_3" reason="Never"/>
     <disable_collisions link1="joint_4" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="joint_4" link2="joint_upper_1" reason="Never"/>
+    <disable_collisions link1="joint_4" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="joint_4" link2="joint_upper_3" reason="Never"/>
     <disable_collisions link1="joint_4" link2="joint_upper_4" reason="Adjacent"/>
     <disable_collisions link1="joint_4" link2="link1_1" reason="Never"/>
@@ -2178,14 +2568,35 @@
     <disable_collisions link1="joint_4" link2="motor_2" reason="Never"/>
     <disable_collisions link1="joint_4" link2="motor_3" reason="Never"/>
     <disable_collisions link1="joint_4" link2="motor_4" reason="Adjacent"/>
+    <disable_collisions link1="joint_4" link2="motor_driver_2" reason="Never"/>
+    <disable_collisions link1="joint_4" link2="protoboard_1" reason="Never"/>
+    <disable_collisions link1="joint_4" link2="protoboard_2" reason="Never"/>
+    <disable_collisions link1="joint_4" link2="protoboard_3" reason="Never"/>
+    <disable_collisions link1="joint_4" link2="protoboard_4" reason="Never"/>
     <disable_collisions link1="joint_4" link2="rubber_sole_1" reason="Never"/>
+    <disable_collisions link1="joint_4" link2="stand_ball_wheel_connector_1" reason="Never"/>
+    <disable_collisions link1="joint_4" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="joint_4" link2="stand_ball_wheel_connector_3" reason="Never"/>
     <disable_collisions link1="joint_4" link2="stand_ball_wheel_connector_4" reason="Never"/>
+    <disable_collisions link1="joint_4" link2="stand_foot_connector_1" reason="Never"/>
+    <disable_collisions link1="joint_4" link2="stand_foot_connector_2" reason="Never"/>
+    <disable_collisions link1="joint_4" link2="stand_foot_connector_3" reason="Never"/>
+    <disable_collisions link1="joint_4" link2="stand_foot_pipe_1" reason="Never"/>
+    <disable_collisions link1="joint_4" link2="stand_foot_pipe_2" reason="Never"/>
+    <disable_collisions link1="joint_4" link2="stand_foot_pipe_3" reason="Never"/>
+    <disable_collisions link1="joint_4" link2="stand_foot_pipe_4" reason="Never"/>
+    <disable_collisions link1="joint_4" link2="stand_support_pipe_1" reason="Never"/>
+    <disable_collisions link1="joint_4" link2="stand_support_pipe_2" reason="Never"/>
+    <disable_collisions link1="joint_4" link2="stand_support_pipe_4" reason="Never"/>
+    <disable_collisions link1="joint_4" link2="weight_dist_plate_1" reason="Never"/>
     <disable_collisions link1="joint_lower_1" link2="joint_lower_2" reason="Never"/>
     <disable_collisions link1="joint_lower_1" link2="joint_lower_3" reason="Never"/>
     <disable_collisions link1="joint_lower_1" link2="joint_upper_1" reason="Never"/>
+    <disable_collisions link1="joint_lower_1" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="joint_lower_1" link2="joint_upper_3" reason="Never"/>
     <disable_collisions link1="joint_lower_1" link2="link1_1" reason="Never"/>
+    <disable_collisions link1="joint_lower_1" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="joint_lower_1" link2="link3_1" reason="Never"/>
     <disable_collisions link1="joint_lower_1" link2="motor_1" reason="Adjacent"/>
     <disable_collisions link1="joint_lower_1" link2="motor_2" reason="Never"/>
     <disable_collisions link1="joint_lower_1" link2="motor_3" reason="Never"/>
@@ -2195,6 +2606,7 @@
     <disable_collisions link1="joint_lower_1" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="joint_lower_1" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="joint_lower_1" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="joint_lower_1" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="joint_lower_1" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="joint_lower_1" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="joint_lower_1" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -2219,22 +2631,35 @@
     <disable_collisions link1="joint_lower_2" link2="joint_upper_3" reason="Never"/>
     <disable_collisions link1="joint_lower_2" link2="link1_1" reason="Adjacent"/>
     <disable_collisions link1="joint_lower_2" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="joint_lower_2" link2="link4_1" reason="Never"/>
     <disable_collisions link1="joint_lower_2" link2="motor_1" reason="Never"/>
     <disable_collisions link1="joint_lower_2" link2="motor_2" reason="Adjacent"/>
     <disable_collisions link1="joint_lower_2" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="joint_lower_2" link2="motor_4" reason="Never"/>
+    <disable_collisions link1="joint_lower_2" link2="motor_driver_1" reason="Never"/>
+    <disable_collisions link1="joint_lower_2" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="joint_lower_2" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="joint_lower_2" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="joint_lower_2" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="joint_lower_2" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="joint_lower_2" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="joint_lower_2" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="joint_lower_2" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="joint_lower_2" link2="stand_ball_wheel_connector_3" reason="Never"/>
     <disable_collisions link1="joint_lower_2" link2="stand_ball_wheel_connector_4" reason="Never"/>
     <disable_collisions link1="joint_lower_2" link2="stand_foot_connector_1" reason="Never"/>
     <disable_collisions link1="joint_lower_2" link2="stand_foot_connector_2" reason="Never"/>
+    <disable_collisions link1="joint_lower_2" link2="stand_foot_connector_3" reason="Never"/>
+    <disable_collisions link1="joint_lower_2" link2="stand_foot_connector_4" reason="Never"/>
+    <disable_collisions link1="joint_lower_2" link2="stand_foot_pipe_1" reason="Never"/>
     <disable_collisions link1="joint_lower_2" link2="stand_foot_pipe_2" reason="Never"/>
     <disable_collisions link1="joint_lower_2" link2="stand_foot_pipe_3" reason="Never"/>
+    <disable_collisions link1="joint_lower_2" link2="stand_foot_pipe_4" reason="Never"/>
     <disable_collisions link1="joint_lower_2" link2="stand_support_pipe_1" reason="Never"/>
+    <disable_collisions link1="joint_lower_2" link2="stand_support_pipe_2" reason="Never"/>
+    <disable_collisions link1="joint_lower_2" link2="stand_support_pipe_3" reason="Never"/>
+    <disable_collisions link1="joint_lower_2" link2="stand_support_pipe_4" reason="Never"/>
+    <disable_collisions link1="joint_lower_2" link2="top_plate_1" reason="Never"/>
     <disable_collisions link1="joint_lower_2" link2="weight_dist_plate_1" reason="Never"/>
     <disable_collisions link1="joint_lower_3" link2="joint_lower_4" reason="Never"/>
     <disable_collisions link1="joint_lower_3" link2="joint_upper_1" reason="Never"/>
@@ -2260,12 +2685,19 @@
     <disable_collisions link1="joint_lower_3" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="joint_lower_3" link2="stand_ball_wheel_connector_3" reason="Never"/>
     <disable_collisions link1="joint_lower_3" link2="stand_ball_wheel_connector_4" reason="Never"/>
+    <disable_collisions link1="joint_lower_3" link2="stand_foot_connector_1" reason="Never"/>
+    <disable_collisions link1="joint_lower_3" link2="stand_foot_connector_2" reason="Never"/>
     <disable_collisions link1="joint_lower_3" link2="stand_foot_connector_3" reason="Never"/>
     <disable_collisions link1="joint_lower_3" link2="stand_foot_connector_4" reason="Never"/>
+    <disable_collisions link1="joint_lower_3" link2="stand_foot_pipe_1" reason="Never"/>
+    <disable_collisions link1="joint_lower_3" link2="stand_foot_pipe_2" reason="Never"/>
+    <disable_collisions link1="joint_lower_3" link2="stand_foot_pipe_3" reason="Never"/>
+    <disable_collisions link1="joint_lower_3" link2="stand_foot_pipe_4" reason="Never"/>
     <disable_collisions link1="joint_lower_3" link2="stand_support_pipe_1" reason="Never"/>
     <disable_collisions link1="joint_lower_3" link2="stand_support_pipe_2" reason="Never"/>
     <disable_collisions link1="joint_lower_3" link2="stand_support_pipe_3" reason="Never"/>
     <disable_collisions link1="joint_lower_3" link2="stand_support_pipe_4" reason="Never"/>
+    <disable_collisions link1="joint_lower_3" link2="top_plate_1" reason="Never"/>
     <disable_collisions link1="joint_lower_3" link2="weight_dist_plate_1" reason="Never"/>
     <disable_collisions link1="joint_lower_4" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="joint_lower_4" link2="joint_upper_3" reason="Never"/>
@@ -2275,10 +2707,31 @@
     <disable_collisions link1="joint_lower_4" link2="link4_1" reason="Never"/>
     <disable_collisions link1="joint_lower_4" link2="motor_3" reason="Never"/>
     <disable_collisions link1="joint_lower_4" link2="motor_4" reason="Adjacent"/>
+    <disable_collisions link1="joint_lower_4" link2="protoboard_1" reason="Never"/>
+    <disable_collisions link1="joint_lower_4" link2="protoboard_2" reason="Never"/>
+    <disable_collisions link1="joint_lower_4" link2="protoboard_3" reason="Never"/>
+    <disable_collisions link1="joint_lower_4" link2="protoboard_4" reason="Never"/>
     <disable_collisions link1="joint_lower_4" link2="rubber_sole_1" reason="Never"/>
+    <disable_collisions link1="joint_lower_4" link2="stand_ball_wheel_connector_1" reason="Never"/>
+    <disable_collisions link1="joint_lower_4" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="joint_lower_4" link2="stand_ball_wheel_connector_3" reason="Never"/>
+    <disable_collisions link1="joint_lower_4" link2="stand_ball_wheel_connector_4" reason="Never"/>
+    <disable_collisions link1="joint_lower_4" link2="stand_foot_connector_1" reason="Never"/>
+    <disable_collisions link1="joint_lower_4" link2="stand_foot_connector_2" reason="Never"/>
+    <disable_collisions link1="joint_lower_4" link2="stand_foot_connector_3" reason="Never"/>
+    <disable_collisions link1="joint_lower_4" link2="stand_foot_connector_4" reason="Never"/>
+    <disable_collisions link1="joint_lower_4" link2="stand_foot_pipe_1" reason="Never"/>
+    <disable_collisions link1="joint_lower_4" link2="stand_foot_pipe_2" reason="Never"/>
+    <disable_collisions link1="joint_lower_4" link2="stand_foot_pipe_3" reason="Never"/>
+    <disable_collisions link1="joint_lower_4" link2="stand_foot_pipe_4" reason="Never"/>
+    <disable_collisions link1="joint_lower_4" link2="stand_support_pipe_1" reason="Never"/>
+    <disable_collisions link1="joint_lower_4" link2="stand_support_pipe_2" reason="Never"/>
+    <disable_collisions link1="joint_lower_4" link2="stand_support_pipe_4" reason="Never"/>
+    <disable_collisions link1="joint_upper_1" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="joint_upper_1" link2="joint_upper_3" reason="Never"/>
     <disable_collisions link1="joint_upper_1" link2="link1_1" reason="Adjacent"/>
+    <disable_collisions link1="joint_upper_1" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="joint_upper_1" link2="link3_1" reason="Never"/>
     <disable_collisions link1="joint_upper_1" link2="motor_1" reason="Never"/>
     <disable_collisions link1="joint_upper_1" link2="motor_2" reason="Never"/>
     <disable_collisions link1="joint_upper_1" link2="motor_3" reason="Never"/>
@@ -2288,6 +2741,7 @@
     <disable_collisions link1="joint_upper_1" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="joint_upper_1" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="joint_upper_1" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="joint_upper_1" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="joint_upper_1" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="joint_upper_1" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="joint_upper_1" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -2304,21 +2758,41 @@
     <disable_collisions link1="joint_upper_1" link2="stand_support_pipe_2" reason="Never"/>
     <disable_collisions link1="joint_upper_1" link2="stand_support_pipe_3" reason="Never"/>
     <disable_collisions link1="joint_upper_1" link2="stand_support_pipe_4" reason="Never"/>
+    <disable_collisions link1="joint_upper_1" link2="top_plate_1" reason="Never"/>
+    <disable_collisions link1="joint_upper_1" link2="weight_dist_plate_1" reason="Never"/>
     <disable_collisions link1="joint_upper_2" link2="joint_upper_3" reason="Never"/>
+    <disable_collisions link1="joint_upper_2" link2="link1_1" reason="Never"/>
     <disable_collisions link1="joint_upper_2" link2="link2_1" reason="Adjacent"/>
+    <disable_collisions link1="joint_upper_2" link2="link4_1" reason="Never"/>
     <disable_collisions link1="joint_upper_2" link2="motor_1" reason="Never"/>
     <disable_collisions link1="joint_upper_2" link2="motor_2" reason="Never"/>
     <disable_collisions link1="joint_upper_2" link2="motor_3" reason="Never"/>
     <disable_collisions link1="joint_upper_2" link2="motor_4" reason="Never"/>
+    <disable_collisions link1="joint_upper_2" link2="motor_driver_1" reason="Never"/>
+    <disable_collisions link1="joint_upper_2" link2="motor_driver_2" reason="Never"/>
+    <disable_collisions link1="joint_upper_2" link2="protoboard_1" reason="Never"/>
+    <disable_collisions link1="joint_upper_2" link2="protoboard_2" reason="Never"/>
+    <disable_collisions link1="joint_upper_2" link2="protoboard_3" reason="Never"/>
+    <disable_collisions link1="joint_upper_2" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="joint_upper_2" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="joint_upper_2" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="joint_upper_2" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="joint_upper_2" link2="stand_ball_wheel_connector_3" reason="Never"/>
     <disable_collisions link1="joint_upper_2" link2="stand_ball_wheel_connector_4" reason="Never"/>
     <disable_collisions link1="joint_upper_2" link2="stand_foot_connector_1" reason="Never"/>
     <disable_collisions link1="joint_upper_2" link2="stand_foot_connector_2" reason="Never"/>
+    <disable_collisions link1="joint_upper_2" link2="stand_foot_connector_3" reason="Never"/>
+    <disable_collisions link1="joint_upper_2" link2="stand_foot_connector_4" reason="Never"/>
+    <disable_collisions link1="joint_upper_2" link2="stand_foot_pipe_1" reason="Never"/>
     <disable_collisions link1="joint_upper_2" link2="stand_foot_pipe_2" reason="Never"/>
     <disable_collisions link1="joint_upper_2" link2="stand_foot_pipe_3" reason="Never"/>
+    <disable_collisions link1="joint_upper_2" link2="stand_foot_pipe_4" reason="Never"/>
     <disable_collisions link1="joint_upper_2" link2="stand_support_pipe_1" reason="Never"/>
+    <disable_collisions link1="joint_upper_2" link2="stand_support_pipe_2" reason="Never"/>
+    <disable_collisions link1="joint_upper_2" link2="stand_support_pipe_3" reason="Never"/>
+    <disable_collisions link1="joint_upper_2" link2="stand_support_pipe_4" reason="Never"/>
+    <disable_collisions link1="joint_upper_2" link2="top_plate_1" reason="Never"/>
+    <disable_collisions link1="joint_upper_2" link2="weight_dist_plate_1" reason="Never"/>
     <disable_collisions link1="joint_upper_3" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="joint_upper_3" link2="link1_1" reason="Never"/>
     <disable_collisions link1="joint_upper_3" link2="link3_1" reason="Adjacent"/>
@@ -2331,22 +2805,48 @@
     <disable_collisions link1="joint_upper_3" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="joint_upper_3" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="joint_upper_3" link2="protoboard_2" reason="Never"/>
+    <disable_collisions link1="joint_upper_3" link2="protoboard_3" reason="Never"/>
+    <disable_collisions link1="joint_upper_3" link2="protoboard_4" reason="Never"/>
     <disable_collisions link1="joint_upper_3" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="joint_upper_3" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="joint_upper_3" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="joint_upper_3" link2="stand_ball_wheel_connector_3" reason="Never"/>
     <disable_collisions link1="joint_upper_3" link2="stand_ball_wheel_connector_4" reason="Never"/>
+    <disable_collisions link1="joint_upper_3" link2="stand_foot_connector_1" reason="Never"/>
+    <disable_collisions link1="joint_upper_3" link2="stand_foot_connector_2" reason="Never"/>
     <disable_collisions link1="joint_upper_3" link2="stand_foot_connector_3" reason="Never"/>
     <disable_collisions link1="joint_upper_3" link2="stand_foot_connector_4" reason="Never"/>
+    <disable_collisions link1="joint_upper_3" link2="stand_foot_pipe_1" reason="Never"/>
+    <disable_collisions link1="joint_upper_3" link2="stand_foot_pipe_2" reason="Never"/>
+    <disable_collisions link1="joint_upper_3" link2="stand_foot_pipe_3" reason="Never"/>
+    <disable_collisions link1="joint_upper_3" link2="stand_foot_pipe_4" reason="Never"/>
+    <disable_collisions link1="joint_upper_3" link2="stand_support_pipe_1" reason="Never"/>
     <disable_collisions link1="joint_upper_3" link2="stand_support_pipe_2" reason="Never"/>
     <disable_collisions link1="joint_upper_3" link2="stand_support_pipe_3" reason="Never"/>
+    <disable_collisions link1="joint_upper_3" link2="stand_support_pipe_4" reason="Never"/>
+    <disable_collisions link1="joint_upper_3" link2="top_plate_1" reason="Never"/>
     <disable_collisions link1="joint_upper_3" link2="weight_dist_plate_1" reason="Never"/>
     <disable_collisions link1="joint_upper_4" link2="link2_1" reason="Never"/>
     <disable_collisions link1="joint_upper_4" link2="link4_1" reason="Adjacent"/>
+    <disable_collisions link1="joint_upper_4" link2="motor_2" reason="Never"/>
     <disable_collisions link1="joint_upper_4" link2="motor_3" reason="Never"/>
     <disable_collisions link1="joint_upper_4" link2="motor_4" reason="Never"/>
     <disable_collisions link1="joint_upper_4" link2="rubber_sole_1" reason="Never"/>
+    <disable_collisions link1="joint_upper_4" link2="stand_ball_wheel_connector_1" reason="Never"/>
+    <disable_collisions link1="joint_upper_4" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="joint_upper_4" link2="stand_ball_wheel_connector_3" reason="Never"/>
+    <disable_collisions link1="joint_upper_4" link2="stand_ball_wheel_connector_4" reason="Never"/>
+    <disable_collisions link1="joint_upper_4" link2="stand_foot_connector_1" reason="Never"/>
+    <disable_collisions link1="joint_upper_4" link2="stand_foot_connector_2" reason="Never"/>
+    <disable_collisions link1="joint_upper_4" link2="stand_foot_pipe_1" reason="Never"/>
+    <disable_collisions link1="joint_upper_4" link2="stand_foot_pipe_2" reason="Never"/>
+    <disable_collisions link1="joint_upper_4" link2="stand_foot_pipe_3" reason="Never"/>
+    <disable_collisions link1="joint_upper_4" link2="stand_foot_pipe_4" reason="Never"/>
+    <disable_collisions link1="joint_upper_4" link2="stand_support_pipe_1" reason="Never"/>
+    <disable_collisions link1="joint_upper_4" link2="stand_support_pipe_2" reason="Never"/>
+    <disable_collisions link1="joint_upper_4" link2="stand_support_pipe_4" reason="Never"/>
+    <disable_collisions link1="link1_1" link2="link2_1" reason="Never"/>
+    <disable_collisions link1="link1_1" link2="link4_1" reason="Never"/>
     <disable_collisions link1="link1_1" link2="motor_1" reason="Never"/>
     <disable_collisions link1="link1_1" link2="motor_2" reason="Never"/>
     <disable_collisions link1="link1_1" link2="motor_3" reason="Never"/>
@@ -2356,34 +2856,97 @@
     <disable_collisions link1="link1_1" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="link1_1" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="link1_1" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="link1_1" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="link1_1" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="link1_1" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="link1_1" link2="stand_ball_wheel_connector_3" reason="Never"/>
     <disable_collisions link1="link1_1" link2="stand_ball_wheel_connector_4" reason="Never"/>
     <disable_collisions link1="link1_1" link2="stand_foot_connector_1" reason="Never"/>
     <disable_collisions link1="link1_1" link2="stand_foot_connector_2" reason="Never"/>
+    <disable_collisions link1="link1_1" link2="stand_foot_connector_3" reason="Never"/>
+    <disable_collisions link1="link1_1" link2="stand_foot_connector_4" reason="Never"/>
     <disable_collisions link1="link1_1" link2="stand_foot_pipe_1" reason="Never"/>
     <disable_collisions link1="link1_1" link2="stand_foot_pipe_2" reason="Never"/>
     <disable_collisions link1="link1_1" link2="stand_foot_pipe_3" reason="Never"/>
     <disable_collisions link1="link1_1" link2="stand_foot_pipe_4" reason="Never"/>
     <disable_collisions link1="link1_1" link2="stand_support_pipe_1" reason="Never"/>
     <disable_collisions link1="link1_1" link2="stand_support_pipe_2" reason="Never"/>
+    <disable_collisions link1="link1_1" link2="stand_support_pipe_3" reason="Never"/>
     <disable_collisions link1="link1_1" link2="stand_support_pipe_4" reason="Never"/>
+    <disable_collisions link1="link1_1" link2="top_plate_1" reason="Never"/>
     <disable_collisions link1="link1_1" link2="weight_dist_plate_1" reason="Never"/>
+    <disable_collisions link1="link2_1" link2="link4_1" reason="Never"/>
+    <disable_collisions link1="link2_1" link2="motor_1" reason="Never"/>
     <disable_collisions link1="link2_1" link2="motor_2" reason="Never"/>
     <disable_collisions link1="link2_1" link2="motor_3" reason="Never"/>
     <disable_collisions link1="link2_1" link2="motor_4" reason="Never"/>
+    <disable_collisions link1="link2_1" link2="motor_driver_1" reason="Never"/>
+    <disable_collisions link1="link2_1" link2="motor_driver_2" reason="Never"/>
+    <disable_collisions link1="link2_1" link2="protoboard_1" reason="Never"/>
+    <disable_collisions link1="link2_1" link2="protoboard_2" reason="Never"/>
+    <disable_collisions link1="link2_1" link2="protoboard_3" reason="Never"/>
+    <disable_collisions link1="link2_1" link2="protoboard_4" reason="Never"/>
     <disable_collisions link1="link2_1" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="link2_1" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="link2_1" link2="stand_ball_wheel_connector_3" reason="Never"/>
     <disable_collisions link1="link2_1" link2="stand_ball_wheel_connector_4" reason="Never"/>
+    <disable_collisions link1="link2_1" link2="stand_foot_connector_1" reason="Never"/>
+    <disable_collisions link1="link2_1" link2="stand_foot_connector_2" reason="Never"/>
+    <disable_collisions link1="link2_1" link2="stand_foot_connector_3" reason="Never"/>
+    <disable_collisions link1="link2_1" link2="stand_foot_connector_4" reason="Never"/>
+    <disable_collisions link1="link2_1" link2="stand_foot_pipe_1" reason="Never"/>
+    <disable_collisions link1="link2_1" link2="stand_foot_pipe_2" reason="Never"/>
+    <disable_collisions link1="link2_1" link2="stand_foot_pipe_3" reason="Never"/>
+    <disable_collisions link1="link2_1" link2="stand_foot_pipe_4" reason="Never"/>
+    <disable_collisions link1="link2_1" link2="stand_support_pipe_1" reason="Never"/>
+    <disable_collisions link1="link2_1" link2="stand_support_pipe_2" reason="Never"/>
+    <disable_collisions link1="link2_1" link2="stand_support_pipe_3" reason="Never"/>
+    <disable_collisions link1="link2_1" link2="stand_support_pipe_4" reason="Never"/>
+    <disable_collisions link1="link2_1" link2="top_plate_1" reason="Never"/>
+    <disable_collisions link1="link2_1" link2="weight_dist_plate_1" reason="Never"/>
+    <disable_collisions link1="link3_1" link2="motor_1" reason="Never"/>
     <disable_collisions link1="link3_1" link2="motor_3" reason="Never"/>
     <disable_collisions link1="link3_1" link2="motor_4" reason="Never"/>
+    <disable_collisions link1="link3_1" link2="motor_driver_1" reason="Never"/>
+    <disable_collisions link1="link3_1" link2="motor_driver_2" reason="Never"/>
+    <disable_collisions link1="link3_1" link2="protoboard_1" reason="Never"/>
+    <disable_collisions link1="link3_1" link2="protoboard_2" reason="Never"/>
+    <disable_collisions link1="link3_1" link2="protoboard_3" reason="Never"/>
+    <disable_collisions link1="link3_1" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="link3_1" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="link3_1" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="link3_1" link2="stand_ball_wheel_connector_3" reason="Never"/>
+    <disable_collisions link1="link3_1" link2="stand_ball_wheel_connector_4" reason="Never"/>
+    <disable_collisions link1="link3_1" link2="stand_foot_connector_1" reason="Never"/>
+    <disable_collisions link1="link3_1" link2="stand_foot_connector_2" reason="Never"/>
+    <disable_collisions link1="link3_1" link2="stand_foot_connector_3" reason="Never"/>
+    <disable_collisions link1="link3_1" link2="stand_foot_connector_4" reason="Never"/>
+    <disable_collisions link1="link3_1" link2="stand_foot_pipe_1" reason="Never"/>
+    <disable_collisions link1="link3_1" link2="stand_foot_pipe_2" reason="Never"/>
+    <disable_collisions link1="link3_1" link2="stand_foot_pipe_3" reason="Never"/>
+    <disable_collisions link1="link3_1" link2="stand_foot_pipe_4" reason="Never"/>
+    <disable_collisions link1="link3_1" link2="stand_support_pipe_1" reason="Never"/>
+    <disable_collisions link1="link3_1" link2="stand_support_pipe_2" reason="Never"/>
+    <disable_collisions link1="link3_1" link2="stand_support_pipe_4" reason="Never"/>
+    <disable_collisions link1="link3_1" link2="weight_dist_plate_1" reason="Never"/>
+    <disable_collisions link1="link4_1" link2="motor_2" reason="Never"/>
     <disable_collisions link1="link4_1" link2="motor_3" reason="Never"/>
     <disable_collisions link1="link4_1" link2="motor_4" reason="Never"/>
     <disable_collisions link1="link4_1" link2="rubber_sole_1" reason="Never"/>
+    <disable_collisions link1="link4_1" link2="stand_ball_wheel_connector_1" reason="Never"/>
+    <disable_collisions link1="link4_1" link2="stand_ball_wheel_connector_2" reason="Never"/>
+    <disable_collisions link1="link4_1" link2="stand_ball_wheel_connector_3" reason="Never"/>
+    <disable_collisions link1="link4_1" link2="stand_ball_wheel_connector_4" reason="Never"/>
+    <disable_collisions link1="link4_1" link2="stand_foot_connector_1" reason="Never"/>
+    <disable_collisions link1="link4_1" link2="stand_foot_connector_2" reason="Never"/>
+    <disable_collisions link1="link4_1" link2="stand_foot_connector_3" reason="Never"/>
+    <disable_collisions link1="link4_1" link2="stand_foot_connector_4" reason="Never"/>
+    <disable_collisions link1="link4_1" link2="stand_foot_pipe_1" reason="Never"/>
+    <disable_collisions link1="link4_1" link2="stand_foot_pipe_2" reason="Never"/>
+    <disable_collisions link1="link4_1" link2="stand_foot_pipe_3" reason="Never"/>
+    <disable_collisions link1="link4_1" link2="stand_foot_pipe_4" reason="Never"/>
+    <disable_collisions link1="link4_1" link2="stand_support_pipe_2" reason="Never"/>
+    <disable_collisions link1="link4_1" link2="stand_support_pipe_4" reason="Never"/>
     <disable_collisions link1="motor_1" link2="motor_2" reason="Never"/>
     <disable_collisions link1="motor_1" link2="motor_3" reason="Never"/>
     <disable_collisions link1="motor_1" link2="motor_driver_1" reason="Never"/>
@@ -2392,6 +2955,7 @@
     <disable_collisions link1="motor_1" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="motor_1" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="motor_1" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="motor_1" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="motor_1" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="motor_1" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="motor_1" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -2411,19 +2975,31 @@
     <disable_collisions link1="motor_1" link2="top_plate_1" reason="Never"/>
     <disable_collisions link1="motor_1" link2="weight_dist_plate_1" reason="Never"/>
     <disable_collisions link1="motor_2" link2="motor_3" reason="Never"/>
+    <disable_collisions link1="motor_2" link2="motor_4" reason="Never"/>
+    <disable_collisions link1="motor_2" link2="motor_driver_1" reason="Never"/>
+    <disable_collisions link1="motor_2" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="motor_2" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="motor_2" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="motor_2" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="motor_2" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="motor_2" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="motor_2" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="motor_2" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="motor_2" link2="stand_ball_wheel_connector_3" reason="Never"/>
     <disable_collisions link1="motor_2" link2="stand_ball_wheel_connector_4" reason="Never"/>
     <disable_collisions link1="motor_2" link2="stand_foot_connector_1" reason="Never"/>
     <disable_collisions link1="motor_2" link2="stand_foot_connector_2" reason="Never"/>
+    <disable_collisions link1="motor_2" link2="stand_foot_connector_3" reason="Never"/>
+    <disable_collisions link1="motor_2" link2="stand_foot_connector_4" reason="Never"/>
+    <disable_collisions link1="motor_2" link2="stand_foot_pipe_1" reason="Never"/>
     <disable_collisions link1="motor_2" link2="stand_foot_pipe_2" reason="Never"/>
     <disable_collisions link1="motor_2" link2="stand_foot_pipe_3" reason="Never"/>
+    <disable_collisions link1="motor_2" link2="stand_foot_pipe_4" reason="Never"/>
     <disable_collisions link1="motor_2" link2="stand_support_pipe_1" reason="Never"/>
+    <disable_collisions link1="motor_2" link2="stand_support_pipe_2" reason="Never"/>
+    <disable_collisions link1="motor_2" link2="stand_support_pipe_3" reason="Never"/>
+    <disable_collisions link1="motor_2" link2="stand_support_pipe_4" reason="Never"/>
+    <disable_collisions link1="motor_2" link2="top_plate_1" reason="Never"/>
     <disable_collisions link1="motor_2" link2="weight_dist_plate_1" reason="Never"/>
     <disable_collisions link1="motor_3" link2="motor_4" reason="Never"/>
     <disable_collisions link1="motor_3" link2="motor_driver_1" reason="Never"/>
@@ -2437,21 +3013,45 @@
     <disable_collisions link1="motor_3" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="motor_3" link2="stand_ball_wheel_connector_3" reason="Never"/>
     <disable_collisions link1="motor_3" link2="stand_ball_wheel_connector_4" reason="Never"/>
+    <disable_collisions link1="motor_3" link2="stand_foot_connector_1" reason="Never"/>
+    <disable_collisions link1="motor_3" link2="stand_foot_connector_2" reason="Never"/>
     <disable_collisions link1="motor_3" link2="stand_foot_connector_3" reason="Never"/>
     <disable_collisions link1="motor_3" link2="stand_foot_connector_4" reason="Never"/>
+    <disable_collisions link1="motor_3" link2="stand_foot_pipe_1" reason="Never"/>
+    <disable_collisions link1="motor_3" link2="stand_foot_pipe_2" reason="Never"/>
+    <disable_collisions link1="motor_3" link2="stand_foot_pipe_3" reason="Never"/>
+    <disable_collisions link1="motor_3" link2="stand_foot_pipe_4" reason="Never"/>
     <disable_collisions link1="motor_3" link2="stand_support_pipe_1" reason="Never"/>
     <disable_collisions link1="motor_3" link2="stand_support_pipe_2" reason="Never"/>
     <disable_collisions link1="motor_3" link2="stand_support_pipe_3" reason="Never"/>
     <disable_collisions link1="motor_3" link2="stand_support_pipe_4" reason="Never"/>
     <disable_collisions link1="motor_3" link2="top_plate_1" reason="Never"/>
     <disable_collisions link1="motor_3" link2="weight_dist_plate_1" reason="Never"/>
+    <disable_collisions link1="motor_4" link2="protoboard_1" reason="Never"/>
+    <disable_collisions link1="motor_4" link2="protoboard_2" reason="Never"/>
+    <disable_collisions link1="motor_4" link2="protoboard_3" reason="Never"/>
+    <disable_collisions link1="motor_4" link2="protoboard_4" reason="Never"/>
     <disable_collisions link1="motor_4" link2="rubber_sole_1" reason="Never"/>
+    <disable_collisions link1="motor_4" link2="stand_ball_wheel_connector_1" reason="Never"/>
+    <disable_collisions link1="motor_4" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="motor_4" link2="stand_ball_wheel_connector_3" reason="Never"/>
+    <disable_collisions link1="motor_4" link2="stand_ball_wheel_connector_4" reason="Never"/>
+    <disable_collisions link1="motor_4" link2="stand_foot_connector_1" reason="Never"/>
+    <disable_collisions link1="motor_4" link2="stand_foot_connector_2" reason="Never"/>
+    <disable_collisions link1="motor_4" link2="stand_foot_pipe_1" reason="Never"/>
+    <disable_collisions link1="motor_4" link2="stand_foot_pipe_2" reason="Never"/>
+    <disable_collisions link1="motor_4" link2="stand_foot_pipe_3" reason="Never"/>
+    <disable_collisions link1="motor_4" link2="stand_foot_pipe_4" reason="Never"/>
+    <disable_collisions link1="motor_4" link2="stand_support_pipe_1" reason="Never"/>
+    <disable_collisions link1="motor_4" link2="stand_support_pipe_2" reason="Never"/>
+    <disable_collisions link1="motor_4" link2="stand_support_pipe_4" reason="Never"/>
+    <disable_collisions link1="motor_4" link2="weight_dist_plate_1" reason="Never"/>
     <disable_collisions link1="motor_driver_1" link2="motor_driver_2" reason="Never"/>
     <disable_collisions link1="motor_driver_1" link2="protoboard_1" reason="Never"/>
     <disable_collisions link1="motor_driver_1" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="motor_driver_1" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="motor_driver_1" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="motor_driver_1" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="motor_driver_1" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="motor_driver_1" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="motor_driver_1" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -2474,6 +3074,7 @@
     <disable_collisions link1="motor_driver_2" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="motor_driver_2" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="motor_driver_2" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="motor_driver_2" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="motor_driver_2" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="motor_driver_2" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="motor_driver_2" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -2495,6 +3096,7 @@
     <disable_collisions link1="protoboard_1" link2="protoboard_2" reason="Never"/>
     <disable_collisions link1="protoboard_1" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="protoboard_1" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="protoboard_1" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="protoboard_1" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="protoboard_1" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="protoboard_1" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -2515,6 +3117,7 @@
     <disable_collisions link1="protoboard_1" link2="weight_dist_plate_1" reason="Never"/>
     <disable_collisions link1="protoboard_2" link2="protoboard_3" reason="Never"/>
     <disable_collisions link1="protoboard_2" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="protoboard_2" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="protoboard_2" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="protoboard_2" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="protoboard_2" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -2534,6 +3137,7 @@
     <disable_collisions link1="protoboard_2" link2="top_plate_1" reason="Never"/>
     <disable_collisions link1="protoboard_2" link2="weight_dist_plate_1" reason="Never"/>
     <disable_collisions link1="protoboard_3" link2="protoboard_4" reason="Never"/>
+    <disable_collisions link1="protoboard_3" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="protoboard_3" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="protoboard_3" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="protoboard_3" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -2552,6 +3156,7 @@
     <disable_collisions link1="protoboard_3" link2="stand_support_pipe_4" reason="Never"/>
     <disable_collisions link1="protoboard_3" link2="top_plate_1" reason="Never"/>
     <disable_collisions link1="protoboard_3" link2="weight_dist_plate_1" reason="Never"/>
+    <disable_collisions link1="protoboard_4" link2="rubber_sole_1" reason="Never"/>
     <disable_collisions link1="protoboard_4" link2="stand_ball_wheel_connector_1" reason="Never"/>
     <disable_collisions link1="protoboard_4" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="protoboard_4" link2="stand_ball_wheel_connector_3" reason="Never"/>
@@ -2570,7 +3175,24 @@
     <disable_collisions link1="protoboard_4" link2="stand_support_pipe_4" reason="Never"/>
     <disable_collisions link1="protoboard_4" link2="top_plate_1" reason="Never"/>
     <disable_collisions link1="protoboard_4" link2="weight_dist_plate_1" reason="Never"/>
+    <disable_collisions link1="rubber_sole_1" link2="stand_ball_wheel_connector_1" reason="Never"/>
+    <disable_collisions link1="rubber_sole_1" link2="stand_ball_wheel_connector_2" reason="Never"/>
+    <disable_collisions link1="rubber_sole_1" link2="stand_ball_wheel_connector_3" reason="Never"/>
     <disable_collisions link1="rubber_sole_1" link2="stand_ball_wheel_connector_4" reason="Never"/>
+    <disable_collisions link1="rubber_sole_1" link2="stand_foot_connector_1" reason="Never"/>
+    <disable_collisions link1="rubber_sole_1" link2="stand_foot_connector_2" reason="Never"/>
+    <disable_collisions link1="rubber_sole_1" link2="stand_foot_connector_3" reason="Never"/>
+    <disable_collisions link1="rubber_sole_1" link2="stand_foot_connector_4" reason="Never"/>
+    <disable_collisions link1="rubber_sole_1" link2="stand_foot_pipe_1" reason="Never"/>
+    <disable_collisions link1="rubber_sole_1" link2="stand_foot_pipe_2" reason="Never"/>
+    <disable_collisions link1="rubber_sole_1" link2="stand_foot_pipe_3" reason="Never"/>
+    <disable_collisions link1="rubber_sole_1" link2="stand_foot_pipe_4" reason="Never"/>
+    <disable_collisions link1="rubber_sole_1" link2="stand_support_pipe_1" reason="Never"/>
+    <disable_collisions link1="rubber_sole_1" link2="stand_support_pipe_2" reason="Never"/>
+    <disable_collisions link1="rubber_sole_1" link2="stand_support_pipe_3" reason="Never"/>
+    <disable_collisions link1="rubber_sole_1" link2="stand_support_pipe_4" reason="Never"/>
+    <disable_collisions link1="rubber_sole_1" link2="top_plate_1" reason="Never"/>
+    <disable_collisions link1="rubber_sole_1" link2="weight_dist_plate_1" reason="Never"/>
     <disable_collisions link1="stand_ball_wheel_connector_1" link2="stand_ball_wheel_connector_2" reason="Never"/>
     <disable_collisions link1="stand_ball_wheel_connector_1" link2="stand_ball_wheel_connector_3" reason="Never"/>
     <disable_collisions link1="stand_ball_wheel_connector_1" link2="stand_ball_wheel_connector_4" reason="Never"/>

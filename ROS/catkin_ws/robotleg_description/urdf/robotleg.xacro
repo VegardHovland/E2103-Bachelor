@@ -90,6 +90,27 @@
   </collision>
 </link>
 
+<link name="joint_upper_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.04475128760508541 0.00474950000011858 -0.03302073416388937"/>
+    <mass value="0.08968220262391981"/>
+    <inertia ixx="5.9e-05" ixy="-0.0" ixz="3e-06" iyy="0.000176" iyz="-0.0" izz="0.000144"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0358 0.004762 0.014751"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/joint_upper_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0358 0.004762 0.014751"/>
+    <geometry>
+      <mesh filename="package://robotleg_description/meshes/joint_upper_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
 <link name="link1_1">
   <inertial>
     <origin rpy="0 0 0" xyz="0.0175112272812318 0.009999500000708024 -0.011562532820335918"/>
@@ -1728,27 +1749,6 @@
   </collision>
 </link>
 
-<link name="joint_upper_1">
-  <inertial>
-    <origin rpy="0 0 0" xyz="-0.04475128760508541 0.00474950000011858 -0.03302073416388937"/>
-    <mass value="0.08968220262391981"/>
-    <inertia ixx="5.9e-05" ixy="-0.0" ixz="3e-06" iyy="0.000176" iyz="-0.0" izz="0.000144"/>
-  </inertial>
-  <visual>
-    <origin rpy="0 0 0" xyz="-0.0358 0.004762 0.014751"/>
-    <geometry>
-      <mesh filename="package://robotleg_description/meshes/joint_upper_1.stl" scale="0.001 0.001 0.001"/>
-    </geometry>
-    <material name="black"/>
-  </visual>
-  <collision>
-    <origin rpy="0 0 0" xyz="-0.0358 0.004762 0.014751"/>
-    <geometry>
-      <mesh filename="package://robotleg_description/meshes/joint_upper_1.stl" scale="0.001 0.001 0.001"/>
-    </geometry>
-  </collision>
-</link>
-
 <joint name="base_link_to_joint_lower" type="fixed">
   <origin rpy="0 0 0" xyz="0.01 0.007 0.0"/>
   <parent link="base_link"/>
@@ -1765,6 +1765,12 @@
   <origin rpy="0 0 0" xyz="-0.0543 -0.00775 -0.013423"/>
   <parent link="motor_1"/>
   <child link="encoder_cap_1"/>
+</joint>
+
+<joint name="joint1_to_joint_upper" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.0062 -0.004762 0.008249"/>
+  <parent link="joint_1"/>
+  <child link="joint_upper_1"/>
 </joint>
 
 <joint name="joint_upper_to_link1" type="fixed">
@@ -2211,38 +2217,36 @@
   <child link="motor_driver_2"/>
 </joint>
 
-<joint name="motor1_to_joint1" type="continuous">
+<joint name="joint1" type="revolute">
   <origin rpy="0 0 0" xyz="0.022 -0.00775 -0.006423"/>
   <parent link="motor_1"/>
   <child link="joint_1"/>
   <axis xyz="1.0 -0.0 0.0"/>
+  <limit effort="87" velocity="2.4" lower="-0.25" upper="0.25"/>
 </joint>
 
-<joint name="motor2_to_joint2" type="continuous">
+<joint name="joint2" type="revolute">
   <origin rpy="0 0 0" xyz="0.00775 0.022 -0.006423"/>
   <parent link="motor_2"/>
   <child link="joint_2"/>
   <axis xyz="-0.0 1.0 -0.0"/>
+  <limit effort="87" velocity="2.4" lower="-1.57" upper="1.57"/>
 </joint>
 
-<joint name="motor3_to_joint3" type="continuous">
+<joint name="joint3" type="revolute">
   <origin rpy="0 0 0" xyz="0.00775 0.022 -0.006424"/>
   <parent link="motor_3"/>
   <child link="joint_3"/>
   <axis xyz="-0.0 1.0 -0.0"/>
+  <limit effort="87" velocity="2.4" lower="-3.0" upper="0.0"/>
 </joint>
 
-<joint name="motor4_to_joint4" type="continuous">
+<joint name="joint4" type="revolute">
   <origin rpy="0 0 0" xyz="0.00775 0.022 -0.006423"/>
   <parent link="motor_4"/>
   <child link="joint_4"/>
   <axis xyz="-0.0 1.0 -0.0"/>
-</joint>
-
-<joint name="joint1_to_joint_upper" type="fixed">
-  <origin rpy="0 0 0" xyz="-0.0062 -0.004762 0.008249"/>
-  <parent link="joint_1"/>
-  <child link="joint_upper_1"/>
+  <limit effort="87" velocity="2.4" lower="0.0" upper="3.0"/>
 </joint>
 
 </robot>
