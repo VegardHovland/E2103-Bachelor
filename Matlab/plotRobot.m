@@ -2,9 +2,9 @@ function [] = plotRobot(dh, baseHeight)
 %PLOTROBOT Plotting robot in current configuration
     hold on
     grid on
-    xlim([-800 700]);
-    ylim([-800 700]);
-    zlim([-400 600]);
+    xlim([-400 400]);
+    ylim([-400 400]);
+    zlim([-50 550]);
     xlabel('X');
     ylabel('Y');
     zlabel('Z');

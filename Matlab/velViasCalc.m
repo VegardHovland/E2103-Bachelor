@@ -14,7 +14,6 @@ function [velVias] = velViasCalc(thetaVias,velLim)
                 velVias(i,j) = 0;
             end
         end
-    end
-        
+    end    
 end
 
