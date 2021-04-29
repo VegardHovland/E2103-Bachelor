@@ -47,7 +47,7 @@ DualG2HighPowerMotorShield24v14 md1(M11nSLEEP, M11DIR, M11PWM,  M11nFAULT,  M11C
 DualG2HighPowerMotorShield24v14 md2(M21nSLEEP, M21DIR, M21PWM,  M21nFAULT,  M21CS, M22nSLEEP,  M22DIR,  M22PWM,  M22nFAULT, M22CS);                // Declaration for Motor driver 2
 
 //Object array of the 4 actuators, pid parameters, slaveadress and gear ratio as parameters
-Actuator actuators[4] = {Actuator(8, 80, 0, 0.005, 3200), Actuator(9, 70, 0, 30, 4480), Actuator(10, 70, 0, 0.30, 4480), Actuator(11, 50, 0 , 30, 4480)};
+Actuator actuators[4] = {Actuator(8, 80, 0, 0.005, 3200), Actuator(9, 70, 0, 10, 4480), Actuator(10, 70, 0, 0.30, 4480), Actuator(11, 50, 0 , 25, 4480)};
 
 
 //Declare functions-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
