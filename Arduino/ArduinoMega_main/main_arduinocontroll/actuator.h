@@ -28,13 +28,19 @@ class Actuator {
     float prevOut;                                              // Derivate
     float velocity;
     unsigned int amps;                                          // Store how maney amps it is drawing;
+    float rateLimit;
+    float setpointRated;
+    float velRef = 5;                                                // Desiered velocity
 
   public:
     Actuator(byte encAddr, float p, float i, float d,int gr);                                     // Constructor function for actuator class
     void setSetpoint(float r);                                  // Set function for setpoint
+    void setRatedSetpoint(float r);
     void setParameters(float kp, float ti);                     // Set fucntion for PID parameters
+    void setDesieredVelocity(float lim);                               // Set function for rate limit
     float getKp();                                              // Get function for PID parameters
     float getTi();                                              // Get function for PID parameters
+    float getRatedSetPoint();                                   // Get function for the rated setpoint
     float getAngle();                                           // Get function for angle
     void readAngle();                                           // Calculate the angle(-360,360) from the counter given by the encoder in the slave
     void computePID();                                          // Computes the pid value, this is an angle
@@ -43,6 +49,7 @@ class Actuator {
     float getVelocity();                                        // Get function for current velocity
     unsigned int getAmps();                                              // Get function for current readings in [mA]
     void setAmps(unsigned int amp);                                      // Set function for current readings in [mA]
+    void Actuator::setpointRateLimit();
 };
 
 #endif

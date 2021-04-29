@@ -15,9 +15,10 @@ Actuator::Actuator(byte encAddr, float p, float i, float d, int gr) {
 //PID algorithm function
 void Actuator::computePID() {
   currentTime = millis();                                    // Get current time
-  elapsedTime = (float)(currentTime - previousTime);         // Compute time elapsed from previous computation
-
-  error = setPoint - ang;                                    // Determine error
+  elapsedTime = (float)(currentTime - previousTime);         // Compute time elapsed from previous computation. THIS IS in ms!
+  rateLimit = abs(velRef / (elapsedTime));                // Set ratelimit to desiered velocity from moveit, scaled down by 1/1
+  setpointRateLimit();
+  error = setpointRated - ang;                               // Determine error
 
   if (!windup && Ti > 0.0) {
     cumError += error * elapsedTime;                         // Compute integral
@@ -26,13 +27,13 @@ void Actuator::computePID() {
   if (Td > 0.0) {
     ud = ((error - lastError) * (Kp * Td)) / elapsedTime;
   }
-  float  out = Kp * error + ui + ud;                          // PID output
+  float  out = Kp * error + ui + ud;                         // PID output
 
-  if ( out < 400 && out > -400) {                             // not windup if not within bounds
+  if ( out < 400 && out > -400) {                            // not windup if not within bounds
     windup = false;
   }
 
-  if (out > 400) {                                            // if  out of bounds, set activate windup
+  if (out > 400) {                                           // if  out of bounds, set activate windup
     out = 400;
     windup = true;
   }
@@ -42,7 +43,7 @@ void Actuator::computePID() {
     windup = true;
   }
 
-  velocity = ((ang - prevAngle) / 180 * 3.14 ) / (elapsedTime * 1000);    // Calculate angular velocity
+  velocity = ((ang - prevAngle) / 180 * 3.14 ) / (elapsedTime * 1000);    // Calculate angular velocity rad/s
 
   previousTime = currentTime;                                // Remember current time
   prevOut = out;
@@ -54,7 +55,10 @@ void Actuator::computePID() {
 void Actuator::setSetpoint(float r) {
   setPoint = r;                                              //Updates setpoint
 }
-
+//Set function for rated setpoint
+void Actuator::setRatedSetpoint(float r) {
+  setpointRated = r;                                              //Updates setpoint
+}
 //Set function for parameters
 void Actuator::setParameters(float p, float ki) {
   Kp = p;                                                    // Updates Kp
@@ -64,6 +68,10 @@ void Actuator::setParameters(float p, float ki) {
 void Actuator::setAmps(unsigned int amp) {
   amps = amp;
 }
+//Set function for the ratelimit
+void Actuator::setDesieredVelocity(float vel){
+  velRef = vel;
+}
 // Get function for angle
 float Actuator::getAngle() {
   return ang;
@@ -72,6 +80,10 @@ float Actuator::getAngle() {
 //Get function for setoint
 float Actuator::getSetpoint() {
   return setPoint;
+}
+
+float Actuator::getRatedSetPoint() {
+  return setpointRated;
 }
 // Get function for current velocity
 float Actuator::getVelocity() {
@@ -112,4 +124,30 @@ void Actuator::readAngle() {
     Serial.println(result);
   }
   ang = (360.0 * (float)counter) / gearRatio;                       // Converts to degrees (0-360)
+}
+
+//Rate limit the setpoint
+void Actuator::setpointRateLimit() {
+  float diff = setPoint - setpointRated;
+
+  // rateLimit = desierd velocity / scantime ?
+
+  if (setPoint > setpointRated) {                             // If setpoint larger then rated increase rated setpoint
+    if (diff > rateLimit) {
+      setpointRated = setpointRated + rateLimit;
+    }
+    else {
+      setpointRated = setpointRated + diff;
+    }
+  }
+
+  if (setPoint < setpointRated) {                             // If setpoint smaller then rated decrease rated setpoint
+    diff = diff * -1.0;
+    if (diff > rateLimit) {
+      setpointRated = setpointRated - rateLimit;
+    }
+    else {
+      setpointRated = setpointRated - diff;
+    }
+  }
 }

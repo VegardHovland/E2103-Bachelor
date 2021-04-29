@@ -17,7 +17,7 @@ void setup() {
   Wire.begin(slaveAddr);
   Wire.onRequest(requestEvent);              // On request from master function
   aLastState = digitalRead(pinA);            // Reads the initial state of the outputA
-  attachInterrupt(digitalPinToInterrupt(2), saveToERPROM, FALLING);  //Atatches interupt pin
+  //attachInterrupt(digitalPinToInterrupt(2), saveToERPROM, FALLING);  //Atatches interupt pin
 }
 
 void loop() {
