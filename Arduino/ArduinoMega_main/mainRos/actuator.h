@@ -53,7 +53,6 @@ class Actuator {
     void readAngle();                                           // Calculate the angle(-360,360) from the counter given by the encoder in the slave
     void computePID();                                          // Computes the pid value, this is an angle
 
-
 };
 
 #endif
