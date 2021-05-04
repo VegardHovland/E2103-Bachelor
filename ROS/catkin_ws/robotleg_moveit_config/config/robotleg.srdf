@@ -25,6 +25,12 @@
         <joint name="joint3" value="-1.6077"/>
         <joint name="joint4" value="1.2762"/>
     </group_state>
+    <group_state name="middle_step" group="robotleg">
+        <joint name="joint1" value="0"/>
+        <joint name="joint2" value="0.5638"/>
+        <joint name="joint3" value="-1.5249"/>
+        <joint name="joint4" value="1.9392"/>
+    </group_state>
     <group_state name="back_step" group="robotleg">
         <joint name="joint1" value="0"/>
         <joint name="joint2" value="-0.4944"/>
@@ -37,29 +43,11 @@
         <joint name="joint3" value="-2.105"/>
         <joint name="joint4" value="2.1215"/>
     </group_state>
-    <group_state name="middle_step" group="robotleg">
+    <group_state name="back_lift" group="robotleg">
         <joint name="joint1" value="0"/>
-        <joint name="joint2" value="0.5638"/>
-        <joint name="joint3" value="-1.5249"/>
-        <joint name="joint4" value="1.9392"/>
-    </group_state>
-    <group_state name="toeviggle1" group="robotleg">
-        <joint name="joint1" value="0"/>
-        <joint name="joint2" value="0"/>
-        <joint name="joint3" value="-1.57"/>
-        <joint name="joint4" value="-0.9"/>
-    </group_state>
-    <group_state name="toeviggle2" group="robotleg">
-        <joint name="joint1" value="0"/>
-        <joint name="joint2" value="0"/>
-        <joint name="joint3" value="-1.57"/>
-        <joint name="joint4" value="0.5"/>
-    </group_state>
-    <group_state name="start" group="robotleg">
-        <joint name="joint1" value="0"/>
-        <joint name="joint2" value="0"/>
-        <joint name="joint3" value="-1.57"/>
-        <joint name="joint4" value=" 0.0"/>
+        <joint name="joint2" value="0.0500"/>
+        <joint name="joint3" value="-2.105"/>
+        <joint name="joint4" value="2.1215"/>
     </group_state>
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
     <disable_collisions link1="ball_wheel_1" link2="ball_wheel_2" reason="Never"/>
@@ -309,6 +297,7 @@
     <disable_collisions link1="ball_wheel_4" link2="encoder_cap_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_4" link2="encoder_cap_2" reason="Never"/>
     <disable_collisions link1="ball_wheel_4" link2="encoder_cap_3" reason="Never"/>
+    <disable_collisions link1="ball_wheel_4" link2="encoder_cap_4" reason="Never"/>
     <disable_collisions link1="ball_wheel_4" link2="end_effector_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_4" link2="female_pin_headers_1" reason="Never"/>
     <disable_collisions link1="ball_wheel_4" link2="female_pin_headers_2" reason="Never"/>
@@ -1141,6 +1130,7 @@
     <disable_collisions link1="female_pin_headers_5" link2="link1_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_5" link2="link2_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_5" link2="link3_1" reason="Never"/>
+    <disable_collisions link1="female_pin_headers_5" link2="link4_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_5" link2="motor_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_5" link2="motor_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_5" link2="motor_3" reason="Never"/>
@@ -1203,7 +1193,6 @@
     <disable_collisions link1="female_pin_headers_6" link2="joint_upper_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_6" link2="joint_upper_2" reason="Never"/>
     <disable_collisions link1="female_pin_headers_6" link2="joint_upper_3" reason="Never"/>
-    <disable_collisions link1="female_pin_headers_6" link2="joint_upper_4" reason="Never"/>
     <disable_collisions link1="female_pin_headers_6" link2="link1_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_6" link2="link2_1" reason="Never"/>
     <disable_collisions link1="female_pin_headers_6" link2="link3_1" reason="Never"/>

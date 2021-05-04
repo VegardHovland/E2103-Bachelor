@@ -7,5 +7,7 @@ controller_list:
       - joint3
       - joint4
 initial:  # Define initial robot poses.
-  - group: robotleg
-    pose: zeros
+#  - group: robotleg
+#    pose: home
+
+  []
