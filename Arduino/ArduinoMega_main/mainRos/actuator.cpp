@@ -16,7 +16,7 @@ Actuator::Actuator(byte encAddr, float p, float i, float d, int gr) {
 void Actuator::computePID() {
   currentTime = millis();                                    // Get current time
   elapsedTime = (float)(currentTime - previousTime);         // Compute time elapsed from previous computation. THIS IS in ms!
-  rateLimit = abs(velRef / (elapsedTime) * 10);              // Set ratelimit to desiered velocity from moveit, scaled down by 1/1
+  rateLimit = abs(velRef / (elapsedTime) * 50);              // Set ratelimit to desiered velocity from moveit, scaled down by 1/10
   setSetpointRateLimit();                                    // Calculate rate limited setpoint
   error = setpointRated - ang;                               // Determine error
 

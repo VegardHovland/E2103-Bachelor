@@ -1,4 +1,4 @@
-apotek#include <Wire.h>
+#include <Wire.h>
 #include <EEPROM.h>           // Liberary for EEPROM saving
 #define slaveAddr 9
 //Constants:
@@ -15,7 +15,7 @@ void setup() {
   Wire.begin(slaveAddr);
   Wire.onRequest(requestEvent);              // On request from master function
   aLastState = digitalRead(pinA);            // Reads the initial state of the outputA
-  //EEPROM.get(0, counter);     //Get last stored counter value
+  EEPROM.get(0, counter);     //Get last stored counter value
   attachInterrupt(digitalPinToInterrupt(2), saveToERPROM, FALLING);  //Atatches interupt pin
 }
 
@@ -42,5 +42,5 @@ void requestEvent() {
 
 void saveToERPROM(){                            //ISR function for interupt
     EEPROM.put(0, counter);
-    delay(100);
+    delay(1000);                                // Wait to die
 }

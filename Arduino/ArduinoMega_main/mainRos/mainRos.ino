@@ -47,7 +47,7 @@ DualG2HighPowerMotorShield24v14 md1(M11nSLEEP, M11DIR, M11PWM,  M11nFAULT,  M11C
 DualG2HighPowerMotorShield24v14 md2(M21nSLEEP, M21DIR, M21PWM,  M21nFAULT,  M21CS, M22nSLEEP,  M22DIR,  M22PWM,  M22nFAULT, M22CS);                // Declaration for Motor driver 2
 
 //Object array of the 4 actuators, pid parameters, slaveadress and gear ratio as parameters
-Actuator actuators[4] = {Actuator(8, 80, 0, 0.005, 3200), Actuator(9, 70, 0, 30, 4480), Actuator(10, 70, 0, 0.30, 4480), Actuator(11, 50, 0 , 30, 4480)};
+Actuator actuators[4] = {Actuator(8, 80, 0, 0.005, 3200), Actuator(9, 30, 8, 0, 4480), Actuator(10, 20, 20, 0, 4480), Actuator(11, 15, 100 , 0, 4480)};
 
 
 //Declare functions-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -79,6 +79,7 @@ ros::Subscriber <std_msgs::Float32MultiArray> sub2("velocities2arduino", &velCb)
 void setup() {
   setupRos();                                        // initialize ros comunication
   Wire.begin();                                      // Initialize wire
+  delay(10);
   setupDrivers();                                    // Init drivers and startpositions
   delay(10);
 }
@@ -181,8 +182,10 @@ void setupDrivers() {
   md1.enableDrivers();                                           // Enable mosfet 1
   md2.enableDrivers();                                           // Enable mosfet 2
   for (int i = 0; i < numActuators; i++) {
-    actuators[i].setSetpoint(startPos[i]);                       //Initialize start setpoints
-    actuators[i].setRatedSetpoint(startPos[i]);
+    actuators[i].readAngle();                                      // Read startpos
+    delay(10);
+    actuators[i].setSetpoint(actuators[i].getAngle());           //Initialize start setpoints to current
+    actuators[i].setRatedSetpoint(actuators[i].getAngle());
   }
   delay(50);                                                     // Enableing needs some time so delay
 }

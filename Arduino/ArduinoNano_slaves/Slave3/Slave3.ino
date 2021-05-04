@@ -18,7 +18,7 @@ void setup() {
   Wire.onRequest(requestEvent);              // On request from master function
   aLastState = digitalRead(pinA);            // Reads the initial state of the outputA
   attachInterrupt(digitalPinToInterrupt(2), saveToERPROM, FALLING);  //Atatches interupt pin
-  //EEPROM.get(0, counter);     //Get last stored counter value
+  EEPROM.get(0, counter);     //Get last stored counter value
 }
 
 void loop() {
@@ -43,5 +43,5 @@ void requestEvent() {
 }
 void saveToERPROM(){                            //ISR function for interupt
     EEPROM.put(0, counter);
-    delay(100);
+    delay(100);                                 // Wait to die
 }

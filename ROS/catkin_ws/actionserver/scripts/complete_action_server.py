@@ -14,6 +14,9 @@ from control_msgs.msg import (
     FollowJointTrajectoryResult,
     FollowJointTrajectoryGoal
 )
+from trajectory_msgs.msg import (
+    JointTrajectoryPoint
+)
 
 class JointTrajectoryActionServer(object):
     def __init__(self, controller_name):
@@ -28,11 +31,14 @@ class JointTrajectoryActionServer(object):
         self.pos = Float32MultiArray()                                                              # Poisiton being published
         self.speed = Float32MultiArray()                                                            # velocity being published
         self.i=0                                                                                    # Counter for viapoint looping
+        self.timer = 0
         self.pos.data = [0, 0, -1.57, 0]                                                            # init pose for joint positions
-        self.jointStates = [0, 0, -1.57, 0]                                                         # init pos for joint states                                                     
+        self.jointStates = [0, 0, -1.57, 0]  
+        self.jointVel = [0, 0, 0,0]                                                                 # init pos for joint states                                                     
         rospy.Subscriber('/joint_states', JointState, self.get_joints)                              # define joint_states subscriber
-        self.speed.data = [0, 0, 0, 0]                                                              # init speed
-        self.pos.data = self.jointStates                                                            # store positions from harware
+        self.speed.data = [0.0, 0.0, 0.0, 0.0]                                                     # init speed
+        self.pos.data = self.jointStates   
+        self.speed.data = self.jointVel                                                         # store positions from harware
         self.pub = rospy.Publisher('/setpoint2arduino', Float32MultiArray, queue_size=1000)         # Publisher for setpoints to arduin
         self.pub2 = rospy.Publisher('/velocities2arduino', Float32MultiArray, queue_size=1000)      # Publisher for velocities to aruino
         rospy.loginfo('Successful init')                                                            
@@ -44,11 +50,13 @@ class JointTrajectoryActionServer(object):
         trajectory_points = goal.trajectory.points                                                  # get the different points of the trajecotry
         self.viapoints = trajectory_points                                                          # store as viapoints
         self._goal = self._as.set_succeeded()                                                       # Sucessfully got viapoints, sending sucess to moveit. Rest is on hardware level
+        self.i = 0                                                                                  # Force reset
+        self.timer = time.time()                                                                    # start timer
         while self.i < len(self.viapoints):                                                         # Loop over all the viapoints
             for j in range(4):                                                                      # loop over 4 joints
                 self.pos.data[j] = self.viapoints[self.i].positions[j]                              # Update current setpoints 
                 self.speed.data[j] = self.viapoints[self.i].velocities[j]                           # Update current velocity
-                if self.i == len(self.viapoints) - 1:                                               # Speed for last point is 0, avoid stopping to early
+                if self.i == (len(self.viapoints) - 1):                                             # Speed for last point is 0, avoid stopping to early
                     self.speed.data[j] = self.viapoints[self.i -1].velocities[j]                    # Save speed from last-1 point
             rospy.spin                                                                              # Read new pos from sensors
             time.sleep(0.02)                                                                        # sleep long enough to get new joint_states
@@ -56,8 +64,11 @@ class JointTrajectoryActionServer(object):
             self.pub.publish(self.pos)                                                              # Publish current setpoints
             self.pub2.publish(self.speed)                                                           # Publish speeds
             if self.tol():                                                                          # Check if close enough to setpoint
-                self.i = self.i + 1                                                                 # loop to next setpoints in path                   
-        self.speed.data = self.viapoints[self.i].velocities                                         # set speed for end point
+                self.i = self.i + 1                                                                 # loop to next setpoints in path  
+            if (time.time()- self.timer) > 10:                                                      # exit if not completed within 10 sec
+                break
+        #self._goal = self._as.set_succeeded()                  
+        #self.speed.data = self.viapoints[self.i - 1].velocities                                     # set speed for end point
         self.i=0                                                                                    # Reset counter for next trajecotry execution
 
     def goalCB(self):                                                                               # Goal callback function, implement this if motion is planned from continous
@@ -65,7 +76,8 @@ class JointTrajectoryActionServer(object):
         # Do something with goal, not used
 
     def get_joints(self, msg):          
-        self.jointStates = msg.position                                                             # Get joint states
+        self.jointStates = msg.position   
+        self.jointVel =   msg.velocity                                                          # Get joint states
     
     def tol(self):
         tolerance = True
