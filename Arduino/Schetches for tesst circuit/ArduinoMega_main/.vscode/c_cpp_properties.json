@@ -1,0 +1,32 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/opt/ros/noetic/include/**",
+                "/usr/include/**"
+            ],
+            "name": "ROS"
+        },
+        {
+            "name": "Linux",
+            "includePath": [
+                "/snap/arduino/current/tools/**",
+                "/home/vegard_ubuntu/Arduino/libraries/**",
+                "/home/vegard_ubuntu/snap/arduino/current/Arduino/**",
+                "/snap/arduino/current/hardware/tools/**",
+                "/snap/arduino/current/hardware/arduino/avr/**"
+            ],
+            "forcedInclude": [
+                "/snap/arduino/current/hardware/arduino/avr/cores/arduino/Arduino.h"
+            ],
+            "defines": [
+                "USBCON"
+            ]
+        }
+    ],
+    "version": 4
+}

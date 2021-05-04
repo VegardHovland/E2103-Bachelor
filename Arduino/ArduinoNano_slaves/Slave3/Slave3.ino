@@ -7,7 +7,7 @@ int pinA = 3;                 // Encoder pin for A puls
 int pinB = 4;                 // Encoder pin for B puls
 
 //Variables:
-int counter = -4480 / 4;       // store the incremental encoders counter, slave 3 starts at 90 deg
+int counter  = -4480 / 4;       // store the incremental encoders counter, slave 3 starts at 90 deg
 int aState;                   // Store the state of the puls
 int aLastState;               // Save last state of the puls
 void setup() {

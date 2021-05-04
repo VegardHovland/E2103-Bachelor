@@ -65,7 +65,7 @@ class JointTrajectoryActionServer(object):
             self.pub2.publish(self.speed)                                                           # Publish speeds
             if self.tol():                                                                          # Check if close enough to setpoint
                 self.i = self.i + 1                                                                 # loop to next setpoints in path  
-            if (time.time()- self.timer) > 10:                                                      # exit if not completed within 10 sec
+            if (time.time()- self.timer) > 5:                                                      # exit if not completed within 10 sec
                 break
         #self._goal = self._as.set_succeeded()                  
         #self.speed.data = self.viapoints[self.i - 1].velocities                                     # set speed for end point
