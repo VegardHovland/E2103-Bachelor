@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="quadruped">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="FrontLeft">
+        <joint name="joint1FrontLeft"/>
+        <joint name="joint2FrontLeft"/>
+        <joint name="joint3FrontLeft"/>
+        <joint name="joint4FrontLeft"/>
+    </group>
+    <group name="Front Right">
+        <joint name="joint1FrontRight"/>
+        <joint name="joint2FrontRight"/>
+        <joint name="joint3FrontRight"/>
+        <joint name="joint4FrontRight"/>
+    </group>
+    <group name="BackLeft">
+        <joint name="joint1BackLeft"/>
+        <joint name="joint2BackLeft"/>
+        <joint name="joint3BackLeft"/>
+        <joint name="joint4BackLeft"/>
+    </group>
+    <group name="BackRight">
+        <joint name="joint1BackRight"/>
+        <joint name="joint2BackRight"/>
+        <joint name="joint3BackRight"/>
+        <joint name="joint4BackRight"/>
+    </group>
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
+    <group_state name="HOME" group="FrontLeft">
+        <joint name="joint1FrontLeft" value="0"/>
+        <joint name="joint2FrontLeft" value="0"/>
+        <joint name="joint3FrontLeft" value="0"/>
+        <joint name="joint4FrontLeft" value="0"/>
+    </group_state>
+    <group_state name="HOME" group="Front Right">
+        <joint name="joint1FrontRight" value="0"/>
+        <joint name="joint2FrontRight" value="0"/>
+        <joint name="joint3FrontRight" value="0"/>
+        <joint name="joint4FrontRight" value="0"/>
+    </group_state>
+    <group_state name="HOME" group="BackLeft">
+        <joint name="joint1BackLeft" value="0"/>
+        <joint name="joint2BackLeft" value="0"/>
+        <joint name="joint3BackLeft" value="0"/>
+        <joint name="joint4BackLeft" value="0"/>
+    </group_state>
+    <group_state name="HOME" group="BackRight">
+        <joint name="joint1BackRight" value="0"/>
+        <joint name="joint2BackRight" value="0"/>
+        <joint name="joint3BackRight" value="0"/>
+        <joint name="joint4BackRight" value="0"/>
+    </group_state>
+    <group_state name="FrontLeft_FrontStep" group="FrontLeft">
+        <joint name="joint1FrontLeft" value="0"/>
+        <joint name="joint2FrontLeft" value="1.223"/>
+        <joint name="joint3FrontLeft" value="-1.67"/>
+        <joint name="joint4FrontLeft" value="1.27"/>
+    </group_state>
+    <group_state name="FrontLeft_BackStep" group="FrontLeft">
+        <joint name="joint1FrontLeft" value="0"/>
+        <joint name="joint2FrontLeft" value="-0.49"/>
+        <joint name="joint3FrontLeft" value="-0.72"/>
+        <joint name="joint4FrontLeft" value="1.92"/>
+    </group_state>
+    <group_state name="FrontLeft_MiddleStep" group="FrontLeft">
+        <joint name="joint1FrontLeft" value="0"/>
+        <joint name="joint2FrontLeft" value="0.56"/>
+        <joint name="joint3FrontLeft" value="-1.52"/>
+        <joint name="joint4FrontLeft" value="1.93"/>
+    </group_state>
+    <group_state name="FrontRight_FrontStep" group="Front Right">
+        <joint name="joint1FrontRight" value="0"/>
+        <joint name="joint2FrontRight" value="1.23"/>
+        <joint name="joint3FrontRight" value="-1.6"/>
+        <joint name="joint4FrontRight" value="1.27"/>
+    </group_state>
+    <group_state name="FrontRight_BackStep" group="Front Right">
+        <joint name="joint1FrontRight" value="0"/>
+        <joint name="joint2FrontRight" value="-0.49"/>
+        <joint name="joint3FrontRight" value="-0.72"/>
+        <joint name="joint4FrontRight" value="1.92"/>
+    </group_state>
+    <group_state name="FrontRight_MiddleStep" group="Front Right">
+        <joint name="joint1FrontRight" value="0"/>
+        <joint name="joint2FrontRight" value="0.56"/>
+        <joint name="joint3FrontRight" value="-1.52"/>
+        <joint name="joint4FrontRight" value="1.93"/>
+    </group_state>
+    <group_state name="BackLeft_FrontStep" group="BackLeft">
+        <joint name="joint1BackLeft" value="0"/>
+        <joint name="joint2BackLeft" value="0.494"/>
+        <joint name="joint3BackLeft" value="-1.6"/>
+        <joint name="joint4BackLeft" value="1.9227"/>
+    </group_state>
+    <group_state name="BackLeft_MiddleStep" group="BackLeft">
+        <joint name="joint1BackLeft" value="0"/>
+        <joint name="joint2BackLeft" value="0.56"/>
+        <joint name="joint3BackLeft" value="-1.52"/>
+        <joint name="joint4BackLeft" value="1.93"/>
+    </group_state>
+    <group_state name="BackLeft_BackStep" group="BackLeft">
+        <joint name="joint1BackLeft" value="0"/>
+        <joint name="joint2BackLeft" value="0.49"/>
+        <joint name="joint3BackLeft" value="0.72"/>
+        <joint name="joint4BackLeft" value="-1.92"/>
+    </group_state>
+    <group_state name="BackRight_BackStep" group="BackRight">
+        <joint name="joint1BackRight" value="0"/>
+        <joint name="joint2BackRight" value="-0.49"/>
+        <joint name="joint3BackRight" value="-0.72"/>
+        <joint name="joint4BackRight" value="1.92"/>
+    </group_state>
+    <group_state name="BackRight_FrontStep" group="BackRight">
+        <joint name="joint1BackRight" value="0"/>
+        <joint name="joint2BackRight" value="1.23"/>
+        <joint name="joint3BackRight" value="-1.607"/>
+        <joint name="joint4BackRight" value="1.27"/>
+    </group_state>
+    <group_state name="BackRight_MiddleStep" group="BackRight">
+        <joint name="joint1BackRight" value="0"/>
+        <joint name="joint2BackRight" value="0.56"/>
+        <joint name="joint3BackRight" value="-1.52"/>
+        <joint name="joint4BackRight" value="1.93"/>
+    </group_state>
+    <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
+    <virtual_joint name="virtual_joint" type="fixed" parent_frame="world" child_link="base_link"/>
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="base_link" link2="link1BackLeft_1" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="link1BackRight_1" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="link1FrontLeft_1" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="link1FrontRight_1" reason="Adjacent"/>
+    <disable_collisions link1="link1BackLeft_1" link2="link1BackRight_1" reason="Never"/>
+    <disable_collisions link1="link1BackLeft_1" link2="link1FrontLeft_1" reason="Never"/>
+    <disable_collisions link1="link1BackLeft_1" link2="link1FrontRight_1" reason="Never"/>
+    <disable_collisions link1="link1BackLeft_1" link2="link2BackLeft_1" reason="Adjacent"/>
+    <disable_collisions link1="link1BackLeft_1" link2="link2FrontLeft_1" reason="Never"/>
+    <disable_collisions link1="link1BackLeft_1" link2="link2FrontRight_1" reason="Never"/>
+    <disable_collisions link1="link1BackRight_1" link2="link1FrontLeft_1" reason="Never"/>
+    <disable_collisions link1="link1BackRight_1" link2="link1FrontRight_1" reason="Never"/>
+    <disable_collisions link1="link1BackRight_1" link2="link2BackRight_1" reason="Adjacent"/>
+    <disable_collisions link1="link1BackRight_1" link2="link2FrontLeft_1" reason="Never"/>
+    <disable_collisions link1="link1BackRight_1" link2="link2FrontRight_1" reason="Never"/>
+    <disable_collisions link1="link1FrontLeft_1" link2="link1FrontRight_1" reason="Never"/>
+    <disable_collisions link1="link1FrontLeft_1" link2="link2BackLeft_1" reason="Never"/>
+    <disable_collisions link1="link1FrontLeft_1" link2="link2BackRight_1" reason="Never"/>
+    <disable_collisions link1="link1FrontLeft_1" link2="link2FrontLeft_1" reason="Adjacent"/>
+    <disable_collisions link1="link1FrontRight_1" link2="link2BackLeft_1" reason="Never"/>
+    <disable_collisions link1="link1FrontRight_1" link2="link2BackRight_1" reason="Never"/>
+    <disable_collisions link1="link1FrontRight_1" link2="link2FrontRight_1" reason="Adjacent"/>
+    <disable_collisions link1="link2BackLeft_1" link2="link2FrontLeft_1" reason="Never"/>
+    <disable_collisions link1="link2BackLeft_1" link2="link2FrontRight_1" reason="Never"/>
+    <disable_collisions link1="link2BackLeft_1" link2="link3BackLeft__1" reason="Adjacent"/>
+    <disable_collisions link1="link2BackRight_1" link2="link2FrontLeft_1" reason="Never"/>
+    <disable_collisions link1="link2BackRight_1" link2="link2FrontRight_1" reason="Never"/>
+    <disable_collisions link1="link2BackRight_1" link2="link3BackRight_1" reason="Adjacent"/>
+    <disable_collisions link1="link2FrontLeft_1" link2="link3FrontLeft_1" reason="Adjacent"/>
+    <disable_collisions link1="link2FrontRight_1" link2="link3FrontRight_1" reason="Adjacent"/>
+    <disable_collisions link1="link3BackLeft__1" link2="link4BackLeft_1" reason="Adjacent"/>
+    <disable_collisions link1="link3BackRight_1" link2="link4FrontRight__1__1" reason="Adjacent"/>
+    <disable_collisions link1="link3FrontLeft_1" link2="link4FrontLeft_1" reason="Adjacent"/>
+    <disable_collisions link1="link3FrontRight_1" link2="link4FrontRight_1" reason="Adjacent"/>
+</robot>
