@@ -1,6 +1,8 @@
 clear all
 clc
 
+%Run this fisrt to generate symbolic matrices
+
 % Parameters
 syms J M R g To real
 % Variables
@@ -14,30 +16,30 @@ q  = [theta1; theta2; theta3; theta4; theta5; theta6; theta7];
 % of the generalized coordinates
 dq = [dtheta1; dtheta2; dtheta3; dtheta4; dtheta5; dtheta6; dtheta7];
 % Write the expressions for the position of
-% the endeffector:
+% the links take this from kinematics:
 p = [];   
 
 % Kinetic energy
-T = 1/2*J*dtheta^2; % kinetic energy of beam
+T = ; % kinetic energy equations provided in thesis
 
-dp = jacobian(p,q)*dq; % linear velocity of ball
-T  = T + 1/2*M*dp'*dp; % add linear kinetic energy of ball
+dp = jacobian(p,q)*dq; % calc velocity
+T  = T + 1/2*M*dp'*dp; % add linear kinetic energy
 
-I     = 2/5*M*R^2; % inertia in rotation of ball
-omega = dp/R; % angular velocity of ball
+I     = ;                           % inertia in rotation matrices provided in seperate matlab file
+omega = ;                           % angular velocity eq 4.27
 
-T  = T + 1/2*I*omega'*omega; % add rotational kinetic energy of ball
+T  = T + 1/2*I*omega'*omega;        % add rotational kinetic energy, eq 4.29
 
 T = simplify(T);
 
 % Potential energy
-V = M*g*(R*cos(theta)+x*sin(theta)) ;
+V =  ;                              % Eq 4.3 in thesis paper
 
 % Generalized forces
-Q = [0;To];
+Q = [0;To];                         % Edit this to fit eq 4.32
 
 % Lagrangian
-Lag = T - V ;
+Lag = T - V ;                       % Eq. 4.3
 
 Lag_q = simplify(jacobian(Lag,q)).';
 Lag_qdq = simplify(jacobian(Lag_q.',dq));
