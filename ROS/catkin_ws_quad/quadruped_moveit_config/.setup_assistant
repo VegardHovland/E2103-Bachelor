@@ -6,6 +6,6 @@ moveit_setup_assistant_config:
   SRDF:
     relative_path: config/quadruped.srdf
   CONFIG:
-    author_name: Grinde og Hovland
-    author_email: vegarbho@ntnu.no
-    generated_timestamp: 1620560448
+    author_name: Grinde & Hovland
+    author_email: kgrinde@live.no
+    generated_timestamp: 1620568925
