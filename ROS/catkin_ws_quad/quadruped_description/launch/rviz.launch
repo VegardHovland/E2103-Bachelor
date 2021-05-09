@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <param name="robot_description" command="$(find xacro)/xacro '$(find quadruped_description)/urdf/quadruped.xacro'"/>
+  <param name="use_gui" value="true"/>
+
+  <!-- Combine joint values to get tf of links -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+  
+  <!-- Publish joint values -->
+  <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
+  
+  <!-- Show robot state in Rviz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find quadruped_description)/launch/config.rviz"/>
+
+</launch>

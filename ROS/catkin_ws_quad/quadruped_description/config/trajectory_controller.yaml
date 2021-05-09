@@ -1,0 +1,100 @@
+quadruped:
+  # Publish all joint states
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  # Trajectory Controller
+  quadruped_controller:
+    type: "effort_controllers/JointTrajectoryController"
+    joints:
+      - joint1FrontRight
+      - joint1BackLeft
+      - joint1FrontLeft
+      - joint1BackRight
+      - joint2FrontRight
+      - joint2BackLeft
+      - joint2FrontLeft
+      - joint2BackRight
+      - joint3FrontRight
+      - joint3BackLeft
+      - joint3FrontLeft
+      - joint3BackRight
+      - joint4FrontRight
+      - joint4BackLeft
+      - joint4FrontLeft
+      - joint4BackRight
+    
+    constraints:
+      goal_time: 10
+      stopped_velocity_tolerance: 0.05
+      joint1FrontRight:
+        trajectory: 0.1
+        goal: 0.1
+      joint1BackLeft:
+        trajectory: 0.1
+        goal: 0.1
+      joint1FrontLeft:
+        trajectory: 0.1
+        goal: 0.1
+      joint1BackRight:
+        trajectory: 0.1
+        goal: 0.1
+      joint2FrontRight:
+        trajectory: 0.1
+        goal: 0.1
+      joint2BackLeft:
+        trajectory: 0.1
+        goal: 0.1
+      joint2FrontLeft:
+        trajectory: 0.1
+        goal: 0.1
+      joint2BackRight:
+        trajectory: 0.1
+        goal: 0.1
+      joint3FrontRight:
+        trajectory: 0.1
+        goal: 0.1
+      joint3BackLeft:
+        trajectory: 0.1
+        goal: 0.1
+      joint3FrontLeft:
+        trajectory: 0.1
+        goal: 0.1
+      joint3BackRight:
+        trajectory: 0.1
+        goal: 0.1
+      joint4FrontRight:
+        trajectory: 0.1
+        goal: 0.1
+      joint4BackLeft:
+        trajectory: 0.1
+        goal: 0.1
+      joint4FrontLeft:
+        trajectory: 0.1
+        goal: 0.1
+      joint4BackRight:
+        trajectory: 0.1
+        goal: 0.1
+    
+    gains:
+      joint1FrontRight: {p: 500, i: 20, d: 2}
+      joint1BackLeft: {p: 500, i: 20, d: 2}
+      joint1FrontLeft: {p: 500, i: 20, d: 2}
+      joint1BackRight: {p: 500, i: 20, d: 2}
+      joint2FrontRight: {p: 500, i: 20, d: 2}
+      joint2BackLeft: {p: 500, i: 20, d: 2}
+      joint2FrontLeft: {p: 500, i: 20, d: 2}
+      joint2BackRight: {p: 500, i: 20, d: 2}
+      joint3FrontRight: {p: 500, i: 20, d: 2}
+      joint3BackLeft: {p: 500, i: 20, d: 2}
+      joint3FrontLeft: {p: 500, i: 20, d: 2}
+      joint3BackRight: {p: 500, i: 20, d: 2}
+      joint4FrontRight: {p: 70, i: 20, d: 2}
+      joint4BackLeft: {p: 70, i: 20, d: 2}
+      joint4FrontLeft: {p: 70, i: 20, d: 2}
+      joint4BackRight: {p: 70, i: 20, d: 2}
+
+    state_publish_rate: 50
+    action_monitor_rate: 50
+    stop_trajectory_duration: 0.5

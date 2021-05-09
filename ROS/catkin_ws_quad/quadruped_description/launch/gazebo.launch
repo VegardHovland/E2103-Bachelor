@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+
+  <!-- Launch arguments -->
+  <arg name="paused" default="true"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+
+  <!-- Start Gazebo simulation -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find quadruped_description)/worlds/empty.world"/>
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="headless" value="$(arg headless)"/>
+  </include>
+
+  <group ns="/quadruped">
+
+    <!-- Load robot URDF to ROS Parameter Server -->
+    <param name="robot_description" command="$(find xacro)/xacro '$(find quadruped_description)/urdf/quadruped.xacro'"/>
+    
+    <!-- Spawn arguments -->
+    <arg name="x" default="0"/>
+    <arg name="y" default="0"/>
+    <arg name="z" default="0.6"/>
+
+    <!-- Spawn the robot model -->
+    <node name="quadruped_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+          args="-urdf -param robot_description -model quadruped -x $(arg x) -y $(arg y) -z $(arg z)"/>
+
+  </group>
+
+  <!-- Controller launch file -->
+  <include file="$(find quadruped_description)/launch/controller.launch"/>
+
+</launch>
