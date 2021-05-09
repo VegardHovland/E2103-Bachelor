@@ -1,11 +1,11 @@
 moveit_setup_assistant_config:
   URDF:
-    package: quad_description
+    package: quadruped_description
     relative_path: urdf/quadruped.xacro
     xacro_args: ""
   SRDF:
     relative_path: config/quadruped.srdf
   CONFIG:
-    author_name: Vegard Hovland
-    author_email: vegarbh@ntnu.no
-    generated_timestamp: 1620243987
+    author_name: Grinde og Hovland
+    author_email: vegarbho@ntnu.no
+    generated_timestamp: 1620560448

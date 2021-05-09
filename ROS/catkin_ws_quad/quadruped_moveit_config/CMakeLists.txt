@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.1.3)
-project(quad_moveit_config)
+project(quadruped_moveit_config)
 
 find_package(catkin REQUIRED)
 

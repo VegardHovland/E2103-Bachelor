@@ -127,6 +127,34 @@ planner_configs:
     sparse_delta_fraction: 0.25  # delta fraction for connection distance. This value represents the visibility range of sparse samples. default: 0.25
     dense_delta_fraction: 0.001  # delta fraction for interface detection. default: 0.001
     max_failures: 5000  # maximum consecutive failure limit. default: 5000
+All:
+  planner_configs:
+    - AnytimePathShortening
+    - SBL
+    - EST
+    - LBKPIECE
+    - BKPIECE
+    - KPIECE
+    - RRT
+    - RRTConnect
+    - RRTstar
+    - TRRT
+    - PRM
+    - PRMstar
+    - FMT
+    - BFMT
+    - PDST
+    - STRIDE
+    - BiTRRT
+    - LBTRRT
+    - BiEST
+    - ProjEST
+    - LazyPRM
+    - LazyPRMstar
+    - SPARS
+    - SPARStwo
+  projection_evaluator: joints(joint1BackLeft,joint2BackLeft)
+  longest_valid_segment_fraction: 0.005
 FrontLeft:
   planner_configs:
     - AnytimePathShortening
@@ -155,7 +183,7 @@ FrontLeft:
     - SPARStwo
   projection_evaluator: joints(joint1FrontLeft,joint2FrontLeft)
   longest_valid_segment_fraction: 0.005
-Front Right:
+FrontRight:
   planner_configs:
     - AnytimePathShortening
     - SBL
@@ -211,7 +239,7 @@ BackLeft:
     - SPARStwo
   projection_evaluator: joints(joint1BackLeft,joint2BackLeft)
   longest_valid_segment_fraction: 0.005
-BackRight:
+BackRIght:
   planner_configs:
     - AnytimePathShortening
     - SBL
@@ -238,4 +266,60 @@ BackRight:
     - SPARS
     - SPARStwo
   projection_evaluator: joints(joint1BackRight,joint2BackRight)
+  longest_valid_segment_fraction: 0.005
+FrontLegs:
+  planner_configs:
+    - AnytimePathShortening
+    - SBL
+    - EST
+    - LBKPIECE
+    - BKPIECE
+    - KPIECE
+    - RRT
+    - RRTConnect
+    - RRTstar
+    - TRRT
+    - PRM
+    - PRMstar
+    - FMT
+    - BFMT
+    - PDST
+    - STRIDE
+    - BiTRRT
+    - LBTRRT
+    - BiEST
+    - ProjEST
+    - LazyPRM
+    - LazyPRMstar
+    - SPARS
+    - SPARStwo
+  projection_evaluator: joints(joint1FrontLeft,joint2FrontLeft)
+  longest_valid_segment_fraction: 0.005
+BackLegs:
+  planner_configs:
+    - AnytimePathShortening
+    - SBL
+    - EST
+    - LBKPIECE
+    - BKPIECE
+    - KPIECE
+    - RRT
+    - RRTConnect
+    - RRTstar
+    - TRRT
+    - PRM
+    - PRMstar
+    - FMT
+    - BFMT
+    - PDST
+    - STRIDE
+    - BiTRRT
+    - LBTRRT
+    - BiEST
+    - ProjEST
+    - LazyPRM
+    - LazyPRMstar
+    - SPARS
+    - SPARStwo
+  projection_evaluator: joints(joint1BackLeft,joint2BackLeft)
   longest_valid_segment_fraction: 0.005
