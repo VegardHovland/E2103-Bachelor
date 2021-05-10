@@ -1,0 +1,476 @@
+<?xml version="1.0" ?>
+<robot name="quadruped" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find quadruped_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find quadruped_description)/urdf/quadruped.trans" />
+<xacro:include filename="$(find quadruped_description)/urdf/quadruped.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-3.431576713324414e-17 2.610567498014317e-16 0.04324730691236673"/>
+    <mass value="29.384744866709624"/>
+    <inertia ixx="1.089951" ixy="-1.1e-05" ixz="0.0" iyy="0.445316" iyz="0.0" izz="1.461435"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link1FrontRight_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.006657525670384218 -0.008851869868314433 -0.0682785415205543"/>
+    <mass value="0.6959462012084651"/>
+    <inertia ixx="0.001039" ixy="4.5e-05" ixz="5.5e-05" iyy="0.000651" iyz="-0.000304" izz="0.000853"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.155 0.272 0.028"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link1FrontRight_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.155 0.272 0.028"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link1FrontRight_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link1BackLeft_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.006657525670384523 0.008851869868314655 -0.068278541520555"/>
+    <mass value="0.6959462012084651"/>
+    <inertia ixx="0.001039" ixy="4.5e-05" ixz="-5.5e-05" iyy="0.000651" iyz="0.000304" izz="0.000853"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.155 -0.272 0.028"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link1BackLeft_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.155 -0.272 0.028"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link1BackLeft_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link1FrontLeft_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.006632742807460124 -0.008892294774752285 -0.06827854152055422"/>
+    <mass value="0.6959462012084651"/>
+    <inertia ixx="0.00104" ixy="-4.6e-05" ixz="-5.5e-05" iyy="0.000651" iyz="-0.000304" izz="0.000853"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.155 0.272 0.028"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link1FrontLeft_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.155 0.272 0.028"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link1FrontLeft_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link1BackRight_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.006632742807465342 0.008892294774752674 -0.06827854152054838"/>
+    <mass value="0.6959462012084651"/>
+    <inertia ixx="0.00104" ixy="-4.6e-05" ixz="5.5e-05" iyy="0.000651" iyz="0.000304" izz="0.000853"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.155 -0.272 0.028"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link1BackRight_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.155 -0.272 0.028"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link1BackRight_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link2FrontRight_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.048356898374047996 3.830943160310074e-06 -0.2053710415322904"/>
+    <mass value="0.8659841478355499"/>
+    <inertia ixx="0.00672" ixy="-0.0" ixz="0.000112" iyy="0.007032" iyz="-1e-05" izz="0.000496"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.196988 0.2908 0.100978"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link2FrontRight_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.196988 0.2908 0.100978"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link2FrontRight_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link2BackLeft_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.048356898374071394 -3.8309431600880295e-06 -0.20537104153228847"/>
+    <mass value="0.8659841478355499"/>
+    <inertia ixx="0.00672" ixy="-0.0" ixz="-0.000112" iyy="0.007032" iyz="1e-05" izz="0.000496"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.196988 -0.2908 0.100978"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link2BackLeft_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.196988 -0.2908 0.100978"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link2BackLeft_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link2FrontLeft_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.048355899630154936 -3.830943159754963e-06 -0.20537104153228886"/>
+    <mass value="0.8659841478355499"/>
+    <inertia ixx="0.00672" ixy="-0.0" ixz="-0.000112" iyy="0.007032" iyz="-1.1e-05" izz="0.000496"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.197012 0.2908 0.100978"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link2FrontLeft_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.197012 0.2908 0.100978"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link2FrontLeft_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link2BackRight_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.04835589963014089 3.830943159977007e-06 -0.2053710415322857"/>
+    <mass value="0.8659841478355499"/>
+    <inertia ixx="0.00672" ixy="-0.0" ixz="0.000112" iyy="0.007032" iyz="1.1e-05" izz="0.000496"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.197012 -0.2908 0.100978"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link2BackRight_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.197012 -0.2908 0.100978"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link2BackRight_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link3FrontRight_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.048133393092814 2.7563511130757057e-06 -0.22442742342969896"/>
+    <mass value="0.8975642770404472"/>
+    <inertia ixx="0.00868" ixy="-0.0" ixz="0.000137" iyy="0.008993" iyz="1.4e-05" izz="0.000506"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.196988 0.290812 0.357157"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link3FrontRight_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.196988 0.290812 0.357157"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link3FrontRight_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link3BackLeft__1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.04813239309294695 -2.7563511130201945e-06 -0.22442742342968608"/>
+    <mass value="0.8975642770404472"/>
+    <inertia ixx="0.00868" ixy="-0.0" ixz="-0.000137" iyy="0.008993" iyz="-1.4e-05" izz="0.000506"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.196987 -0.290812 0.357157"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link3BackLeft__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.196987 -0.290812 0.357157"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link3BackLeft__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link3FrontLeft_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.04813211460166722 -3.7563511127713944e-06 -0.22442742342969096"/>
+    <mass value="0.8975642770404472"/>
+    <inertia ixx="0.00868" ixy="-0.0" ixz="-0.000137" iyy="0.008993" iyz="1.3e-05" izz="0.000506"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.197012 0.290787 0.357157"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link3FrontLeft_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.197012 0.290787 0.357157"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link3FrontLeft_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link3BackRight_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.04813311460158873 3.7563511128824167e-06 -0.22442742342969418"/>
+    <mass value="0.8975642770404472"/>
+    <inertia ixx="0.00868" ixy="-0.0" ixz="0.000137" iyy="0.008993" iyz="-1.3e-05" izz="0.000506"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.197013 -0.290787 0.357157"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link3BackRight_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.197013 -0.290787 0.357157"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link3BackRight_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link4FrontRight_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.044210366433339116 -0.006254524034632503 -0.10914906216532572"/>
+    <mass value="0.3651188269789837"/>
+    <inertia ixx="0.001791" ixy="-5e-06" ixz="-7.1e-05" iyy="0.0019" iyz="-0.000199" izz="0.000283"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.196988 0.290825 0.641575"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link4FrontRight_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.196988 0.290825 0.641575"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link4FrontRight_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link4BackLeft_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.04440935130290677 -0.006229937915568751 -0.10914906216527509"/>
+    <mass value="0.3651188269789837"/>
+    <inertia ixx="0.001791" ixy="5e-06" ixz="7.1e-05" iyy="0.0019" iyz="-0.000199" izz="0.000283"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.196987 -0.290825 0.641575"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link4BackLeft_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.196987 -0.290825 0.641575"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link4BackLeft_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link4FrontLeft_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.044409351302732464 -0.006229937915568418 -0.10914906216529396"/>
+    <mass value="0.3651188269789837"/>
+    <inertia ixx="0.001791" ixy="5e-06" ixz="7.1e-05" iyy="0.0019" iyz="-0.000199" izz="0.000283"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.197012 0.290775 0.641575"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link4FrontLeft_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.197012 0.290775 0.641575"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link4FrontLeft_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link4FrontRight__1__1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.04441036643334331 -0.006254524034632558 -0.10914906216531961"/>
+    <mass value="0.3651188269789837"/>
+    <inertia ixx="0.001791" ixy="-5e-06" ixz="-7.1e-05" iyy="0.0019" iyz="-0.000199" izz="0.000283"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.197013 -0.290775 0.641575"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link4FrontRight__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.197013 -0.290775 0.641575"/>
+    <geometry>
+      <mesh filename="package://quadruped_description/meshes/link4FrontRight__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="joint1FrontRight" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.155 -0.272 -0.028"/>
+  <parent link="base_link"/>
+  <child link="link1FrontRight_1"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="joint1BackLeft" type="continuous">
+  <origin rpy="0 0 0" xyz="0.155 0.272 -0.028"/>
+  <parent link="base_link"/>
+  <child link="link1BackLeft_1"/>
+  <axis xyz="-0.0 1.0 -0.0"/>
+</joint>
+
+<joint name="joint1FrontLeft" type="continuous">
+  <origin rpy="0 0 0" xyz="0.155 -0.272 -0.028"/>
+  <parent link="base_link"/>
+  <child link="link1FrontLeft_1"/>
+  <axis xyz="-0.0 -1.0 -0.0"/>
+</joint>
+
+<joint name="joint1BackRight" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.155 0.272 -0.028"/>
+  <parent link="base_link"/>
+  <child link="link1BackRight_1"/>
+  <axis xyz="-0.0 1.0 0.0"/>
+</joint>
+
+<joint name="joint2FrontRight" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.041988 -0.0188 -0.072978"/>
+  <parent link="link1FrontRight_1"/>
+  <child link="link2FrontRight_1"/>
+  <axis xyz="-1.0 -0.0 0.0"/>
+</joint>
+
+<joint name="joint2BackLeft" type="continuous">
+  <origin rpy="0 0 0" xyz="0.041988 0.0188 -0.072978"/>
+  <parent link="link1BackLeft_1"/>
+  <child link="link2BackLeft_1"/>
+  <axis xyz="1.0 0.0 -0.0"/>
+</joint>
+
+<joint name="joint2FrontLeft" type="continuous">
+  <origin rpy="0 0 0" xyz="0.042012 -0.0188 -0.072978"/>
+  <parent link="link1FrontLeft_1"/>
+  <child link="link2FrontLeft_1"/>
+  <axis xyz="1.0 -0.0 -0.0"/>
+</joint>
+
+<joint name="joint2BackRight" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.042012 0.0188 -0.072978"/>
+  <parent link="link1BackRight_1"/>
+  <child link="link2BackRight_1"/>
+  <axis xyz="-1.0 0.0 -0.0"/>
+</joint>
+
+<joint name="joint3FrontRight" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 -1.2e-05 -0.256179"/>
+  <parent link="link2FrontRight_1"/>
+  <child link="link3FrontRight_1"/>
+  <axis xyz="-1.0 0.0 0.0"/>
+</joint>
+
+<joint name="joint3BackLeft" type="continuous">
+  <origin rpy="0 0 0" xyz="-1e-06 1.2e-05 -0.256179"/>
+  <parent link="link2BackLeft_1"/>
+  <child link="link3BackLeft__1"/>
+  <axis xyz="1.0 -0.0 -0.0"/>
+</joint>
+
+<joint name="joint3FrontLeft" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 1.3e-05 -0.256179"/>
+  <parent link="link2FrontLeft_1"/>
+  <child link="link3FrontLeft_1"/>
+  <axis xyz="1.0 -0.0 -0.0"/>
+</joint>
+
+<joint name="joint3BackRight" type="continuous">
+  <origin rpy="0 0 0" xyz="-1e-06 -1.3e-05 -0.256179"/>
+  <parent link="link2BackRight_1"/>
+  <child link="link3BackRight_1"/>
+  <axis xyz="-1.0 0.0 -0.0"/>
+</joint>
+
+<joint name="joint4FrontRight" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 -1.3e-05 -0.284418"/>
+  <parent link="link3FrontRight_1"/>
+  <child link="link4FrontRight_1"/>
+  <axis xyz="-1.0 0.0 0.0"/>
+</joint>
+
+<joint name="joint4BackLeft" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 1.3e-05 -0.284418"/>
+  <parent link="link3BackLeft__1"/>
+  <child link="link4BackLeft_1"/>
+  <axis xyz="1.0 -0.0 -0.0"/>
+</joint>
+
+<joint name="joint4FrontLeft" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 1.2e-05 -0.284418"/>
+  <parent link="link3FrontLeft_1"/>
+  <child link="link4FrontLeft_1"/>
+  <axis xyz="1.0 -0.0 -0.0"/>
+</joint>
+
+<joint name="joint4BackRight" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 -1.2e-05 -0.284418"/>
+  <parent link="link3BackRight_1"/>
+  <child link="link4FrontRight__1__1"/>
+  <axis xyz="-1.0 0.0 -0.0"/>
+</joint>
+
+</robot>

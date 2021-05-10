@@ -5,6 +5,7 @@ addpath('./initialization/');
 addpath('./plotting/');
 addpath('./kinematics/');
 addpath('./pathPlanning/');
+addpath('./wip-henrik/quadruped_description/urdf/');
 
 pi = sym(pi); %Better pi
 
@@ -51,3 +52,27 @@ plotAcc(accFuncs,timeLim)
 
 %% Plotting yz-plane for end effector
 plotEndEffector(dh,thetaDiscrete,timeLine);
+
+%% Importing URDF file
+
+robot = importrobot('quadruped.urdf');
+config = homeConfiguration(robot);      % Store starting pose
+
+figure()
+numFrames = length(timeLine);
+frames = struct('cdata',cell(1,numFrames),'colormap',cell(1,numFrames));
+for i = 1:numFrames
+    clf;
+    for j=2:4 
+        config(j).JointPosition = -thetaDiscrete(j,i);
+    end
+    show(robot, config, 'visuals', 'on');
+    frames(i) = getframe(gcf);
+end
+
+video = VideoWriter('urdfTest', 'MPEG-4');
+video.FrameRate = 10;
+
+open(video)
+writeVideo(video,frames);  
+close(video)
