@@ -1,6 +1,10 @@
 close all
 clear
 clc
+addpath('./initialization/');
+addpath('./plotting/');
+addpath('./kinematics/');
+addpath('./pathPlanning/');
 
 pi = sym(pi); %Better pi
 
@@ -35,7 +39,7 @@ timeStep = 1/10; %time steps for plot
 [thetaDiscrete, timeLine] = pathDiscrete(thetaFuncs,timeLim,timeStep);
 
 %% Body velocity
-[XiMat] = bodyVel(dh, velFuncs);
+[XiMat] = bodyVel(dh, velFuncs); 
 
 %% Animated plotting
 plotAnimation(dh, baseHeight, thetaDiscrete, timeLine, 'gaitAnimation');
