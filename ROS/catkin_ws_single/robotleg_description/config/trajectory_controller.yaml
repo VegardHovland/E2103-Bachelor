@@ -4,7 +4,7 @@ robotleg:
     type: joint_state_controller/JointStateController
     publish_rate: 50
 
-  #Trajectory Controller
+  # Trajectory Controller
   robotleg_controller:
     type: "effort_controllers/JointTrajectoryController"
     joints:
@@ -14,7 +14,7 @@ robotleg:
       - joint4
     
     constraints:
-      goal_time: 0.6
+      goal_time: 10
       stopped_velocity_tolerance: 0.05
       joint1:
         trajectory: 0.1
@@ -35,6 +35,6 @@ robotleg:
       joint3: {p: 200, i: 20, d: 5}
       joint4: {p: 50, i: 20, d: 5}
 
-    state_publish_rate: 25
-    action_monitor_rate: 10
+    state_publish_rate: 50
+    action_monitor_rate: 50
     stop_trajectory_duration: 0.5

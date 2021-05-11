@@ -8,9 +8,7 @@
 <xacro:property name="white" value="Gazebo/White" />
 
 <gazebo>
-  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-    <robotNamespace>/robotleg</robotNamespace>
-  </plugin>
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
 </gazebo>
 
 <gazebo reference="base_link">
@@ -162,8 +160,8 @@
 
 <gazebo reference="rubber_sole_1">
   <material>${black}</material>
-  <mu1>0.2</mu1>
-  <mu2>0.2</mu2>
+  <mu1>0.6</mu1>
+  <mu2>0.6</mu2>
   <selfCollide>true</selfCollide>
 </gazebo>
 
@@ -295,29 +293,29 @@
 
 <gazebo reference="ball_wheel_1">
   <material>${black}</material>
-  <mu1>0.2</mu1>
-  <mu2>0.2</mu2>
+  <mu1>0.1</mu1>
+  <mu2>0.1</mu2>
   <selfCollide>true</selfCollide>
 </gazebo>
 
 <gazebo reference="ball_wheel_2">
   <material>${black}</material>
-  <mu1>0.2</mu1>
-  <mu2>0.2</mu2>
+  <mu1>0.1</mu1>
+  <mu2>0.1</mu2>
   <selfCollide>true</selfCollide>
 </gazebo>
 
 <gazebo reference="ball_wheel_3">
   <material>${black}</material>
-  <mu1>0.2</mu1>
-  <mu2>0.2</mu2>
+  <mu1>0.1</mu1>
+  <mu2>0.1</mu2>
   <selfCollide>true</selfCollide>
 </gazebo>
 
 <gazebo reference="ball_wheel_4">
   <material>${black}</material>
-  <mu1>0.2</mu1>
-  <mu2>0.2</mu2>
+  <mu1>0.1</mu1>
+  <mu2>0.1</mu2>
   <selfCollide>true</selfCollide>
 </gazebo>
 

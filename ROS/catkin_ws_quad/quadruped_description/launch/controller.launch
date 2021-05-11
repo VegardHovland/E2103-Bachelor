@@ -1,14 +1,34 @@
 <launch>
 
-  <!-- Load joint controller configurations from YAML file to parameter server -->
-  <rosparam file="$(find quadruped_description)/config/trajectory_controller.yaml"
-            command="load"/>
+  <!-- Uncomment the type of controller that is to be used -->
+      <!-- Load joint position controller configurations from YAML file to parameter server -->
+      <rosparam file="$(find quadruped_description)/config/position_controller.yaml"
+                  command="load"/>
 
-  <!-- Load the controllers -->
+      <!-- Load joint trajectory controller configurations from YAML file to parameter server -->
+      <!-- <rosparam file="$(find quadruped_description)/config/trajectory_controller.yaml"
+                  command="load"/> -->
+
+  <!-- Load the controllers. Add the controllers specified in the YAML file that is uncommented -->
   <node name="controller_spawner" pkg="controller_manager" type="spawner"
         respawn="false" output="screen" ns="quadruped"
         args="joint_state_controller
-              quadruped_controller">
+              joint1FrontRight_position_controller
+              joint1BackLeft_position_controller
+              joint1FrontLeft_position_controller
+              joint1BackRight_position_controller
+              joint2FrontRight_position_controller
+              joint2BackLeft_position_controller
+              joint2FrontLeft_position_controller
+              joint2BackRight_position_controller
+              joint3FrontRight_position_controller
+              joint3BackLeft_position_controller
+              joint3FrontLeft_position_controller
+              joint3BackRight_position_controller
+              joint4FrontRight_position_controller
+              joint4BackLeft_position_controller
+              joint4FrontLeft_position_controller
+              joint4BackRight_position_controller">
   </node>
   
   <!-- Convert joint states to TF transforms for rviz, etc -->
@@ -16,9 +36,8 @@
         ns="quadruped">
   </node>
 
-  <!-- rqt ->
-  <node name="rqt_publisher" pkg="rqt_gui" type="rqt_gui" args="-s rqt_publisher"/>
-  <node name="rqt_joint_trajectory_controller" pkg="rqt_gui" type="rqt_gui" args="-s rqt_joint_trajectory_controller" ns="/robotleg"/>
-  <node name="rqt_reconfigure" pkg="rqt_gui" type="rqt_gui" args="-s rqt_reconfigure"/>
-  -->
+  <!-- Useful rqt plugins -->
+  <!-- <node name="rqt_publisher" pkg="rqt_gui" type="rqt_gui" args="-s rqt_publisher"/> -->
+  <!-- <node name="rqt_reconfigure" pkg="rqt_gui" type="rqt_gui" args="-s rqt_reconfigure"/> -->
+
 </launch>

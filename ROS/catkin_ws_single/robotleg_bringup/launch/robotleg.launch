@@ -1,18 +1,20 @@
-<!-- This is the main launchfile for moveitcontroll
-    Will launch serial_node for arduino, action client for moveit, and then moveit planning execution   -->
+<!-- This is the main launch file for moveit control -->
+<!-- It will launch serial_node for arduino, action interface for moveit, and then moveit planning execution -->
+
 <launch>
-        <!-- run serial node -->
+    
+    <!-- Run serial node -->
     <node name="hardware_interface"        pkg="rosserial_python"      type="serial_node.py">
         <param name="port"              type="string"               value="/dev/ttyACM0"/>
         <param name="baud"              type="int"                  value="115200"/>
     </node>
 
-    <!-- run actionserver -->
-    <node pkg="actionserver" name="Joint_command_interface" type="complete_action_server.py" output="screen"> </node>
+    <!-- Run actionserver -->
+    <node pkg="actionserver" name="Joint_command_interface" type="complete_action_server.py" output="screen">
+    </node>
   
     <!-- load moveit planning execution -->
     <include file="$(find robotleg_moveit_config)/launch/robotleg_planning_execution.launch">
     </include>
-
   
-  </launch>
+</launch>

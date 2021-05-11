@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 
 <launch>
 
@@ -19,7 +19,7 @@
     <arg name="headless" value="$(arg headless)"/>
   </include>
 
-  <group ns="/robotleg">
+  <group ns="robotleg">
 
     <!-- Load robot URDF to ROS Parameter Server -->
     <param name="robot_description" command="$(find xacro)/xacro '$(find robotleg_description)/urdf/robotleg.xacro'"/>
@@ -38,5 +38,4 @@
   <!-- Controller launch file -->
   <include file="$(find robotleg_description)/launch/controller.launch"/>
   
-
 </launch>

@@ -2,13 +2,14 @@
 
 <launch>
 
+  <!-- Load urdf location on parameter server -->
   <param name="robot_description" command="$(find xacro)/xacro '$(find quadruped_description)/urdf/quadruped.xacro'"/>
   <param name="use_gui" value="true"/>
 
-  <!-- Combine joint values to get tf of links -->
+  <!-- Combine joint states to get tf of links -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
   
-  <!-- Publish joint values -->
+  <!-- Publish joint states -->
   <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
   
   <!-- Show robot state in Rviz -->

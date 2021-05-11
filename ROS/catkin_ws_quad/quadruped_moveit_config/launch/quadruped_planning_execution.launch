@@ -1,18 +1,22 @@
 <launch>
 
+  <!-- load URDF, SRDF and joint_limits configuration -->
   <include file="$(find quadruped_moveit_config)/launch/planning_context.launch">
     <arg name="load_robot_description" value="true"/>
   </include>
 
+  <!-- Publish joint states -->
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
     <param name="use_gui" value="false"/>
     <rosparam param="source_list">[quadruped/joint_states]</rosparam>
   </node>
 
+  <!-- Run the main MoveIt executable -->
   <include file="$(find quadruped_moveit_config)/launch/move_group.launch">
     <arg name="publish_monitored_planning_scene" value="true"/>
   </include>
 
+  <!-- Run Rviz and load the default config to see the state of the move_group node -->
   <include file="$(find quadruped_moveit_config)/launch/moveit_rviz.launch">
     <arg name="rviz_config" value="$(find quadruped_moveit_config)/launch/moveit.rviz"/>
   </include>

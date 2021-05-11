@@ -5,8 +5,91 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Grid1/Offset1
+        - /MotionPlanning1/Scene Robot1/Links1/ball_wheel_11
+        - /MotionPlanning1/Scene Robot1/Links1/ball_wheel_21
+        - /MotionPlanning1/Scene Robot1/Links1/ball_wheel_31
+        - /MotionPlanning1/Scene Robot1/Links1/ball_wheel_41
+        - /MotionPlanning1/Scene Robot1/Links1/base_link1
+        - /MotionPlanning1/Scene Robot1/Links1/encoder_cap_11
+        - /MotionPlanning1/Scene Robot1/Links1/encoder_cap_21
+        - /MotionPlanning1/Scene Robot1/Links1/encoder_cap_31
+        - /MotionPlanning1/Scene Robot1/Links1/encoder_cap_41
+        - /MotionPlanning1/Scene Robot1/Links1/end_effector_11
+        - /MotionPlanning1/Scene Robot1/Links1/female_pin_headers_11
+        - /MotionPlanning1/Scene Robot1/Links1/female_pin_headers_21
+        - /MotionPlanning1/Scene Robot1/Links1/female_pin_headers_31
+        - /MotionPlanning1/Scene Robot1/Links1/female_pin_headers_41
+        - /MotionPlanning1/Scene Robot1/Links1/female_pin_headers_51
+        - /MotionPlanning1/Scene Robot1/Links1/female_pin_headers_61
+        - /MotionPlanning1/Scene Robot1/Links1/female_pin_headers_71
+        - /MotionPlanning1/Scene Robot1/Links1/female_pin_headers_81
+        - /MotionPlanning1/Scene Robot1/Links1/hex_spacer_M2.5x20_11
+        - /MotionPlanning1/Scene Robot1/Links1/hex_spacer_M2.5x20_21
+        - /MotionPlanning1/Scene Robot1/Links1/hex_spacer_M2.5x20_31
+        - /MotionPlanning1/Scene Robot1/Links1/hex_spacer_M2.5x20_41
+        - /MotionPlanning1/Scene Robot1/Links1/hex_spacer_M2.5x20_51
+        - /MotionPlanning1/Scene Robot1/Links1/hex_spacer_M2.5x20_61
+        - /MotionPlanning1/Scene Robot1/Links1/hex_spacer_M2.5x20_71
+        - /MotionPlanning1/Scene Robot1/Links1/hex_spacer_M2.5x20_81
+        - /MotionPlanning1/Scene Robot1/Links1/hex_spacer_M2.5x6_11
+        - /MotionPlanning1/Scene Robot1/Links1/hex_spacer_M2.5x6_21
+        - /MotionPlanning1/Scene Robot1/Links1/hex_spacer_M2.5x6_31
+        - /MotionPlanning1/Scene Robot1/Links1/hex_spacer_M2.5x6_41
+        - /MotionPlanning1/Scene Robot1/Links1/hex_spacer_M2.5x6_51
+        - /MotionPlanning1/Scene Robot1/Links1/hex_spacer_M2.5x6_61
+        - /MotionPlanning1/Scene Robot1/Links1/hex_spacer_M2.5x6_71
+        - /MotionPlanning1/Scene Robot1/Links1/hex_spacer_M2.5x6_81
+        - /MotionPlanning1/Scene Robot1/Links1/hex_spacer_M3x10_11
+        - /MotionPlanning1/Scene Robot1/Links1/hex_spacer_M3x10_21
+        - /MotionPlanning1/Scene Robot1/Links1/hex_spacer_M3x10_31
+        - /MotionPlanning1/Scene Robot1/Links1/hex_spacer_M3x10_41
+        - /MotionPlanning1/Scene Robot1/Links1/joint_11
+        - /MotionPlanning1/Scene Robot1/Links1/joint_21
+        - /MotionPlanning1/Scene Robot1/Links1/joint_31
+        - /MotionPlanning1/Scene Robot1/Links1/joint_41
+        - /MotionPlanning1/Scene Robot1/Links1/joint_lower_11
+        - /MotionPlanning1/Scene Robot1/Links1/joint_lower_21
+        - /MotionPlanning1/Scene Robot1/Links1/joint_lower_31
+        - /MotionPlanning1/Scene Robot1/Links1/joint_lower_41
+        - /MotionPlanning1/Scene Robot1/Links1/joint_upper_11
+        - /MotionPlanning1/Scene Robot1/Links1/joint_upper_21
+        - /MotionPlanning1/Scene Robot1/Links1/joint_upper_31
+        - /MotionPlanning1/Scene Robot1/Links1/joint_upper_41
+        - /MotionPlanning1/Scene Robot1/Links1/link1_11
+        - /MotionPlanning1/Scene Robot1/Links1/link2_11
+        - /MotionPlanning1/Scene Robot1/Links1/link3_11
+        - /MotionPlanning1/Scene Robot1/Links1/link4_11
+        - /MotionPlanning1/Scene Robot1/Links1/motor_11
+        - /MotionPlanning1/Scene Robot1/Links1/motor_21
+        - /MotionPlanning1/Scene Robot1/Links1/motor_31
+        - /MotionPlanning1/Scene Robot1/Links1/motor_41
+        - /MotionPlanning1/Scene Robot1/Links1/motor_driver_11
+        - /MotionPlanning1/Scene Robot1/Links1/motor_driver_21
+        - /MotionPlanning1/Scene Robot1/Links1/protoboard_11
+        - /MotionPlanning1/Scene Robot1/Links1/protoboard_21
+        - /MotionPlanning1/Scene Robot1/Links1/protoboard_31
+        - /MotionPlanning1/Scene Robot1/Links1/protoboard_41
+        - /MotionPlanning1/Scene Robot1/Links1/rubber_sole_11
+        - /MotionPlanning1/Scene Robot1/Links1/stand_ball_wheel_connector_11
+        - /MotionPlanning1/Scene Robot1/Links1/stand_ball_wheel_connector_21
+        - /MotionPlanning1/Scene Robot1/Links1/stand_ball_wheel_connector_31
+        - /MotionPlanning1/Scene Robot1/Links1/stand_ball_wheel_connector_41
+        - /MotionPlanning1/Scene Robot1/Links1/stand_foot_connector_11
+        - /MotionPlanning1/Scene Robot1/Links1/stand_foot_connector_21
+        - /MotionPlanning1/Scene Robot1/Links1/stand_foot_connector_31
+        - /MotionPlanning1/Scene Robot1/Links1/stand_foot_connector_41
+        - /MotionPlanning1/Scene Robot1/Links1/stand_foot_pipe_11
+        - /MotionPlanning1/Scene Robot1/Links1/stand_foot_pipe_21
+        - /MotionPlanning1/Scene Robot1/Links1/stand_foot_pipe_31
+        - /MotionPlanning1/Scene Robot1/Links1/stand_foot_pipe_41
+        - /MotionPlanning1/Scene Robot1/Links1/stand_support_pipe_11
+        - /MotionPlanning1/Scene Robot1/Links1/stand_support_pipe_21
+        - /MotionPlanning1/Scene Robot1/Links1/stand_support_pipe_31
+        - /MotionPlanning1/Scene Robot1/Links1/stand_support_pipe_41
+        - /MotionPlanning1/Scene Robot1/Links1/top_plate_11
+        - /MotionPlanning1/Scene Robot1/Links1/weight_dist_plate_11
       Splitter Ratio: 0.7425600290298462
-    Tree Height: 312
+    Tree Height: 201
   - Class: rviz/Help
     Name: Help
   - Class: rviz/Views
@@ -530,7 +613,7 @@ Visualization Manager:
         Links:
           All Links Enabled: true
           Expand Joint Details: false
-          Expand Link Details: false
+          Expand Link Details: true
           Expand Tree: false
           Link Tree Style: Links in Alphabetic Order
           ball_wheel_1:
@@ -948,7 +1031,7 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-        Robot Alpha: 0.5
+        Robot Alpha: 1
         Show Robot Collision: false
         Show Robot Visual: true
       Value: true
@@ -969,7 +1052,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 1.4585849046707153
+      Distance: 1.5293943881988525
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -977,17 +1060,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: -0.0026983022689819336
-        Y: -0.07313735783100128
+        X: 0
+        Y: 0
         Z: -0.5699999928474426
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.20979735255241394
+      Pitch: 0.084797203540802
       Target Frame: base_link
-      Yaw: 4.711797714233398
+      Yaw: 4.711798191070557
     Saved: ~
 Window Geometry:
   Displays:
@@ -1001,7 +1084,7 @@ Window Geometry:
     collapsed: false
   MotionPlanning - Trajectory Slider:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000100000000000001f30000039efc0200000007fb000000100044006900730070006c006100790073010000003d000001c9000000c900fffffffb0000000800480065006c00700000000342000000bb0000006e00fffffffb0000000a0056006900650077007300000001a8000000b0000000a400fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c0069006400650072010000020c000000410000004100fffffffb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e00670100000253000001880000017d00ffffff0000053f0000039e00000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000100000000000001f30000039efc0200000007fb000000100044006900730070006c006100790073010000003d0000015a000000c900fffffffb0000000800480065006c00700000000342000000bb0000006e00fffffffb0000000a00560069006500770073000000015a000000ac000000a400fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c0069006400650072010000019d000000510000004100fffffffb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e006701000001f4000001e70000017d00ffffff0000053f0000039e00000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
   Width: 1848
