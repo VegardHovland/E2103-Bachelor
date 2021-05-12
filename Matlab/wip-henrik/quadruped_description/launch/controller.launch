@@ -1,9 +1,0 @@
-<launch>
-
-<rosparam file="$(find quadruped_description)/launch/controller.yaml" command="load"/>
-<node args="joint1FrontRight_position_controller joint1BackLeft_position_controller joint1FrontLeft_position_controller joint1BackRight_position_controller joint2FrontRight_position_controller joint2BackLeft_position_controller joint2FrontLeft_position_controller joint2BackRight_position_controller joint3FrontRight_position_controller joint3BackLeft_position_controller joint3FrontLeft_position_controller joint3BackRight_position_controller joint4FrontRight_position_controller joint4BackLeft_position_controller joint4FrontLeft_position_controller joint4BackRight_position_controller joint_state_controller " name="controller_spawner" ns="quadruped" output="screen" pkg="controller_manager" respawn="false" type="spawner"/>
-<node name="robot_state_publisher" output="screen" pkg="robot_state_publisher" respawn="false" type="robot_state_publisher">
-  <remap from="/joint_states" to="/quadruped/joint_states"/>
-</node>
-
-</launch>

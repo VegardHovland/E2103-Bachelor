@@ -7,7 +7,7 @@ addpath('./initialization/');
 addpath('./plotting/');
 addpath('./kinematics/');
 addpath('./pathPlanning/');
-addpath('./wip-henrik/quadruped_description/urdf/');
+addpath('./urdf/quadruped_description/urdf/');
 
 pi = sym(pi); %Better pi
 
@@ -21,7 +21,7 @@ phiVias = [48.9*pi/180 65.8*pi/180 86.9*pi/180 94.1*pi/180 55.1*pi/180 28.1*pi/1
 thetaVias = invKinViasCalc(xVias,yVias,zVias,phiVias,dh,pi);
 timeLim = [2 1 2 2 2 2 1.5 2];
 
-velLim = 0;
+velLim = 0.2;
 velVias = velViasCalc(thetaVias, velLim);
 accVias = zeros(length(timeLim)+1);
 
@@ -62,6 +62,7 @@ for i = 1:numFrames
     clf;
     for j=2:4 
         config(j).JointPosition = -thetaDiscrete(j,i);
+        config(j+4).JointPosition = thetaDiscrete(j,i);
     end
     show(robot, config, 'visuals', 'on');
     frames(i) = getframe(gcf);
