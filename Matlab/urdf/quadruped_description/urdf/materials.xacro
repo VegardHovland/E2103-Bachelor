@@ -5,4 +5,12 @@
   <color rgba="0.700 0.700 0.700 1.000"/>
 </material>
 
+<material name="black_plastic">
+  <color rgba="0.300 0.300 0.300 1.000"/>
+</material>
+
+<material name="white_plastic">
+  <color rgba="1.000 1.000 1.000 1.000"/>
+</material>
+
 </robot>

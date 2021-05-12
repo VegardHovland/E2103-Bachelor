@@ -3,7 +3,7 @@ function [qdot] = tradjCalcLin(x,y,z,tLim, dh)
 %end effector
 
     t = sym('t');  
-    
+    dh(1,1) = 520;
     J = symCalcJ(dh);
     
     vx = (x(2)-x(1))*0;

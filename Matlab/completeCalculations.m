@@ -19,6 +19,7 @@ phiVias = [48.9*pi/180 65.8*pi/180 86.9*pi/180 94.1*pi/180 55.1*pi/180 28.1*pi/1
 
 thetaVias = invKinViasCalc(xVias,yVias,zVias,phiVias,dh,pi);
 timeLim = [2 1 2 2 2 2 1.5 2];
+moveType = ["lin" "lin" "lin" "quint" "quint" "quint" "quint" "lin"];
 
 velLim = 0;
 velVias = velViasCalc(thetaVias, velLim);

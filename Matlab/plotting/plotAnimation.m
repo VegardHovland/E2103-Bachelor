@@ -4,7 +4,7 @@ function [] = plotAnimation(dh, baseHeight, thetaDiscrete, timeLine, fileName)
 
     figure()
     
-    %Preallocate 
+    %Preallocation 
     numFrames = length(timeLine);
     frames = struct('cdata',cell(1,numFrames),'colormap',cell(1,numFrames));
     dhMom = dh;
