@@ -9,7 +9,6 @@ function [] = plotRobot(dh, baseHeight)
     ylabel('Y');
     zlabel('Z');
     
-    
     T = symCalcT(dh);
     n = length(dh(:,1)); %number of links
     

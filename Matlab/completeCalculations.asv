@@ -1,4 +1,4 @@
-%% Initialization of parameters and waypoints for the robot
+%% Initialization of parameters and waypoints
 
 close all
 clear
@@ -38,13 +38,11 @@ ylabel('y/[mm]')
 zlabel('z/[mm]')
 
 %% Path Calculation
-% Creates symbolic functions for the trajectories between all waypoints
 [thetaFuncs, velFuncs, accFuncs] = pathCalcTot(thetaVias,timeLim,velVias,accVias);
 timeStep = 1/10; %time steps for plot
 [thetaDiscrete, timeLine] = pathDiscrete(thetaFuncs,timeLim,timeStep);
 
-%% Body velocity 
-% Attempt to create linear Cartesian movement for end effector
+%% Body velocity attempt to create linear Cartesian movement
 % Something is not working correctly, somehow double z values are applied
 % to the Cartesian path. Only run this part for testing purposes.
 
@@ -59,11 +57,9 @@ thetaFuncs(2:4,1) = q(3:5,1);                           % Replace the expression
 [thetaDiscrete, timeLine] = pathDiscrete(thetaFuncs,timeLim,timeStep);
 
 %% Animated plotting
-% Creates a video of the movement between all waypoints and exports a video
 plotAnimation(dh, baseHeight, thetaDiscrete, timeLine, 'gaitAnimation');
 
 %% Plotting values for theta, velocity and acceleration
-% Plots 3 figures with the values for all actuators
 plotTheta(thetaFuncs,timeLim)
 plotVel(velFuncs,timeLim)
 plotAcc(accFuncs,timeLim)
