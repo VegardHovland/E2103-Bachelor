@@ -7,3 +7,5 @@ Embeded controller is Arduino Mega running as a ROS Serial Node<br />
 
 ![3D Model](https://github.com/VegardHovland/E2103-Bachelor/blob/main/163385725_524834042242400_6926905120112491868_n.png)
 
+# 3D model
+To facilitate furter work on the project, .stl files are provided for all printed parts. In addition, project files for both the one legged robot and a quadrupedal version is added. To open the .f3z files a project will have to be created in Fusion 360 and the files added to that project using the upload button.
