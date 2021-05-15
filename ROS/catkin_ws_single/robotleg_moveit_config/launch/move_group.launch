@@ -57,16 +57,17 @@
       <arg name="pipeline" value="chomp" />
     </include>
 
-    <!-- Pilz Industrial Motion-->
+    <!-- Pilz Industrial Motion, not included in standard moveitinstall->
     <include ns="pilz_industrial_motion_planner" file="$(find moveit_resources_prbt_moveit_config)/launch/planning_pipeline.launch.xml">
       <arg name="pipeline" value="pilz_industrial_motion_planner" />
     </include>
-
-    <!-- Support custom planning pipeline -->
+  -->
+    <!-- Support custom planning pipeline ->
     <include if="$(eval arg('pipeline') not in ['ompl', 'chomp', 'pilz_industrial_motion_planner'])"
 	     file="$(find robotleg_moveit_config)/launch/planning_pipeline.launch.xml">
       <arg name="pipeline" value="$(arg pipeline)" />
     </include>
+  -->
   </group>
 
   <!-- Trajectory Execution Functionality -->

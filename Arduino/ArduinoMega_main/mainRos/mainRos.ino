@@ -47,7 +47,7 @@ DualG2HighPowerMotorShield24v14 md1(M11nSLEEP, M11DIR, M11PWM,  M11nFAULT,  M11C
 DualG2HighPowerMotorShield24v14 md2(M21nSLEEP, M21DIR, M21PWM,  M21nFAULT,  M21CS, M22nSLEEP,  M22DIR,  M22PWM,  M22nFAULT, M22CS);                // Declaration for Motor driver 2
 
 //Object array of the 4 actuators, pid parameters, slaveadress and gear ratio as parameters
-Actuator actuators[4] = {Actuator(8, 80, 0, 0.005, 4480), Actuator(9, 30, 10, 0, 4480), Actuator(10, 20, 20, 0, 4480), Actuator(11, 15, 100 , 0, 4480)};
+Actuator actuators[4] = {Actuator(8, 0, 0, 0, 4480), Actuator(9, 0, 0, 0, 4480), Actuator(10, 40, 80, 0, 4480), Actuator(11, 40, 120 , 0, 4480)};
 
 
 //Declare functions-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -131,27 +131,27 @@ void controllActuators(Actuator actuators[]) {
     nh.spinOnce();
     if ( i == 0) {
       md1.setM1Speed(actuators[i].getEffort());                  // Motor 1 is driver 1 M1
-      actuators[i].setAmps(md1.getM1CurrentReading());
-      curr_reading1.data = actuators[i].getAmps();
-      rated_setpoint1.data = actuators[i].getRatedSetPoint();
+      actuators[i].setAmps(md1.getM1CurrentReading());           // get amps drawn [MA]
+      curr_reading1.data = actuators[i].getAmps();               // Store amps
+      rated_setpoint1.data = (actuators[i].getRatedSetPoint()/57.3); // Get rate limited setpoint in rad for publsiher
     }
     else if ( i == 1) {
       md1.setM2Speed(actuators[i].getEffort());                  // Motor 2 is driver 1 M2
       actuators[i].setAmps(md1.getM2CurrentReading());
       curr_reading2.data = actuators[i].getAmps();
-      rated_setpoint2.data = actuators[i].getRatedSetPoint();
+      rated_setpoint2.data = (actuators[i].getRatedSetPoint()/57.3);
     }
     else  if ( i == 2) {
       md2.setM1Speed(actuators[i].getEffort());                  // Motor 3 is driver 2 M1
       actuators[i].setAmps(md2.getM1CurrentReading());
       curr_reading3.data = actuators[i].getAmps();
-      rated_setpoint3.data = actuators[i].getRatedSetPoint();
+      rated_setpoint3.data = (actuators[i].getRatedSetPoint()/57.3);
     }
     else if ( i == 3) {
       md2.setM2Speed(actuators[i].getEffort());                  // Motor 4 is driver 2 M2
       actuators[i].setAmps(md2.getM2CurrentReading());
       curr_reading4.data = actuators[i].getAmps();
-      rated_setpoint4.data = actuators[i].getRatedSetPoint();
+      rated_setpoint4.data = (actuators[i].getRatedSetPoint()/57.3);
     }
   }
 }
