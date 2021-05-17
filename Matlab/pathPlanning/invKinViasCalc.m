@@ -1,5 +1,5 @@
 function [theta] = invKinViasCalc(xVias,yVias,zVias,phiVias,dh,pi)
-%INVKINVIASCALC Creates viapoints using the inverse kinematics function
+%invKinViasCalc Creates viapoints using the inverse kinematics function
 %   This function returns a matrix containing angles for each actuator in
 %   each via point
     
@@ -14,4 +14,3 @@ function [theta] = invKinViasCalc(xVias,yVias,zVias,phiVias,dh,pi)
         theta(:,i) = dhMom(2:5,2);
     end   
 end
-

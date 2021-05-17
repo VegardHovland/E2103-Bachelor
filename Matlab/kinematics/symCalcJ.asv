@@ -1,8 +1,7 @@
 function [J] = symCalcJ(dh)
 %sumCalcJ calculates the Jacobi matrix for any given robot configuration
 %   By defining the Denavit Hartenberg table with an extra row for
-%   rotational or translational joints the Jacobi matrix can be calculated
-%   directly from the DH-table
+%   rotational or translational joints the Jacobi 
     
     n = length(dh(:,1)); %number of links
     Jv = sym('Jv', [3 n]);

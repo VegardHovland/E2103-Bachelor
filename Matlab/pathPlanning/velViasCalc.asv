@@ -1,9 +1,6 @@
 function [velVias] = velViasCalc(thetaVias,velLim)
 %velViasCalc generates velocity limitations for all waypoints
-%   This function takes an absolute value for the velocity limit and adds
-%   the correct sign for the direction of the joint. If the direction
-%   changes the velocity is set to 0.
-
+%   This function takes an absolute value for 
     [numActuators, numVias] = size(thetaVias);
     velVias = zeros(numActuators, numVias);
     

@@ -1,7 +1,6 @@
 function [] = plotAnimation(dh, baseHeight, thetaDiscrete, timeLine, fileName)
 %plotAnimation creates and exports an animation of the robot
-%  The thetaDiscrete matrix includes actuator angles for all time steps in
-%  a complete gait.
+%   By using 
 
     figure()
     
@@ -23,3 +22,4 @@ function [] = plotAnimation(dh, baseHeight, thetaDiscrete, timeLine, fileName)
     writeVideo(video,frames);  
     close(video)
 end
+
