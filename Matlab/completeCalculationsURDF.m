@@ -58,7 +58,7 @@ view([60 10])
 figure('Color','white','Name','Robot Gait','Position',[10 10 2010 1510])
 
 numFrames = length(timeLine);
-phase = 50;
+phase = 40;
 frames = struct('cdata',cell(1,numFrames),'colormap',cell(1,numFrames));
 for i = 1:numFrames
     clf;
