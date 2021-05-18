@@ -2238,7 +2238,7 @@
   <parent link="motor_3"/>
   <child link="joint_3"/>
   <axis xyz="-0.0 1.0 -0.0"/>
-  <limit effort="87" velocity="2.4" lower="-3.0" upper="0.0"/>
+  <limit effort="87" velocity="2.4" lower="-2.2" upper="0.0"/>
 </joint>
 
 <joint name="joint4" type="revolute">
@@ -2246,7 +2246,7 @@
   <parent link="motor_4"/>
   <child link="joint_4"/>
   <axis xyz="-0.0 1.0 -0.0"/>
-  <limit effort="87" velocity="2.4" lower="0.0" upper="3.0"/>
+  <limit effort="87" velocity="2.4" lower="0.0" upper="2.2"/>
 </joint>
 
 </robot>

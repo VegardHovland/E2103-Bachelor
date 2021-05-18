@@ -10,7 +10,7 @@
     </node>
 
     <!-- Run actionserver -->
-    <node pkg="actionserver" name="Joint_command_interface" type="complete_action_server.py" output="screen">
+    <node pkg="joint_command_interface" name="joint_command_interface" type="complete_action_server.py" output="screen">
     </node>
   
     <!-- load moveit planning execution -->

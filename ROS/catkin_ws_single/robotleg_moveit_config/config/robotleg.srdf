@@ -19,11 +19,11 @@
         <joint name="joint3" value="0"/>
         <joint name="joint4" value="0"/>
     </group_state>
-    <group_state name="front_step" group="robotleg">
+    <group_state name="raised_leg" group="robotleg">
         <joint name="joint1" value="0"/>
-        <joint name="joint2" value="1.223"/>
-        <joint name="joint3" value="-1.6077"/>
-        <joint name="joint4" value="1.2762"/>
+        <joint name="joint2" value="1.0322"/>
+        <joint name="joint3" value="-2.105"/>
+        <joint name="joint4" value="2.1215"/>
     </group_state>
     <group_state name="middle_step" group="robotleg">
         <joint name="joint1" value="0"/>
@@ -31,19 +31,25 @@
         <joint name="joint3" value="-1.5249"/>
         <joint name="joint4" value="1.9392"/>
     </group_state>
+    <group_state name="front_raised" group="robotleg">
+        <joint name="joint1" value="0"/>
+        <joint name="joint2" value="1.4"/>
+        <joint name="joint3" value="-1.95"/>
+        <joint name="joint4" value="1.95"/>
+    </group_state>
+    <group_state name="front_step" group="robotleg">
+        <joint name="joint1" value="0"/>
+        <joint name="joint2" value="1.223"/>
+        <joint name="joint3" value="-1.6077"/>
+        <joint name="joint4" value="1.2762"/>
+    </group_state>
     <group_state name="back_step" group="robotleg">
         <joint name="joint1" value="0"/>
         <joint name="joint2" value="-0.4944"/>
         <joint name="joint3" value="-0.7293"/>
         <joint name="joint4" value="1.9227"/>
     </group_state>
-    <group_state name="raised_leg" group="robotleg">
-        <joint name="joint1" value="0"/>
-        <joint name="joint2" value="1.0322"/>
-        <joint name="joint3" value="-2.105"/>
-        <joint name="joint4" value="2.1215"/>
-    </group_state>
-    <group_state name="back_lift" group="robotleg">
+    <group_state name="back_raised" group="robotleg">
         <joint name="joint1" value="0"/>
         <joint name="joint2" value="0.0500"/>
         <joint name="joint3" value="-2.105"/>

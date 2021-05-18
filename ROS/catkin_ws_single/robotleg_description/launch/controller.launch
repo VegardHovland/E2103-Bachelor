@@ -1,28 +1,33 @@
 <launch>
 
-  <!-- Uncomment the type of controller that is to be used -->
-      <!-- Load joint position controller configurations from YAML file to parameter server -->
-      <!-- <rosparam file="$(find robotleg_description)/config/position_controller.yaml"
-                  command="load"/> -->
+  <!-- UNCOMMENT THE TYPE OF CONTROLLER THAT IS TO BE USED -->
 
-      <!-- Load joint trajectory controller configurations from YAML file to parameter server -->
+      <!-- LOAD JOINT POSITION CONTROLLER CONFIGURATIONS FROM YAML FILE TO PARAMETER SERVER -->
+      <!--
+      <rosparam file="$(find robotleg_description)/config/position_controller.yaml"
+                  command="load"/>
+      -->
+
+      <!-- LOAD JOINT TRAJECTORY CONTROLLER CONFIGURATIONS FROM YAML FILE TO PARAMETER SERVER -->
+      
       <rosparam file="$(find robotleg_description)/config/trajectory_controller.yaml"
                   command="load"/>
 
-  <!-- Load the controllers. Add the controllers specified in the YAML file that is uncommented -->
+
+  <!-- LOAD THE CONTROLLERS - ADD THE CONTROLLERS SPECIFIED IN THE YAML FILE THAT IS UNCOMMENTED -->
   <node name="controller_spawner" pkg="controller_manager" type="spawner"
         respawn="false" output="screen" ns="robotleg"
         args="joint_state_controller
               robotleg_controller">
   </node>
 
-  <!-- Convert joint states to TF transforms for rviz, etc -->
+  <!-- CONVERT JOINT STATES TO TF TRANSFORMS FOR RVIZ, ETC. -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
         ns="robotleg">
   </node>
 
-  <!-- Useful rqt plugins -->
-  <!-- <node name="rqt_publisher" pkg="rqt_gui" type="rqt_gui" args="-s rqt_publisher"/> -->
+  <!-- USEFUL RQT PLUGINS -->
+  <!-- <node name="rqt_publisher" pkg="rqt_gui" type="rqt_gui" args="-s rqt_publisher"/> --> <!-- RELEVANT WHEN USING POSITION CONTROLLER -->
   <!-- <node name="rqt_reconfigure" pkg="rqt_gui" type="rqt_gui" args="-s rqt_reconfigure"/> -->
   
 </launch>

@@ -30,10 +30,10 @@ robotleg:
         goal: 0.1
     
     gains:
-      joint1: {p: 200, i: 20, d: 5}
-      joint2: {p: 200, i: 20, d: 5}
-      joint3: {p: 200, i: 20, d: 5}
-      joint4: {p: 50, i: 20, d: 5}
+      joint1: {p: 400, i: 20, d: 2}
+      joint2: {p: 400, i: 20, d: 2}
+      joint3: {p: 400, i: 20, d: 2}
+      joint4: {p: 70, i: 20, d: 2}
 
     state_publish_rate: 50
     action_monitor_rate: 50

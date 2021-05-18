@@ -1,5 +1,41 @@
 #!/usr/bin/env python3
 
+# Software License Agreement (BSD License)
+#
+# Copyright (c) 2013, SRI International
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+#
+#  * Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+#  * Redistributions in binary form must reproduce the above
+#    copyright notice, this list of conditions and the following
+#    disclaimer in the documentation and/or other materials provided
+#    with the distribution.
+#  * Neither the name of SRI International nor the names of its
+#    contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+# "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+# FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+# COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+# BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+# LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+# ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+# POSSIBILITY OF SUCH DAMAGE.
+#
+# Author: Acorn Pooley, Mike Lautman
+#
+# Modified by Kristian Grinde
+
 ## To use the Python MoveIt interfaces, we will import the `moveit_commander`_ namespace.
 ## This namespace provides us with a `MoveGroupCommander`_ class, a `PlanningSceneInterface`_ class,
 ## and a `RobotCommander`_ class. More on these below. We also import `rospy`_ and some messages that we will use:
@@ -81,34 +117,42 @@ class MoveGroupPythonInterface(object):
     self.eef_link = eef_link
     self.group_names = group_names
 
-
+  # Plan and execute a trajectory to a named group state
   def go_to_named_target(self, target):
+
+    # Update the joint values of a group state to the joint target
     joint_goal = self.move_group.get_current_joint_values()
     joint_goal = self.move_group.get_named_target_values(target)
 
+    # Plan and execute to the joint target
     self.move_group.go(joint_goal, wait=True)
+
+    # Make sure there is no residual movement
     self.move_group.stop()
 
-
+  # Copy the start and end pose of the Cartesian path
   def calibrate_cartesian_path(self):
 
+    # Copy the end pose of the Cartesian path to a variable
     self.go_to_named_target('back_step')
     end_step = self.move_group.get_current_pose().pose
 
-    self.go_to_named_target('back_lift')
-    self.go_to_named_target('raised_leg')
+    # Follow the gait pattern to avoid collisions
+    self.go_to_named_target('back_raised')
+    self.go_to_named_target('front_raised')
 
+    # Copy the start pose of the Cartesian path to a variable
     self.go_to_named_target('front_step')
     start_step = self.move_group.get_current_pose().pose
 
+    # Make an array of the waypoints used to compute a Cartesian path
     waypoints = []
-
     waypoints.append(copy.deepcopy(start_step))
     waypoints.append(copy.deepcopy(end_step))
 
     (plan, fraction) = self.move_group.compute_cartesian_path(
                                        waypoints,   # waypoints to follow
-                                       0.01,        # eef_step
+                                       0.1,        # eef_step
                                        0.0)         # jump_threshold
 
     return plan, fraction
@@ -121,7 +165,7 @@ class MoveGroupPythonInterface(object):
     ## Use execute if you would like the robot to follow
     ## the plan that has already been computed:
     self.move_group.execute(plan, wait=True)
-
+    self.move_group.stop()
     ## **Note:** The robot's current joint state must be within some tolerance of the
     ## first waypoint in the `RobotTrajectory`_ or ``execute()`` will fail
 
@@ -129,18 +173,20 @@ class MoveGroupPythonInterface(object):
 def main():
   try:
 
-    #Begin the gait by setting up the moveit_commander ...
+    # Begin the gait by setting up the moveit_commander ...
     gait = MoveGroupPythonInterface()
 
+    # Start by planning the Cartiesian path and saving the plan to a variable
     cartesian_plan, fraction = gait.calibrate_cartesian_path()
   
+    # Perform all the movements of the gait in sequence and repeat until interrupted
     while True:
         
       gait.execute_plan(cartesian_plan)
 
-      gait.go_to_named_target('back_lift')
+      gait.go_to_named_target('back_raised')
 
-      gait.go_to_named_target('raised_leg')
+      gait.go_to_named_target('front_raised')
 
       gait.go_to_named_target('front_step')
 

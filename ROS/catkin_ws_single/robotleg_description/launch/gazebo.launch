@@ -2,14 +2,14 @@
 
 <launch>
 
-  <!-- Launch arguments -->
+  <!-- LAUNCH ARGUMENTS -->
   <arg name="paused" default="true"/>
   <arg name="use_sim_time" default="true"/>
   <arg name="gui" default="true"/>
   <arg name="headless" default="false"/>
   <arg name="debug" default="false"/>
 
-  <!-- Start Gazebo simulation -->
+  <!-- START GAZEBO SIMULATION -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find robotleg_description)/worlds/empty.world"/>
     <arg name="debug" value="$(arg debug)" />
@@ -21,21 +21,21 @@
 
   <group ns="robotleg">
 
-    <!-- Load robot URDF to ROS Parameter Server -->
+    <!-- LOAD MAIN URDF TO ROS PARAMETER SERVER -->
     <param name="robot_description" command="$(find xacro)/xacro '$(find robotleg_description)/urdf/robotleg.xacro'"/>
     
-    <!-- Spawn arguments -->
+    <!-- SPAWN ARGUMENTS -->
     <arg name="x" default="0"/>
     <arg name="y" default="0"/>
     <arg name="z" default="1.0"/>
 
-    <!-- Spawn the robot model -->
+    <!-- SPAWN THE ROBOT MODEL -->
     <node name="robotleg_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
           args="-urdf -param robot_description -model robotleg -x $(arg x) -y $(arg y) -z $(arg z)"/>
 
   </group>
 
-  <!-- Controller launch file -->
+  <!-- CONTROLLER LAUNCH FILE -->
   <include file="$(find robotleg_description)/launch/controller.launch"/>
   
 </launch>
