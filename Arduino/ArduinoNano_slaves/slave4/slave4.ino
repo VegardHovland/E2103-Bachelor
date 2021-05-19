@@ -6,7 +6,7 @@ int pinA = 3;                 // Encoder pin for A puls
 int pinB = 4;                 // Encoder pin for B puls
 
 //Variables:
-int counter=0;              // store the incremental encoders counter
+int counter=0;                // Store the incremental encoders counter
 int aState;                   // Store the state of the puls
 int aLastState;               // Save last state of the puls
 void setup() {
@@ -42,7 +42,7 @@ void requestEvent() {
   Wire.write(buffer, 2);                        // Respond with message of 6 bytes
 }
 
-void saveToERPROM(){                            //ISR function for interupt
-    EEPROM.put(0, counter);
+void saveToERPROM(){                            // ISR function for interupt
+    EEPROM.put(0, counter);                     // Store counter value
     delay(1000);                                // Wait ti die
 }

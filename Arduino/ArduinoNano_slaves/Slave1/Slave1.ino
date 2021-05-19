@@ -7,7 +7,7 @@ int pinA = 3;                 // Encoder pin for A puls
 int pinB = 4;                 // Encoder pin for B puls
 
 //Variables:
-int counter=0;              // store the incremental encoders counter
+int counter=0;                // store the incremental encoders counter
 int aState;                   // Store the state of the puls
 int aLastState;               // Save last state of the puls
 void setup() {

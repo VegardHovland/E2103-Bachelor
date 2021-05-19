@@ -130,8 +130,6 @@ void Actuator::readAngle() {
 void Actuator::setpointRateLimit() {
   float diff = setPoint - setpointRated;
 
-  // rateLimit = desierd velocity / scantime ?
-
   if (setPoint > setpointRated) {                             // If setpoint larger then rated increase rated setpoint
     if (diff > rateLimit) {
       setpointRated = setpointRated + rateLimit;

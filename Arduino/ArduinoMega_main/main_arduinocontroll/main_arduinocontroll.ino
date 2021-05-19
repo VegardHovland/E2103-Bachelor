@@ -1,20 +1,19 @@
 /* Main scketch for our bachelorthesis, group E2103 at NTNU.
-   We are controlling 4 brushed Dc motors with encoders connected
-   to an I2C bus, witch we get position readings from.
-   Running as a rode serial node communicating with an actionserver connected
-   to moveit. We are running an independent-joint PD(I) controller.
-
-   Title: Development of an 4 DOF robotic leg.
-   Group members: Vegard Hovland, Even vestland, Kristian Grinde, Henrike Moe Arnesen
-   Supervisor: Torlef Anstensrud.
+ *  Control from serial monitor
+ 
+   Title: Development of Biomimetic Robot Leg With ROS Implementation.
+   Group members: Henrike Moe Arnesen, Kristian Grinde, Vegard Hovland, Even vestland,
+   Supervisor: Torleif Anstensrud
 */
 #include "actuator.h"
 #include "DualG2HighPowerMotorShield.h"
 #include "variables.h"                                                                                                            
 #include <stdlib.h>
+
 // Init motordriverers as md1(motor driver 1) and md2(motor driver 2)
 DualG2HighPowerMotorShield24v14 md1(M11nSLEEP, M11DIR, M11PWM,  M11nFAULT,  M11CS, M12nSLEEP,  M12DIR,  M12PWM,  M12nFAULT, M12CS);                // Declaration for Motor driver 1
-DualG2HighPowerMotorShield24v14 md2(M21nSLEEP, M21DIR, M21PWM,  M21nFAULT,  M21CS, M22nSLEEP,  M22DIR,  M22PWM,  M22nFAULT, M22CS);                // Declaration for Motor driver 2                                                     //defines the two motor drivers
+DualG2HighPowerMotorShield24v14 md2(M21nSLEEP, M21DIR, M21PWM,  M21nFAULT,  M21CS, M22nSLEEP,  M22DIR,  M22PWM,  M22nFAULT, M22CS);                // Declaration for Motor driver 2  
+
 //Object array of the 4 actuators
 Actuator actuators[4] = {Actuator(8, 80, 0, 0.005, 3200), Actuator(9, 70, 0, 30, 4480), Actuator(10, 70, 0, 0.30, 4480), Actuator(11, 50, 0 , 30, 4480)};                                                                   // Generates an actuator list contaning 4 actuators and their i2c address
 

@@ -1,16 +1,10 @@
 /* Main scketch for our bachelorthesis, group E2103 at NTNU.
-   We are controlling 4 brushed Dc motors with encoders connected
-   to an I2C bus, witch we get position readings from.
-   Running as a rode serial node communicating with an actionserver connected
-   to moveit. We are running an independent-joint PD(I) controller.
-
-   Title: Development of an 4 DOF robotic leg.
-   Group members: Vegard Hovland, Even vestland, Kristian Grinde, Henrike Moe Arnesen
-   Supervisor: Torlef Anstensrud.
+ * Control from ROS
+   Title: Development of Biomimetic Robot Leg With ROS Implementation.
+   Group members: Henrike Moe Arnesen, Kristian Grinde, Vegard Hovland, Even vestland,
+   Supervisor: Torleif Anstensrud
 */
-//#include <Arduino.h>
-//#include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
+
 #include "actuator.h"
 #include "DualG2HighPowerMotorShield.h"
 #include "variables.h"
@@ -85,7 +79,7 @@ void setup() {
 }
 
 void loop() {
-  // stopIfFault();
+  stopIfFault();
   controllActuators(actuators);                 // Pid controll on all the acuators by default
   rosPub();                                     // Publish joint states and current readings to ros
   nh.spinOnce();                                // suync with ros, needs to happen frequently
@@ -182,7 +176,7 @@ void setupDrivers() {
   md1.enableDrivers();                                           // Enable mosfet 1
   md2.enableDrivers();                                           // Enable mosfet 2
   for (int i = 0; i < numActuators; i++) {
-    actuators[i].readAngle();                                      // Read startpos
+    actuators[i].readAngle();                                    // Read startpos
     delay(10);
     actuators[i].setSetpoint(actuators[i].getAngle());           //Initialize start setpoints to current
     actuators[i].setRatedSetpoint(actuators[i].getAngle());
@@ -192,7 +186,7 @@ void setupDrivers() {
 
 // Function for publishing joint states on the joint_state topic
 void rosPub() {
-  float pos[4];                                                  // Expected size for topic
+  float pos[4];                                                   // Expected size for topic
   float vel[4];
   float eff[4];
 
